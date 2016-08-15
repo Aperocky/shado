@@ -1,0 +1,40 @@
+<html>
+<head>
+		<meta charset="UTF-8">
+		<title>Title.</title>
+		<script type="text/javascript" src="page2.js"></script>
+		<link rel="stylesheet" href="page2_mod.css">
+	</head>
+<body>
+
+	<div id="page">
+		<img src="rail.jpg" alt=" " style="position:absolute; top:0px; left:0px; width:1300px; height:650px; opacity:0.15;"/>
+		<div id="top_panel"></div>
+		<div id="title">
+				<h1>Simulator of Human Operator Workload (SHOW)<img src="hal.png" width=400 align="middle" /> </h1>
+		</div>
+		<br><br>
+
+		<form action="create_txt.php" method="post">
+					
+							
+					<h3 id="text_start">Enter Start Time:</h3> <br><input id="start_time" type="time" name="time1" oninput="calculate_time()">
+							
+					<br>
+				
+					<h3 id="text_stop">Enter Stop Time:</h3> <br><input id="stop_time" type="time" name="time2" oninput="calculate_time()">
+					
+					<br>
+					<div id="totalTime" style="overflow-x:auto;"></div>
+					<div id="assist" style="overflow-x:auto;"></div>
+					
+					<input type="submit" id="submit"></input>
+					
+					
+					
+		</form>
+		
+	</div>
+
+</body>
+</html>

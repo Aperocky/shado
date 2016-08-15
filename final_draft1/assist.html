@@ -1,0 +1,45 @@
+<div id="page" class='page'>
+		<div id="operators" class="operatorSummaryOuter">
+		
+			<div id="operator1">
+				<div id="operator2title" style="text-align: center;">
+					<h2><u>Engineer</u></h2>
+				</div>
+				<h3>On average, your <em>engineer</em> is projected to experience:</h3>
+				<div id="bullets">
+					<ul style="list-style-type:circle">
+						<li><h4 id="low_work_0">low workload range for <?php echo $low_count_0*10; ?> minutes</h4></li>
+						<li><h4 id="normal_work_0">moderate workload range for <?php echo $normal_count_0*10; ?> minutes</h4></li>
+						<li><h4 id="high_work_0">high workload range for <?php echo $high_count_0*10; ?> minutes</h4></li>
+					</ul>
+				</div>
+				
+			
+				<form action="read_csv.php" method="post" target="_blank" style='text-align: center;'>
+					<button type="submit" id="submit1">See Results</button>
+				</form>
+			</div>
+			
+			<div id="operator2" style='<?php echo $operator2Style; ?>'>
+				<div id="operator2title" style="text-align: center;">
+					<h2><u>Conductor</u></h2>
+				</div>
+				<h3>On average, your <em>conductor</em> is projected to experience:</h3>
+				<div id="bullets">
+					<ul style="list-style-type:circle">
+						<li><h4 id="low_work_1">low workload range for <?php echo $low_count_1*10; ?> minutes</h4></li>
+						<li><h4 id="normal_work_1">moderate workload range for <?php echo $normal_count_1*10; ?> minutes</h4></li>
+						<li><h4 id="high_work_1">high workload range for <?php echo $high_count_1*10; ?> minutes</h4></li>
+					</ul>
+				</div>
+		
+				<form action="read_csv_2.php" method="post" target="_blank" style='text-align: center;'>
+					<button type="submit" id="submit2">See Results</button>
+				</form>
+		    
+			</div>
+		
+				
+		</div>
+
+	</div>
