@@ -69,8 +69,11 @@
 			    window.history.back();
 			}
 		</script>
+		<br>
+		<br>
+		<button id="back_button" onclick="location.href='replications.php'">Peek & Tweak, under the hood</button>
 	</div>
-
+	
 <?php
 	require_once('footer.php');
 ?>

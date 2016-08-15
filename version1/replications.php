@@ -7,11 +7,11 @@
 	require_once('header.php');
 ?>
 
-<form id="change_replications" action="replications.php" method="post" class="startEndTimeStepOuter centerOuter">
+<form id="change_replications" action="replications_send.php" method="post" class="startEndTimeStepOuter centerOuter">
 
 	<div class="stepBox centerOuter startEndTime">
 		<h3 id="text_start">Number of Replications:</h3>
-		<select id='replications' onchange="make_change();">
+		<select id='replications' name="replications">
 			<?php
 				
 				for ($i = 10; $i <= 1000; $i+=10) {
@@ -22,19 +22,11 @@
 			?>
 		</select>
 	</div>
-	<input type="submit" id="submit" value="Re-Run">
+	<div id="button">
+		<input type="submit" id="submit" value="Re-Run">
+	</div>
 	
 </form>
-
-<script>
-	var replications = document.getElementById('replications');
-	
-
-
-
-
-
-
 
 <?php
 	require_once('footer.php');
