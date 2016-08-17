@@ -41,6 +41,13 @@ body {
 #navBar {
 	border: 1px solid red;
 	height: 40px;
+	/*padding: 10px; */
+}
+
+#navBar a {
+	border: 1px solid purple;
+	padding: 10px 20px;
+	display: inline-block;
 }
 
 #fixedFooter {
