@@ -51,7 +51,7 @@
 
 	exec("./DES parameters.txt");
 	
-	include('read_csv_mod.php');
+	include('read_csv.php');
 ?>
 
 	
