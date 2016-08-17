@@ -9,11 +9,6 @@
 		</div>
 		<img id="footerLogo" src="images/hal.png" width=200 align="center" />
 	</footer>
-		
-<!-- 		<div id="next_page">
-			<input type="button" class="style_button" name="b1" value="Get Started" onclick=location.href="page2.html" />
-		</div>
-	 -->
 
 </body>
 </html>

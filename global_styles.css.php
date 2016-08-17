@@ -94,8 +94,6 @@ body {
 	background-size: 50px;
 	margin-left: 10px;
 	
-	
-	
 }
 
 .page {
@@ -225,59 +223,3 @@ h2.sectionHead {
 	position:relative;
 	left: 0%;
 }
-
-/*
-
-
-
-
-
-li { 
-    padding-left: 12px; 
-}
-
-h3 {
-	color: #5D7B85;
-}
-
-#button {
-	position: relative;
-	top: 130px;
-}
-
-footer {
-	position: relative;
-	top: 60px;
-	font-size: 15px;
-}
-
-
-
-#note1 {
-	position:relative;
-	left: 3.5%;
-}
-
-#note2 {
-	position:relative;
-	left: 3.5%;
-}
-
-#next_page {
-	position: absolute;
-	left: 1150px;
-	top: 550px;
-}
-
-.style_button {
-	background: #0000ff;
-	opacity: 0.5;
-	padding:8px 20px;
-	color:#cfebf3;
-	font-family:'Helvetica Neue',sans-serif;
-	font-size:13px;
-	border-radius:40px;
-	-moz-border-radius:40px;
-	-webkit-border-radius:40px;
-	border:5px solid #C0C0C0
-}*/
