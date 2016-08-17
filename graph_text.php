@@ -223,19 +223,19 @@
 	{
 		if($count_type_low[$low_keys[$j-1]]>0)
 		{
-			echo "<li onclick='display" . ($low_keys[$j-1]-1) ."();'>Task Type ". ($low_keys[$j-1]-1) ."<ul><li id='low". ($low_keys[$j-1]-1) . "'>";
+			echo "<li onclick='display" . ($low_keys[$j-1]-1) ."();'>Task Type ". ($low_keys[$j-1]-1) ."<ul id='low". ($low_keys[$j-1]-1) . "'><li>";
 			if($count_type_low1[$low_keys[$j-1]]==0)
 			{
-				echo "On average, your engineering spends ". "0" ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 1</li><li id='low". ($low_keys[$j-1]-1) . "'>";
+				echo "On average, your engineering spends ". "0" ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 1</li><li>";
 			}
 			else{
-				echo "On average, your engineering spends". round($count_type_low1[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 1</li><li id='low". ($low_keys[$j-1]-1) . "'>";
+				echo "On average, your engineering spends". round($count_type_low1[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 1</li><li>";
 			}
 			if($count_type_low2[$low_keys[$j-1]]==0){
-				echo "On average, your engineering spends". " 0" ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 2</li><li id='low". ($low_keys[$j-1]-1) . "'>";
+				echo "On average, your engineering spends". " 0" ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 2</li><li>";
 			}
 			else{
-				echo "On average, your engineering spends". round($count_type_low2[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 2</li><li id='low". ($low_keys[$j-1]-1) . "'>";
+				echo "On average, your engineering spends". round($count_type_low2[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 2</li><li>";
 			}
 			if($count_type_low3[$low_keys[$j-1]]==0){
 				echo "On average, your engineering spends". " 0" ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 3</li></ul></li>";
@@ -279,17 +279,25 @@
 for($j=1;$j<$temp_count-1;$j++)
 	{
 		if($count_type_low[$high_keys[$j-1]]>0)
-		{
+	{
 ?>
-		function display<?php echo ($low_keys[$j-1]-1) ;?>(){
-			if(document.getElementById(<?php echo 'low='. ($low_keys[$j-1]-1); ?>).style.display=='none')
+	function display<?php echo ($low_keys[$j-1]-1) ;?>(){
+			console.log("function called");
+			if(document.getElementById('<?php echo 'low'. ($low_keys[$j-1]-1); ?>').style.display=='none')
 			{
-				
+				document.getElementById('<?php echo 'low'. ($low_keys[$j-1]-1); ?>').style.display='block';
+			}
+			else{
+				document.getElementById('<?php echo 'low'. ($low_keys[$j-1]-1); ?>').style.display='none';
 			}
 		}
+<?php
+	}
+	}
+?>
+	
 
 
-
-<script>
+</script>
 
 	
