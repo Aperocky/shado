@@ -23,11 +23,7 @@
 	</div>
 
 
-	<div id="fixedBody">
-
-		
-	
-	</div>
+	<div id="fixedBody"></div>
 
 
 	<div id="main">
