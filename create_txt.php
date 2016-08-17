@@ -36,19 +36,6 @@
 
 	fclose($myfile);
 
-	// for($i=1;$i<10;$i++) {
-	// 	echo "<br>";
-	// }
-
-	// passthru("sudo -s");
-	// passthru("chmod 777 Total_stats.csv");
-	// passthru("chmod 777 Engineer_stats.csv");
-	// passthru("chmod 777 Conductor_stats.csv");
-	// passthru("chmod 777 PTC_stats.csv");
-	// passthru("chmod 777 Cruise_stats.csv");
-	// passthru("chmod 777 mod_type_data_conductor.txt");
-	// passthru("chmod 777 mod_type_data_engineer.txt");
-
 	exec("./DES sessions/parameters.txt");
 
 	include('read_csv.php');
