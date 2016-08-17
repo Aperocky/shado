@@ -2,7 +2,7 @@
 
 	session_start();
 
-	$html_head_insertions .= '<link rel="stylesheet" href="assist_summary.css">';
+	$html_head_insertions .= '<link rel="stylesheet" href="styles/assist_summary.css">';
 
 	require_once('header.php');
 
@@ -19,16 +19,16 @@
 		$operator2Style = ' ';
 	}
 
-?>	
-	
-	<style>		
+?>
+
+	<style>
 		#low_work_0, #high_work_0{ color: <?php if(($low_count_0+$high_count_0)>$normal_count_0){ echo "red";} else{ echo "black";}?>;}
 		#normal_work_0{ color: <?php if(($low_count_0+$high_count_0)<$normal_count_0){ echo "green";} else{ echo "black";}?>;}
-		
+
 		#low_work_1, #high_work_1{ color: <?php if(($low_count_1+$high_count_1)>$normal_count_1){ echo "red";} else{ echo "black";}?>;}
 		#normal_work_1{ color: <?php if(($low_count_1+$high_count_1)<$normal_count_1){ echo "green";} else{ echo "black";}?>;}
 	</style>
-	
+
 <?php require_once("assist.html"); ?>
 
 	<br>
@@ -49,5 +49,5 @@
 		<br>
 		<button id="back_button" onclick="location.href='replications.php'">Peek & Tweak, under the hood</button>
 	</div>
-	
+
 <?php require_once('footer.php'); ?>
