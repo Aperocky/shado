@@ -223,19 +223,19 @@
 	{
 		if($count_type_low[$low_keys[$j-1]]>0)
 		{
-			echo "<li>Task Type ". ($low_keys[$j-1]-1) ."<ul><li>";
+			echo "<li onclick='display" . ($low_keys[$j-1]-1) ."();'>Task Type ". ($low_keys[$j-1]-1) ."<ul><li id='low". ($low_keys[$j-1]-1) . "'>";
 			if($count_type_low1[$low_keys[$j-1]]==0)
 			{
-				echo "On average, your engineering spends ". "0" ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 1</li><li>";
+				echo "On average, your engineering spends ". "0" ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 1</li><li id='low". ($low_keys[$j-1]-1) . "'>";
 			}
 			else{
-				echo "On average, your engineering spends". round($count_type_low1[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 1</li><li>";
+				echo "On average, your engineering spends". round($count_type_low1[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 1</li><li id='low". ($low_keys[$j-1]-1) . "'>";
 			}
 			if($count_type_low2[$low_keys[$j-1]]==0){
-				echo "On average, your engineering spends". " 0" ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 2</li><li>";
+				echo "On average, your engineering spends". " 0" ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 2</li><li id='low". ($low_keys[$j-1]-1) . "'>";
 			}
 			else{
-				echo "On average, your engineering spends". round($count_type_low2[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 2</li><li>";
+				echo "On average, your engineering spends". round($count_type_low2[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 2</li><li id='low". ($low_keys[$j-1]-1) . "'>";
 			}
 			if($count_type_low3[$low_keys[$j-1]]==0){
 				echo "On average, your engineering spends". " 0" ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 3</li></ul></li>";
@@ -252,8 +252,28 @@
 ?>		
 		
 
+</div>
+		
 </body>
 </html>
 	
 		
-			
+<?php 
+ echo "<style>";
+
+ for($j=1;$j<$temp_count-1;$j++)
+	{
+		if($count_type_low[$high_keys[$j-1]]>0)
+		{
+			echo "#low". ($low_keys[$j-1]-1)."{ display: none;}";
+		}
+	}
+ 
+ echo "</style>";
+ 
+?>			
+
+
+<script>
+
+	
