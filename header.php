@@ -13,11 +13,9 @@
 </head>
 
 <body>
-
 	<div id="fixedHead">
-
 		<div id="top_panel"></div>
-
+		
 		<div id="title">
 				<h1>Simulator of Human Operator Workload (SHOW)</h1>
 		</div>
@@ -29,8 +27,6 @@
 		</div>
 	</div>
 
-
 	<div id="fixedBody"></div>
-
 
 	<div id="main">

@@ -1,11 +1,6 @@
 <?php 
-
 	$color_theme_dark_blue = 'rgba(70,127,201,1)';
-
-	// <?php echo $color_theme_dark_blue;
-
 ?>
-
 
 body {
 	margin: 0;

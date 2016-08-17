@@ -17,7 +17,6 @@ function check_nav() {
 	}
 }
 
-
 function show_page(page) {
 	hide_pages();
 	$('#' + page).show();
