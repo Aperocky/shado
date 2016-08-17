@@ -28,7 +28,7 @@ body {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background-image: url("rail.jpg");
+	background-image: url("../images/rail.jpg");
 	z-index: -999;
 }
 
@@ -37,6 +37,11 @@ body {
 	padding: 40px;
 	padding-bottom: 0;
 }
+
+/*#navBar {
+	border: 1px solid red;
+	height: 40px;
+}*/
 
 #fixedFooter {
 	position: fixed;
@@ -80,7 +85,7 @@ body {
 }
 
 .navArrow {
-	background-image: url("nav-arrow.png");
+	background-image: url("../images/nav-arrow.png");
 	height: 50px;
 	width: 50px;
 	margin-left: auto;
@@ -88,13 +93,11 @@ body {
 }
 
 .printPdf {
-	background-image: url("print.png");
+	background-image: url("../images/print.png");
 	height: 50px;
 	width: 50px;
 	background-size: 50px;
 	margin-left: 10px;
-	
-	
 	
 }
 
@@ -225,59 +228,3 @@ h2.sectionHead {
 	position:relative;
 	left: 0%;
 }
-
-/*
-
-
-
-
-
-li { 
-    padding-left: 12px; 
-}
-
-h3 {
-	color: #5D7B85;
-}
-
-#button {
-	position: relative;
-	top: 130px;
-}
-
-footer {
-	position: relative;
-	top: 60px;
-	font-size: 15px;
-}
-
-
-
-#note1 {
-	position:relative;
-	left: 3.5%;
-}
-
-#note2 {
-	position:relative;
-	left: 3.5%;
-}
-
-#next_page {
-	position: absolute;
-	left: 1150px;
-	top: 550px;
-}
-
-.style_button {
-	background: #0000ff;
-	opacity: 0.5;
-	padding:8px 20px;
-	color:#cfebf3;
-	font-family:'Helvetica Neue',sans-serif;
-	font-size:13px;
-	border-radius:40px;
-	-moz-border-radius:40px;
-	-webkit-border-radius:40px;
-	border:5px solid #C0C0C0
-}*/

@@ -1,8 +1,8 @@
-<?php	
-	
+<?php
+
 	session_start();
 
-	$html_head_insertions .= '<link rel="stylesheet" href="assist_summary.css">';
+	$html_head_insertions .= '<link rel="stylesheet" href="styles/assist_summary.css">';
 
 	require_once('header.php');
 
@@ -22,19 +22,19 @@
 
 ?>
 
-<style>		
+<style>
 		#low_work_0, #high_work_0{ color: <?php if(($low_count_0+$high_count_0)>$normal_count_0){ echo "red";} else{ echo "black";}?>;}
 		#normal_work_0{ color: <?php if(($low_count_0+$high_count_0)<$normal_count_0){ echo "green";} else{ echo "black";}?>;}
-		
+
 		#low_work_1, #high_work_1{ color: <?php if(($low_count_1+$high_count_1)>$normal_count_1){ echo "red";} else{ echo "black";}?>;}
 		#normal_work_1{ color: <?php if(($low_count_1+$high_count_1)<$normal_count_1){ echo "green";} else{ echo "black";}?>;}
-		
+
 		#submit1, #submit2{
 			display: none;
 		}
-		
+
 		@media print
-		{    
+		{
 			.no-print, .no-print *
 			{
 				display: none !important;
@@ -45,7 +45,7 @@
 <div id="print-content">
 	<form>
 			<div id="next_page" class="printPdf" onclick="var submit = getElementById('button'); button.click()";>
-			</div>			
+			</div>
 			<input type="button" id="button" onclick="printDiv('print-content')" value="print a div!" style='display:none;'/>
 	</form>
 
@@ -57,8 +57,8 @@
 		// {
 		// 	require_once("graph_conductor.php");
 		// }
-		
-		
+
+
 	?>
 </div>
 
@@ -76,6 +76,6 @@ function printDiv(divName) {
 </script>
 
 <?php
-	
+
 	require_once("footer.php");
 ?>
