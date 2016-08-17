@@ -3,6 +3,7 @@
 		<meta charset="UTF-8">
 		<title>Title.</title>
 		<link rel="stylesheet" href="styles/global_styles.css.php">
+		<script type="text/javascript" src="scripts/main.js"></script>
 		<script type="text/javascript" src="sim_settings_entry.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<?php

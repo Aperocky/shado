@@ -86,7 +86,7 @@ body {
 }
 
 #main {
-	margin-top: 120px;
+	margin-top: 160px;
 	/*border: 2px solid white;*/
 	margin-bottom: 150px;
 }
