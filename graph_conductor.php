@@ -306,10 +306,6 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
       	    .attr("dy", ".35em")
       	    .style("text-anchor", "end")
      	    .text(function(d) { return d; });
-
-
-
-
 });
 
 </script>
