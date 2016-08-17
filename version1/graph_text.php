@@ -273,6 +273,22 @@
  
 ?>			
 
+<script>
+
+<?php
+for($j=1;$j<$temp_count-1;$j++)
+	{
+		if($count_type_low[$high_keys[$j-1]]>0)
+		{
+?>
+		function display<?php echo ($low_keys[$j-1]-1) ;?>(){
+			if(document.getElementById(<?php echo 'low='. ($low_keys[$j-1]-1); ?>).style.display=='none')
+			{
+				
+			}
+		}
+
+
 
 <script>
 
