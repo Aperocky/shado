@@ -28,7 +28,7 @@ body {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background-image: url("rail.jpg");
+	background-image: url("images/rail.jpg");
 	z-index: -999;
 }
 
@@ -80,7 +80,7 @@ body {
 }
 
 .navArrow {
-	background-image: url("nav-arrow.png");
+	background-image: url("images/nav-arrow.png");
 	height: 50px;
 	width: 50px;
 	margin-left: auto;
@@ -88,7 +88,7 @@ body {
 }
 
 .printPdf {
-	background-image: url("print.png");
+	background-image: url("images/print.png");
 	height: 50px;
 	width: 50px;
 	background-size: 50px;
