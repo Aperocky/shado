@@ -85,7 +85,7 @@ body {
 }
 
 .navArrow {
-	background-image: url("images/nav-arrow.png");
+	background-image: url("../images/nav-arrow.png");
 	height: 50px;
 	width: 50px;
 	margin-left: auto;
@@ -93,7 +93,7 @@ body {
 }
 
 .printPdf {
-	background-image: url("images/print.png");
+	background-image: url("../images/print.png");
 	height: 50px;
 	width: 50px;
 	background-size: 50px;
