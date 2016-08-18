@@ -14,7 +14,6 @@
 		<h3 id="text_start">Number of Replications:</h3>
 		<select id='replications' name="replications">
 			<?php
-
 				for ($i = 10; $i <= 1000; $i+=10) {
 					if ($i==100) { $selected_string = ' selected="selected"'; } else { $selected_string = ''; }
 					$val = sprintf('%02d', $i);

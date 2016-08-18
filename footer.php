@@ -1,5 +1,4 @@
 </div>
-	
 	<footer id="fixedFooter">
 		<p class="noteLabel">NOTE:</p>
 		<div class="note">
@@ -9,6 +8,5 @@
 		</div>
 		<img id="footerLogo" src="images/hal.png" width=200 align="center" />
 	</footer>
-
 </body>
 </html>

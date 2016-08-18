@@ -7,7 +7,6 @@ function init() {
 	setup_nav();
 }	
 
-		
 // function setup_nav() {
 // 	var navToStartTime = document.getElementById("navToStartTime");
 // 	navToStartTime.onclick = 

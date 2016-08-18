@@ -19,8 +19,6 @@
 	} else {
 		$operator2Style = ' ';
 	}
-
-
 ?>
 
 <style>
@@ -63,11 +61,8 @@
 		// {
 		// 	require_once("graph_conductor.php");
 		// }
-
-
 	?>
 </div>
-
 
 <script type="text/javascript">
 
@@ -82,6 +77,5 @@ function printDiv(divName) {
 </script>
 
 <?php
-
 	require_once("footer.php");
 ?>
