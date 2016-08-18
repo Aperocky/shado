@@ -181,11 +181,11 @@
 	
 ?>
 
-<html>
-<body>
+
 <div class="page">
+	<div class="engineer">
 	<div id="text_box">
-		
+			<h2 style="text-align: center;"> Engineer Operations </h2>
 			<?php if(max(array_values($count_type_high))>0) { ?>
 			<h3>These combined factors contributed to period of high workload: </h3>
 			<ul>
@@ -260,8 +260,7 @@
 
 </div>
 </div>
-</body>
-</html>
+</div>
 
 <?php
  echo "<style>";

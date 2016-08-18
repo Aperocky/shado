@@ -64,13 +64,17 @@
 
 	fclose($file);
 ?>
-	<div id="page2" class="page2">
-		<div id="graph2"></div>
+<body>
+	<div class="page">
+		<div class="conductor">
+			<div id="graph2"></div>
+		</div>
 	</div>
+</body>
 
 <style>
 
-.page2{
+.conductor{
 	text-align: center;
 }
 
@@ -84,11 +88,12 @@
 	-webkit-border-radius: 5px;
 	border-radius: 25px;
 	display: inline-block;
-	width: 1200px;
+	
 	/*margin: 0 auto;*/
 	margin: 20px;
 	text-align: left;
 	background-color: rgba(255, 255, 255, 0.6);
+	overflow: auto;
 }
 
 .axis path,
@@ -119,8 +124,11 @@
 
 <script>
 var legend_width = 120;
+var temp=<?php echo $num; ?>;
+
 var margin = {top: 20, right: 20, bottom: 30, left: 60},
-    width = 860 - margin.left - margin.right+legend_width,
+    width = 35*temp;
+	
     height = 500 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()

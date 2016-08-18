@@ -47,6 +47,7 @@
 </style>
 
 <div id="print-content">
+	
 	<form>
 			<div id="next_page" class="printPdf" onclick="var submit = getElementById('button'); button.click()";>
 			</div>
@@ -55,12 +56,16 @@
 
 	<?php
 		require_once("assist.html");
+		
 		require_once("graph_engineer.php");
-		// $assistant= $_SESSION['operator1'];
-		// if($assistant==1)
-		// {
-		// 	require_once("graph_conductor.php");
-		// }
+		require_once("graph_text_engineer.php");
+		
+		$assistant= $_SESSION['operator1'];
+		if($assistant==1)
+		{
+			require_once("graph_conductor.php");
+			require_once("graph_text_conductor.php");
+		}
 	?>
 </div>
 

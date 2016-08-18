@@ -63,18 +63,22 @@
 	}
 
 	fclose($file);
+	
+	
 ?>
 
 <!DOCTYPE html>
 <meta charset="utf-8">
-<body>
-	<div id="page" class="page">
-		<div id="graph"></div>
+
+	<div class="page">
+		<div id="engineer">
+			<div id="graph"></div>
+		</div>	
 	</div>
-</body>
+
 <style>
 
-.page{
+#engineer{
 	text-align: center;
 }
 
@@ -88,11 +92,12 @@
 	-webkit-border-radius: 5px;
 	border-radius: 25px;
 	display: inline-block;
-	width: 1200px;
+	
 	/*margin: 0 auto;*/
 	margin: 20px;
 	text-align: left;
 	background-color: rgba(255, 255, 255, 0.6);
+	overflow: auto;
 }
 
 .axis path,
@@ -127,8 +132,12 @@
 
 <script>
 var legend_width = 120;
+
+var temp=<?php echo $num; ?>;
+
 var margin = {top: 20, right: 20, bottom: 30, left: 60},
-    width = 860 - margin.left - margin.right+legend_width,
+    width = 35*temp;
+	
     height = 500 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
@@ -154,16 +163,20 @@ var yAxisAbsolute = d3.svg.axis()
 	    .scale(yAbsolute)
 	    .orient("left");
 
-var svg = d3.select("#graph").append("svg")
+var svg_eng = d3.select("#graph").append("svg")
     .attr("width", width + margin.left + margin.right+legend_width)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	
 d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "time"; }));
+  
+
 
   data.forEach(function(d) {
 	var mystate = d.time.slice(0,4);
+	
     var y0 = 0;
 	d.ages = color.domain().map(function(name) { return {mystate:mystate, name: name, y0: y0, y1: y0 += +d[name]}; });
 
@@ -194,12 +207,12 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 
   var absoluteView = true // define a boolean variable, true is absolute view, false is relative view
   						  // Initial view is absolute
-  svg.append("g")
+  svg_eng.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
-	var stateAbsolute= svg.selectAll(".absolute")
+	var stateAbsolute= svg_eng.selectAll(".absolute")
 						.data(data)
 		    			.enter().append("g")
 		    			.attr("class", "absolute")
@@ -238,18 +251,18 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 
 			d3.select(this).attr("stroke","blue").attr("stroke-width",0.8);
 
-			svg.append("text")
+			svg_eng.append("text")
 				.attr("x",xPos)
 				.attr("y",yPos +height/2)
 				.attr("class","tooltip")
 				.text(((d.y1-d.y0)*100).toFixed(2)+"%");
 		})
 		.on("mouseout",function(){
-			svg.select(".tooltip").remove();
+			svg_eng.select(".tooltip").remove();
 			d3.select(this).attr("stroke","pink").attr("stroke-width",0.2);
 		})
 	//define two different scales, but one of them will always be hidden.
-	svg.append("g")
+	svg_eng.append("g")
 		.attr("class", "y axis absolute")
 		.call(yAxisAbsolute)
 		.append("text")
@@ -259,7 +272,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 		.style("text-anchor", "end")
 		.text("Utilization");
 
-	svg.append("text")
+	svg_eng.append("text")
         .attr("x", (width / 2))
         .attr("y", 10 - (margin.top / 2))
         .attr("text-anchor", "middle")
@@ -271,7 +284,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 
 	// adding legend
 	
-  	    var legend = svg.selectAll(".legend")
+  	    var legend = svg_eng.selectAll(".legend")
       	 	 			.data(color.domain().slice().reverse())
     	 			    .enter().append("g")
     				    	.attr("class", "legend")

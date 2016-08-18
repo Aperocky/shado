@@ -184,8 +184,10 @@
 <html>
 <body>
 <div class="page">
-	<div id="text_box">
-		
+	<div class="conductor">
+	<div id="text_box" class="conductor">
+			<h2 style="text-align: center;"> Conductor Operations </h2>
+			
 			<?php if(max(array_values($count_type_high))>0) { ?>
 			<h3>These combined factors contributed to period of high workload: </h3>
 			<ul>
@@ -258,6 +260,7 @@
 	echo "</ul>" ;
 ?>
 
+</div>
 </div>
 </div>
 </body>
