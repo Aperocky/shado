@@ -4,8 +4,7 @@
 		<title><?php echo $page_title; ?></title>
 		<link rel="stylesheet" href="styles/global_styles.css.php">
 		<link rel="stylesheet" href="graph_text.css">
-		<script type="text/javascript" src="scripts/main.js"></script>
-		<script type="text/javascript" src="sim_settings_entry.js"></script>
+		<!-- <script type="text/javascript" src="scripts/main.js"></script> -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<?php
 			echo $html_head_insertions;

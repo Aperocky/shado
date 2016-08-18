@@ -1,6 +1,7 @@
 <?php
 	$page_title='Run Simulation.';
 	$curr_page='runSimPage';
+	$html_head_insertions .= '<script type="text/javascript" src="sim_settings_entry.js"></script>';
 	require_once("header.php");
 	require_once("side_navigation.html");
 ?>
