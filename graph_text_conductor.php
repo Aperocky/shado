@@ -3,7 +3,7 @@
 <?php
 	
 	
-	$file_handle=fopen('sessions/Engineer_stats.csv','r');
+	$file_handle=fopen('sessions/Conductor_stats.csv','r');
 	$count=array();
 	$temp_count=0;
 	$skip=1;
@@ -196,24 +196,24 @@
 			{
 				if($count_type_high[$high_keys[$j-1]]>0)
 				{
-					echo "<li>Task Type ". ($high_keys[$j-1]-1) ."<ul><li>";
+					echo "<li onclick='display" . ($high_keys[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;'>Task Type ". ($high_keys[$j-1]-1) ."<ul id='high". ($high_keys[$j-1]-1) . "'><li>";
 					if($count_type_high1[$high_keys[$j-1]]==0)
 					{
 						echo "On average, your engineering spends ". "0" ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 1</li><li>";
 					}
-					else {
+					else{
 						echo "On average, your engineering spends". round($count_type_high1[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 1</li><li>";
 					}
 					if($count_type_high2[$high_keys[$j-1]]==0){
 						echo "On average, your engineering spends". " 0" ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 2</li><li>";
 					}
-					else {
+					else{
 						echo "On average, your engineering spends". round($count_type_high2[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 2</li><li>";
 					}
 					if($count_type_high3[$high_keys[$j-1]]==0){
 						echo "On average, your engineering spends". " 0" ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 3</li></ul></li>";
 					}
-					else {
+					else{
 						echo "On average, your engineering spends". round($count_type_high3[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 3</li></ul></li>";
 					}
 				}
@@ -225,7 +225,7 @@
 		<br><br><br>
 			<?php } ?>
 		<h3>These combined factors contributed to period of low workload: </h3>
-		<ul id="result_analysis">
+		<ul>
 		
 <?php
 	$low_keys=array_keys($count_type_low);
@@ -274,6 +274,13 @@
 		}
 	}
 
+	for($j=1;$j<$temp_count-1;$j++)
+	{
+		if($count_type_high[$high_keys[$j-1]]>0)
+		{
+			echo "#high". ($high_keys[$j-1]-1)."{ display: none;}";
+		}
+	}
  echo "</style>";
 ?>
 
@@ -294,6 +301,31 @@
 			}
 			else{
 				document.getElementById('<?php echo 'low'. ($low_keys[$j-1]-1); ?>').style.display='none';
+
+			}
+		}
+<?php
+	}
+	}
+?>
+
+
+
+<?php
+	for($j=1;$j<$temp_count-1;$j++)
+		{
+			if($count_type_high[$high_keys[$j-1]]>0)
+		{
+?>
+	function display<?php echo ($high_keys[$j-1]-1) ;?>(){
+			console.log("function called");
+			if(document.getElementById('<?php echo 'high'. ($high_keys[$j-1]-1); ?>').style.display=='none')
+			{
+
+				document.getElementById('<?php echo 'high'. ($high_keys[$j-1]-1); ?>').style.display='block';
+			}
+			else{
+				document.getElementById('<?php echo 'high'. ($low_keys[$j-1]-1); ?>').style.display='none';
 
 			}
 		}

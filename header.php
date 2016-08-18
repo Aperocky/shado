@@ -3,6 +3,7 @@
 		<meta charset="UTF-8">
 		<title>Title.</title>
 		<link rel="stylesheet" href="styles/global_styles.css.php">
+		<link rel="stylesheet" href="graph_text.css">
 		<script type="text/javascript" src="scripts/main.js"></script>
 		<script type="text/javascript" src="sim_settings_entry.js"></script>
 
