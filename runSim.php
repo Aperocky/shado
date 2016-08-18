@@ -1,8 +1,8 @@
 <?php
-
+	$page_tile='Run Simulation.';
+	$curr_page='runSimPage';
 	require_once("header.php");
 	require_once("side_navigation.html");
-	
 ?>
 
 

@@ -1,30 +1,9 @@
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Welcome!</title>
-		<link rel="stylesheet" href="styles/global_styles.css.php">
-	</head>
-	<body>
-		<!-- Header -->
-		<header id="fixedHead">
-			<!-- Title -->
-			<div id="title">
-				<h1>Simulator of Human Operator Workload (SHOW)</h1>
-			</div>
-			<!-- Navigation Bar -->
-			<nav id="topNav">
-				<ul>
-					<li><a id="navElement" class="active" href="#home">Home</a></li>
-<!-- 					<li><a id="navElement" class=<?php if ($selected == "profile") echo ' active'; ?> href="#home">Home</a></li> -->
-					<li><a id="navElement" href="runSim.php">Run Simulation</a></li>
-					<li><a id="navElement" href="contact.html">Contact Us</a></li>
-				<ul>
-			</nav>
-		</header>
+<?php
+	$page_tile='Welcome!';
+	$curr_page='homePage';
+	require_once('header.php');
+?>
 
-		<!-- Body -->
-		<div id="fixedBody"></div>
-		<div id="main">
 			<div id="homePage" class="page">
 				<p>
 					Welcome to the <em>Simulator of Human Operator Workload (SHOW)</em>! This tool, designed by Duke University researchers, simulates a freight rail operator's workload across the duration of a given trip. With SHOW, you can choose a trip with unique conditions and then see the operator's average workload after thousands of similar trips.
@@ -38,6 +17,7 @@
 					</ul>
 				</p>
 			</div>
-		</div>
-	</body>
-</html>
+
+<?php
+	require_once("footer.php");
+?>
