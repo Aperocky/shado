@@ -1,4 +1,5 @@
 <?php
+
 	session_start();
 	$assistant= $_SESSION['operator1'];
 	$file_handle=fopen('sessions/Engineer_stats.csv','r');
@@ -7,9 +8,9 @@
 	$normal_count=0;
 	$high_count=0;
 	$skip=0;
+	
 	while (! feof($file_handle) )
 	{
-
 		$line_of_text = fgetcsv($file_handle,1024,',');
 		$skip++;
 		if($skip==20)
@@ -38,7 +39,6 @@
 
 			}
 			break;
-
 		}
 	}
 
@@ -57,7 +57,6 @@
 		$skip=0;
 		while (! feof($file_handle) )
 		{
-
 			$line_of_text = fgetcsv($file_handle,1024,',');
 			$skip++;
 			if($skip==20)
@@ -87,7 +86,6 @@
 				}
 				/* echo "LOW: $low_count;   NORMAL: $normal_count;   HIGH: $high_count;\n"; */
 				break;
-
 			}
 		}
 
@@ -104,7 +102,4 @@
 	else{
 		include("assist_summary.php");
 	}
-
-
-
 ?>

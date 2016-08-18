@@ -1,7 +1,6 @@
 <?php
 
 	session_start();
-
 	$html_head_insertions .= '<link rel="stylesheet" href="styles/assist_summary.css">';
 
 	require_once('header.php');
@@ -19,7 +18,6 @@
 	} else {
 		$operator2Style = ' ';
 	}
-
 ?>
 
 	<style>
@@ -30,11 +28,10 @@
 		#normal_work_1{ color: <?php if(($low_count_1+$high_count_1)<$normal_count_1){ echo "green";} else{ echo "black";}?>;}
 	</style>
 
-<?php require_once("assist.html"); ?>
+	<?php require_once("assist.html"); ?>
 
-	<br>
-	<br>
-	<br>
+	<br><br><br>
+	
 	<form action="summary_page.php" method="post" target="_blank" style='text-align: center;'>
 		<button type="submit" id="summary">Create Summary</button>
 	</form>
@@ -46,8 +43,7 @@
 			    window.history.back();
 			}
 		</script>
-		<br>
-		<br>
+		<br><br>
 		<button id="back_button" onclick="location.href='replications.php'">Peek & Tweak, under the hood</button>
 	</div>
 </div>

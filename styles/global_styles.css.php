@@ -60,7 +60,7 @@ body {
 <!-- border-right:1px solid #bbb; -->
 <!-- } -->
 
-#navBar ul {
+#topNav ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0px;
@@ -69,16 +69,16 @@ body {
 	background-color: #f3f3f3;
 }
 
-#navBar {
+#topNav {
 <!-- 	border: 1px solid red; -->
 }
 
-#navBar li {
+#topNav li {
 	float: left;
 <!-- 	display: inline-block; -->
 }
 
-#navBar li a {
+#topNav li a {
 	display: inline-block;
 	color: #666;
 	text-align: center;
@@ -86,11 +86,11 @@ body {
 	text-decoration: none;
 }
 
-#navBar a:hover:not(.active) {
+#topNav a:hover:not(.active) {
 	background-color: #ddd;
 }
 
-#navBar a.active {
+#topNav a.active {
 	color: black;
 	background-color: 00B1FF; 
 <!-- 	<?php echo $color_theme_light_blue; ?> -->

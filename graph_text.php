@@ -187,39 +187,37 @@
 		$high_keys=array_keys($count_type_high);
 		for($j=1;$j<$temp_count-1;$j++)
 		{
-		if($count_type_high[$high_keys[$j-1]]>0)
-		{
-		echo "<li>Task Type ". ($high_keys[$j-1]-1) ."<ul><li>";
-		if($count_type_high1[$high_keys[$j-1]]==0)
-		{
-			echo "On average, your engineering spends ". "0" ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 1</li><li>";
-		}
-		else{
-			echo "On average, your engineering spends". round($count_type_high1[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 1</li><li>";
-		}
-		if($count_type_high2[$high_keys[$j-1]]==0){
-			echo "On average, your engineering spends". " 0" ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 2</li><li>";
-		}
-		else{
-			echo "On average, your engineering spends". round($count_type_high2[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 2</li><li>";
-		}
-		if($count_type_high3[$high_keys[$j-1]]==0){
-			echo "On average, your engineering spends". " 0" ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 3</li></ul></li>";
-		}
-		else{
-			echo "On average, your engineering spends". round($count_type_high3[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 3</li></ul></li>";
-		}
-
-		}
-
-
+			if($count_type_high[$high_keys[$j-1]]>0)
+			{
+				echo "<li>Task Type ". ($high_keys[$j-1]-1) ."<ul><li>";
+				if($count_type_high1[$high_keys[$j-1]]==0)
+				{
+					echo "On average, your engineering spends ". "0" ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 1</li><li>";
+				}
+				else {
+					echo "On average, your engineering spends". round($count_type_high1[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 1</li><li>";
+				}
+				if($count_type_high2[$high_keys[$j-1]]==0){
+					echo "On average, your engineering spends". " 0" ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 2</li><li>";
+				}
+				else {
+					echo "On average, your engineering spends". round($count_type_high2[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 2</li><li>";
+				}
+				if($count_type_high3[$high_keys[$j-1]]==0){
+					echo "On average, your engineering spends". " 0" ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 3</li></ul></li>";
+				}
+				else {
+					echo "On average, your engineering spends". round($count_type_high3[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". ($high_keys[$j-1]-1) ." during Phase 3</li></ul></li>";
+				}
+			}
 		}
 		echo "</ul>" ;
 		?>
+		
 		<br><br><br>
 		<h3>These combined factors contributed to period of low workload: </h3>
 		<ul>
-
+		
 <?php
 	$low_keys=array_keys($count_type_low);
 	for($j=1;$j<$temp_count-1;$j++)
@@ -246,20 +244,14 @@
 			else{
 				echo "On average, your engineering spends". round($count_type_low3[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on Task Type ". ($low_keys[$j-1]-1) ." during Phase 3</li></ul></li>";
 			}
-
 		}
-
-
 	}
 	echo "</ul>" ;
 ?>
 
-
 </div>
-
 </body>
 </html>
-
 
 <?php
  echo "<style>";
@@ -273,16 +265,15 @@
 	}
 
  echo "</style>";
-
 ?>
 
 <script>
 
 <?php
-for($j=1;$j<$temp_count-1;$j++)
-	{
-		if($count_type_low[$high_keys[$j-1]]>0)
-	{
+	for($j=1;$j<$temp_count-1;$j++)
+		{
+			if($count_type_low[$high_keys[$j-1]]>0)
+		{
 ?>
 	function display<?php echo ($low_keys[$j-1]-1) ;?>(){
 			console.log("function called");

@@ -32,15 +32,8 @@
 		<br>
 
 		<div id="navToStartTime" class="navArrow" onclick="navClick(this);"></div>
-
-
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
 		
+		<br><br><br><br><br><br>
 
 		<form id="timeEntry" action="create_txt.php" method="post">
 				
@@ -108,24 +101,18 @@
 				<div id="totalTime" style="overflow-x:auto;"></div>
 			</div>
 			
-			<br>
-			<br>
+			<br><br>
 
 			<div class="assistantsSelectStepOuter stepBox centerOuter">
 				<div class='stepCircle'>4</div>
 				<div id="assist" style="overflow-x:auto;"></div>
 			</div>
-			
-			<br>
-			<br>
+			<br><br>
 			<h4 style="text-align:center;">Run Simulation</h4>
 			<div id="next_page" class="navArrow" onclick="var submit = getElementById('submit'); submit.click()";>
 			</div>
 			<input type="submit" id="submit" value="Run Simulation" style='display:none;'>
-					
-					
 		</form>
 	</div>
-
-
+	
 <?php require_once("footer.php"); ?>

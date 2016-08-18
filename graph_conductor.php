@@ -1,12 +1,12 @@
 <?php
 
-
 	$file_handle=fopen('sessions/Conductor_stats.csv','r');
 	$file=fopen("sessions/mod_type_data_conductor.txt","w");
 	$count=array();
 	$temp_count=0;
 	$skip=1;
 	$num=0;
+	
 	while (! feof($file_handle) )
 	{
 		if($temp_count==1)
@@ -52,9 +52,7 @@
 	{
 		$count[$i+1][0]='type'.$i;
 	}
-
-
-
+	
 	for($i=0;$i<$num-1;$i++)
 	{
 		for($j=0;$j<$temp_count-1;$j++)
@@ -65,16 +63,10 @@
 	}
 
 	fclose($file);
-
 ?>
-
-
 	<div id="page2" class="page2">
 		<div id="graph2"></div>
 	</div>
-
-
-
 
 <style>
 
@@ -122,7 +114,9 @@
   fill: blue;
 }
 </style>
+
 <script src="http://d3js.org/d3.v3.min.js"></script>
+
 <script>
 var legend_width = 120;
 var margin = {top: 20, right: 20, bottom: 30, left: 60},
@@ -160,7 +154,6 @@ var svg = d3.select("#graph2").append("svg")
 d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "time"; }));
 
-
   data.forEach(function(d) {
 	var mystate = d.time.slice(0,4);
     var y0 = 0;
@@ -184,14 +177,8 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 			y_pct: y_pct
 
 		});
-
-
 	}
-
-
   });
-
-
 
   x.domain(data.map(function(d) { return d.time.slice(0,4); }));
   yAbsolute.domain([0,1]);//Absolute View scale
@@ -204,21 +191,12 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
-
-
-
-
-
-
-
 	var stateAbsolute= svg.selectAll(".absolute")
 						.data(data)
 		    			.enter().append("g")
 		    			.attr("class", "absolute")
 		   			 .attr("transform", function(d) { return "translate(" + "0" + ",0)"; });
-
-
-
+		
 	stateAbsolute.selectAll("rect")
 			    .data(function(d) { return d.ages})
 			    .enter().append("rect")
@@ -243,7 +221,6 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 				.style("pointer-events","all");
 				 // initially it is invisible, i.e. start with Absolute View
 
-
 	stateAbsolute.selectAll("rect")
 		.on("mouseover", function(d){
 
@@ -258,13 +235,10 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 				.attr("y",yPos +height/2)
 				.attr("class","tooltip")
 				.text(((d.y1-d.y0)*100).toFixed(2)+"%");
-
-
 		})
 		.on("mouseout",function(){
 			svg.select(".tooltip").remove();
 			d3.select(this).attr("stroke","pink").attr("stroke-width",0.2);
-
 		})
 	//define two different scales, but one of them will always be hidden.
 	svg.append("g")
@@ -277,7 +251,6 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 		.style("text-anchor", "end")
 		.text("Utilization");
 
-
 	svg.append("text")
         .attr("x", (width / 2))
         .attr("y", 10 - (margin.top / 2))
@@ -285,11 +258,10 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
         .style("font-size", "24px")
         .style("text-decoration", "underline")
         .text("Conductor Operation");
-
-			  // end of define absolute
-
-
-// adding legend
+	
+	// end of define absolute
+	
+	// adding legend
   	    var legend = svg.selectAll(".legend")
       	 	 			.data(color.domain().slice().reverse())
     	 			    .enter().append("g")

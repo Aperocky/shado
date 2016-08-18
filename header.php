@@ -9,7 +9,6 @@
 		<?php
 			echo $html_head_insertions;
 		?>
-
 </head>
 
 <body>
@@ -28,5 +27,4 @@
 	</div>
 
 	<div id="fixedBody"></div>
-
 	<div id="main">
