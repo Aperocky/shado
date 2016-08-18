@@ -1,12 +1,11 @@
 
 
 <div id="sideNav">
-	<a id="introduction" href="runSim.php">Introduction</a><br><br>
-	<a id="runSimulation" href="#page2">Run Simulation</a><br><br>
-	<a id="resultAnalysis" href="create_txt.php">Result Analysis</a><br><br>
-	<a id="tweakParameters" href="replications.php">Tweak Parameters</a><br><br>
-	<a id="summary" href="summary_page.php">Summary Page</a><br><br>
-
+	<a id="introduction" href="runSim.php" >Introduction</a><br><br>
+	<a id="runSimulation" href="create_txt.php" >Run Simulation</a><br><br>
+	<a id="resultAnalysis" href="create_graph_engineer.php" >Result Analysis</a><br><br>
+	<a id="tweakParameters" href="replications.php" >Tweak Parameters</a><br><br>
+	<a id="summary" href="summary_page.php" >Summary Page</a><br><br>
 </div>
 
 
@@ -15,19 +14,27 @@
 
 
 
-
+#sideNav a {
+	border: 0px solid black;
+	border-radius: 0px;
+	padding: 10px 10px;
+	display: inline-block;
+	text-decoration: none;
+	
+}
 
 
 #sideNav{
-	border: 1px dashed #888;
+	border: 1px solid #e7e7e7;
+	overflow: hidden;
 	border-radius: 15px;
 	position: fixed;
-	top: 20%;
-	padding-top: 25px;
-	padding-bottom: 20px;
-	padding-left:  35px;
-	padding-right: 35px;
-	background-color: rgba(255, 255, 255, 0.6);
+	top: 30%;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	padding-left:  15px;
+	padding-right: 15px;
+	background-color: #f3f3f3;
 	display: inline-block;
 }
 

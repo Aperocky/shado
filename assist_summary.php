@@ -52,7 +52,7 @@
 <style>
 #runSimulation{
 font-weight: bold;
-background-color: yellow;
+background-color: 00B1FF;
 }
 </style>
 <?php require_once('footer.php'); ?>

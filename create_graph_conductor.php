@@ -9,7 +9,7 @@
 <style>
 #resultAnalysis{
 font-weight: bold;
-background-color: yellow;
+background-color: 00B1FF;
 }
 </style>
 
