@@ -240,7 +240,7 @@ form#timeEntry {
 
 h1 {
 	color: #19334d;
-	font-family: verdana;
+	font-family: Verdana, Geneva, sans-serif;
 	font-size: 32px;
 }
 
