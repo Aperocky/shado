@@ -22,9 +22,9 @@
 
 		<nav id="topNav">
 			<ul>
-				<li><a id="navElement" href="#home">Home</a></li>
-				<li><a id="navElement" href="#run-simulation">Run Simulation</a></li>
-				<li><a id="navElement" href="#contact-us">Contact Us</a></li>
+				<li><a id="navElement" href="index.html">Home</a></li>
+				<li><a id="navElement" class="active" href="#run-simulation">Run Simulation</a></li>
+				<li><a id="navElement" href="contact.html">Contact Us</a></li>
 			</ul>
 		</nav>
 	</div>
