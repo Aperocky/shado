@@ -1,5 +1,5 @@
 output_path		/var/www/html/des-web/sessions
 num_hours		0
 traffic 		
-num_reps		200 
+num_reps		 
 ops				0

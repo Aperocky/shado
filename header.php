@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="styles/global_styles.css.php">
 		<script type="text/javascript" src="scripts/main.js"></script>
 		<script type="text/javascript" src="sim_settings_entry.js"></script>
-		
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<?php
 			echo $html_head_insertions;
@@ -15,16 +15,18 @@
 <body>
 	<div id="fixedHead">
 <!-- 		<div id="top_panel"></div> -->
-		
+
 		<div id="title">
 			<h1>Simulator of Human Operator Workload (SHOW)</h1>
 		</div>
 
-		<div id="sideNav">
-			<a id="navElement" href="#home">Home</a>
-			<a id="navElement" href="#run-simulation">Run Simulation</a>
-			<a id="navElement" href="#contact-us">Contact Us</a>
-		</div>
+		<nav id="topNav">
+			<ul>
+				<li><a id="navElement" href="#home">Home</a></li>
+				<li><a id="navElement" href="#run-simulation">Run Simulation</a></li>
+				<li><a id="navElement" href="#contact-us">Contact Us</a></li>
+			</ul>
+		</nav>
 	</div>
 
 	<div id="fixedBody"></div>
