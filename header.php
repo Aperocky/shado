@@ -19,7 +19,7 @@
 			<h1>Simulator of Human Operator Workload (SHOW)</h1>
 		</div>
 
-		<div id="navBar">
+		<div id="sideNav">
 			<a id="navElement" href="#home">Home</a>
 			<a id="navElement" href="#run-simulation">Run Simulation</a>
 			<a id="navElement" href="#contact-us">Contact Us</a>

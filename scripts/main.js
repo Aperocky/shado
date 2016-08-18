@@ -1,6 +1,6 @@
 function setup_nav() {
 	console.log("setup nav called!");
-	$('#navBar a').click(nav_onclick);
+	$('#sideNav a').click(nav_onclick);
 }
 
 function nav_onclick(jq_obj) {

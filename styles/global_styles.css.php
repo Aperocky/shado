@@ -34,25 +34,25 @@ body {
 	padding-bottom: 0;
 }
 
-<!-- #navBar { -->
+<!-- #sideNav { -->
 <!-- 	border: 1px solid red; -->
 <!-- 	height: 40px; -->
 <!-- 	background: <?php echo $color_theme_dark_blue; ?> -->
 <!-- 	/*padding: 10px; */ -->
 <!-- } -->
 <!--  -->
-<!-- #navBar a { -->
+<!-- #sideNav a { -->
 <!-- 	padding: 10px 20px; -->
 <!-- 	display: inline-block; -->
 <!-- 	color: white; -->
 <!-- 	text-decoration: none; -->
 <!-- } -->
 <!--  -->
-<!-- #navBar a:hover:not(.active) { -->
+<!-- #sideNav a:hover:not(.active) { -->
 <!-- 	background-color: #000000; -->
 <!-- } -->
 <!--  -->
-<!-- #navBar a.active { -->
+<!-- #sideNav a.active { -->
 <!-- 	background-color: #000000; -->
 <!-- } -->
 <!--  -->
