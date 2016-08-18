@@ -114,7 +114,6 @@ function calculate_time(divName) {
 		"<input type='radio' name="+i+" value='h' id='load1'>High</input>"+
 		"<br><input type='radio' name="+i+" value='m' id='load1' checked>Med</input>"+
 		"<br><input type='radio' name="+i+" value='l' id='load1'>Low</input>";
-
 	}
 
 	var row=table.insertRow(1);
@@ -148,10 +147,9 @@ function calculate_time(divName) {
 	cell4.innerHTML="<input type='checkbox' name='extra4' value='4' id='other'>Other";
 
 
-	var divobj = document.getElementById('refresh');
-	console.log(divobj);
+	// var divobj = document.getElementById('refresh');
+	// console.log(divobj);
 	//divobj.innerHTML="<button onclick='window.location.href=window.location.href'>Refresh</button>";
-
 	//document.getElementById("start_time").readOnly=true;
 	//document.getElementById("stop_time").readOnly=true;
 }

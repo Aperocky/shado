@@ -29,7 +29,7 @@
 		<div id="main"> -->
 			<div id="contactPage" class="page">
 				<p>
-					Contact the development team at ... Thanks!
+					Contact the development team at m.cummings@duke.edu. Thanks!
 				</p>
 			</div>
 

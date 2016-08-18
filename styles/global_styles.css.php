@@ -48,7 +48,6 @@ body {
 	margin: 0;
 	padding: 0;
 	border: 1px solid red;
-
 }
 
 #topNav li a {
@@ -250,10 +249,11 @@ h1 {
 	height:120px;
 }
 
-h2.sectionHead {
+/*h2.sectionHead {
 	text-align: center;
 	color: #19334d;
-}
+}*/
+
 #note {
 	position:relative;
 	left: 0%;
