@@ -1,4 +1,4 @@
-<?php	
+<?php
 
 	require_once("header.php");
 	require_once("side_navigation.html");
@@ -31,13 +31,13 @@
 
 		<br>
 
-		<div id="navToStartTime" class="navArrow" onclick="navClick(this);"></div>
+		<!-- <div id="navToStartTime" class="navArrow" onclick="navClick(this);"></div> -->
 
-		<br><br><br><br><br><br>
+		<br><h4>
+		To get started, provide us with three simple data points. What time of day does your operator begin (1) and end (2) their shift? And what’s the level of traffic (3) in their region? Lastly, specify any additional operators or technologies beyond the engineer.
+		</h4><br>
 
 		<form id="timeEntry" action="create_txt.php" method="post">
-
-
 			<div class="startEndTimeStepOuter centerOuter">
 
 				<div class="startEndTime stepBox">

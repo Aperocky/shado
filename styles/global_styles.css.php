@@ -1,4 +1,4 @@
-<?php 
+<?php
 	$color_theme_dark_blue = 'rgba(70,127,201,1)';
 	$color_theme_light_blue = 'rbga(21,141,184,1)';
 ?>
@@ -92,7 +92,7 @@ body {
 
 #topNav a.active {
 	color: black;
-	background-color: 00B1FF; 
+	background-color: 00B1FF;
 <!-- 	<?php echo $color_theme_light_blue; ?> -->
 }
 
@@ -151,7 +151,7 @@ body {
 	width: 50px;
 	background-size: 50px;
 	margin-left: 10px;
-	
+
 }
 
 .page {
@@ -189,7 +189,7 @@ body {
 	padding-left:  35px;
 	padding-right: 35px;
 	background-color: rgba(255, 255, 255, 0.6);
-	
+
 }
 
 form#timeEntry {
