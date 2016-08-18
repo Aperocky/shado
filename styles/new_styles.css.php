@@ -1,6 +1,68 @@
+<?php $color_theme = 'rgba(70,127,201,1)'; ?>
+
+div {
+	display: block;
+}
+
+.webHeader {
+	position: fixed;
+	top: 0;
+	text-align: center;
+	/*height: 200px;*/
+	width: 100%;
+	z-index: 999;
+}
+
+.webTitle {
+	background: <?php echo $color_theme; ?>;
+	height:120px;
+}
+
+.webHeader h1 {
+	color: #19334d;
+	font-family: verdana;
+	font-size: 32px;
+}
+
+.body {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("../images/rail.jpg");
+	z-index: -999;
+}
+
+.topNav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+.topNav li {
+	float: left;
+}
+
+.topNav li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.topNav li a:hover:not(.active) {
+	background-color: #111;
+}
+
+.topNav .active {
+	background-color: #41F1ED;
+}
+
 <?php 
 	$color_theme_dark_blue = 'rgba(70,127,201,1)';
-	$color_theme_light_blue = 'rbga(21,141,184,1)';
 ?>
 
 body {
@@ -34,66 +96,17 @@ body {
 	padding-bottom: 0;
 }
 
-<!-- #navBar { -->
-<!-- 	border: 1px solid red; -->
-<!-- 	height: 40px; -->
-<!-- 	background: <?php echo $color_theme_dark_blue; ?> -->
-<!-- 	/*padding: 10px; */ -->
-<!-- } -->
-<!--  -->
-<!-- #navBar a { -->
-<!-- 	padding: 10px 20px; -->
-<!-- 	display: inline-block; -->
-<!-- 	color: white; -->
-<!-- 	text-decoration: none; -->
-<!-- } -->
-<!--  -->
-<!-- #navBar a:hover:not(.active) { -->
-<!-- 	background-color: #000000; -->
-<!-- } -->
-<!--  -->
-<!-- #navBar a.active { -->
-<!-- 	background-color: #000000; -->
-<!-- } -->
-<!--  -->
-<!-- #navElement { -->
-<!-- border-right:1px solid #bbb; -->
-<!-- } -->
-
-#navBar ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0px;
-	overflow: hidden;
-	border: 1px solid #e7e7e7;
-	background-color: #f3f3f3;
-}
-
 #navBar {
-<!-- 	border: 1px solid red; -->
+	border: 1px solid red;
+	height: 40px;
+	background: <?php echo $color_theme_dark_blue; ?>
+	/*padding: 10px; */
 }
 
-#navBar li {
-	float: left;
-<!-- 	display: inline-block; -->
-}
-
-#navBar li a {
+#navBar a {
+	border: 1px solid purple;
+	padding: 10px 20px;
 	display: inline-block;
-	color: #666;
-	text-align: center;
-	padding: 14px 17px;
-	text-decoration: none;
-}
-
-#navBar a:hover:not(.active) {
-	background-color: #ddd;
-}
-
-#navBar a.active {
-	color: black;
-	background-color: 00B1FF; 
-<!-- 	<?php echo $color_theme_light_blue; ?> -->
 }
 
 #fixedFooter {
@@ -132,7 +145,7 @@ body {
 }
 
 #main {
-	margin-top: 180px;
+	margin-top: 160px;
 	/*border: 2px solid white;*/
 	margin-bottom: 150px;
 }
@@ -155,7 +168,7 @@ body {
 }
 
 .page {
-	margin-left: 250px;
+	margin-left: 30px;
 	margin-right: 30px;
 }
 

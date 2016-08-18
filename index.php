@@ -4,10 +4,18 @@
 	require_once("side_navigation.html");
 ?>
 	
+
+<!-- 	<div id="homePage" class="page"> -->
+<!-- 		Home Page -->
+<!-- 	</div> -->
+<!--  -->
+<!-- 	<div id="contactUsPage" class="page"> -->
+<!-- 		Contact Us Page -->
+<!-- 	</div> -->
 	
-	<div id="page1" class="page">
+	<div id="runSimulationPage" class="page">
 		
-		<br><br>
+<!-- 		<br><br> -->
 
 		<h2 class='sectionHead'>Use this tool to answer the following questions</h2>
 		
@@ -32,13 +40,6 @@
 		<br>
 		<br>
 		<br>
-
-
-	</div>
-	
-	
-	
-	<div id="page2" class="page">
 		
 
 		<form id="timeEntry" action="create_txt.php" method="post">
