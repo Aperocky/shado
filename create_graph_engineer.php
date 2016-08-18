@@ -4,3 +4,10 @@
 	require_once('graph_engineer.php');
 	require_once('footer.php');
 ?>
+
+<style>
+#resultAnalysis{
+font-weight: bold;
+background-color: 00B1FF;
+}
+</style>

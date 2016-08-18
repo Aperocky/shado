@@ -24,7 +24,7 @@
 <style>
 		#summary{
 		font-weight: bold;
-		background-color: yellow;
+		background-color: 00B1FF;
 		}
 		
 		#low_work_0, #high_work_0{ color: <?php if(($low_count_0+$high_count_0)>$normal_count_0){ echo "red";} else{ echo "black";}?>;}
