@@ -48,7 +48,7 @@
 
 	fclose($file_handle);
 	$count[0][0]='time';
-	for($i=0;$i<$temp_counter-1;$i++)
+	for($i=0;$i<$temp_count-1;$i++)
 	{
 		$count[$i+1][0]='type'.$i;
 	}

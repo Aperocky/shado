@@ -5,6 +5,7 @@
 	$html_head_insertions .= '<link rel="stylesheet" href="styles/assist_summary.css">';
 
 	require_once('header.php');
+	require_once("side_navigation.html");
 
 	$low_count_0=$_SESSION['low_count_0'];
 	$normal_count_0=$_SESSION['normal_count_0'];
@@ -49,5 +50,6 @@
 		<br>
 		<button id="back_button" onclick="location.href='replications.php'">Peek & Tweak, under the hood</button>
 	</div>
+</div>
 
 <?php require_once('footer.php'); ?>

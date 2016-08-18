@@ -38,10 +38,6 @@ body {
 	padding-bottom: 0;
 }
 
-/*#navBar {
-	border: 1px solid red;
-	height: 40px;
-}*/
 
 #fixedFooter {
 	position: fixed;
@@ -102,7 +98,7 @@ body {
 }
 
 .page {
-	margin-left: 30px;
+	margin-left: 250px;
 	margin-right: 30px;
 }
 
