@@ -3,7 +3,7 @@
 	session_start();
 
 	$html_head_insertions .= '<link rel="stylesheet" href="styles/assist_summary.css">';
-
+	
 	require_once('header.php');
 	require_once("side_navigation.html");
 
@@ -24,6 +24,11 @@
 ?>
 
 <style>
+		#summary{
+		font-weight: bold;
+		background-color: yellow;
+		}
+		
 		#low_work_0, #high_work_0{ color: <?php if(($low_count_0+$high_count_0)>$normal_count_0){ echo "red";} else{ echo "black";}?>;}
 		#normal_work_0{ color: <?php if(($low_count_0+$high_count_0)<$normal_count_0){ echo "green";} else{ echo "black";}?>;}
 

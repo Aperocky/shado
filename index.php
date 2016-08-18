@@ -2,6 +2,7 @@
 	
 	require_once("header.php");
 	require_once("side_navigation.html");
+	
 ?>
 	
 	
@@ -128,3 +129,10 @@
 
 
 <?php require_once("footer.php"); ?>
+
+<style>
+#introduction{
+font-weight: bold;
+background-color: yellow;
+}
+</style>

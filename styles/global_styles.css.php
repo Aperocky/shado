@@ -94,6 +94,9 @@ body {
 	width: 50px;
 	background-size: 50px;
 	margin-left: 10px;
+	position:fixed;
+    right:10px;
+    
 	
 }
 

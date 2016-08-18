@@ -6,3 +6,10 @@
 	require_once('footer.php');
 	
 ?>
+
+<style>
+#resultAnalysis{
+font-weight: bold;
+background-color: yellow;
+}
+</style>

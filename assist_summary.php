@@ -3,7 +3,7 @@
 	session_start();
 
 	$html_head_insertions .= '<link rel="stylesheet" href="styles/assist_summary.css">';
-
+	
 	require_once('header.php');
 	require_once("side_navigation.html");
 
@@ -52,4 +52,10 @@
 	</div>
 </div>
 
+<style>
+#runSimulation{
+font-weight: bold;
+background-color: yellow;
+}
+</style>
 <?php require_once('footer.php'); ?>
