@@ -1,5 +1,6 @@
 <?php 
 	$color_theme_dark_blue = 'rgba(70,127,201,1)';
+	$color_theme_light_blue = 'rbga(21,141,184,1)';
 ?>
 
 body {
@@ -33,16 +34,70 @@ body {
 	padding-bottom: 0;
 }
 
-#navBar {
-	border: 1px solid red;
-	height: 40px;
-	/*padding: 10px; */
+<!-- #navBar { -->
+<!-- 	border: 1px solid red; -->
+<!-- 	height: 40px; -->
+<!-- 	background: <?php echo $color_theme_dark_blue; ?> -->
+<!-- 	/*padding: 10px; */ -->
+<!-- } -->
+<!--  -->
+<!-- #navBar a { -->
+<!-- 	padding: 10px 20px; -->
+<!-- 	display: inline-block; -->
+<!-- 	color: white; -->
+<!-- 	text-decoration: none; -->
+<!-- } -->
+<!--  -->
+<!-- #navBar a:hover:not(.active) { -->
+<!-- 	background-color: #000000; -->
+<!-- } -->
+<!--  -->
+<!-- #navBar a.active { -->
+<!-- 	background-color: #000000; -->
+<!-- } -->
+<!--  -->
+<!-- #navElement { -->
+<!-- border-right:1px solid #bbb; -->
+<!-- } -->
+
+#navBar ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0px;
+	overflow: hidden;
+	border: 1px solid #e7e7e7;
+	background-color: #f3f3f3;
 }
 
-#navBar a {
-	border: 1px solid purple;
-	padding: 10px 20px;
+#navBar {
+<!-- 	border: 1px solid red; -->
+}
+
+#navBar li {
+	float: left;
+<!-- 	display: inline-block; -->
+}
+
+#navBar li a {
 	display: inline-block;
+	color: #666;
+	text-align: center;
+	padding: 14px 17px;
+	text-decoration: none;
+}
+
+#navBar a:hover:not(.active) {
+	background-color: #ddd;
+}
+
+#navBar a.active {
+	color: black;
+	background-color: 00B1FF; 
+<!-- 	<?php echo $color_theme_light_blue; ?> -->
+}
+
+#navElement {
+
 }
 
 #fixedFooter {
@@ -81,7 +136,7 @@ body {
 }
 
 #main {
-	margin-top: 160px;
+	margin-top: 180px;
 	/*border: 2px solid white;*/
 	margin-bottom: 150px;
 }
@@ -214,7 +269,6 @@ h1 {
 	color: #19334d;
 	font-family: verdana;
 	font-size: 32px;
-
 }
 
 #title {

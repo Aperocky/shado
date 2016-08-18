@@ -4,17 +4,17 @@
 ?>
 	
 
-	<div id="homePage" class="page">
-		Home Page
-	</div>
-
-	<div id="contactUsPage" class="page">
-		Contact Us Page
-	</div>
+<!-- 	<div id="homePage" class="page"> -->
+<!-- 		Home Page -->
+<!-- 	</div> -->
+<!--  -->
+<!-- 	<div id="contactUsPage" class="page"> -->
+<!-- 		Contact Us Page -->
+<!-- 	</div> -->
 	
 	<div id="runSimulationPage" class="page">
 		
-		<br><br>
+<!-- 		<br><br> -->
 
 		<h2 class='sectionHead'>Use this tool to answer the following questions</h2>
 		

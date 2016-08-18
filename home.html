@@ -1,34 +1,43 @@
-<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>Welcome!</title>
-		<link rel="stylesheet" href="styles/new_styles.css.php">
+		<link rel="stylesheet" href="styles/global_styles.css.php">
 	</head>
 	<body>
-	
 		<!-- Header -->
-		<header class="webHeader">
-		
-			<!-- Title -->
-			<div class="webTitle">
+		<header id="fixedHead">	
+			<!-- Title -->	
+			<div id="title">
 				<h1>Simulator of Human Operator Workload (SHOW)</h1>
 			</div>
-			
 			<!-- Navigation Bar -->
-			<nav class="topNav">
+			<nav id="navBar">
 				<ul>
-					<li><a class="active" href="#home">Home</a></li>
-					<li><a href="#run">Run Simulation</a></li>
-					<li><a href="#contact">Contact Us</a></li>
-				</ul>
+					<li><a id="navElement" class="active" href="#home">Home</a></li>
+<!-- 					<li><a id="navElement" class=<?php if ($selected == "profile") echo ' active'; ?> href="#home">Home</a></li> -->
+					<li><a id="navElement" href="index.php">Run Simulation</a></li>
+					<li><a id="navElement" href="contact.html">Contact Us</a></li>
+				<ul>
 			</nav>
-
 		</header>
-		
+
 		<!-- Body -->
-		<div id="homePage" class="page">
-			Home.
+		<div id="fixedBody"></div>
+		<div id="main">
+			<div id="homePage" class="page">
+				<p>
+					Welcome to the <em>Simulator of Human Operator Workload (SHOW)</em>! This tool, designed by Duke University researchers, simulates a freight rail operator's workload across the duration of a given trip. With SHOW, you can choose a trip with unique conditions and then see the operator's average workload after thousands of similar trips. 
+				</p>
+				<p>
+					You should use this tool to answer the following questions:
+					<ul style="list-style-type:circle">
+						<li><em>When</em> are my operators over- or under-utilized at work?</li>
+						<li><em>Why</em> are my operators over- or under-utilized at work?</li>
+						<li><em>How</em> might we improve operator workload, and overall system efficiency and safety?</li>
+					</ul> 
+				</p>
+			</div>
 		</div>
 	</body>
 </html>
