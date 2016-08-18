@@ -1,6 +1,6 @@
 <?php
 	$color_theme_dark_blue = 'rgba(70,127,201,1)';
-	$color_theme_light_blue = 'rbga(21,141,184,1)';
+	$color_theme_light_blue = '#00B1FF';
 ?>
 
 body {
@@ -39,15 +39,15 @@ body {
 	margin: 0;
 	padding: 0px;
 	overflow: hidden;
-	/*border: 1px solid #e7e7e7;*/
+	border: 1px solid red;
 	background-color: #f3f3f3;
-}
-
-#topNav {
 }
 
 #topNav li {
 	display: inline-block;
+	margin: 0;
+	padding: 0;
+	border: 1px solid red;
 }
 
 #topNav li a {
@@ -56,6 +56,7 @@ body {
 	text-align: center;
 	padding: 14px 17px;
 	text-decoration: none;
+	/*border: 1px solid red;*/
 }
 
 #topNav a:hover:not(.active) {
@@ -64,8 +65,7 @@ body {
 
 #topNav a.active {
 	color: black;
-	background-color: 00B1FF;
-<!-- 	<?php echo $color_theme_light_blue; ?> -->
+	background-color: <?php echo $color_theme_light_blue; ?>;
 }
 
 #fixedFooter {
@@ -249,10 +249,11 @@ h1 {
 	height:120px;
 }
 
-h2.sectionHead {
+/*h2.sectionHead {
 	text-align: center;
 	color: #19334d;
-}
+}*/
+
 #note {
 	position:relative;
 	left: 0%;

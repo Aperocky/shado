@@ -1,6 +1,6 @@
 
 <?php
-	$page_tile='Contact Us.';
+	$page_title='Contact Us.';
 	$curr_page='contactPage';
 	require_once("header.php");
 ?>
@@ -29,7 +29,7 @@
 		<div id="main"> -->
 			<div id="contactPage" class="page">
 				<p>
-					Contact the development team at ... Thanks!
+					Contact the development team at m.cummings@duke.edu. Thanks!
 				</p>
 			</div>
 
