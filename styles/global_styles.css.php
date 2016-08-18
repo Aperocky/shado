@@ -34,48 +34,20 @@ body {
 	padding-bottom: 0;
 }
 
-<!-- #sideNav { -->
-<!-- 	border: 1px solid red; -->
-<!-- 	height: 40px; -->
-<!-- 	background: <?php echo $color_theme_dark_blue; ?> -->
-<!-- 	/*padding: 10px; */ -->
-<!-- } -->
-<!--  -->
-<!-- #sideNav a { -->
-<!-- 	padding: 10px 20px; -->
-<!-- 	display: inline-block; -->
-<!-- 	color: white; -->
-<!-- 	text-decoration: none; -->
-<!-- } -->
-<!--  -->
-<!-- #sideNav a:hover:not(.active) { -->
-<!-- 	background-color: #000000; -->
-<!-- } -->
-<!--  -->
-<!-- #sideNav a.active { -->
-<!-- 	background-color: #000000; -->
-<!-- } -->
-<!--  -->
-<!-- #navElement { -->
-<!-- border-right:1px solid #bbb; -->
-<!-- } -->
-
 #topNav ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0px;
 	overflow: hidden;
-	border: 1px solid #e7e7e7;
+	/*border: 1px solid #e7e7e7;*/
 	background-color: #f3f3f3;
 }
 
 #topNav {
-<!-- 	border: 1px solid red; -->
 }
 
 #topNav li {
-	float: left;
-<!-- 	display: inline-block; -->
+	display: inline-block;
 }
 
 #topNav li a {
@@ -154,8 +126,8 @@ body {
 
 	position:fixed;
     right:10px;
-    
-	
+
+
 
 }
 
