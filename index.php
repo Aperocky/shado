@@ -1,5 +1,5 @@
 <?php
-	$page_tile='Welcome!';
+	$page_title='Welcome!';
 	$curr_page='homePage';
 	require_once('header.php');
 ?>

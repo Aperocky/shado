@@ -1,6 +1,6 @@
 
 <?php
-	$page_tile='Contact Us.';
+	$page_title='Contact Us.';
 	$curr_page='contactPage';
 	require_once("header.php");
 ?>
