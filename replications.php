@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	$html_head_insertions .= '<link rel="stylesheet" href="styles/replications.css">';
+	$curr_page='tweakParamsPage';
 	require_once('header.php');
 	require_once("side_navigation.php");
 ?>
@@ -28,11 +29,3 @@
 <?php
 	require_once('footer.php');
 ?>
-
-
-<style>
-#tweakParameters{
-font-weight: bold;
-background-color: 00B1FF;
-}
-</style>
