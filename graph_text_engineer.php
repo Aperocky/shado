@@ -205,7 +205,7 @@
 			{
 				if($count_type_high[$high_keys[$j-1]]>0)
 				{
-					echo "<li onclick='display" . ($high_keys[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;'>Task Type ". $type_names[($high_keys[$j-1]-1)] ."<ul id='high". ($high_keys[$j-1]-1) . "'><li>";
+					echo "<li onclick='display" . ($high_keys[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>Task Type ". $type_names[($high_keys[$j-1]-1)] ."<ul id='high". ($high_keys[$j-1]-1) . "'><li>";
 					if($count_type_high1[$high_keys[$j-1]]==0)
 					{
 						echo "On average, your engineering spends ". "0" ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 1</li><li>";
@@ -242,7 +242,7 @@
 	{
 		if($count_type_low[$low_keys[$j-1]]>0)
 		{
-			echo "<li onclick='display" . ($low_keys[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;'>". $type_names[$low_keys[$j-1]-1] ."<ul id='low". ($low_keys[$j-1]-1) . "'><li>";
+			echo "<li onclick='display" . ($low_keys[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $type_names[$low_keys[$j-1]-1] ."<ul id='low". ($low_keys[$j-1]-1) . "'><li>";
 			if($count_type_low1[$low_keys[$j-1]]==0)
 			{
 				echo "On average, your engineering spends ". "0" ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 1</li><li>";
@@ -343,3 +343,23 @@
 ?>
 </script>
 
+<style>
+
+.list{
+	padding:5px 15px;
+	
+	border: 3px solid #5D7B85;
+	cursor:pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 25px;
+	
+	
+	/*margin: 0 auto;*/
+	margin: 20px;
+	text-align: left;
+	background-color: rgba(255, 255, 255, 0.6);
+	overflow: auto;
+	
+}
+
+</style>
