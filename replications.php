@@ -2,7 +2,7 @@
 	session_start();
 	$html_head_insertions .= '<link rel="stylesheet" href="styles/replications.css">';
 	require_once('header.php');
-	require_once("side_navigation.html");
+	require_once("side_navigation.php");
 ?>
 
 <form id="change_replications" action="replications_send.php" method="post" class="startEndTimeStepOuter centerOuter">

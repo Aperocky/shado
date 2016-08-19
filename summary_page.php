@@ -5,7 +5,7 @@
 	$html_head_insertions .= '<link rel="stylesheet" href="styles/assist_summary.css">';
 	
 	require_once('header.php');
-	require_once("side_navigation.html");
+	require_once("side_navigation.php");
 
 	$low_count_0=$_SESSION['low_count_0'];
 	$normal_count_0=$_SESSION['normal_count_0'];

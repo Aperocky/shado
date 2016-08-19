@@ -3,7 +3,6 @@
 	$curr_page='homePage';
 	require_once('header.php');
 ?>
-
 			<div id="homePage" class="page">
 				<h1 class="pageTitle">Welcome</h1>
 				<p>
