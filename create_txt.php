@@ -17,7 +17,8 @@
 	{
 		fwrite($myfile,$_POST [(string)$x]." ");
 	}
-	$rep=$_SESSION['replications'];
+	$rep=100;
+	// $_SESSION['replications'];
 	fwrite($myfile,"\nnum_reps		");
 	fwrite($myfile,$rep." \n");
 	fwrite($myfile,"ops				0");
