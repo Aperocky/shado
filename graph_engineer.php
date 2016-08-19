@@ -6,7 +6,7 @@
 	$temp_count=0;
 	$skip=1;
 	$num=0;
-	
+
 	while (! feof($file_handle) )
 	{
 		if($temp_count==1)
@@ -47,7 +47,7 @@
 
 	fclose($file_handle);
 	$count[0][0]='time';
-	
+
 	$type_names=array();
 	$type_names[0]="Communicating";
 	$type_names[1]="Exception Handling";
@@ -59,8 +59,8 @@
 	$type_names[7]="Monitoring Outside";
 	$type_names[8]="Planning Ahead";
 
-	
-	
+
+
 
 	for($i=0;$i<$temp_count-1;$i++)
 	{
@@ -77,8 +77,8 @@
 	}
 
 	fclose($file);
-	
-	
+
+
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +87,7 @@
 	<div class="page">
 		<div class="engineer">
 			<div id="graph"></div>
-		</div>	
+		</div>
 	</div>
 
 <style>
@@ -106,7 +106,7 @@
 	-webkit-border-radius: 5px;
 	border-radius: 25px;
 	display: inline-block;
-	
+
 	/*margin: 0 auto;*/
 	margin: 20px;
 	text-align: left;
@@ -151,7 +151,7 @@ var temp=<?php echo $num; ?>;
 
 var margin = {top: 20, right: 20, bottom: 50, left: 70},
     width = 35*temp;
-	
+
     height = 500 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
@@ -182,15 +182,15 @@ var svg_eng = d3.select("#graph").append("svg")
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-	
+
 d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "time"; }));
-  
+
 
 
   data.forEach(function(d) {
 	var mystate = d.time.slice(0,4);
-	
+
     var y0 = 0;
 	d.ages = color.domain().map(function(name) { return {mystate:mystate, name: name, y0: y0, y1: y0 += +d[name]}; });
 
@@ -229,15 +229,15 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 	  .attr("transform", "translate("+(width / 2)+",45)" )
 	  .attr("x", 1)
 	  .attr("dx", ".71em")
-	  
-	  .text("Time (in minutes)");
+
+	  .text("Time (min)");
 
 	var stateAbsolute= svg_eng.selectAll(".absolute")
 						.data(data)
 		    			.enter().append("g")
 		    			.attr("class", "absolute")
 		   			 .attr("transform", function(d) { return "translate(" + "0" + ",0)"; });
-		
+
 	stateAbsolute.selectAll("rect")
 			    .data(function(d) { return d.ages})
 			    .enter().append("rect")
@@ -286,15 +286,15 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 		.attr("class", "y axis absolute")
 		.call(yAxisAbsolute)
 		.append("text")
-		
+
 		.attr("transform", "translate(-60,"+(height/2)+") rotate(-90)" )
-		
+
 		.attr("y", 6)
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
 		.text("Utilization");
-		
-	
+
+
 
 	svg_eng.append("text")
         .attr("x", (width / 2))
@@ -303,11 +303,11 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
         .style("font-size", "24px")
         .style("text-decoration", "underline")
         .text("Engineer Operation");
-	
+
 	// end of define absolute
 
 	// adding legend
-	
+
   	    var legend = svg_eng.selectAll(".legend")
       	 	 			.data(color.domain().slice().reverse())
     	 			    .enter().append("g")
