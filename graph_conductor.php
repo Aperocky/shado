@@ -48,9 +48,23 @@
 
 	fclose($file_handle);
 	$count[0][0]='time';
+	$type_names=array();
+	$type_names[0]="Communicating";
+	$type_names[1]="Exception Handling";
+	$type_names[2]="Paperwork";
+	$type_names[3]="Maintenance of Way";
+	$type_names[4]="Temporary Speed Restrictions";
+	$type_names[5]="Signal Response Management";
+	$type_names[6]="Monitoring Inside";
+	$type_names[7]="Monitoring Outside";
+	$type_names[8]="Planning Ahead";
+
+	
+	
+
 	for($i=0;$i<$temp_count-1;$i++)
 	{
-		$count[$i+1][0]='type'.$i;
+		$count[$i+1][0]=$type_names[$i];
 	}
 	
 	for($i=0;$i<$num-1;$i++)
@@ -196,7 +210,7 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
   						  // Initial view is absolute
     svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height +")")
+      .attr("transform", "translate("+(-width/(2*temp))+"," + height +")")
       .call(xAxis)
 	  .append("text")
 	  .attr("transform", "translate("+(width / 2)+",45)" )
