@@ -4,6 +4,7 @@
 	$html_head_insertions .= '<link rel="stylesheet" href="styles/assist_summary.css">';
 
 	$curr_page='initialResultsPage';
+	$page_title='Results';
 	require_once('header.php');
 	require_once("side_navigation.php");
 

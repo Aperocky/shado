@@ -46,10 +46,10 @@ body {
 }
 
 #topNav li {
-	display: inline-block;
+	/*display: inline-block;*/
+	float: left;
 	margin: 0;
 	padding: 0px;
-	/*border: 1px solid red;*/
 	font-size: 18px;
 	/*border-right: 1px solid black;*/
 }
@@ -58,7 +58,7 @@ body {
 	display: inline-block;
 	color: white;
 	text-align: center;
-	padding: 14px 17px;
+	padding: 12px 17px;
 	text-decoration: none;
 	/*border: 1px solid red;*/
 }
@@ -76,12 +76,13 @@ body {
 #sideNav ul {
     list-style-type: none;
     margin-top: 0px;
-		margin-bottom: 500px;
-    padding: 0;
+		padding: 20px 0px;
+		height: 100%;
+    /*padding: 0;*/
     width: 180px;
     background-color: #f1f1f1;
     position: fixed;
-    height: 100%;
+    /*height: 90%;*/
     overflow: auto;
 		border-right: 1px solid black;
 }
@@ -91,6 +92,7 @@ body {
     color: #000;
     padding: 8px 16px;
     text-decoration: none;
+		border-bottom:
 }
 
 #sideNav li a.active {
@@ -138,9 +140,10 @@ body {
 }
 
 #main {
-	margin-top: 170px;
-	/*border: 2px solid white;*/
-	margin-bottom: 150px;
+	margin-top: 168px;
+	margin-bottom: 10px;
+	/*border: 1px solid red;*/
+	height: 100%;
 }
 
 .navArrow {
@@ -165,10 +168,11 @@ body {
 .page {
 	margin-left: 200px;
 	margin-right: 30px;
-	margin-top: 170px;
+	margin-top: 10px;
+	padding-top: 20px;
 }
 
-#homePage, #contactPage {
+#homePage, #contactPage, #versionPage {
 	margin-left: 30px;
 }
 
@@ -288,6 +292,14 @@ h1 {
 	height:120px;
 }
 
+#title h1 {
+	color: white;
+}
+
+/*#title h1::first-letter {
+	color: <?php echo $color_theme_light_blue; ?>;
+}*/
+
 /*h2.sectionHead {
 	text-align: center;
 	color: #19334d;
@@ -296,4 +308,8 @@ h1 {
 #note {
 	position:relative;
 	left: 0%;
+}
+
+p {
+	font-size: 20px;
 }

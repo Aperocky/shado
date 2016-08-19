@@ -2,6 +2,7 @@
 	session_start();
 	$html_head_insertions .= '<link rel="stylesheet" href="styles/replications.css">';
 	$curr_page='tweakParamsPage';
+	$page_title='Change Parameters';
 	require_once('header.php');
 	require_once("side_navigation.php");
 ?>
