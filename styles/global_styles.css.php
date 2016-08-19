@@ -39,7 +39,7 @@ body {
 	margin: 0;
 	padding: 0px;
 	overflow: hidden;
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 	background-color: #f3f3f3;
 }
 
@@ -47,7 +47,7 @@ body {
 	display: inline-block;
 	margin: 0;
 	padding: 0;
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 }
 
 #topNav li a {
@@ -60,12 +60,42 @@ body {
 }
 
 #topNav a:hover:not(.active) {
-	background-color: #ddd;
+	/*background-color: #ddd;*/
+	background-color: #555;
+	color: white;
 }
 
 #topNav a.active {
 	color: black;
 	background-color: <?php echo $color_theme_light_blue; ?>;
+}
+
+#sideNav ul {
+    list-style-type: none;
+    margin-top: 0px;
+    padding: 0;
+    width: 175px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+#sideNav li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+#sideNav li a.active {
+    background-color: <?php echo $color_theme_light_blue; ?>;;
+    color: white;
+}
+
+#sideNav li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
 }
 
 #fixedFooter {
@@ -104,7 +134,7 @@ body {
 }
 
 #main {
-	margin-top: 180px;
+	margin-top: 170px;
 	/*border: 2px solid white;*/
 	margin-bottom: 150px;
 }
@@ -123,17 +153,22 @@ body {
 	width: 50px;
 	background-size: 50px;
 	margin-left: 10px;
-
 	position:fixed;
-    right:10px;
-
-
-
+  right:10px;
 }
 
 .page {
-	margin-left: 250px;
+	margin-left: 200px;
 	margin-right: 30px;
+	margin-top: 150px;
+}
+
+#homePage, #contactPage {
+	margin-left: 30px;
+}
+
+.pageTitle {
+	text-align: center;
 }
 
 .centerOuter {
@@ -166,7 +201,6 @@ body {
 	padding-left:  35px;
 	padding-right: 35px;
 	background-color: rgba(255, 255, 255, 0.6);
-
 }
 
 form#timeEntry {
@@ -218,7 +252,6 @@ form#timeEntry {
 	border-collapse: collapse;
 	margin-left: auto;
 	margin-right: auto;
-
 }
 
 .trafficTable .tableTrafficHour {
@@ -240,7 +273,8 @@ form#timeEntry {
 
 h1 {
 	color: #19334d;
-	font-family: Verdana, Geneva, sans-serif;
+	/*font-family: Verdana, Geneva, sans-serif;*/
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
 	font-size: 32px;
 }
 

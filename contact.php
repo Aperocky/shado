@@ -28,6 +28,7 @@
 		<div id="fixedBody"></div>
 		<div id="main"> -->
 			<div id="contactPage" class="page">
+				<h1 class="pageTitle">Contact Us</h1>
 				<p>
 					Contact the development team at m.cummings@duke.edu. Thanks!
 				</p>

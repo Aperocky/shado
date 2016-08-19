@@ -6,7 +6,7 @@
 	require_once("side_navigation.html");
 ?>
 	<div id="runSimulationPage" class="page">
-
+		<h1 class="pageTitle">Run Simulation</h1>
 		<!-- <h2 class='sectionHead'>Use this tool to answer the following questions</h2>
 		<hr style="height: 0px; border-bottom: 2px solid #e9e7e5;">
 		<div id="bullets">

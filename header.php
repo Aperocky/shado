@@ -22,7 +22,7 @@
 		<nav id="topNav">
 			<ul>
 				<li><a id="navElement" <?php if ($curr_page=='homePage') {echo 'class="active"';} ?> href="index.php">Home</a></li>
-				<li><a id="navElement" <?php if ($curr_page=='runSimPage') {echo 'class="active"';} ?> href="runSim.php">Run Simulation</a></li>
+				<li><a id="navElement" <?php if ($curr_page!='homePage' And $curr_page!='contactPage') {echo 'class="active"';} ?> href="runSim.php">Run Simulation</a></li>
 				<li><a id="navElement" <?php if ($curr_page=='contactPage') {echo 'class="active"';} ?> href="contact.php">Contact Us</a></li>
 			</ul>
 		</nav>

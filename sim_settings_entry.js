@@ -144,7 +144,7 @@ function calculate_time(divName) {
 	cell1.innerHTML="<input type='checkbox' name='extra1' value='1' id='conductor' />Conductor";
 	cell2.innerHTML="<input type='checkbox' name='extra2' value='2' id='train_c' />Positive Train Control";
 	cell3.innerHTML="<input type='checkbox' name='extra3' value='3' id='cruise_control' />Cruise Control";
-	cell4.innerHTML="<input type='checkbox' name='extra4' value='4' id='other'>Other";
+	cell4.innerHTML="<input type='checkbox' name='extra4' value='4' id='other'>Custom";
 
 
 	// var divobj = document.getElementById('refresh');
