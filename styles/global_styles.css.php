@@ -109,7 +109,7 @@ body {
 	bottom: 0;
 	background-color: rgba(255,255,255, 0.8);
 	width: 100%;
-	height: 85px;
+	height: 70px;
 	padding-top: 10px;
 	padding-left: 10px;
 	border-top: 1px solid black;
@@ -117,8 +117,7 @@ body {
 
 #fixedFooter #footerLogo {
 	position: absolute;
-	right: 0;
-	top: 15px;
+	top: 10px;
 	right: 20px;
 }
 
@@ -141,9 +140,9 @@ body {
 
 #main {
 	margin-top: 168px;
-	margin-bottom: 10px;
+	margin-bottom: 120px;
 	/*border: 1px solid red;*/
-	height: 100%;
+	/*height: 100%;*/
 }
 
 .navArrow {
@@ -312,4 +311,13 @@ h1 {
 
 p {
 	font-size: 20px;
+}
+
+#contactFormInner {
+	/*text-align: center;*/
+	/*align-content: left;*/
+}
+
+.whiteFont {
+	color: white;
 }

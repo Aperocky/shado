@@ -4,7 +4,7 @@
 	require_once("header.php");
 ?>
 			<div id="versionPage" class="page">
-				<h1 class="pageTitle">Version History and Notes</h1>
+				<h1 class="pageTitle">Release Notes</h1>
 				<h2>Version Alpha</h2>
 				<ul>
 					<li>Input start time, end time, traffic levels, and assistants.</li>

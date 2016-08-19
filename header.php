@@ -20,7 +20,7 @@
 
 		<nav id="topNav">
 			<ul>
-				<!-- <li style="float:left"><a id="topNavElement" href="#title">SHOW</a></li> -->
+				<!-- <li id="topNavElement" style="float:left">SHOW</li> -->
 				<li><a id="topNavElement" <?php if ($curr_page=='homePage') {echo 'class="active"';} ?> href="index.php">Home</a></li>
 				<li><a id="topNavElement" <?php if ($curr_page!='homePage' And $curr_page!='contactPage' And $curr_page!='versionPage') {echo 'class="active"';} ?> href="runSim.php">Run Simulation</a></li>
 				<li><a id="topNavElement" <?php if ($curr_page=='contactPage') {echo 'class="active"';} ?> href="contact.php">Contact Us</a></li>

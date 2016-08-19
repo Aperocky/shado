@@ -23,11 +23,85 @@
 ?>
 
 	<style>
-		#low_work_0, #high_work_0{ color: <?php if(($low_count_0+$high_count_0)>$normal_count_0){ echo "red";} else{ echo "black";}?>;}
-		#normal_work_0{ color: <?php if(($low_count_0+$high_count_0)<$normal_count_0){ echo "green";} else{ echo "black";}?>;}
+		#low_work_0 {
+			color:
+			<?php
+				if(($low_count_0+$high_count_0)>$normal_count_0) {
+					if($low_count_0>$high_count_0) {
+						echo "red";
+					} else {
+						echo "black";
+					}
+				} else {
+					echo "black";
+				}
+			?>;
+		}
+		#normal_work_0{
+			color:
+			<?php
+				if(($low_count_0+$high_count_0)<$normal_count_0) {
+					echo "green";
+				} else {
+					echo "black";
+				}
+			?>;
+		}
+		#high_work_0 {
+			color:
+			<?php
+				if(($low_count_0+$high_count_0)>$normal_count_0) {
+					if($high_count_0>$low_count_0) {
+						echo "red";
+					} else {
+						echo "black";
+					}
+				} else {
+					echo "black";
+				}
+			?>;
+		}
 
-		#low_work_1, #high_work_1{ color: <?php if(($low_count_1+$high_count_1)>$normal_count_1){ echo "red";} else{ echo "black";}?>;}
-		#normal_work_1{ color: <?php if(($low_count_1+$high_count_1)<$normal_count_1){ echo "green";} else{ echo "black";}?>;}
+		#low_work_1 {
+			color:
+			<?php
+				if(($low_count_1+$high_count_1)>$normal_count_1) {
+					if($low_count_1>$low_count_1) {
+						echo "red";
+					} else {
+						echo "black";
+					}
+				} else {
+					echo "black";
+				}
+			?>;
+		}
+
+		#normal_work_1 {
+			color:
+			<?php
+				if(($low_count_1+$high_count_1)<$normal_count_1){
+					echo "green";
+				} else {
+					echo "black";
+				}
+			?>;
+		}
+
+		#high_work_1 {
+			color:
+			<?php
+				if(($low_count_1+$high_count_1)>$normal_count_1) {
+					if($high_count_1>$low_count_1) {
+						echo "red";
+					} else {
+						echo "black";
+					}
+				} else {
+					echo "black";
+				}
+			?>;
+		}
 	</style>
 
 	<?php require_once("assist.html"); ?>
@@ -35,7 +109,7 @@
 	<br><br><br>
 
 	<form action="summary_page.php" method="post" target="_blank" style='text-align: center;'>
-		<button type="submit" id="summary">Create Summary</button>
+		<button type="submit" id="summary">View Report</button>
 	</form>
 
 	<div id="back_button"  style='text-align: center;'>
@@ -46,7 +120,7 @@
 			}
 		</script>
 		<br><br>
-		<button id="back_button" onclick="location.href='replications.php'">Peek & Tweak, under the hood</button>
+		<!-- <button id="back_button" onclick="location.href='replications.php'">Peek & Tweak, under the hood</button> -->
 	</div>
 </div>
 

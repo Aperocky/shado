@@ -17,6 +17,9 @@
 						<li><em>How</em> might we improve operator workload, as well as overall system efficiency and safety?</li>
 					</ul>
 				</p>
+				<p>
+					If you have any questions or comments about the simulation, please contact us above!
+				</p>
 			</div>
 
 <?php

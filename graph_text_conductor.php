@@ -11,27 +11,27 @@
 	$type_names[6]="Monitoring Inside";
 	$type_names[7]="Monitoring Outside";
 	$type_names[8]="Planning Ahead";
-	
+
 	$file_handle=fopen('sessions/Conductor_stats.csv','r');
 	$count=array();
 	$temp_count=0;
 	$skip=1;
 	$num=0;
-	
+
 	while (! feof($file_handle))
 	{
 		if($temp_count==1)
 		{
 			$skip=1;
 		}
-	
+
 		$line_of_text = fgetcsv($file_handle,1024,',');
-	
+
 		if($line_of_text[0]=="Service Time")
 		{
 			break;
 		}
-	
+
 		if($skip==1)
 		{
 			$num=count($line_of_text);
@@ -52,7 +52,7 @@
 			$temp_count++;
 			continue;
 		}
-		
+
 		if($skip==0)
 		{
 			$skip=1;
@@ -71,7 +71,7 @@
 		$type_byPhase1[$j]=array();
 		$type_byPhase2[$j]=array();
 		$type_byPhase3[$j]=array();
-		
+
 		for($i=2;$i<$num;$i++)
 		{
 			if($i<5)
@@ -79,7 +79,7 @@
 				$type_byPhase1[$j][]=$count[$j][$i];
 				/* array_push($type_byPhase1[$j], $count[$j][$i]); */
 			}
-			else 
+			else
 			{
 				if($i>($num-4))
 				{
@@ -187,7 +187,7 @@
 
 	arsort($count_type_low);
 	arsort($count_type_high);
-	
+
 ?>
 
 
@@ -199,7 +199,7 @@
 			<h3>These combined factors contributed to period of high workload: </h3>
 			<ul>
 			<?php
-			
+
 			$high_keys=array_keys($count_type_high);
 			for($j=1;$j<$temp_count-1;$j++)
 			{
@@ -208,34 +208,34 @@
 					echo "<li onclick='display" . ($high_keys[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>Task Type ". $type_names[($high_keys[$j-1]-1)] ."<ul id='high". ($high_keys[$j-1]-1) . "'><li>";
 					if($count_type_high1[$high_keys[$j-1]]==0)
 					{
-						echo "On average, your engineering spends ". "0" ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 1</li><li>";
+						echo "On average, your conductor spends ". "0" ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 1</li><li>";
 					}
 					else{
-						echo "On average, your engineering spends ". round($count_type_high1[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 1</li><li>";
+						echo "On average, your conductor spends ". round($count_type_high1[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 1</li><li>";
 					}
 					if($count_type_high2[$high_keys[$j-1]]==0){
-						echo "On average, your engineering spends ". " 0" ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 2</li><li>";
+						echo "On average, your conductor spends ". " 0" ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 2</li><li>";
 					}
 					else{
-						echo "On average, your engineering spends ". round($count_type_high2[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 2</li><li>";
+						echo "On average, your conductor spends ". round($count_type_high2[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 2</li><li>";
 					}
 					if($count_type_high3[$high_keys[$j-1]]==0){
-						echo "On average, your engineering spends ". " 0" ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 3</li></ul></li>";
+						echo "On average, your conductor spends ". " 0" ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 3</li></ul></li>";
 					}
 					else{
-						echo "On average, your engineering spends ". round($count_type_high3[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 3</li></ul></li>";
+						echo "On average, your conductor spends ". round($count_type_high3[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 3</li></ul></li>";
 					}
 				}
 			}
 			echo "</ul>" ;
 			?>
-			
-		
+
+
 		<br><br><br>
 			<?php } ?>
 		<h3>These combined factors contributed to period of low workload: </h3>
 		<ul>
-		
+
 <?php
 	$low_keys=array_keys($count_type_low);
 	for($j=1;$j<$temp_count-1;$j++)
@@ -245,22 +245,22 @@
 			echo "<li onclick='display" . ($low_keys[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $type_names[$low_keys[$j-1]-1] ."<ul id='low". ($low_keys[$j-1]-1) . "'><li>";
 			if($count_type_low1[$low_keys[$j-1]]==0)
 			{
-				echo "On average, your engineering spends ". "0" ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 1</li><li>";
+				echo "On average, your conductor spends ". "0" ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 1</li><li>";
 			}
 			else{
-				echo "On average, your engineering spends ". round($count_type_low1[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 1</li><li>";
+				echo "On average, your conductor spends ". round($count_type_low1[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 1</li><li>";
 			}
 			if($count_type_low2[$low_keys[$j-1]]==0){
-				echo "On average, your engineering spends ". " 0" ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 2</li><li>";
+				echo "On average, your conductor spends ". " 0" ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 2</li><li>";
 			}
 			else{
-				echo "On average, your engineering spends ". round($count_type_low2[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 2</li><li>";
+				echo "On average, your conductor spends ". round($count_type_low2[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 2</li><li>";
 			}
 			if($count_type_low3[$low_keys[$j-1]]==0){
-				echo "On average, your engineering spends ". " 0" ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 3</li></ul></li>";
+				echo "On average, your conductor spends ". " 0" ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 3</li></ul></li>";
 			}
 			else{
-				echo "On average, your engineering spends ". round($count_type_low3[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 3</li></ul></li>";
+				echo "On average, your conductor spends ". round($count_type_low3[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 3</li></ul></li>";
 			}
 		}
 	}
@@ -347,19 +347,19 @@
 
 .list{
 	padding:5px 15px;
-	
+
 	border: 3px solid #5D7B85;
 	cursor:pointer;
 	-webkit-border-radius: 5px;
 	border-radius: 25px;
-	
-	
+
+
 	/*margin: 0 auto;*/
 	margin: 20px;
 	text-align: left;
 	background-color: rgba(255, 255, 255, 0.6);
 	overflow: auto;
-	
+
 }
 
 </style>

@@ -7,9 +7,9 @@
 ?>
 	<div id="runSimulationPage" class="page">
 		<h1 class="pageTitle">Run Simulation</h1>
-		<h4>
-			To get started, provide us with three simple data points. What time of day does your operator begin (1) and end (2) their shift? And what’s the level of traffic (3) in their region? Lastly, specify any additional operators or technologies beyond the engineer.
-		</h4>
+		<p>
+			To get started, provide us with three simple data points. What time of day does your operator begin <strong>(1)</strong> and end <strong>(2)</strong> his/her shift? And what’s the level of traffic <strong>(3)</strong> in the region during this shift? Lastly, specify any additional operators or technologies <strong>(4)</strong> that will assist the engineer during the trip.
+		</p>
 		<br>
 
 		<form id="timeEntry" action="create_txt.php" method="post">
@@ -17,7 +17,7 @@
 
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>1</div>
-					<h3 id="text_start">Start Time</h3>
+					<h3 id="text_start" class="whiteFont">Start Time</h3>
 					<select id='startHour' onchange="calculate_time();">
 						<?php
 
@@ -44,7 +44,7 @@
 
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>2</div>
-					<h3 id="text_stop">Stop Time</h3>
+					<h3 id="text_stop" class="whiteFont">Stop Time</h3>
 					<select id='endHour' onchange="calculate_time();">
 						<?php
 
@@ -72,7 +72,7 @@
 
 			<div class="trafficTableStepOuter stepBox centerOuter">
 				<div class='stepCircle'>3</div>
-				<h3>Traffic Levels</h3>
+				<h3 class="whiteFont">Traffic Levels</h3>
 				<div id="totalTime" style="overflow-x:auto;"></div>
 			</div>
 

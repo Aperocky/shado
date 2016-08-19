@@ -6,7 +6,7 @@
 	$temp_count=0;
 	$skip=1;
 	$num=0;
-	
+
 	while (! feof($file_handle) )
 	{
 		if($temp_count==1)
@@ -59,14 +59,14 @@
 	$type_names[7]="Monitoring Outside";
 	$type_names[8]="Planning Ahead";
 
-	
-	
+
+
 
 	for($i=0;$i<$temp_count-1;$i++)
 	{
 		$count[$i+1][0]=$type_names[$i];
 	}
-	
+
 	for($i=0;$i<$num-1;$i++)
 	{
 		for($j=0;$j<$temp_count-1;$j++)
@@ -102,7 +102,7 @@
 	-webkit-border-radius: 5px;
 	border-radius: 25px;
 	display: inline-block;
-	
+
 	/*margin: 0 auto;*/
 	margin: 20px;
 	text-align: left;
@@ -142,7 +142,7 @@ var temp=<?php echo $num; ?>;
 
 var margin = {top: 20, right: 20, bottom: 50, left: 70},
     width = 35*temp;
-	
+
     height = 500 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
@@ -216,15 +216,15 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 	  .attr("transform", "translate("+(width / 2)+",45)" )
 	  .attr("x", 1)
 	  .attr("dx", ".71em")
-	  
-	  .text("Time (in minutes)");
+
+	  .text("Time (min)");
 
 	var stateAbsolute= svg.selectAll(".absolute")
 						.data(data)
 		    			.enter().append("g")
 		    			.attr("class", "absolute")
 		   			 .attr("transform", function(d) { return "translate(" + "0" + ",0)"; });
-		
+
 	stateAbsolute.selectAll("rect")
 			    .data(function(d) { return d.ages})
 			    .enter().append("rect")
@@ -273,9 +273,9 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 		.attr("class", "y axis absolute")
 		.call(yAxisAbsolute)
 		.append("text")
-		
+
 		.attr("transform", "translate(-60,"+(height/2)+") rotate(-90)" )
-		
+
 		.attr("y", 6)
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
@@ -288,9 +288,9 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
         .style("font-size", "24px")
         .style("text-decoration", "underline")
         .text("Conductor Operation");
-	
+
 	// end of define absolute
-	
+
 	// adding legend
   	    var legend = svg.selectAll(".legend")
       	 	 			.data(color.domain().slice().reverse())

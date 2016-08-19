@@ -10,7 +10,7 @@
 <form id="change_replications" action="replications_send.php" method="post" class="startEndTimeStepOuter centerOuter">
 
 	<div class="stepBox centerOuter startEndTime">
-		<h3 id="text_start">Number of Replications:</h3>
+		<h3 id="text_start" class="whiteFont">Number of Replications:</h3>
 		<select id='replications' name="replications">
 			<?php
 				for ($i = 10; $i <= 1000; $i+=10) {
