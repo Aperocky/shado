@@ -71,19 +71,19 @@
 <meta charset="utf-8">
 
 	<div class="page">
-		<div id="engineer">
+		<div class="engineer">
 			<div id="graph"></div>
 		</div>	
 	</div>
 
 <style>
 
-#engineer{
+.engineer{
 	text-align: center;
 }
 
 #graph{
-	padding:5px 15px;
+	padding:30px 30px;
 	width:fit-content;
 	width:-webkit-fit-content;
 	width:-moz-fit-content;
@@ -135,7 +135,7 @@ var legend_width = 120;
 
 var temp=<?php echo $num; ?>;
 
-var margin = {top: 20, right: 20, bottom: 30, left: 60},
+var margin = {top: 20, right: 20, bottom: 50, left: 70},
     width = 35*temp;
 	
     height = 500 - margin.top - margin.bottom;
@@ -209,8 +209,14 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
   						  // Initial view is absolute
   svg_eng.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+      .attr("transform", "translate(0," + height +")")
+      .call(xAxis)
+	  .append("text")
+	  .attr("transform", "translate("+(width / 2)+",45)" )
+	  .attr("x", 1)
+	  .attr("dx", ".71em")
+	  
+	  .text("Time (in minutes)");
 
 	var stateAbsolute= svg_eng.selectAll(".absolute")
 						.data(data)
@@ -266,11 +272,15 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 		.attr("class", "y axis absolute")
 		.call(yAxisAbsolute)
 		.append("text")
-		.attr("transform", "rotate(-90)")
+		
+		.attr("transform", "translate(-60,"+(height/2)+") rotate(-90)" )
+		
 		.attr("y", 6)
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
 		.text("Utilization");
+		
+	
 
 	svg_eng.append("text")
         .attr("x", (width / 2))
