@@ -2,9 +2,10 @@
 
 	session_start();
 	$html_head_insertions .= '<link rel="stylesheet" href="styles/assist_summary.css">';
-	
+
+	$curr_page='initialResultsPage';
 	require_once('header.php');
-	require_once("side_navigation.html");
+	require_once("side_navigation.php");
 
 	$low_count_0=$_SESSION['low_count_0'];
 	$normal_count_0=$_SESSION['normal_count_0'];
@@ -31,7 +32,7 @@
 	<?php require_once("assist.html"); ?>
 
 	<br><br><br>
-	
+
 	<form action="summary_page.php" method="post" target="_blank" style='text-align: center;'>
 		<button type="submit" id="summary">Create Summary</button>
 	</form>
@@ -48,7 +49,6 @@
 	</div>
 </div>
 
-
 <style>
 #runSimulation{
 font-weight: bold;
@@ -56,4 +56,3 @@ background-color: 00B1FF;
 }
 </style>
 <?php require_once('footer.php'); ?>
-

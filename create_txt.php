@@ -32,7 +32,7 @@
 				$_SESSION['operator'.$i]=-1;
 			}
 	}
-	
+
 	fclose($myfile);
 	exec("./DES sessions/parameters.txt");
 	include('read_csv.php');

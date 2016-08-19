@@ -13,7 +13,6 @@
 
 <body>
 	<div id="fixedHead">
-<!-- 		<div id="top_panel"></div> -->
 
 		<div id="title">
 			<h1>Simulator of Human Operator Workload (SHOW)</h1>
@@ -21,9 +20,11 @@
 
 		<nav id="topNav">
 			<ul>
-				<li><a id="navElement" <?php if ($curr_page=='homePage') {echo 'class="active"';} ?> href="index.php">Home</a></li>
-				<li><a id="navElement" <?php if ($curr_page!='homePage' And $curr_page!='contactPage') {echo 'class="active"';} ?> href="runSim.php">Run Simulation</a></li>
-				<li><a id="navElement" <?php if ($curr_page=='contactPage') {echo 'class="active"';} ?> href="contact.php">Contact Us</a></li>
+				<li style="float:left"><a id="topNavElement" href="#title">SHOW</a></li>
+				<li><a id="topNavElement" <?php if ($curr_page=='homePage') {echo 'class="active"';} ?> href="index.php">Home</a></li>
+				<li><a id="topNavElement" <?php if ($curr_page!='homePage' And $curr_page!='contactPage' And $curr_page!='versionPage') {echo 'class="active"';} ?> href="runSim.php">Run Simulation</a></li>
+				<li><a id="topNavElement" <?php if ($curr_page=='contactPage') {echo 'class="active"';} ?> href="contact.php">Contact Us</a></li>
+				<li style="float:right"><a id="topNavElement" <?php if ($curr_page=='versionPage') {echo 'class="active"';} ?> href="version.php">Version: Alpha</a></li>
 			</ul>
 		</nav>
 	</div>

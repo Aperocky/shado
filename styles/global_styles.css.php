@@ -1,6 +1,6 @@
 <?php
-	$color_theme_dark_blue = 'rgba(70,127,201,1)';
-	$color_theme_light_blue = '#00B1FF';
+	$color_theme_dark_blue = '#467FC9';
+	$color_theme_light_blue = '#75D3FE';
 ?>
 
 body {
@@ -40,45 +40,50 @@ body {
 	padding: 0px;
 	overflow: hidden;
 	/*border: 1px solid red;*/
-	background-color: #f3f3f3;
+	background-color: #555;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
 }
 
 #topNav li {
 	display: inline-block;
 	margin: 0;
-	padding: 0;
+	padding: 0px;
 	/*border: 1px solid red;*/
+	font-size: 18px;
+	/*border-right: 1px solid black;*/
 }
 
 #topNav li a {
 	display: inline-block;
-	color: #666;
+	color: white;
 	text-align: center;
 	padding: 14px 17px;
 	text-decoration: none;
 	/*border: 1px solid red;*/
 }
 
-#topNav a:hover:not(.active) {
+#topNav li a:hover:not(.active) {
 	/*background-color: #ddd;*/
-	background-color: #555;
 	color: white;
+	background-color: black;
 }
 
-#topNav a.active {
-	color: black;
+#topNav li a.active {
 	background-color: <?php echo $color_theme_light_blue; ?>;
 }
 
 #sideNav ul {
     list-style-type: none;
     margin-top: 0px;
+		margin-bottom: 500px;
     padding: 0;
-    width: 175px;
+    width: 180px;
     background-color: #f1f1f1;
     position: fixed;
     height: 100%;
     overflow: auto;
+		border-right: 1px solid black;
 }
 
 #sideNav li a {
@@ -89,13 +94,12 @@ body {
 }
 
 #sideNav li a.active {
-    background-color: <?php echo $color_theme_light_blue; ?>;;
-    color: white;
+		color: white;
+		background-color: <?php echo $color_theme_light_blue; ?>;
 }
 
 #sideNav li a:hover:not(.active) {
-    background-color: #555;
-    color: white;
+    background-color: #ddd;
 }
 
 #fixedFooter {
@@ -152,6 +156,7 @@ body {
 	height: 50px;
 	width: 50px;
 	background-size: 50px;
+	margin-top: 10px;
 	margin-left: 10px;
 	position:fixed;
   right:10px;
@@ -160,7 +165,7 @@ body {
 .page {
 	margin-left: 200px;
 	margin-right: 30px;
-	margin-top: 150px;
+	margin-top: 170px;
 }
 
 #homePage, #contactPage {

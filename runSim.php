@@ -3,23 +3,10 @@
 	$curr_page='runSimPage';
 	$html_head_insertions .= '<script type="text/javascript" src="sim_settings_entry.js"></script>';
 	require_once("header.php");
-	require_once("side_navigation.html");
+	require_once("side_navigation.php");
 ?>
 	<div id="runSimulationPage" class="page">
 		<h1 class="pageTitle">Run Simulation</h1>
-		<!-- <h2 class='sectionHead'>Use this tool to answer the following questions</h2>
-		<hr style="height: 0px; border-bottom: 2px solid #e9e7e5;">
-		<div id="bullets">
-			<ul style="list-style-type:circle">
-				<li><h3><em>When</em> are my operators over- or under-utilized at work?</h3></li>
-				<li><h3><em>Why</em> are my operators over- or under-utilized at work?</h3></li>
-				<li><h3><em>How</em> might we improve operator workload, and overall system efficiency and safety?</h3></li>
-			</ul>
-		</div>
-		<br> -->
-
-		<!-- <div id="navToStartTime" class="navArrow" onclick="navClick(this);"></div> -->
-
 		<h4>
 			To get started, provide us with three simple data points. What time of day does your operator begin (1) and end (2) their shift? And what’s the level of traffic (3) in their region? Lastly, specify any additional operators or technologies beyond the engineer.
 		</h4>
@@ -105,9 +92,9 @@
 
 <?php require_once("footer.php"); ?>
 
-<style>
+<!-- /*<style>
 #introduction{
 font-weight: bold;
 background-color: 00B1FF;
 }
-</style>
+</style>*/ -->

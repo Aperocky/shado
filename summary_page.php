@@ -3,9 +3,10 @@
 	session_start();
 
 	$html_head_insertions .= '<link rel="stylesheet" href="styles/assist_summary.css">';
-	
+
+	$curr_page='summaryReportPage';
 	require_once('header.php');
-	require_once("side_navigation.html");
+	require_once("side_navigation.php");
 
 	$low_count_0=$_SESSION['low_count_0'];
 	$normal_count_0=$_SESSION['normal_count_0'];
@@ -22,11 +23,6 @@
 ?>
 
 <style>
-		#summary{
-		font-weight: bold;
-		background-color: 00B1FF;
-		}
-		
 		#low_work_0, #high_work_0{ color: <?php if(($low_count_0+$high_count_0)>$normal_count_0){ echo "red";} else{ echo "black";}?>;}
 		#normal_work_0{ color: <?php if(($low_count_0+$high_count_0)<$normal_count_0){ echo "green";} else{ echo "black";}?>;}
 
@@ -47,7 +43,7 @@
 </style>
 
 <div id="print-content">
-	
+
 	<form>
 			<div id="next_page" class="printPdf" onclick="var submit = getElementById('button'); button.click()";>
 			</div>
@@ -56,10 +52,10 @@
 
 	<?php
 		require_once("assist.html");
-		
+
 		require_once("graph_engineer.php");
 		require_once("graph_text_engineer.php");
-		
+
 		$assistant= $_SESSION['operator1'];
 		if($assistant==1)
 		{
@@ -78,7 +74,6 @@ function printDiv(divName) {
  w.print();
  w.close();
 }
-
 </script>
 
 <?php
