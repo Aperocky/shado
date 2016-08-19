@@ -156,6 +156,7 @@ body {
 	height: 50px;
 	width: 50px;
 	background-size: 50px;
+	margin-top: 10px;
 	margin-left: 10px;
 	position:fixed;
   right:10px;

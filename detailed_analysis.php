@@ -1,7 +1,6 @@
 <?php
-
 	session_start();
-	require_once("side_navigation.html");
+	require_once("side_navigation.php");
 	require_once('header.php');
 
 	if ($_SESSION['operator1'] == -1) {
@@ -12,7 +11,6 @@
 ?>
 
 <?php
-
 		require_once("graph_engineer.php");
 		require_once("graph_text_engineer.php");
 
@@ -23,7 +21,6 @@
 			require_once("graph_text_conductor.php");
 		}
 ?>
-
 
 <?php
 	require_once("footer.php");
