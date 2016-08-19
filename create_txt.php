@@ -17,6 +17,7 @@
 	{
 		fwrite($myfile,$_POST [(string)$x]." ");
 	}
+	
 	if(isset($_SESSION['replications']) && !empty($_SESSION['replications']))
 	{
 		$rep=$_SESSION['replications'];
