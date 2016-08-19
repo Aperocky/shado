@@ -17,7 +17,14 @@
 	{
 		fwrite($myfile,$_POST [(string)$x]." ");
 	}
-	$rep=$_SESSION['replications'];
+	if(isset($_SESSION['replications']) && !empty($_SESSION['replications']))
+	{
+		$rep=$_SESSION['replications'];
+	}
+	else{
+		$rep=100;
+	}
+
 	fwrite($myfile,"\nnum_reps		");
 	fwrite($myfile,$rep." \n");
 	fwrite($myfile,"ops				0");
