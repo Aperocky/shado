@@ -352,7 +352,9 @@
 	cursor:pointer;
 	-webkit-border-radius: 5px;
 	border-radius: 25px;
-
+	width:fit-content;
+	width:-webkit-fit-content;
+	width:-moz-fit-content;
 
 	/*margin: 0 auto;*/
 	margin: 20px;
