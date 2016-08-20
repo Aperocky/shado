@@ -12,171 +12,171 @@
 	$type_names[7]="Monitoring Outside";
 	$type_names[8]="Planning Ahead";
 
-	$file_handle=fopen('sessions/Conductor_stats.csv','r');
-	$count=array();
-	$temp_count=0;
-	$skip=1;
-	$num=0;
+	$file_handle_cond=fopen('sessions/Conductor_stats.csv','r');
+	$count_cond=array();
+	$temp_count_cond=0;
+	$skip_cond=1;
+	$num_cond=0;
 
-	while (! feof($file_handle))
+	while (! feof($file_handle_cond))
 	{
-		if($temp_count==1)
+		if($temp_count_cond==1)
 		{
-			$skip=1;
+			$skip_cond=1;
 		}
 
-		$line_of_text = fgetcsv($file_handle,1024,',');
+		$line_of_text_cond = fgetcsv($file_handle_cond,1024,',');
 
-		if($line_of_text[0]=="Service Time")
+		if($line_of_text_cond[0]=="Service Time")
 		{
 			break;
 		}
 
-		if($skip==1)
+		if($skip_cond==1)
 		{
-			$num=count($line_of_text);
-			$count[$temp_count]=array();
-			for($i=1;$i<$num;$i++)
+			$num_cond=count($line_of_text_cond);
+			$count_cond[$temp_count_cond]=array();
+			for($i=1;$i<$num_cond;$i++)
 			{
-				if($temp_count==0)
+				if($temp_count_cond==0)
 				{
-					$count[$temp_count][$i-1]=$line_of_text[$i];
+					$count_cond[$temp_count_cond][$i-1]=$line_of_text_cond[$i];
 				}
 				else
 				{
-					$count[$temp_count][$i-1]=(float)$line_of_text[$i];
+					$count_cond[$temp_count_cond][$i-1]=(float)$line_of_text_cond[$i];
 				}
 
 			}
-			$skip=0;
-			$temp_count++;
+			$skip_cond=0;
+			$temp_count_cond++;
 			continue;
 		}
 
-		if($skip==0)
+		if($skip_cond==0)
 		{
-			$skip=1;
+			$skip_cond=1;
 			continue;
 		}
 	}
 
-	fclose($file_handle);
+	fclose($file_handle_cond);
 
-	$type_byPhase1=array();
-	$type_byPhase2=array();
-	$type_byPhase3=array();
+	$type_byPhase1_cond=array();
+	$type_byPhase2_cond=array();
+	$type_byPhase3_cond=array();
 
-	for($j=1;$j<$temp_count-1;$j++)
+	for($j=1;$j<$temp_count_cond-1;$j++)
 	{
-		$type_byPhase1[$j]=array();
-		$type_byPhase2[$j]=array();
-		$type_byPhase3[$j]=array();
+		$type_byPhase1_cond[$j]=array();
+		$type_byPhase2_cond[$j]=array();
+		$type_byPhase3_cond[$j]=array();
 
-		for($i=2;$i<$num;$i++)
+		for($i=2;$i<$num_cond;$i++)
 		{
 			if($i<5)
 			{
-				$type_byPhase1[$j][]=$count[$j][$i];
+				$type_byPhase1_cond[$j][]=$count_cond[$j][$i];
 				/* array_push($type_byPhase1[$j], $count[$j][$i]); */
 			}
 			else
 			{
-				if($i>($num-4))
+				if($i>($num_cond-4))
 				{
-					array_push($type_byPhase3[$j], $count[$j][$i]);
+					array_push($type_byPhase3_cond[$j], $count_cond[$j][$i]);
 				}
 				else
 				{
-					array_push($type_byPhase2[$j], $count[$j][$i]);
+					array_push($type_byPhase2_cond[$j], $count_cond[$j][$i]);
 				}
 			}
 		}
 	}
 
-	$count_type_high1=array();
-	$count_type_high2=array();
-	$count_type_high3=array();
-	$count_type_low1=array();
-	$count_type_low2=array();
-	$count_type_low3=array();
+	$count_type_high1_cond=array();
+	$count_type_high2_cond=array();
+	$count_type_high3_cond=array();
+	$count_type_low1_cond=array();
+	$count_type_low2_cond=array();
+	$count_type_low3_cond=array();
 
-	$count_type_low=array();
-	$count_type_high=array();
+	$count_type_low_cond=array();
+	$count_type_high_cond=array();
 
-	for($j=1;$j<$temp_count-1;$j++)
+	for($j=1;$j<$temp_count_cond-1;$j++)
 	{
-		$count_type_high1[$j]=0;
-		$count_type_low1[$j]=0;
-		$count_type_high2[$j]=0;
-		$count_type_low2[$j]=0;
-		$count_type_high3[$j]=0;
-		$count_type_low3[$j]=0;
-		$count_type_high[$j]=0;
-		$count_type_low[$j]=0;
+		$count_type_high1_cond[$j]=0;
+		$count_type_low1_cond[$j]=0;
+		$count_type_high2_cond[$j]=0;
+		$count_type_low2_cond[$j]=0;
+		$count_type_high3_cond[$j]=0;
+		$count_type_low3_cond[$j]=0;
+		$count_type_high_cond[$j]=0;
+		$count_type_low_cond[$j]=0;
 	}
 
-	for($i=2;$i<$num;$i++)
+	for($i=2;$i<$num_cond;$i++)
 	{
-		for($j=1;$j<$temp_count-1;$j++)
+		for($j=1;$j<$temp_count_cond-1;$j++)
 		{
-			if($count[10][$i]>0.7)
+			if($count_cond[10][$i]>0.7)
 			{
 				if($i<5)
 				{
-					if($count[$j][$i]>(array_sum($type_byPhase1[$j])/count($type_byPhase1[$j])))
+					if($count_cond[$j][$i]>(array_sum($type_byPhase1_cond[$j])/count($type_byPhase1_cond[$j])))
 					{
-						$count_type_high1[$j]++;
-						$count_type_high[$j]++;
+						$count_type_high1_cond[$j]++;
+						$count_type_high_cond[$j]++;
 					}
 				}
 				else
 				{
-					if($i>($num-4))
+					if($i>($num_cond-4))
 					{
-						if($count[$j][$i]>(array_sum($type_byPhase3[$j])/count($type_byPhase3[$j])))
+						if($count_cond[$j][$i]>(array_sum($type_byPhase3_cond[$j])/count($type_byPhase3_cond[$j])))
 						{
-							$count_type_high3[$j]++;
-							$count_type_high[$j]++;
+							$count_type_high3_cond[$j]++;
+							$count_type_high_cond[$j]++;
 						}
 					}
 					else
 					{
-						if($count[$j][$i]>(array_sum($type_byPhase2[$j])/count($type_byPhase2[$j])))
+						if($count_cond[$j][$i]>(array_sum($type_byPhase2_cond[$j])/count($type_byPhase2_cond[$j])))
 						{
-							$count_type_high2[$j]++;
-							$count_type_high[$j]++;
+							$count_type_high2_cond[$j]++;
+							$count_type_high_cond[$j]++;
 						}
 					}
 				}
 				continue;
 			}
 
-			if($count[10][$i]<0.3)
+			if($count_cond[10][$i]<0.3)
 			{
 				if($i<5)
 				{
-					if($count[$j][$i]<(array_sum($type_byPhase1[$j])/count($type_byPhase1[$j])))
+					if($count_cond[$j][$i]<(array_sum($type_byPhase1_cond[$j])/count($type_byPhase1_cond[$j])))
 					{
-						$count_type_low1[$j]++;
-						$count_type_low[$j]++;
+						$count_type_low1_cond[$j]++;
+						$count_type_low_cond[$j]++;
 					}
 				}
 				else
 				{
-					if($i>($num-4))
+					if($i>($num_cond-4))
 					{
-						if($count[$j][$i]<(array_sum($type_byPhase3[$j])/count($type_byPhase3[$j])))
+						if($count_cond[$j][$i]<(array_sum($type_byPhase3_cond[$j])/count($type_byPhase3_cond[$j])))
 						{
-							$count_type_low3[$j]++;
-							$count_type_low[$j]++;
+							$count_type_low3_cond[$j]++;
+							$count_type_low_cond[$j]++;
 						}
 					}
 					else
 					{
-						if($count[$j][$i]<(array_sum($type_byPhase2[$j])/count($type_byPhase2[$j])))
+						if($count_cond[$j][$i]<(array_sum($type_byPhase2_cond[$j])/count($type_byPhase2_cond[$j])))
 						{
-							$count_type_low2[$j]++;
-							$count_type_low[$j]++;
+							$count_type_low2_cond[$j]++;
+							$count_type_low_cond[$j]++;
 						}
 					}
 				}
@@ -185,45 +185,45 @@
 		}
 	}
 
-	arsort($count_type_low);
-	arsort($count_type_high);
+	arsort($count_type_low_cond);
+	arsort($count_type_high_cond);
 
 ?>
 
 
 <div class="page">
-	<div class="engineer">
+	<div class="conductor">
 	<div id="text_box">
-			<h2 style="text-align: center;"> Engineer Operations </h2>
-			<?php if(max(array_values($count_type_high))>0) { ?>
+			<h2 style="text-align: center;"> Conductor Operations </h2>
+			<?php if(max(array_values($count_type_high_cond))>0) { ?>
 			<h3>These combined factors contributed to period of high workload: </h3>
 			<ul>
 			<?php
 
-			$high_keys=array_keys($count_type_high);
-			for($j=1;$j<$temp_count-1;$j++)
+			$high_keys_cond=array_keys($count_type_high_cond);
+			for($j=1;$j<$temp_count_cond-1;$j++)
 			{
-				if($count_type_high[$high_keys[$j-1]]>0)
+				if($count_type_high_cond[$high_keys_cond[$j-1]]>0)
 				{
-					echo "<li onclick='display" . ($high_keys[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>Task Type ". $type_names[($high_keys[$j-1]-1)] ."<ul id='high". ($high_keys[$j-1]-1) . "'><li>";
-					if($count_type_high1[$high_keys[$j-1]]==0)
+					echo "<li onclick='display_cond" . ($high_keys_cond[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ."<ul id='high_cond". ($high_keys_cond[$j-1]-1) . "'><li>";
+					if($count_type_high1_cond[$high_keys_cond[$j-1]]==0)
 					{
-						echo "On average, your conductor spends ". "0" ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 1</li><li>";
+						echo "On average, your engineer spends ". "0" ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 1</li><li>";
 					}
 					else{
-						echo "On average, your conductor spends ". round($count_type_high1[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 1</li><li>";
+						echo "On average, your engineer spends ". round($count_type_high1_cond[$high_keys_cond[$j-1]]*100/$count_type_high_cond[$high_keys_cond[$j-1]]) ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 1</li><li>";
 					}
-					if($count_type_high2[$high_keys[$j-1]]==0){
-						echo "On average, your conductor spends ". " 0" ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 2</li><li>";
-					}
-					else{
-						echo "On average, your conductor spends ". round($count_type_high2[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 2</li><li>";
-					}
-					if($count_type_high3[$high_keys[$j-1]]==0){
-						echo "On average, your conductor spends ". " 0" ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 3</li></ul></li>";
+					if($count_type_high2_cond[$high_keys_cond[$j-1]]==0){
+						echo "On average, your engineer spends ". " 0" ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 2</li><li>";
 					}
 					else{
-						echo "On average, your conductor spends ". round($count_type_high3[$high_keys[$j-1]]*100/$count_type_high[$high_keys[$j-1]]) ."% time on Task Type ". $type_names[($high_keys[$j-1]-1)] ." during Phase 3</li></ul></li>";
+						echo "On average, your engineer spends ". round($count_type_high2_cond[$high_keys_cond[$j-1]]*100/$count_type_high_cond[$high_keys_cond[$j-1]]) ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 2</li><li>";
+					}
+					if($count_type_high3_cond[$high_keys_cond[$j-1]]==0){
+						echo "On average, your engineer spends ". " 0" ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 3</li></ul></li>";
+					}
+					else{
+						echo "On average, your engineer spends ". round($count_type_high3_cond[$high_keys_cond[$j-1]]*100/$count_type_high_cond[$high_keys_cond[$j-1]]) ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 3</li></ul></li>";
 					}
 				}
 			}
@@ -237,30 +237,30 @@
 		<ul>
 
 <?php
-	$low_keys=array_keys($count_type_low);
-	for($j=1;$j<$temp_count-1;$j++)
+	$low_keys_cond=array_keys($count_type_low_cond);
+	for($j=1;$j<$temp_count_cond-1;$j++)
 	{
-		if($count_type_low[$low_keys[$j-1]]>0)
+		if($count_type_low_cond[$low_keys_cond[$j-1]]>0)
 		{
-			echo "<li onclick='display" . ($low_keys[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $type_names[$low_keys[$j-1]-1] ."<ul id='low". ($low_keys[$j-1]-1) . "'><li>";
-			if($count_type_low1[$low_keys[$j-1]]==0)
+			echo "<li onclick='display_cond" . ($low_keys_cond[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $type_names[$low_keys_cond[$j-1]-1] ."<ul id='low_cond". ($low_keys_cond[$j-1]-1) . "'><li>";
+			if($count_type_low1_cond[$low_keys_cond[$j-1]]==0)
 			{
-				echo "On average, your conductor spends ". "0" ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 1</li><li>";
+				echo "On average, your engineer spends ". "0" ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 1</li><li>";
 			}
 			else{
-				echo "On average, your conductor spends ". round($count_type_low1[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 1</li><li>";
+				echo "On average, your engineer spends ". round($count_type_low1_cond[$low_keys_cond[$j-1]]*100/$count_type_low_cond[$low_keys_cond[$j-1]]) ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 1</li><li>";
 			}
-			if($count_type_low2[$low_keys[$j-1]]==0){
-				echo "On average, your conductor spends ". " 0" ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 2</li><li>";
-			}
-			else{
-				echo "On average, your conductor spends ". round($count_type_low2[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 2</li><li>";
-			}
-			if($count_type_low3[$low_keys[$j-1]]==0){
-				echo "On average, your conductor spends ". " 0" ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 3</li></ul></li>";
+			if($count_type_low2_cond[$low_keys_cond[$j-1]]==0){
+				echo "On average, your engineer spends ". " 0" ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 2</li><li>";
 			}
 			else{
-				echo "On average, your conductor spends ". round($count_type_low3[$low_keys[$j-1]]*100/$count_type_low[$low_keys[$j-1]]) ."% time on ". $type_names[$low_keys[$j-1]-1] ." during Phase 3</li></ul></li>";
+				echo "On average, your engineer spends ". round($count_type_low2_cond[$low_keys_cond[$j-1]]*100/$count_type_low_cond[$low_keys_cond[$j-1]]) ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 2</li><li>";
+			}
+			if($count_type_low3_cond[$low_keys_cond[$j-1]]==0){
+				echo "On average, your engineer spends ". " 0" ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 3</li></ul></li>";
+			}
+			else{
+				echo "On average, your engineer spends ". round($count_type_low3_cond[$low_keys_cond[$j-1]]*100/$count_type_low_cond[$low_keys_cond[$j-1]]) ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 3</li></ul></li>";
 			}
 		}
 	}
@@ -274,19 +274,19 @@
 <?php
  echo "<style>";
 
- for($j=1;$j<$temp_count-1;$j++)
+ for($j=1;$j<$temp_count_cond-1;$j++)
 	{
-		if($count_type_low[$low_keys[$j-1]]>0)
+		if($count_type_low_cond[$low_keys_cond[$j-1]]>0)
 		{
-			echo "#low". ($low_keys[$j-1]-1)."{ display: none;}";
+			echo "#low_cond". ($low_keys_cond[$j-1]-1)."{ display: none;}";
 		}
 	}
 
-	for($j=1;$j<$temp_count-1;$j++)
+	for($j=1;$j<$temp_count_cond-1;$j++)
 	{
-		if($count_type_high[$high_keys[$j-1]]>0)
+		if($count_type_high_cond[$high_keys_cond[$j-1]]>0)
 		{
-			echo "#high". ($high_keys[$j-1]-1)."{ display: none;}";
+			echo "#high_cond". ($high_keys_cond[$j-1]-1)."{ display: none;}";
 		}
 	}
  echo "</style>";
@@ -295,20 +295,20 @@
 <script>
 
 <?php
-	for($j=1;$j<$temp_count-1;$j++)
+	for($j=1;$j<$temp_count_cond-1;$j++)
 		{
-			if($count_type_low[$low_keys[$j-1]]>0)
+			if($count_type_low_cond[$low_keys_cond[$j-1]]>0)
 		{
 ?>
-	function display<?php echo ($low_keys[$j-1]-1) ;?>(){
+	function display_cond<?php echo ($low_keys_cond[$j-1]-1) ;?>(){
 			console.log("function called");
-			if(document.getElementById('<?php echo 'low'. ($low_keys[$j-1]-1); ?>').style.display=='none')
+			if(document.getElementById('<?php echo 'low_cond'. ($low_keys_cond[$j-1]-1); ?>').style.display=='none')
 			{
 
-				document.getElementById('<?php echo 'low'. ($low_keys[$j-1]-1); ?>').style.display='block';
+				document.getElementById('<?php echo 'low_cond'. ($low_keys_cond[$j-1]-1); ?>').style.display='block';
 			}
 			else{
-				document.getElementById('<?php echo 'low'. ($low_keys[$j-1]-1); ?>').style.display='none';
+				document.getElementById('<?php echo 'low_cond'. ($low_keys_cond[$j-1]-1); ?>').style.display='none';
 
 			}
 		}
@@ -320,20 +320,20 @@
 
 
 <?php
-	for($j=1;$j<$temp_count-1;$j++)
+	for($j=1;$j<$temp_count_cond-1;$j++)
 		{
-			if($count_type_high[$high_keys[$j-1]]>0)
+			if($count_type_high_cond[$high_keys_cond[$j-1]]>0)
 		{
 ?>
-	function display<?php echo ($high_keys[$j-1]-1) ;?>(){
+	function display_cond<?php echo ($high_keys_cond[$j-1]-1) ;?>(){
 			console.log("function called");
-			if(document.getElementById('<?php echo 'high'. ($high_keys[$j-1]-1); ?>').style.display=='none')
+			if(document.getElementById('<?php echo 'high_cond'. ($high_keys_cond[$j-1]-1); ?>').style.display=='none')
 			{
 
-				document.getElementById('<?php echo 'high'. ($high_keys[$j-1]-1); ?>').style.display='block';
+				document.getElementById('<?php echo 'high_cond'. ($high_keys_cond[$j-1]-1); ?>').style.display='block';
 			}
 			else{
-				document.getElementById('<?php echo 'high'. ($low_keys[$j-1]-1); ?>').style.display='none';
+				document.getElementById('<?php echo 'high_cond'. ($low_keys_cond[$j-1]-1); ?>').style.display='none';
 
 			}
 		}
@@ -355,7 +355,6 @@
 	width:fit-content;
 	width:-webkit-fit-content;
 	width:-moz-fit-content;
-
 
 	/*margin: 0 auto;*/
 	margin: 20px;
