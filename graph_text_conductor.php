@@ -195,7 +195,9 @@
 	<div class="conductor">
 	<div id="text_box">
 			<h2 style="text-align: center;"> Conductor Operations </h2>
+
 			<?php if(max(array_values($count_type_high_cond))>0) { ?>
+
 			<h3>These combined factors contributed to period of high workload: </h3>
 			<ul>
 			<?php
@@ -208,22 +210,24 @@
 					echo "<li onclick='display_cond" . ($high_keys_cond[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ."<ul id='high_cond". ($high_keys_cond[$j-1]-1) . "'><li>";
 					if($count_type_high1_cond[$high_keys_cond[$j-1]]==0)
 					{
-						echo "On average, your engineer spends ". "0" ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 1</li><li>";
+
+						echo "On average, your conductor spends ". "0" ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 1</li><li>";
 					}
 					else{
-						echo "On average, your engineer spends ". round($count_type_high1_cond[$high_keys_cond[$j-1]]*100/$count_type_high_cond[$high_keys_cond[$j-1]]) ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 1</li><li>";
+						echo "On average, your conductor spends ". round($count_type_high1_cond[$high_keys_cond[$j-1]]*100/$count_type_high_cond[$high_keys_cond[$j-1]]) ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 1</li><li>";
 					}
 					if($count_type_high2_cond[$high_keys_cond[$j-1]]==0){
-						echo "On average, your engineer spends ". " 0" ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 2</li><li>";
+						echo "On average, your conductor spends ". " 0" ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 2</li><li>";
 					}
 					else{
-						echo "On average, your engineer spends ". round($count_type_high2_cond[$high_keys_cond[$j-1]]*100/$count_type_high_cond[$high_keys_cond[$j-1]]) ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 2</li><li>";
+						echo "On average, your conductor spends ". round($count_type_high2_cond[$high_keys_cond[$j-1]]*100/$count_type_high_cond[$high_keys_cond[$j-1]]) ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 2</li><li>";
 					}
 					if($count_type_high3_cond[$high_keys_cond[$j-1]]==0){
-						echo "On average, your engineer spends ". " 0" ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 3</li></ul></li>";
+						echo "On average, your conductor spends ". " 0" ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 3</li></ul></li>";
 					}
 					else{
-						echo "On average, your engineer spends ". round($count_type_high3_cond[$high_keys_cond[$j-1]]*100/$count_type_high_cond[$high_keys_cond[$j-1]]) ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 3</li></ul></li>";
+						echo "On average, your conductor spends ". round($count_type_high3_cond[$high_keys_cond[$j-1]]*100/$count_type_high_cond[$high_keys_cond[$j-1]]) ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 3</li></ul></li>";
+
 					}
 				}
 			}
@@ -245,22 +249,24 @@
 			echo "<li onclick='display_cond" . ($low_keys_cond[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $type_names[$low_keys_cond[$j-1]-1] ."<ul id='low_cond". ($low_keys_cond[$j-1]-1) . "'><li>";
 			if($count_type_low1_cond[$low_keys_cond[$j-1]]==0)
 			{
-				echo "On average, your engineer spends ". "0" ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 1</li><li>";
+
+				echo "On average, your conductor spends ". "0" ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 1</li><li>";
 			}
 			else{
-				echo "On average, your engineer spends ". round($count_type_low1_cond[$low_keys_cond[$j-1]]*100/$count_type_low_cond[$low_keys_cond[$j-1]]) ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 1</li><li>";
+				echo "On average, your conductor spends ". round($count_type_low1_cond[$low_keys_cond[$j-1]]*100/$count_type_low_cond[$low_keys_cond[$j-1]]) ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 1</li><li>";
 			}
 			if($count_type_low2_cond[$low_keys_cond[$j-1]]==0){
-				echo "On average, your engineer spends ". " 0" ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 2</li><li>";
+				echo "On average, your conductor spends ". " 0" ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 2</li><li>";
 			}
 			else{
-				echo "On average, your engineer spends ". round($count_type_low2_cond[$low_keys_cond[$j-1]]*100/$count_type_low_cond[$low_keys_cond[$j-1]]) ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 2</li><li>";
+				echo "On average, your conductor spends ". round($count_type_low2_cond[$low_keys_cond[$j-1]]*100/$count_type_low_cond[$low_keys_cond[$j-1]]) ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 2</li><li>";
 			}
 			if($count_type_low3_cond[$low_keys_cond[$j-1]]==0){
-				echo "On average, your engineer spends ". " 0" ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 3</li></ul></li>";
+				echo "On average, your conductor spends ". " 0" ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 3</li></ul></li>";
 			}
 			else{
-				echo "On average, your engineer spends ". round($count_type_low3_cond[$low_keys_cond[$j-1]]*100/$count_type_low_cond[$low_keys_cond[$j-1]]) ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 3</li></ul></li>";
+				echo "On average, your conductor spends ". round($count_type_low3_cond[$low_keys_cond[$j-1]]*100/$count_type_low_cond[$low_keys_cond[$j-1]]) ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 3</li></ul></li>";
+
 			}
 		}
 	}

@@ -34,13 +34,13 @@
 			display: none;
 		}
 
-		@media print
+/*		@media print
 		{
 			.no-print, .no-print *
 			{
 				display: none !important;
 			}
-		}
+		}*/
 </style>
 
 <div id="print-content">

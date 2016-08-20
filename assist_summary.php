@@ -66,7 +66,7 @@
 			color:
 			<?php
 				if(($low_count_1+$high_count_1)>$normal_count_1) {
-					if($low_count_1>$low_count_1) {
+					if($low_count_1>$high_count_1) {
 						echo "red";
 					} else {
 						echo "black";
@@ -108,7 +108,7 @@
 
 	<br><br><br>
 
-	<form action="summary_page.php" method="post" target="_blank" style='text-align: center;'>
+	<form action="summary_page.php" method="post" style='text-align: center;'>
 		<button type="submit" id="summary">View Report</button>
 	</form>
 

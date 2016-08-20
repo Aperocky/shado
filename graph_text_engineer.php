@@ -208,6 +208,7 @@
 					echo "<li onclick='display" . ($high_keys_eng[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ."<ul id='high". ($high_keys_eng[$j-1]-1) . "'><li>";
 					if($count_type_high1_eng[$high_keys_eng[$j-1]]==0)
 					{
+
 						echo "On average, your engineer spends ". "0" ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 1</li><li>";
 					}
 					else{
@@ -224,6 +225,7 @@
 					}
 					else{
 						echo "On average, your engineer spends ". round($count_type_high3_eng[$high_keys_eng[$j-1]]*100/$count_type_high_eng[$high_keys_eng[$j-1]]) ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 3</li></ul></li>";
+
 					}
 				}
 			}
@@ -245,6 +247,7 @@
 			echo "<li onclick='display" . ($low_keys_eng[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $type_names[$low_keys_eng[$j-1]-1] ."<ul id='low". ($low_keys_eng[$j-1]-1) . "'><li>";
 			if($count_type_low1_eng[$low_keys_eng[$j-1]]==0)
 			{
+
 				echo "On average, your engineer spends ". "0" ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 1</li><li>";
 			}
 			else{
@@ -261,6 +264,7 @@
 			}
 			else{
 				echo "On average, your engineer spends ". round($count_type_low3_eng[$low_keys_eng[$j-1]]*100/$count_type_low_eng[$low_keys_eng[$j-1]]) ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 3</li></ul></li>";
+
 			}
 		}
 	}
