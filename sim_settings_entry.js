@@ -144,7 +144,7 @@ function calculate_time(divName) {
 	cell1.innerHTML="<input type='checkbox' name='extra1' value='1' id='conductor' />Conductor";
 	cell2.innerHTML="<input type='checkbox' name='extra2' value='2' id='train_c' />Positive Train Control";
 	cell3.innerHTML="<input type='checkbox' name='extra3' value='3' id='cruise_control' />Cruise Control";
-	cell4.innerHTML="<input type='checkbox' name='extra4' value='4' id='other'>Custom";
+	cell4.innerHTML="<input type='checkbox' name='extra4' value='4' id='other' onchange='check()'>Custom";
 
 
 	// var divobj = document.getElementById('refresh');
@@ -174,4 +174,15 @@ function get24TimeString(hours, minutes, ampm) {
 
 function leftZeroPad2(num) {
 	return ("00" + num).slice(-2);
+}
+
+function check(){
+	var id = document.getElementById('other').checked; 
+	if (id==1){
+		document.getElementById('custom').style.display='block';
+	}
+	else{
+		document.getElementById('custom').style.display='none';
+	}
+	
 }
