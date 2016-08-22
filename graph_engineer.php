@@ -192,13 +192,19 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 	var mystate = d.time.slice(0,4);
 
     var y0 = 0;
+	
 	d.ages = color.domain().map(function(name) { return {mystate:mystate, name: name, y0: y0, y1: y0 += +d[name]}; });
-
+	
     d.total = d.ages[d.ages.length - 1].y1;// the last row
+		
 	d.pct = [];
-
+	d.total=d.total*100;
 	for (var i=0;i <d.ages.length;i ++ ){
-
+		d.ages[i].y1=d.ages[i].y1*100;
+		d.ages[i].y0=d.ages[i].y0*100;
+	}
+	for (var i=0;i <d.ages.length;i ++ ){
+		
 		var y_coordinate = +d.ages[i].y1/d.total;
 	    var y_height1 = (d.ages[i].y1)/d.total;
 		var y_height0 = (d.ages[i].y0)/d.total;
@@ -213,11 +219,12 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 
 		});
 	}
+	console.log(d);
   });
 
   x.domain(data.map(function(d) { return d.time.slice(0,4); }));
-  yAbsolute.domain([0,1]);//Absolute View scale
-  yRelative.domain([0,1])// Relative View domain
+  yAbsolute.domain([0,100]);//Absolute View scale
+  yRelative.domain([0,100])// Relative View domain
 
   var absoluteView = true // define a boolean variable, true is absolute view, false is relative view
   						  // Initial view is absolute
@@ -275,7 +282,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 				.attr("x",xPos)
 				.attr("y",yPos +height/2)
 				.attr("class","tooltip")
-				.text(((d.y1-d.y0)*100).toFixed(2)+"%");
+				.text(((d.y1-d.y0)).toFixed(2)+"%");
 		})
 		.on("mouseout",function(){
 			svg_eng.select(".tooltip").remove();

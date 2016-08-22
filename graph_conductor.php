@@ -183,6 +183,11 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 
     d.total = d.ages[d.ages.length - 1].y1;// the last row
 	d.pct = [];
+	d.total=d.total*100;
+	for (var i=0;i <d.ages.length;i ++ ){
+		d.ages[i].y1=d.ages[i].y1*100;
+		d.ages[i].y0=d.ages[i].y0*100;
+	}
 
 	for (var i=0;i <d.ages.length;i ++ ){
 
@@ -203,8 +208,8 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
   });
 
   x.domain(data.map(function(d) { return d.time.slice(0,4); }));
-  yAbsolute.domain([0,1]);//Absolute View scale
-  yRelative.domain([0,1])// Relative View domain
+  yAbsolute.domain([0,100]);//Absolute View scale
+  yRelative.domain([0,100])// Relative View domain
 
   var absoluteView = true // define a boolean variable, true is absolute view, false is relative view
   						  // Initial view is absolute
