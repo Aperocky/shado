@@ -3,6 +3,8 @@
 	$file_handle=fopen('sessions/Engineer_stats.csv','r');
 	$file=fopen("sessions/mod_type_data_engineer.txt","w");
 	$count=array();
+	$s_dev=array();
+	$temp_count_dev=0;
 	$temp_count=0;
 	$skip=1;
 	$num=0;
@@ -40,6 +42,16 @@
 		}
 		if($skip==0)
 		{
+			$num=count($line_of_text);
+			$s_dev[$temp_count_dev]=array();
+			for($i=2;$i<$num;$i++)
+			{
+				
+				
+				$s_dev[$temp_count_dev][$i-2]=(float)$line_of_text[$i];
+				
+			}
+			$temp_count_dev++;
 			$skip=1;
 			continue;
 		}
@@ -288,7 +300,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 	
 	stateAbsolute.selectAll("rect")
 		.on("mouseover", function(d){
-			
+			console.log(d);
 
 			var xPos = parseFloat(d3.select(this).attr("x"));
 			var yPos = parseFloat(d3.select(this).attr("y"));
@@ -298,9 +310,9 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 			div.transition()		
                 .duration(200)		
                 .style("opacity", .9);		
-            div	.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2)+"%")	
-                .style("left", (d3.event.pageX) + "px")		
-                .style("top", (d3.event.pageY - 28) + "px");	
+            div	.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2)+"%<br>Standard Deviation: ")	
+                .style("left", (d3.event.pageX+20) + "px")		
+                .style("top", (d3.event.pageY - 20) + "px");	
             					
         
 		   	

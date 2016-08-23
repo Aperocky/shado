@@ -281,8 +281,8 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
                 .duration(200)		
                 .style("opacity", .9);		
             div1.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2)+"%")	
-                .style("left", (d3.event.pageX) + "px")		
-                .style("top", (d3.event.pageY - 28) + "px");	
+                 .style("left", (d3.event.pageX+20) + "px")		
+                .style("top", (d3.event.pageY - 20) + "px");	
             					
         
 		   	
