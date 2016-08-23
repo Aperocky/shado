@@ -3,6 +3,8 @@
 	$file_handle=fopen('sessions/Engineer_stats.csv','r');
 	$file=fopen("sessions/mod_type_data_engineer.txt","w");
 	$count=array();
+	$s_dev=array();
+	$temp_count_dev=0;
 	$temp_count=0;
 	$skip=1;
 	$num=0;
@@ -40,6 +42,16 @@
 		}
 		if($skip==0)
 		{
+			$num=count($line_of_text);
+			$s_dev[$temp_count_dev]=array();
+			for($i=2;$i<$num;$i++)
+			{
+				
+				
+				$s_dev[$temp_count_dev][$i-2]=(float)$line_of_text[$i];
+				
+			}
+			$temp_count_dev++;
 			$skip=1;
 			continue;
 		}
@@ -129,13 +141,24 @@
   display: none;
 }
 
-.tooltip{
-	text-anchor: left;
-	font-family: sans-serif;
-	font-size: 12px;
-	font-weight: bold;
-	fill:black;
+div.tooltip {	
+    position: absolute;			
+	
+    width:fit-content;
+	width:-webkit-fit-content;
+	width:-moz-fit-content;				
+    height:fit-content;
+	height:-webkit-fit-content;
+	height:-moz-fit-content;					
+    padding: 2px;				
+    font: 20px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
 }
+
+
 
 .node.active {
   fill: blue;
@@ -177,6 +200,10 @@ var yAxisAbsolute = d3.svg.axis()
 	    .scale(yAbsolute)
 	    .orient("left");
 
+var div = d3.select("#graph").append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);
+	
 var svg_eng = d3.select("#graph").append("svg")
     .attr("width", width + margin.left + margin.right+legend_width)
     .attr("height", height + margin.top + margin.bottom)
@@ -189,6 +216,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 
 
   data.forEach(function(d) {
+	  
 	var mystate = d.time.slice(0,4);
 
     var y0 = 0;
@@ -218,8 +246,9 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 			y_pct: y_pct
 
 		});
+		
 	}
-	console.log(d);
+	
   });
 
   x.domain(data.map(function(d) { return d.time.slice(0,4); }));
@@ -248,7 +277,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 	stateAbsolute.selectAll("rect")
 			    .data(function(d) { return d.ages})
 			    .enter().append("rect")
-			    .attr("width", x.rangeBand())
+			    .attr("width", x.rangeBand())    
 			    .attr("y", function(d) {
 
 					  return yAbsolute(d.y1);
@@ -268,25 +297,35 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 				.attr("class","absolute")
 				.style("pointer-events","all");
 				 // initially it is invisible, i.e. start with Absolute View
-
+	
 	stateAbsolute.selectAll("rect")
 		.on("mouseover", function(d){
+			console.log(d);
 
 			var xPos = parseFloat(d3.select(this).attr("x"));
 			var yPos = parseFloat(d3.select(this).attr("y"));
 			var height = parseFloat(d3.select(this).attr("height"))
-
+			
 			d3.select(this).attr("stroke","blue").attr("stroke-width",0.8);
+			div.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+            div	.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2)+"%<br>Standard Deviation: ")	
+                .style("left", (d3.event.pageX+20) + "px")		
+                .style("top", (d3.event.pageY - 20) + "px");	
+            					
+        
+		   	
+                
 
-			svg_eng.append("text")
-				.attr("x",xPos)
-				.attr("y",yPos +height/2)
-				.attr("class","tooltip")
-				.text(((d.y1-d.y0)).toFixed(2)+"%");
+			
 		})
-		.on("mouseout",function(){
-			svg_eng.select(".tooltip").remove();
-			d3.select(this).attr("stroke","pink").attr("stroke-width",0.2);
+		.on("mouseout", function(d) {	
+			
+			d3.select(this).attr("stroke","pink").attr("stroke-width",0.2);		
+            div.transition()		
+                .duration(100)		
+                .style("opacity", 0);	
 		})
 	//define two different scales, but one of them will always be hidden.
 	svg_eng.append("g")
