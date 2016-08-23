@@ -52,6 +52,7 @@
     //  Set task name
 
         $line = strstr(fgets($file), "\t");
+        $line = trim($line);
         $_SESSION['taskNames'][]=$line;
         // echo $line."<br>";
 
@@ -81,8 +82,8 @@
 
     //  Set service distribution parameters
 
-        list ($name, $data[0], $data[1]) = fscanf($file, "%s %f %f");
-        $_SESSION['taskSerPms'][]=$data;
+        list ($name, $data2[0], $data2[1]) = fscanf($file, "%s %f %f");
+        $_SESSION['taskSerPms'][]=$data2;
         // echo $data[0]."<br>";
 
     //  Set expiration distribution type
