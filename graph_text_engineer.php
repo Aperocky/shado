@@ -1,6 +1,17 @@
 
 
 <?php
+	
+	session_start();
+	$traffic=array();
+	if(isset($_SESSION['traffic_time'])){
+		$time=$_SESSION['traffic_time'];
+		for($i=0;$i<$time;$i++){
+			$traffic[$i]=$_SESSION['traffic_level'.$i];
+		}
+	}
+	
+	
 	$type_names=array();
 	$type_names[0]="Communicating";
 	$type_names[1]="Exception Handling";
@@ -76,8 +87,8 @@
 		{
 			if($i<5)
 			{
-				$type_byPhase1_eng[$j][]=$count_eng[$j][$i];
-				/* array_push($type_byPhase1[$j], $count[$j][$i]); */
+				/* $type_byPhase1_eng[$j][]=$count_eng[$j][$i]; */
+				array_push($type_byPhase1[$j], $count[$j][$i]);
 			}
 			else
 			{
@@ -102,6 +113,14 @@
 
 	$count_type_low_eng=array();
 	$count_type_high_eng=array();
+	
+	$length=$num_eng-2;
+	
+	$length_phase1=3;
+	$length_phase2=$length-6;
+	$length_phase3=3;
+	
+	
 
 	for($j=1;$j<$temp_count_eng-1;$j++)
 	{
@@ -212,19 +231,19 @@
 						echo "On average, your engineer spends ". "0" ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 1</li><li>";
 					}
 					else{
-						echo "On average, your engineer spends ". round($count_type_high1_eng[$high_keys_eng[$j-1]]*100/$count_type_high_eng[$high_keys_eng[$j-1]]) ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 1</li><li>";
+						echo "On average, your engineer spends ". round($count_type_high1_eng[$high_keys_eng[$j-1]]*100/$length_phase1,2) ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 1</li><li>";
 					}
 					if($count_type_high2_eng[$high_keys_eng[$j-1]]==0){
 						echo "On average, your engineer spends ". " 0" ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 2</li><li>";
 					}
 					else{
-						echo "On average, your engineer spends ". round($count_type_high2_eng[$high_keys_eng[$j-1]]*100/$count_type_high_eng[$high_keys_eng[$j-1]]) ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 2</li><li>";
+						echo "On average, your engineer spends ". round($count_type_high2_eng[$high_keys_eng[$j-1]]*100/$length_phase2,2) ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 2</li><li>";
 					}
 					if($count_type_high3_eng[$high_keys_eng[$j-1]]==0){
 						echo "On average, your engineer spends ". " 0" ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 3</li></ul></li>";
 					}
 					else{
-						echo "On average, your engineer spends ". round($count_type_high3_eng[$high_keys_eng[$j-1]]*100/$count_type_high_eng[$high_keys_eng[$j-1]]) ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 3</li></ul></li>";
+						echo "On average, your engineer spends ". round($count_type_high3_eng[$high_keys_eng[$j-1]]*100/$length_phase3,2) ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 3</li></ul></li>";
 
 					}
 				}
@@ -251,19 +270,19 @@
 				echo "On average, your engineer spends ". "0" ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 1</li><li>";
 			}
 			else{
-				echo "On average, your engineer spends ". round($count_type_low1_eng[$low_keys_eng[$j-1]]*100/$count_type_low_eng[$low_keys_eng[$j-1]]) ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 1</li><li>";
+				echo "On average, your engineer spends ". round($count_type_low1_eng[$low_keys_eng[$j-1]]*100/$length_phase1,2) ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 1</li><li>";
 			}
 			if($count_type_low2_eng[$low_keys_eng[$j-1]]==0){
 				echo "On average, your engineer spends ". " 0" ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 2</li><li>";
 			}
 			else{
-				echo "On average, your engineer spends ". round($count_type_low2_eng[$low_keys_eng[$j-1]]*100/$count_type_low_eng[$low_keys_eng[$j-1]]) ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 2</li><li>";
+				echo "On average, your engineer spends ". round($count_type_low2_eng[$low_keys_eng[$j-1]]*100/$length_phase2,2) ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 2</li><li>";
 			}
 			if($count_type_low3_eng[$low_keys_eng[$j-1]]==0){
 				echo "On average, your engineer spends ". " 0" ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 3</li></ul></li>";
 			}
 			else{
-				echo "On average, your engineer spends ". round($count_type_low3_eng[$low_keys_eng[$j-1]]*100/$count_type_low_eng[$low_keys_eng[$j-1]]) ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 3</li></ul></li>";
+				echo "On average, your engineer spends ". round($count_type_low3_eng[$low_keys_eng[$j-1]]*100/$length_phase3,2) ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 3</li></ul></li>";
 
 			}
 		}
@@ -271,6 +290,38 @@
 	echo "</ul>" ;
 ?>
 
+
+	<br><br><br>
+	<?php
+	
+	$check=0;
+	$id=0;
+	if(array_sum(array_slice($traffic,0,$time/2))>=array_sum(array_slice($traffic,$time/2,$time))){
+		for($i=2+$length/2;$i<$num_eng;$i++){
+			if($count_eng[10][$i]>0.7){
+				$check=1.0;
+				$id=$i-2;
+				break;
+			}
+		}
+		
+		if($check==1){
+			$util_first=array_sum(array_slice($count_eng[10],1,$length/2+1));
+			$util_second=array_sum(array_slice($count_eng[10],$length/2+1,$length));
+			if($util_second>$util_first){
+	?>
+	<h3 style="color: red">Fatigue factor!</h3>
+	From <b> <?php echo $id*10; ?>th </b>minute, your engineer’s fatigue began to
+    contribute to higher than normal workload
+	<?php
+				
+			}
+		}
+	}
+	?>
+	
+	
+	
 </div>
 </div>
 </div>

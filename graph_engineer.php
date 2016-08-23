@@ -8,6 +8,17 @@
 	$temp_count=0;
 	$skip=1;
 	$num=0;
+	
+	$type_names=array();
+	$type_names[0]="Communicating";
+	$type_names[1]="Exception Handling";
+	$type_names[2]="Paperwork";
+	$type_names[3]="Maintenance of Way";
+	$type_names[4]="Temporary Speed Restrictions";
+	$type_names[5]="Signal Response Management";
+	$type_names[6]="Monitoring Inside";
+	$type_names[7]="Monitoring Outside";
+	$type_names[8]="Planning Ahead";
 
 	while (! feof($file_handle) )
 	{
@@ -45,10 +56,8 @@
 			$num=count($line_of_text);
 			$s_dev[$temp_count_dev]=array();
 			for($i=2;$i<$num;$i++)
-			{
-				
-				
-				$s_dev[$temp_count_dev][$i-2]=(float)$line_of_text[$i];
+			{		
+				$s_dev[$type_names[$temp_count_dev]][$count[0][$i-1]]=(float)$line_of_text[$i];
 				
 			}
 			$temp_count_dev++;
@@ -150,8 +159,8 @@ div.tooltip {
     height:fit-content;
 	height:-webkit-fit-content;
 	height:-moz-fit-content;					
-    padding: 2px;				
-    font: 20px sans-serif;		
+    padding: 5px;				
+    font: 15px sans-serif;		
     background: lightsteelblue;	
     border: 0px;		
     border-radius: 8px;			
@@ -310,7 +319,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 			div.transition()		
                 .duration(200)		
                 .style("opacity", .9);		
-            div	.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2)+"%<br>Standard Deviation: ")	
+            div	.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2))	
                 .style("left", (d3.event.pageX+20) + "px")		
                 .style("top", (d3.event.pageY - 20) + "px");	
             					

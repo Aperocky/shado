@@ -1,5 +1,10 @@
 <?php
-
+	
+	$traffic=array();
+	$traffic['l']=0.5;
+	$traffic['m']=1.0;
+	$traffic['h']=2.0;
+	
 	session_start();
 	$myfile=fopen("sessions/parameters.txt", "w") or fopen("/home/hal/des_data/parameters.txt", "w") or die("unable to open");
 	fwrite($myfile,"output_path		/var/www/html/des-web/sessions\n");
@@ -13,9 +18,11 @@
 
 	fwrite($myfile,"num_hours		".$time."\n");
 	fwrite($myfile,"traffic 		");
+	$_SESSION['traffic_time']=$time;
 	for($x=0;$x<$time;$x++)
 	{
 		fwrite($myfile,$_POST [(string)$x]." ");
+		$_SESSION['traffic_level'.$x]=$traffic[$_POST [(string)$x]];
 	}
 	
 	if(isset($_SESSION['replications']) && !empty($_SESSION['replications']))

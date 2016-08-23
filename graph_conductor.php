@@ -131,8 +131,8 @@ div.tooltip1 {
     height:fit-content;
 	height:-webkit-fit-content;
 	height:-moz-fit-content;					
-    padding: 2px;				
-    font: 20px sans-serif;		
+    padding: 5px;				
+    font: 15px sans-serif;		
     background: lightsteelblue;	
     border: 0px;		
     border-radius: 8px;			
