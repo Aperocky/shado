@@ -328,7 +328,16 @@ table, th, td {
 }
 
 th, td {
-    padding: 5px;
+    padding: 8px;
+}
+
+tr:nth-child(even){
+	background-color: #f1f1f1;
+}
+
+th {
+    background-color: <?php echo $color_theme_dark_blue; ?>;
+    color: white;
 }
 
 .tooltip {

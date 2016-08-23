@@ -124,10 +124,4 @@
 	</div>
 </div>
 
-<style>
-#runSimulation{
-font-weight: bold;
-background-color: 00B1FF;
-}
-</style>
 <?php require_once('footer.php'); ?>
