@@ -1,10 +1,11 @@
 <?php
-	
+
 	$traffic=array();
 	$traffic['l']=0.5;
 	$traffic['m']=1.0;
 	$traffic['h']=2.0;
-	
+	print_r($_SESSION);
+
 	session_start();
 	$myfile=fopen("sessions/parameters.txt", "w") or fopen("/home/hal/des_data/parameters.txt", "w") or die("unable to open");
 	fwrite($myfile,"output_path		/var/www/html/des-web/sessions\n");
