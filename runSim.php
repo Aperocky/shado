@@ -1,17 +1,16 @@
 <?php
+	session_start();
+
+//	Start session
+
+	if(empty($_SESSION['session_started'])) {
+		require_once("set_default_tasks.php");
+	}
+	$_SESSION['session_started'] = true;
+
 	$page_title='Run Simulation.';
 	$curr_page='runSimPage';
 	$html_head_insertions .= '<script type="text/javascript" src="sim_settings_entry.js"></script>';
-
-	// session_start();
-	//
-	// if(isset($_SESSION['replications']) && !empty($_SESSION['replications']))
-	// {
-	// 	$rep=$_SESSION['replications'];
-	// }
-	// else{
-	// 	$rep=100;
-	// }
 
 	require_once("header.php");
 	require_once("side_navigation.php");
@@ -102,7 +101,7 @@
 			</div>
 			<input type="submit" id="submit" value="Run Simulation" style='display:none;'>
 		</form>
-		
+
 	</div>
 
 <?php require_once("footer.php"); ?>
