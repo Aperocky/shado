@@ -76,29 +76,34 @@
 	$type_byPhase1_eng=array();
 	$type_byPhase2_eng=array();
 	$type_byPhase3_eng=array();
+	$type_byPhase_eng=array();
 
 	for($j=1;$j<$temp_count_eng-1;$j++)
 	{
 		$type_byPhase1_eng[$j]=array();
 		$type_byPhase2_eng[$j]=array();
 		$type_byPhase3_eng[$j]=array();
+		$type_byPhase_eng[$j]=array();
 
 		for($i=2;$i<$num_eng;$i++)
 		{
 			if($i<5)
 			{
 				/* $type_byPhase1_eng[$j][]=$count_eng[$j][$i]; */
-				array_push($type_byPhase1[$j], $count[$j][$i]);
+				array_push($type_byPhase1_eng[$j], $count[$j][$i]);
+				array_push($type_byPhase_eng[$j], $count[$j][$i]);
 			}
 			else
 			{
 				if($i>($num_eng-4))
 				{
 					array_push($type_byPhase3_eng[$j], $count_eng[$j][$i]);
+					array_push($type_byPhase_eng[$j], $count[$j][$i]);
 				}
 				else
 				{
 					array_push($type_byPhase2_eng[$j], $count_eng[$j][$i]);
+					array_push($type_byPhase_eng[$j], $count[$j][$i]);
 				}
 			}
 		}
@@ -206,8 +211,11 @@
 
 	arsort($count_type_low_eng);
 	arsort($count_type_high_eng);
+	
+	
 
 ?>
+
 
 
 <div class="page">
@@ -222,28 +230,29 @@
 			$high_keys_eng=array_keys($count_type_high_eng);
 			for($j=1;$j<$temp_count_eng-1;$j++)
 			{
-				if($count_type_high_eng[$high_keys_eng[$j-1]]>0)
+				if(array_sum($type_byPhase_eng[$high_keys_eng[$j-1]])>0)
 				{
-					echo "<li onclick='display" . ($high_keys_eng[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ."<ul id='high". ($high_keys_eng[$j-1]-1) . "'><li>";
-					if($count_type_high1_eng[$high_keys_eng[$j-1]]==0)
-					{
-
-						echo "On average, your engineer spends ". "0" ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 1</li><li>";
+					echo "<li onclick='display" . ($high_keys_eng[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $type_names[$high_keys_eng[$j-1]-1] ."<ul id='high". ($high_keys_eng[$j-1]-1) . "'><li>";
+				
+					if(array_sum($type_byPhase1_eng[$high_keys_eng[$j-1]])==0)
+						{
+							echo "During Phase 1, your engineer spent 0% time on ". $type_names[$high_keys_eng[$j-1]-1] ."</li><li>";
+						}
+					else{
+						echo "During Phase 1, your engineer spent ". round(array_sum($type_byPhase1_eng[$high_keys_eng[$j-1]])*100/$length_phase1,2) ."% time on ". $type_names[$high_keys_eng[$j-1]-1] ."</li><li>";
+						
+					}
+					if(array_sum($type_byPhase2_eng[$high_keys_eng[$j-1]])==0){
+						echo "During Phase 2, your engineer spent 0% time on ". $type_names[$high_keys_eng[$j-1]-1] ."</li><li>";
 					}
 					else{
-						echo "On average, your engineer spends ". round($count_type_high1_eng[$high_keys_eng[$j-1]]*100/$length_phase1,2) ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 1</li><li>";
+						echo "During Phase 2, your engineer spent ". round(array_sum($type_byPhase2_eng[$high_keys_eng[$j-1]])*100/$length_phase2,2) ."% time on ". $type_names[$high_keys_eng[$j-1]-1] ."</li><li>";
 					}
-					if($count_type_high2_eng[$high_keys_eng[$j-1]]==0){
-						echo "On average, your engineer spends ". " 0" ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 2</li><li>";
-					}
-					else{
-						echo "On average, your engineer spends ". round($count_type_high2_eng[$high_keys_eng[$j-1]]*100/$length_phase2,2) ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 2</li><li>";
-					}
-					if($count_type_high3_eng[$high_keys_eng[$j-1]]==0){
-						echo "On average, your engineer spends ". " 0" ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 3</li></ul></li>";
+					if(array_sum($type_byPhase3_eng[$high_keys_eng[$j-1]])==0){
+						echo "During Phase 3, your engineer spent 0% time on ". $type_names[$high_keys_eng[$j-1]-1] ."</li></ul></li>";
 					}
 					else{
-						echo "On average, your engineer spends ". round($count_type_high3_eng[$high_keys_eng[$j-1]]*100/$length_phase3,2) ."% time on Task Type ". $type_names[($high_keys_eng[$j-1]-1)] ." during Phase 3</li></ul></li>";
+						echo "During Phase 3, your engineer spent ". round(array_sum($type_byPhase3_eng[$high_keys_eng[$j-1]])*100/$length_phase3,2) ."% time on ". $type_names[$high_keys_eng[$j-1]-1] ."</li></ul></li>";
 
 					}
 				}
@@ -261,28 +270,29 @@
 	$low_keys_eng=array_keys($count_type_low_eng);
 	for($j=1;$j<$temp_count_eng-1;$j++)
 	{
-		if($count_type_low_eng[$low_keys_eng[$j-1]]>0)
+		if(array_sum($type_byPhase_eng[$low_keys_eng[$j-1]])>0)
 		{
 			echo "<li onclick='display" . ($low_keys_eng[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $type_names[$low_keys_eng[$j-1]-1] ."<ul id='low". ($low_keys_eng[$j-1]-1) . "'><li>";
-			if($count_type_low1_eng[$low_keys_eng[$j-1]]==0)
-			{
-
-				echo "On average, your engineer spends ". "0" ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 1</li><li>";
+		
+			if(array_sum($type_byPhase1_eng[$low_keys_eng[$j-1]])==0)
+				{
+					echo "During Phase 1, your engineer spent 0% time on ". $type_names[$low_keys_eng[$j-1]-1] ."</li><li>";
+				}
+			else{
+				echo "During Phase 1, your engineer spent ". round(array_sum($type_byPhase1_eng[$low_keys_eng[$j-1]])*100/$length_phase1,2) ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ."</li><li>";
+				
+			}
+			if(array_sum($type_byPhase2_eng[$low_keys_eng[$j-1]])==0){
+				echo "During Phase 2, your engineer spent 0% time on ". $type_names[$low_keys_eng[$j-1]-1] ."</li><li>";
 			}
 			else{
-				echo "On average, your engineer spends ". round($count_type_low1_eng[$low_keys_eng[$j-1]]*100/$length_phase1,2) ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 1</li><li>";
+				echo "During Phase 2, your engineer spent ". round(array_sum($type_byPhase2_eng[$low_keys_eng[$j-1]])*100/$length_phase2,2) ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ."</li><li>";
 			}
-			if($count_type_low2_eng[$low_keys_eng[$j-1]]==0){
-				echo "On average, your engineer spends ". " 0" ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 2</li><li>";
-			}
-			else{
-				echo "On average, your engineer spends ". round($count_type_low2_eng[$low_keys_eng[$j-1]]*100/$length_phase2,2) ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 2</li><li>";
-			}
-			if($count_type_low3_eng[$low_keys_eng[$j-1]]==0){
-				echo "On average, your engineer spends ". " 0" ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 3</li></ul></li>";
+			if(array_sum($type_byPhase3_eng[$low_keys_eng[$j-1]])==0){
+				echo "During Phase 3, your engineer spent 0% time on ". $type_names[$low_keys_eng[$j-1]-1] ."</li></ul></li>";
 			}
 			else{
-				echo "On average, your engineer spends ". round($count_type_low3_eng[$low_keys_eng[$j-1]]*100/$length_phase3,2) ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ." during Phase 3</li></ul></li>";
+				echo "During Phase 3, your engineer spent ". round(array_sum($type_byPhase3_eng[$low_keys_eng[$j-1]])*100/$length_phase3,2) ."% time on ". $type_names[$low_keys_eng[$j-1]-1] ."</li></ul></li>";
 
 			}
 		}

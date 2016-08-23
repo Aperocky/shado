@@ -1,7 +1,7 @@
 
 
 <?php
-
+	
 	session_start();
 	$traffic=array();
 	if(isset($_SESSION['traffic_time'])){
@@ -23,7 +23,7 @@
 	$type_names[7]="Monitoring Outside";
 	$type_names[8]="Planning Ahead";
 
-	$file_handle_cond=fopen('sessions/Conductor_stats.csv','r');
+	$file_handle_cond=fopen('sessions/conductor_stats.csv','r');
 	$count_cond=array();
 	$temp_count_cond=0;
 	$skip_cond=1;
@@ -76,29 +76,34 @@
 	$type_byPhase1_cond=array();
 	$type_byPhase2_cond=array();
 	$type_byPhase3_cond=array();
+	$type_byPhase_cond=array();
 
 	for($j=1;$j<$temp_count_cond-1;$j++)
 	{
 		$type_byPhase1_cond[$j]=array();
 		$type_byPhase2_cond[$j]=array();
 		$type_byPhase3_cond[$j]=array();
+		$type_byPhase_cond[$j]=array();
 
 		for($i=2;$i<$num_cond;$i++)
 		{
 			if($i<5)
 			{
-				$type_byPhase1_cond[$j][]=$count_cond[$j][$i];
-				/* array_push($type_byPhase1[$j], $count[$j][$i]); */
+				/* $type_byPhase1_cond[$j][]=$count_cond[$j][$i]; */
+				array_push($type_byPhase1_cond[$j], $count[$j][$i]);
+				array_push($type_byPhase_cond[$j], $count[$j][$i]);
 			}
 			else
 			{
 				if($i>($num_cond-4))
 				{
 					array_push($type_byPhase3_cond[$j], $count_cond[$j][$i]);
+					array_push($type_byPhase_cond[$j], $count[$j][$i]);
 				}
 				else
 				{
 					array_push($type_byPhase2_cond[$j], $count_cond[$j][$i]);
+					array_push($type_byPhase_cond[$j], $count[$j][$i]);
 				}
 			}
 		}
@@ -114,11 +119,12 @@
 	$count_type_low_cond=array();
 	$count_type_high_cond=array();
 	
-	$length=$num_eng-2;
+	$lcondth=$num_cond-2;
 	
-	$length_phase1=3;
-	$length_phase2=$length-6;
-	$length_phase3=3;
+	$lcondth_phase1=3;
+	$lcondth_phase2=$lcondth-6;
+	$lcondth_phase3=3;
+	
 	
 
 	for($j=1;$j<$temp_count_cond-1;$j++)
@@ -205,17 +211,18 @@
 
 	arsort($count_type_low_cond);
 	arsort($count_type_high_cond);
+	
+	
 
 ?>
+
 
 
 <div class="page">
 	<div class="conductor">
 	<div id="text_box">
-			<h2 style="text-align: center;"> Conductor Operations </h2>
-
+			<h2 style="text-align: center;"> conductor Operations </h2>
 			<?php if(max(array_values($count_type_high_cond))>0) { ?>
-
 			<h3>These combined factors contributed to period of high workload: </h3>
 			<ul>
 			<?php
@@ -223,28 +230,29 @@
 			$high_keys_cond=array_keys($count_type_high_cond);
 			for($j=1;$j<$temp_count_cond-1;$j++)
 			{
-				if($count_type_high_cond[$high_keys_cond[$j-1]]>0)
+				if(array_sum($type_byPhase_cond[$high_keys_cond[$j-1]])>0)
 				{
-					echo "<li onclick='display_cond" . ($high_keys_cond[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ."<ul id='high_cond". ($high_keys_cond[$j-1]-1) . "'><li>";
-					if($count_type_high1_cond[$high_keys_cond[$j-1]]==0)
-					{
-
-						echo "On average, your conductor spends ". "0" ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 1</li><li>";
+					echo "<li onclick='display_cond" . ($high_keys_cond[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $type_names[$high_keys_cond[$j-1]-1] ."<ul id='high_cond". ($high_keys_cond[$j-1]-1) . "'><li>";
+				
+					if(array_sum($type_byPhase1_cond[$high_keys_cond[$j-1]])==0)
+						{
+							echo "During Phase 1, your conductor spent 0% time on ". $type_names[$high_keys_cond[$j-1]-1] ."</li><li>";
+						}
+					else{
+						echo "During Phase 1, your conductor spent ". round(array_sum($type_byPhase1_cond[$high_keys_cond[$j-1]])*100/$lcondth_phase1,2) ."% time on ". $type_names[$high_keys_cond[$j-1]-1] ."</li><li>";
+						
+					}
+					if(array_sum($type_byPhase2_cond[$high_keys_cond[$j-1]])==0){
+						echo "During Phase 2, your conductor spent 0% time on ". $type_names[$high_keys_cond[$j-1]-1] ."</li><li>";
 					}
 					else{
-						echo "On average, your conductor spends ". round($count_type_high1_cond[$high_keys_cond[$j-1]]*100/$length_phase1,2) ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 1</li><li>";
+						echo "During Phase 2, your conductor spent ". round(array_sum($type_byPhase2_cond[$high_keys_cond[$j-1]])*100/$lcondth_phase2,2) ."% time on ". $type_names[$high_keys_cond[$j-1]-1] ."</li><li>";
 					}
-					if($count_type_high2_cond[$high_keys_cond[$j-1]]==0){
-						echo "On average, your conductor spends ". " 0" ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 2</li><li>";
-					}
-					else{
-						echo "On average, your conductor spends ". round($count_type_high2_cond[$high_keys_cond[$j-1]]*100/$length_phase2,2) ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 2</li><li>";
-					}
-					if($count_type_high3_cond[$high_keys_cond[$j-1]]==0){
-						echo "On average, your conductor spends ". " 0" ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 3</li></ul></li>";
+					if(array_sum($type_byPhase3_cond[$high_keys_cond[$j-1]])==0){
+						echo "During Phase 3, your conductor spent 0% time on ". $type_names[$high_keys_cond[$j-1]-1] ."</li></ul></li>";
 					}
 					else{
-						echo "On average, your conductor spends ". round($count_type_high3_cond[$high_keys_cond[$j-1]]*100/$length_phase3,2) ."% time on Task Type ". $type_names[($high_keys_cond[$j-1]-1)] ." during Phase 3</li></ul></li>";
+						echo "During Phase 3, your conductor spent ". round(array_sum($type_byPhase3_cond[$high_keys_cond[$j-1]])*100/$lcondth_phase3,2) ."% time on ". $type_names[$high_keys_cond[$j-1]-1] ."</li></ul></li>";
 
 					}
 				}
@@ -262,63 +270,68 @@
 	$low_keys_cond=array_keys($count_type_low_cond);
 	for($j=1;$j<$temp_count_cond-1;$j++)
 	{
-		if($count_type_low_cond[$low_keys_cond[$j-1]]>0)
+		if(array_sum($type_byPhase_cond[$low_keys_cond[$j-1]])>0)
 		{
 			echo "<li onclick='display_cond" . ($low_keys_cond[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $type_names[$low_keys_cond[$j-1]-1] ."<ul id='low_cond". ($low_keys_cond[$j-1]-1) . "'><li>";
-			if($count_type_low1_cond[$low_keys_cond[$j-1]]==0)
-			{
-
-				echo "On average, your conductor spends ". "0" ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 1</li><li>";
+		
+			if(array_sum($type_byPhase1_cond[$low_keys_cond[$j-1]])==0)
+				{
+					echo "During Phase 1, your conductor spent 0% time on ". $type_names[$low_keys_cond[$j-1]-1] ."</li><li>";
+				}
+			else{
+				echo "During Phase 1, your conductor spent ". round(array_sum($type_byPhase1_cond[$low_keys_cond[$j-1]])*100/$lcondth_phase1,2) ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ."</li><li>";
+				
+			}
+			if(array_sum($type_byPhase2_cond[$low_keys_cond[$j-1]])==0){
+				echo "During Phase 2, your conductor spent 0% time on ". $type_names[$low_keys_cond[$j-1]-1] ."</li><li>";
 			}
 			else{
-				echo "On average, your conductor spends ". round($count_type_low1_cond[$low_keys_cond[$j-1]]*100/$length_phase1,2) ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 1</li><li>";
+				echo "During Phase 2, your conductor spent ". round(array_sum($type_byPhase2_cond[$low_keys_cond[$j-1]])*100/$lcondth_phase2,2) ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ."</li><li>";
 			}
-			if($count_type_low2_cond[$low_keys_cond[$j-1]]==0){
-				echo "On average, your conductor spends ". " 0" ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 2</li><li>";
-			}
-			else{
-				echo "On average, your conductor spends ". round($count_type_low2_cond[$low_keys_cond[$j-1]]*100/$length_phase2,2) ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 2</li><li>";
-			}
-			if($count_type_low3_cond[$low_keys_cond[$j-1]]==0){
-				echo "On average, your conductor spends ". " 0" ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 3</li></ul></li>";
+			if(array_sum($type_byPhase3_cond[$low_keys_cond[$j-1]])==0){
+				echo "During Phase 3, your conductor spent 0% time on ". $type_names[$low_keys_cond[$j-1]-1] ."</li></ul></li>";
 			}
 			else{
-				echo "On average, your conductor spends ". round($count_type_low3_cond[$low_keys_cond[$j-1]]*100/$length_phase3,2) ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ." during Phase 3</li></ul></li>";
+				echo "During Phase 3, your conductor spent ". round(array_sum($type_byPhase3_cond[$low_keys_cond[$j-1]])*100/$lcondth_phase3,2) ."% time on ". $type_names[$low_keys_cond[$j-1]-1] ."</li></ul></li>";
 
 			}
 		}
 	}
 	echo "</ul>" ;
 ?>
-<br><br><br>
-<?php
+
+
+	<br><br><br>
+	<?php
 	
-	$check_cond=0;
-	$id_cond=0;
+	$check=0;
+	$id=0;
 	if(array_sum(array_slice($traffic,0,$time/2))>=array_sum(array_slice($traffic,$time/2,$time))){
-		for($i=2+$length/2;$i<$num_cond;$i++){
+		for($i=2+$lcondth/2;$i<$num_cond;$i++){
 			if($count_cond[10][$i]>0.7){
-				$check_cond=1.0;
-				$id_cond=$i-2;
+				$check=1.0;
+				$id=$i-2;
 				break;
 			}
 		}
 		
-		if($check_cond==1){
-			$util_first=array_sum(array_slice($count_cond[10],1,$length/2+1));
-			$util_second=array_sum(array_slice($count_cond[10],$length/2+1,$length));
+		if($check==1){
+			$util_first=array_sum(array_slice($count_cond[10],1,$lcondth/2+1));
+			$util_second=array_sum(array_slice($count_cond[10],$lcondth/2+1,$lcondth));
 			if($util_second>$util_first){
-?>
+	?>
 	<h3 style="color: red">Fatigue factor!</h3>
-	From <b> <?php echo $id*10; ?>th </b>minute, your engineer’s fatigue began to
+	From <b> <?php echo $id*10; ?>th </b>minute, your conductor’s fatigue began to
     contribute to higher than normal workload
-<?php
-			
+	<?php
+				
+			}
 		}
 	}
-}
-?>
-
+	?>
+	
+	
+	
 </div>
 </div>
 </div>
@@ -377,15 +390,15 @@
 			if($count_type_high_cond[$high_keys_cond[$j-1]]>0)
 		{
 ?>
-	function display_cond<?php echo ($high_keys_cond[$j-1]-1) ;?>(){
+	function display<?php echo ($high_keys_cond[$j-1]-1) ;?>(){
 			console.log("function called");
-			if(document.getElementById('<?php echo 'high_cond'. ($high_keys_cond[$j-1]-1); ?>').style.display=='none')
+			if(document.getElementById('<?php echo 'high'. ($high_keys_cond[$j-1]-1); ?>').style.display=='none')
 			{
 
-				document.getElementById('<?php echo 'high_cond'. ($high_keys_cond[$j-1]-1); ?>').style.display='block';
+				document.getElementById('<?php echo 'high'. ($high_keys_cond[$j-1]-1); ?>').style.display='block';
 			}
 			else{
-				document.getElementById('<?php echo 'high_cond'. ($low_keys_cond[$j-1]-1); ?>').style.display='none';
+				document.getElementById('<?php echo 'high'. ($low_keys_cond[$j-1]-1); ?>').style.display='none';
 
 			}
 		}
