@@ -212,22 +212,52 @@
                 </span>
             </div>:
         </td>
-        <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p0"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskArrPms'][$taskNum][0]; ?>" > mins</td>
-        <td>Once every <input type="text" name="t0_arrTime_p1" size="4" maxlength="4" value="<?php echo $_SESSION['taskArrPms'][$taskNum][1]; ?>"> mins</td>
-        <td>Once every <input type="text" name="t0_arrTime_p2" size="4" maxlength="4" value="<?php echo $_SESSION['taskArrPms'][$taskNum][2]; ?>"> mins</td>
+        <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p0"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][0] != 0) {echo 1/$_SESSION['taskArrPms'][$taskNum][0];} else {echo 0;} ?>" > mins</td>
+        <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p1"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][1] != 0) {echo 1/$_SESSION['taskArrPms'][$taskNum][1];} else {echo 0;} ?>"> mins</td>
+        <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p2"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][2] != 0) {echo 1/$_SESSION['taskArrPms'][$taskNum][2];} else {echo 0;} ?>"> mins</td>
     </tr>
     <tr>
         <td>
-            Mean Service Time
-            <div class="tooltip">(?)
+            Service Time:
+            <!-- <div class="tooltip">(?)
                 <span class="tooltiptext">
                     Exponential Distribution
                 </span>
-            </div>:
+            </div>: -->
         </td>
-        <td colspan="3"><input type="text" name=<?php echo "t".$taskNum."_serTime"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][0]; ?>" > mins</td>
-        <!-- <td><input type="text" name=<?php echo "t".$taskNum."_serTime_p1"; ?> size="4" maxlength="4" value="0.5"> mins</td>
-        <td><input type="text" name=<?php echo "t".$taskNum."_serTime_p2"; ?> size="4" maxlength="4" value="0.5"> mins</td> -->
+        <td colspan="3">
+            Distribution:
+            <select name=<?php echo "t".$taskNum."_serTimeDist"; ?> style="margin: 0px 10px">
+                <option value="E"
+                    <?php
+                        if($_SESSION['taskSerDist'][$taskNum]=="E") {
+                            echo "selected='selected'";
+                        }
+                    ?>>
+                    Exponential
+                </option>
+                <option value="L"
+                    <?php
+                        if($_SESSION['taskSerDist'][$taskNum]=="L") {
+                            echo "selected='selected'";
+                        }
+                    ?>>
+                    Lognormal
+                </option>
+                <option value="U"
+                    <?php
+                        if($_SESSION['taskSerDist'][$taskNum]=="U") {
+                            echo "selected='selected'";
+                        }
+                    ?>>
+                    Uniform
+                </option>
+            </select>
+            P1:
+            <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][0]; ?>" style="margin: 0px 10px"> mins
+            P2:
+            <input type="text" name=<?php echo "t".$taskNum."_serTime_1"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][1]; ?>" style="margin: 0px 10px"> mins
+        </td>
     </tr>
     <tr>
         <td>
@@ -309,21 +339,21 @@
                     }
                 ?>>
                 Engineer
-            <input type="checkbox" name=<?php echo "t".$taskNum."_op0"; ?> value="1"
+            <input type="checkbox" name=<?php echo "t".$taskNum."_op1"; ?> value="1"
                 <?php
                     if(in_array(1, $_SESSION['taskAssocOps'][$taskNum])) {
                         echo "checked";
                     }
                 ?>>
                 Conductor
-            <input type="checkbox" name=<?php echo "t".$taskNum."_op1"; ?> value="2"
+            <input type="checkbox" name=<?php echo "t".$taskNum."_op2"; ?> value="2"
                 <?php
                     if(in_array(2, $_SESSION['taskAssocOps'][$taskNum])) {
                         echo "checked";
                     }
                 ?>>
                 Positive Train Control
-            <input type="checkbox" name=<?php echo "t".$taskNum."_op2"; ?> value="3"
+            <input type="checkbox" name=<?php echo "t".$taskNum."_op3"; ?> value="3"
                 <?php
                     if(in_array(3, $_SESSION['taskAssocOps'][$taskNum])) {
                         echo "checked";

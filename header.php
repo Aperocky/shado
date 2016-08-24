@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <html>
 <head>
 		<meta charset="UTF-8">
@@ -8,6 +12,8 @@
 		<!-- <script type="text/javascript" src="scripts/main.js"></script> -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<?php
+			// session_unset();
+			// session_start();
 			echo $html_head_insertions;
 		?>
 </head>
