@@ -20,7 +20,7 @@
 	<?php
 		for($i=0;$i<9;$i++)
 		{
-			echo "<tr><td>".$type_names[$i]."</td><td><input type='radio' name='".$i."' value='y' >Yes</input><input type='radio' name='".$i."' value='y' >No</input></td></tr>";
+			echo "<tr><td>".$type_names[$i]."</td><td><input type='radio' name='custom".$i."' value='y' >Yes</input><input type='radio' name='custom".$i."' value='n' >No</input></td></tr>";
 		}
 	?>
 	</table>
