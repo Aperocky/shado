@@ -2,8 +2,8 @@ output_path		/var/www/html/des-web/sessions
 num_hours		8
 traffic			m m m m m m m m 
 num_reps		100
-ops				0
-name			Communicating
+ops				0 4
+name			Communicating Task
 prty			4 3 4
 arr_dist		E
 arr_pms			1.05 10 1.33
@@ -37,7 +37,7 @@ exp_dist		E
 exp_pms_lo		0 0 0
 exp_pms_hi		0 0 0
 aff_by_traff	0 1 1
-op_nums			0 4
+op_nums			0
 
 name			Maintenance of Way Interactions
 prty			0 5 0
@@ -49,7 +49,7 @@ exp_dist		E
 exp_pms_lo		0 5.43478 0
 exp_pms_hi		0 5.43478 0
 aff_by_traff	0 1 0
-op_nums			0 4
+op_nums			0
 
 name			Temporary Speed Restrictions
 prty			0 5 0
@@ -61,7 +61,7 @@ exp_dist		E
 exp_pms_lo		0 5.43478 0
 exp_pms_hi		0 5.43478 0
 aff_by_traff	0 1 0
-op_nums			0 4
+op_nums			0
 
 name			Signal Response Management
 prty			0 5 0
