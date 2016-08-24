@@ -1,8 +1,10 @@
 output_path		/var/www/html/des-web/sessions
-num_hours		8
-traffic			m m m m m m m m
+num_hours		0
+traffic			
 num_reps		100
 ops				0
+num_task_types	9
+
 name			Communicating
 prty			4 3 4
 arr_dist		E

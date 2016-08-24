@@ -8,42 +8,196 @@
     </tr>
     <tr>
     <td>Name:</td>
-    <td colspan="3"><input type="text" name=<?php echo "t".$taskNum."_name"; ?> size="30" maxlength="30" value=""></td>
+    <td colspan="3"><input type="text" name=<?php echo "t".$taskNum."_name"; ?> size="30" maxlength="30" value="<?php echo $_SESSION['taskNames'][$taskNum]; ?>" ></td>
+</td>
   </tr>
   <tr>
     <td>
         Priority
         <div class="tooltip">(?)
             <span class="tooltiptext">
-                How important is this task, relative to the others?
+                What is the priority level of this task, relative to the others?
             </span>
         </div>:
     </td>
     <td>
         <select name=<?php echo "t".$taskNum."_priority_p0"; ?>>
-            <option value="4">Most Important</option>
-            <option value="3">Very Important</option>
-            <option value="2" selected="selected">Moderately Important</option>
-            <option value="1">Slightly Important</option>
-            <option value="0">Least Important</option>
+            <option value="6"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][0]==6) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Essential Priority
+           </option>
+           <option value="5"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][0]==5) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               High Priority
+           </option>
+           <option value="4"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][0]==4) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Moderate Priority
+           </option>
+           <option value="3"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][0]==3) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Neutral
+           </option>
+           <option value="2"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][0]==2) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Somewhat Priority
+           </option>
+           <option value="1"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][0]==1) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Low Priority
+           </option>
+           <option value="0"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][0]==0) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Not a Priority
+           </option>
         </select>
     </td>
     <td>
         <select name=<?php echo "t".$taskNum."_priority_p1"; ?>>
-            <option value="4">Most Important</option>
-            <option value="3">Very Important</option>
-            <option value="2" selected="selected">Moderately Important</option>
-            <option value="1">Slightly Important</option>
-            <option value="0">Least Important</option>
+            <option value="6"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][1]==6) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Essential Priority
+           </option>
+           <option value="5"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][1]==5) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               High Priority
+           </option>
+           <option value="4"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][1]==4) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Moderate Priority
+           </option>
+           <option value="3"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][1]==3) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Neutral
+           </option>
+           <option value="2"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][1]==2) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Somewhat Priority
+           </option>
+           <option value="1"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][1]==1) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Low Priority
+           </option>
+           <option value="0"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][1]==0) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Not a Priority
+           </option>
         </select>
     </td>
     <td>
         <select name=<?php echo "t".$taskNum."_priority_p2"; ?>>
-            <option value="4">Most Important</option>
-            <option value="3">Very Important</option>
-            <option value="2" selected="selected">Moderately Important</option>
-            <option value="1">Slightly Important</option>
-            <option value="0">Least Important</option>
+            <option value="6"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][2]==6) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Essential Priority
+           </option>
+           <option value="5"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][2]==5) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               High Priority
+           </option>
+           <option value="4"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][2]==4) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Moderate Priority
+           </option>
+           <option value="3"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][2]==3) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Neutral
+           </option>
+           <option value="2"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][2]==2) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Somewhat Priority
+           </option>
+           <option value="1"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][2]==1) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Low Priority
+           </option>
+           <option value="0"
+               <?php
+                   if($_SESSION['taskPrty'][$taskNum][2]==0) {
+                       echo "selected='selected'";
+                   }
+               ?>>
+               Not a Priority
+           </option>
         </select>
     </td>
     <!-- <td><input type="text" name="t0_priority_p0" size="2" maxlength="2" value="1"></td>
@@ -101,9 +255,9 @@
                 </option>
             </select>
             P1:
-            <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][0]; ?>" style="margin: 0px 10px"> mins
+            <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][0]; ?>" style="margin: 0px 10px">
             P2:
-            <input type="text" name=<?php echo "t".$taskNum."_serTime_1"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][1]; ?>" style="margin: 0px 10px"> mins
+            <input type="text" name=<?php echo "t".$taskNum."_serTime_1"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][1]; ?>" style="margin: 0px 10px">
         </td>
     </tr>
     <tr>
@@ -117,20 +271,62 @@
         </td>
         <td>
             <select name=<?php echo "t".$taskNum."_affByTraff_p0"; ?>>
-                <option value="1">Yes</option>
-                <option value="0">No</option>
+                <option value="1"
+                  <?php
+                      if($_SESSION['taskAffByTraff'][$taskNum][0]==1) {
+                          echo "selected='selected'";
+                      }
+                  ?>>
+                  Yes
+              </option>
+              <option value="0"
+                  <?php
+                      if($_SESSION['taskAffByTraff'][$taskNum][0]==0) {
+                          echo "selected='selected'";
+                      }
+                  ?>>
+                  No
+              </option>
             </select>
         </td>
         <td>
             <select name=<?php echo "t".$taskNum."_affByTraff_p1"; ?>>
-                <option value="1">Yes</option>
-                <option value="0">No</option>
+                <option value="1"
+                  <?php
+                      if($_SESSION['taskAffByTraff'][$taskNum][1]==1) {
+                          echo "selected='selected'";
+                      }
+                  ?>>
+                  Yes
+              </option>
+              <option value="0"
+                  <?php
+                      if($_SESSION['taskAffByTraff'][$taskNum][1]==0) {
+                          echo "selected='selected'";
+                      }
+                  ?>>
+                  No
+              </option>
             </select>
         </td>
         <td>
             <select name=<?php echo "t".$taskNum."_affByTraff_p2"; ?>>
-                <option value="1">Yes</option>
-                <option value="0">No</option>
+                <option value="1"
+                  <?php
+                      if($_SESSION['taskAffByTraff'][$taskNum][2]==1) {
+                          echo "selected='selected'";
+                      }
+                  ?>>
+                  Yes
+              </option>
+              <option value="0"
+                  <?php
+                      if($_SESSION['taskAffByTraff'][$taskNum][2]==0) {
+                          echo "selected='selected'";
+                      }
+                  ?>>
+                  No
+              </option>
             </select>
         </td>
     </tr>

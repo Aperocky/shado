@@ -6,7 +6,7 @@
 
 	// echo $_SESSION['numTasks'];
 
-	for ($i = 0; $i < $_SESSION['numTasks']; $i++)
+	for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++)
 	{
 		// echo "starting ".$i." ...";
 	// 	Store task names
@@ -16,10 +16,10 @@
 
 	// 	Store priorities
 
-		$_SESSION['taskPrty'][]=array(
+		$_SESSION['taskPrty'][$i]=array(
+			(int)$_POST["t".$i."_priority_p0"],
 			(int)$_POST["t".$i."_priority_p1"],
-			(int)$_POST["t".$i."_priority_p2"],
-			(int)$_POST["t".$i."_priority_p3"]);
+			(int)$_POST["t".$i."_priority_p2"]);
 
 		// echo $_SESSION['taskPrty'][$i][0]." ";
 		// echo $_SESSION['taskPrty'][$i][1]." ";
@@ -31,14 +31,20 @@
 
 	// 	Store arrival distribution type
 
-		$_SESSION['taskArrDist'][]="E";
+		$_SESSION['taskArrDist'][$i]="E";
 
 	// 	Store arrival distribution parameters
 
-		$_SESSION['taskArrPms'][]=array(
+		$_SESSION['taskArrPms'][$i]=array(
+			(float)$_POST["t".$i."_arrTime_p0"],
 			(float)$_POST["t".$i."_arrTime_p1"],
-			(float)$_POST["t".$i."_arrTime_p2"],
-			(float)$_POST["t".$i."_arrTime_p3"]);
+			(float)$_POST["t".$i."_arrTime_p2"]);
+
+		for ($k = 0; $k < sizeof($_SESSION['taskArrPms'][$i]); $k++) {
+			if ($_SESSION['taskArrPms'][$i][$k] != 0) {
+				$_SESSION['taskArrPms'][$i][$k] = 1/$_SESSION['taskArrPms'][$i][$k];
+			}
+		}
 
 		// echo $_SESSION['taskArrPms'][$i][0]." ";
 		// echo $_SESSION['taskArrPms'][$i][1]." ";
@@ -80,7 +86,7 @@
 
 		for ($j = 0; $j < 5; $j++) {
 			if(isset($_POST["t".$i."_op".$j])) {
-				$_SESSION['taskAssocOps'][]=(int)$_POST["t".$i."_op".$j];
+				$_SESSION['taskAssocOps'][$i][]=(int)$_POST["t".$i."_op".$j];
 			}
 		}
 

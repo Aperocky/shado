@@ -1,10 +1,10 @@
 <?php
-	
+
 	$traffic=array();
 	$traffic['l']=0.5;
 	$traffic['m']=1.0;
 	$traffic['h']=2.0;
-	
+
 	session_start();
 	$myfile=fopen("sessions/parameters.txt", "w") or fopen("/home/hal/des_data/parameters.txt", "w") or die("unable to open");
 	fwrite($myfile,"output_path\t\t/var/www/html/des-web/sessions\n");
@@ -57,6 +57,8 @@
 	}
 
 //	Output tasks
+
+	fwrite($myfile, "\nnum_task_types\t".$_SESSION['numTaskTypes']."\n");
 
 	for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
 

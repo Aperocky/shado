@@ -12,12 +12,12 @@
 	<div id="runSimulationPage" class="page">
 		<h1 class="pageTitle">Run Simulation</h1>
 		<?php
-			for ($i = 0; $i < sizeof($_SESSION['taskAssocOps']); $i++) {
-				for ($j = 0; $j < sizeof($_SESSION['taskAssocOps'][$i]); $j++) {
-					echo $_SESSION['taskAssocOps'][$i][$j]." ";
-				}
-				echo "<br>";
-			}
+			// for ($i = 0; $i < sizeof($_SESSION['taskAssocOps']); $i++) {
+			// 	for ($j = 0; $j < sizeof($_SESSION['taskAssocOps'][$i]); $j++) {
+			// 		echo $_SESSION['taskAssocOps'][$i][$j]." ";
+			// 	}
+			// 	echo "<br>";
+			// }
 		?>
 		<p>
 			To get started, provide us with three simple data points. What time of day does your operator begin <strong>(1)</strong> and end <strong>(2)</strong> his/her shift? And what’s the level of traffic <strong>(3)</strong> in the region during this shift? Lastly, specify any additional operators or technologies <strong>(4)</strong> that will assist the engineer during the trip.
