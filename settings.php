@@ -1,15 +1,13 @@
 <?php
-
 	// include("settings_send.php");
 	// session_start();
 	$page_title='Advanced Settings';
 	$curr_page='advSettingsPage';
 	// $html_head_insertions .= '<script type="text/javascript" src="sim_settings_entry.js"></script>';
 	require_once("header.php");
-	require_once("side_navigation.php");
 ?>
 			<div id="settingsPage" class="page">
-				<h1 class="pageTitle">Advanced Settings</h1>
+				<h1 class="pageTitle">Simulation Settings</h1>
 				<form id="taskParameters" action="settings_send.php" method="post">
 					<?php
 						// print_r($_SESSION['taskAssocOps']);
@@ -33,7 +31,6 @@
 						<input type="submit" id="submit" value="Save and Return" style="text-align: center;">
 					</div>
 				</form>
-
 			</div>
 
 <?php
