@@ -1,14 +1,12 @@
-#custom{	
-display: none;
+#custom{
+	display: none;
 }
 
 .custom{
 	width: 312px;
-	
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	
 	border: 1px dashed #888;
 	border-radius: 15px;
 	position: relative;
@@ -30,7 +28,6 @@ display: none;
 	border-collapse: collapse;
 	margin-left: auto;
 	margin-right: auto;
-	
 }
 
 #custom_table td {

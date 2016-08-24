@@ -328,7 +328,7 @@ table, th, td {
 }
 
 th, td {
-    padding: 8px;
+    padding: 10px;
 }
 
 tr:nth-child(even){

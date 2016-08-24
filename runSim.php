@@ -1,14 +1,7 @@
 <?php
 	session_start();
-	// session_unset();
 
-//	Start session
-
-	if(empty($_SESSION['session_started'])) {
-		require_once("set_default_tasks.php");
-	}
-	$_SESSION['session_started'] = true;
-
+//
 	$page_title='Run Simulation.';
 	$curr_page='runSimPage';
 	$html_head_insertions .= '<script type="text/javascript" src="sim_settings_entry.js"></script>';
@@ -18,10 +11,27 @@
 ?>
 	<div id="runSimulationPage" class="page">
 		<h1 class="pageTitle">Run Simulation</h1>
+		<?php
+			for ($i = 0; $i < sizeof($_SESSION['taskAssocOps']); $i++) {
+				for ($j = 0; $j < sizeof($_SESSION['taskAssocOps'][$i]); $j++) {
+					echo $_SESSION['taskAssocOps'][$i][$j]." ";
+				}
+				echo "<br>";
+			}
+		?>
 		<p>
 			To get started, provide us with three simple data points. What time of day does your operator begin <strong>(1)</strong> and end <strong>(2)</strong> his/her shift? And what’s the level of traffic <strong>(3)</strong> in the region during this shift? Lastly, specify any additional operators or technologies <strong>(4)</strong> that will assist the engineer during the trip.
 		</p>
 		<br>
+
+		<div style="float: right;">
+			<!-- <form action="create_txt.php"  style="text-align: center;">
+				<input type="submit" value="Run Simulation">
+			</form> -->
+			<form action="settings.php" style="text-align: center;">
+				<button type="submit"><img src="images/settings-gear.png" width="30" height="30"></button>
+			</form>
+		</div><br>
 
 		<form id="timeEntry" action="create_txt.php" method="post">
 			<div class="startEndTimeStepOuter centerOuter">
@@ -102,7 +112,6 @@
 			</div>
 			<input type="submit" id="submit" value="Run Simulation" style='display:none;'>
 		</form>
-
 	</div>
 
 <?php require_once("footer.php"); ?>
