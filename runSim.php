@@ -93,7 +93,12 @@
 
 			<div class="trafficTableStepOuter stepBox centerOuter">
 				<div class='stepCircle'>3</div>
+				<div class="tooltip">
+				<span class="tooltip" onmouseover="tooltip.pop(this, '<h3>Define the level of traffic during the entire shift at every one hour interval</h3>')">
 				<h3 class="whiteFont">Traffic Levels</h3>
+				</span>
+				
+				</div>
 				<div id="totalTime" style="overflow-x:auto;"></div>
 			</div>
 

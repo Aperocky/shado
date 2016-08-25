@@ -1,3 +1,6 @@
+<style>
+h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;} 
+</style>
 <h2>Task <?php echo $taskNum + 1; ?></h2>
 <table align="center">
   <tr>
@@ -14,11 +17,8 @@
   <tr>
     <td>
         Priority
-        <div class="tooltip">(?)
-            <span class="tooltiptext">
-                What is the priority level of this task, relative to the others?
-            </span>
-        </div>:
+		<span class="tooltip" onmouseover="tooltip.pop(this, '<h4>What is the priority level of this task, relative to the others?</h4>')">(?)</span>
+        
     </td>
     <td>
         <select name=<?php echo "t".$taskNum."_priority_p0"; ?>>
@@ -207,11 +207,8 @@
     <tr>
         <td>
             Mean Arrival Time
-            <div class="tooltip">(?)
-                <span class="tooltiptext">
-                    Exponential Distribution
-                </span>
-            </div>:
+            <span class="tooltip" onmouseover="tooltip.pop(this, '<h4>Exponential Distribution</h4>')">(?)</span>
+                
         </td>
         <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p0"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][0] != 0) {echo 1/$_SESSION['taskArrPms'][$taskNum][0];} else {echo 0;} ?>" > mins</td>
         <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p1"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][1] != 0) {echo 1/$_SESSION['taskArrPms'][$taskNum][1];} else {echo 0;} ?>"> mins</td>
@@ -263,11 +260,9 @@
     <tr>
         <td>
             Affected by Traffic Levels
-            <div class="tooltip">(?)
-                <span class="tooltiptext">
-                    Is the arrival of this task affected by lower/higher levels of traffic?
-                </span>
-            </div>:
+            <span class="tooltip" onmouseover="tooltip.pop(this, '<h4>Is the arrival of this task affected by lower/higher levels of traffic?</h4>')">(?)</span>
+                    
+               
         </td>
         <td>
             <select name=<?php echo "t".$taskNum."_affByTraff_p0"; ?>>
