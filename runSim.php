@@ -33,7 +33,7 @@
 			</form>
 		</div><br>
 
-		<form id="timeEntry" action="create_txt.php" method="post">
+		<form id="timeEntry" action="create_txt.php" method="post" onsubmit="return confirm('Please verify the information added and submit OK to run simulation!!');">
 			<div class="startEndTimeStepOuter centerOuter">
 
 				<div class="startEndTime stepBox">

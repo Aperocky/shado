@@ -109,7 +109,7 @@
 		<div class="engineer">
 			<div id="graph"></div>
 		</div>
-	</div>
+	
 
 <style>
 
@@ -182,7 +182,7 @@ var legend_width = 120;
 var temp=<?php echo $num; ?>;
 
 var margin = {top: 20, right: 20, bottom: 50, left: 70},
-    width = 35*temp;
+    width = 800;
 
     height = 500 - margin.top - margin.bottom;
 
@@ -197,9 +197,13 @@ var yRelative = d3.scale.linear() // for absolute scale
 	    .rangeRound([height, 0]);
 var color = d3.scale.ordinal()
     .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#dd843c", "#ff8ff0"]);
+	
+
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom");
+
+xAxis.tickFormat(function (d,counter=0) {console.log(d); if(counter%4==0){counter++; return d;} });
 
 var yAxisRelative = d3.svg.axis()
     .scale(yRelative)
@@ -260,7 +264,10 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 	
   });
 
+ 
+	
   x.domain(data.map(function(d) { return d.time.slice(0,4); }));
+ 
   yAbsolute.domain([0,100]);//Absolute View scale
   yRelative.domain([0,100])// Relative View domain
 
@@ -269,14 +276,15 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
   svg_eng.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate("+(-width/(2*temp))+"," + height +")")
-      .call(xAxis)
+	  .call(xAxis)
 	  .append("text")
 	  .attr("transform", "translate("+(width / 2)+",45)" )
 	  .attr("x", 1)
 	  .attr("dx", ".71em")
-
 	  .text("Time (min)");
+   
 
+	
 	var stateAbsolute= svg_eng.selectAll(".absolute")
 						.data(data)
 		    			.enter().append("g")

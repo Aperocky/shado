@@ -218,9 +218,10 @@
 
 
 
-<div class="page">
+
+<?php	require_once("graph_nav.php"); ?>
 	<div class="engineer">
-	<div id="text_box">
+	<div id="text_box" style="display: none;">
 			<h2 style="text-align: center;"> Engineer Operations </h2>
 			<?php if(max(array_values($count_type_high_eng))>0) { ?>
 			<h3>These combined factors contributed to period of high workload: </h3>
@@ -267,6 +268,8 @@
 		<ul>
 
 <?php
+	
+	
 	$low_keys_eng=array_keys($count_type_low_eng);
 	for($j=1;$j<$temp_count_eng-1;$j++)
 	{
@@ -334,6 +337,7 @@
 	
 </div>
 </div>
+<?php echo "</div>"; ?>
 </div>
 
 <?php

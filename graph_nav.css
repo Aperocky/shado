@@ -1,0 +1,65 @@
+#graphNav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0px;
+	overflow: hidden;
+	
+	/*border: 1px solid red;*/
+	background-color: #555;
+	border: 1px solid black;
+	border-bottom: 1px solid black;
+	
+	display: inline-block;
+	
+	
+}
+
+#graphNav li {
+	/*display: inline-block;*/
+	float: left;
+	display: inline-block;
+	margin: 0;
+	padding: 0px 50px;
+	
+	font-size: 18px;
+	
+	/*border-right: 1px solid black;*/
+}
+
+
+
+#graphNav li a {
+	
+	color: white;
+	text-align: center;
+	padding: 12px 20px;
+	text-decoration: none;
+	display: inline-block;
+	/*border: 1px solid red;*/
+}
+
+
+#graphTextBox{
+	
+ 	
+ 	width:fit-content;
+ 	width:-webkit-fit-content;
+ 	width:-moz-fit-content;
+ 	border: 3px solid #5D7B85;
+ 	cursor:pointer;
+ 	-webkit-border-radius: 5px;
+ 	border-radius: 25px;
+ 	
+ 	min-width: 600px;
+ 	/*width: 1200px;*/
+ 	/*margin: 0 auto;*/
+ 	  margin-left: auto ;
+		margin-right: auto ;
+ 	text-align: center;
+ 	background-color: rgba(255, 255, 255, 0.6);
+	
+	
+	
+	
+ }
+ 
