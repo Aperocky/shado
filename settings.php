@@ -8,6 +8,7 @@
 	require_once("side_navigation.php");
 ?>
 			<div id="settingsPage" class="page">
+				<div id="myData" class="hidden" data-session='<?php echo json_encode($_SESSION)?>'></div>
 				<h1 class="pageTitle">Advanced Settings</h1>
 				<form id="taskParameters" action="settings_send.php" method="post">
 					<?php

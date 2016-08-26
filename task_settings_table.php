@@ -254,7 +254,7 @@ h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
             P1:
             <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][0]; ?>" style="margin: 0px 10px">
             P2:
-            <input type="text" name=<?php echo "t".$taskNum."_serTime_1"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][1]; ?>" style="margin: 0px 10px">
+            <input type="text" name=<?php echo "t".$taskNum."_serTime_1"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][1]; ?>" style="margin: 0px 10px">g
         </td>
     </tr>
     <tr>

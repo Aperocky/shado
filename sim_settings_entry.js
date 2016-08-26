@@ -1,5 +1,6 @@
 
 window.onload = init;
+// init();
 
 function init() {
 	console.log("Window has loaded!");
@@ -19,7 +20,6 @@ function navClick(domElement) {
 			scrollTop: $(".startEndTimeStepOuter").offset().top -120
 		}, 500);
 	}
-
 }
 
 function scrollTo(domElement) {
@@ -177,13 +177,14 @@ function leftZeroPad2(num) {
 }
 
 function check(){
-	var id = document.getElementById('other').checked; 
+	var id = document.getElementById('other').checked;
 	if (id==1){
 		document.getElementById('custom').style.display='block';
 	}
 	else{
 		document.getElementById('custom').style.display='none';
 	}
+
 	
 }
 
