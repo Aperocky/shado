@@ -203,7 +203,9 @@ var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom");
 
-xAxis.tickFormat(function (d,counter=0) {console.log(d); if(counter%4==0){counter++; return d;} });
+var ticks_gap=Math.round((temp-2)/12);
+
+xAxis.tickFormat(function (d,counter=0) {if(counter%ticks_gap==0){counter++; return d;} });
 
 var yAxisRelative = d3.svg.axis()
     .scale(yRelative)
@@ -355,7 +357,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 		.attr("y", 6)
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
-		.text("Utilization");
+		.text("Utilization (%)");
 
 
 

@@ -12,6 +12,7 @@
 	}
 	
 	
+	
 	$type_names=array();
 	$type_names[0]="Communicating";
 	$type_names[1]="Exception Handling";
@@ -219,8 +220,10 @@
 
 
 
-<?php	require_once("graph_nav.php"); ?>
+<?php require_once("graph_nav.php"); ?>
+<?php require_once("graph_how_tab.php"); ?>
 	<div class="engineer">
+	
 	<div id="text_box" style="display: none;">
 			<h2 style="text-align: center;"> Engineer Operations </h2>
 			<?php if(max(array_values($count_type_high_eng))>0) { ?>
@@ -338,7 +341,7 @@
 </div>
 </div>
 <?php echo "</div>"; ?>
-</div>
+
 
 <?php
  echo "<style>";
@@ -370,7 +373,7 @@
 		{
 ?>
 	function display<?php echo ($low_keys_eng[$j-1]-1) ;?>(){
-			console.log("function called");
+			
 			if(document.getElementById('<?php echo 'low'. ($low_keys_eng[$j-1]-1); ?>').style.display=='none')
 			{
 
@@ -395,7 +398,7 @@
 		{
 ?>
 	function display<?php echo ($high_keys_eng[$j-1]-1) ;?>(){
-			console.log("function called");
+			
 			if(document.getElementById('<?php echo 'high'. ($high_keys_eng[$j-1]-1); ?>').style.display=='none')
 			{
 
