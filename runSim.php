@@ -33,12 +33,14 @@
 			</form>
 		</div><br>
 
-		<form id="timeEntry" action="create_txt.php" method="post" onsubmit="return confirm('Please verify the information added and submit OK to run simulation!!');">
+		<form id="timeEntry" action="create_txt.php" method="post" onsubmit="return confirm('Please verify the information provided and submit OK to run simulation!!');">
 			<div class="startEndTimeStepOuter centerOuter">
 
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>1</div>
+					<span class="tooltip" onmouseover="tooltip.pop(this, '<h4>Enter the time when your shift begins</h4>')">
 					<h3 id="text_start" class="whiteFont">Start Time</h3>
+					</span>
 					<select id='startHour' onchange="calculate_time();">
 						<?php
 
@@ -65,7 +67,9 @@
 
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>2</div>
+					<span class="tooltip" onmouseover="tooltip.pop(this, '<h4>Enter the time when your shift ends</h4>')">
 					<h3 id="text_stop" class="whiteFont">Stop Time</h3>
+					</span>
 					<select id='endHour' onchange="calculate_time();">
 						<?php
 
@@ -94,7 +98,7 @@
 			<div class="trafficTableStepOuter stepBox centerOuter">
 				<div class='stepCircle'>3</div>
 				<div class="tooltip">
-				<span class="tooltip" onmouseover="tooltip.pop(this, '<h3>Define the level of traffic during the entire shift at every one hour interval</h3>')">
+				<span class="tooltip" onmouseover="tooltip.pop(this, '<h4>Define the level of traffic during the entire shift at every one hour interval</h4>')">
 				<h3 class="whiteFont">Traffic Levels</h3>
 				</span>
 				
@@ -106,6 +110,7 @@
 
 			<div class="assistantsSelectStepOuter stepBox centerOuter">
 				<div class='stepCircle'>4</div>
+				<span class="tooltip" onmouseover="tooltip.pop(this, '<h4>Specify additional operators/technologies assisting your engineer during the trip</h4>')"><h3 id='assistants' class='whiteFont'>Assistants</h3></span>
 				<div id="assist" style="overflow-x:auto;"></div>
 			</div>
 			<br>

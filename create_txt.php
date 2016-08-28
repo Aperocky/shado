@@ -98,5 +98,62 @@
 	// echo "Start";
 	 echo passthru("./DES sessions/parameters.txt");
 	// echo "<br> Done";
-	include('read_csv.php');
+	
 ?>
+
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Form Progress Bar</title>
+    
+    
+    
+    
+        <link rel="stylesheet" href="css/style.css">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<div class="progress">
+  <div class="circle done">
+    <span class="label">1</span>
+    <span class="title">Fetching Input</span>
+  </div>
+  <span class="bar done"></span>
+  <div class="circle done">
+    <span class="label">2</span>
+    <span class="title">Formatting data</span>
+  </div>
+  <span class="bar half"></span>
+  <div class="circle active">
+    <span class="label">3</span>
+    <span class="title">Running simulation </span>
+  </div>
+  <span class="bar"></span>
+  <div class="circle">
+    <span class="label">4</span>
+    <span class="title">Fetching results</span>
+  </div>
+  <span class="bar"></span>
+  <div class="circle">
+    <span class="label">5</span>
+    <span class="title">Finish simulation</span>
+  </div>
+</div>
+
+<div id="php">
+</div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+        <script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
+</html>

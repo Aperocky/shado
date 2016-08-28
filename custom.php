@@ -13,7 +13,9 @@
 
 <div class="custom " id="custom">
 	<div class='stepCircle'>5</div>
+	<span class="tooltip" onmouseover="tooltip.pop(this, '')">
 	<h3 id='custom_heading' class='whiteFont'>Custom Operator Settings</h3>
+	</span>
 	<br>
 	<table id='custom_table' class='customTable' border='1'>
 		<tr>

@@ -1,4 +1,5 @@
 
+<?php echo "<div class='".$user_name."'>"; ?>
 <div id="graphTextBox" >
 	<nav id="graphNav">
 		<ul>

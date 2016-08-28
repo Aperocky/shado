@@ -55,13 +55,15 @@
 		require_once("assist.html");
 
 		require_once("graph_engineer.php");
-		require_once("graph_text_engineer.php");
+		require_once('graph_calculations.php');
+		graphText('sessions/Engineer_stats.csv');
 
 		$assistant= $_SESSION['operator1'];
 		if($assistant==1)
 		{
-			require_once("graph_conductor.php");
-			require_once("graph_text_conductor.php");
+			require_once("temp_graph.php");
+			require_once('graph_calculations.php');
+			graphText('sessions/Conductor_stats.csv');
 		}
 	?>
 </div>
