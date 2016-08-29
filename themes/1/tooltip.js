@@ -1,7 +1,7 @@
 var tooltipOptions=
 {
     showDelay: 100,
-    hideDelay: 300,
+    hideDelay: 0,
     effect: "fade",
     duration: 200,
     relativeTo: "element",

@@ -367,7 +367,7 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
         .attr("text-anchor", "middle")
         .style("font-size", "24px")
         .style("text-decoration", "underline")
-        .text("conductor Operation");
+        .text("Conductor Operation");
 
 	// end of define absolute
 

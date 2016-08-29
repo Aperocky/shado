@@ -8,7 +8,7 @@
 			<?php
 
 			$high_keys=array_keys($count_type_high);
-			for($j=1;$j<$temp_count-1;$j++)
+			for($j=1;$j<6;$j++)
 			{
 				if(array_sum($type_byPhase[$high_keys[$j-1]])>0)
 				{
@@ -50,7 +50,7 @@
 	
 	
 	$low_keys=array_keys($count_type_low);
-	for($j=1;$j<$temp_count-1;$j++)
+	for($j=1;$j<6;$j++)
 	{
 		if(array_sum($type_byPhase[$low_keys[$j-1]])>0)
 		{
@@ -115,7 +115,7 @@
 	
 	
 </div>
-</div>
+
 <?php echo "</div>"; ?>
 
 
@@ -126,7 +126,7 @@
 	{
 		if($count_type_low[$low_keys[$j-1]]>0)
 		{
-			echo "#low". ($low_keys[$j-1]-1)."{ display: none;}";
+			echo "#low". ($low_keys[$j-1]-1)."{ display: block;}";
 		}
 	}
 
@@ -134,7 +134,7 @@
 	{
 		if($count_type_high[$high_keys[$j-1]]>0)
 		{
-			echo "#high". ($high_keys[$j-1]-1)."{ display: none;}";
+			echo "#high". ($high_keys[$j-1]-1)."{ display: block;}";
 		}
 	}
  echo "</style>";

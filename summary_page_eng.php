@@ -49,7 +49,7 @@
 	
 </style>
 
-<div id="print-content">
+<div id="print-content" >
 
 	<form>
 			<div id="next_page" class="printPdf" onclick="var submit = getElementById('button'); button.click()";>
@@ -65,6 +65,16 @@
 		graphText('sessions/Engineer_stats.csv');
 		/* require_once('graph_calculations.php'); */
 		
+		echo "<br><br>";
+		
+		if($_SESSION['operator1']==1){
+	?>
+	
+	<div class='conductor_summary' style='text-align: center;'>
+		<button id='conductor' onclick='location.href ="summary_page_cond.php";'>Conductor summary</button>
+	</div>
+	<?php	}
+		
 
 		
 	?>
@@ -72,13 +82,18 @@
 
 <script type="text/javascript">
 
+document.addEventListener("DOMContentLoaded",function(){
+	
+	document.getElementById('text_box').style.display="block";
+	
+	
+	document.getElementById('howTab').style.display="block";
+	document.getElementById('whenTab').style.display="block";
+document.getElementById('operator2').style.display="none";}
+
+);
 
 
-
-document.getElementById('text_box').style.display="block";
-document.getElementById('introduction_text').style.display="block";
-document.getElementById('howTab').style.display="block";
-document.getElementById('operator2').style.display="none";
 function printDiv(divName) {
  var printContents = document.getElementById(divName).innerHTML;
  w=window.open();

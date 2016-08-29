@@ -13,10 +13,12 @@ var temp=setInterval(function() {
   $('.progress .bar:nth-of-type(' + (i-1) + ')').addClass('active');
   
   $('.progress .bar:nth-of-type(' + (i-2) + ')').removeClass('active').addClass('done');
-  
+  console.log(i);
   i++;
- if(Math.random()>0.6){ i=i-1;}
- console.log(i);
+  if(i<6){if(Math.random()>0.6){ i=i-1;}}
+  
+ 
+ 
  if(i==7){
 	 check=1;
 	 console.log("done");

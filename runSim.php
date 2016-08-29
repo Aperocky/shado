@@ -38,7 +38,7 @@
 
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>1</div>
-					<span class="tooltip" onmouseover="tooltip.pop(this, '<h4>Enter the time when your shift begins</h4>')">
+					<span class="tooltip" onmouseover="tooltip.pop(this, 'SHOW models the train leaving the station at Start Time + 30 minutes')">
 					<h3 id="text_start" class="whiteFont">Start Time</h3>
 					</span>
 					<select id='startHour' onchange="calculate_time();">
@@ -67,7 +67,7 @@
 
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>2</div>
-					<span class="tooltip" onmouseover="tooltip.pop(this, '<h4>Enter the time when your shift ends</h4>')">
+					<span class="tooltip" onmouseover="tooltip.pop(this, 'SHOW models the shift to last up to 24 hours from the Start Time. Ex: 3:00 pm to 2:00pm models into Day 2 of shift. ')">
 					<h3 id="text_stop" class="whiteFont">Stop Time</h3>
 					</span>
 					<select id='endHour' onchange="calculate_time();">
@@ -98,19 +98,20 @@
 			<div class="trafficTableStepOuter stepBox centerOuter">
 				<div class='stepCircle'>3</div>
 				<div class="tooltip">
-				<span class="tooltip" onmouseover="tooltip.pop(this, '<h4>Define the level of traffic during the entire shift at every one hour interval</h4>')">
+				<span class="tooltip" onmouseover="tooltip.pop(this, 'SHOW models traffic levels with a multiplier on the frequency of certain task types arriving for the operators to handle.')">
 				<h3 class="whiteFont">Traffic Levels</h3>
 				</span>
 				
 				</div>
-				<div id="totalTime" style="overflow-x:auto;"></div>
+				<span class="tooltip" onmouseover="tooltip.pop(this, 'What is the projected level of traffic on your railroad for this particular shift?')"><div id="totalTime" style="overflow-x:auto;"></div></span>
+				
 			</div>
 
 			<br><br>
 
 			<div class="assistantsSelectStepOuter stepBox centerOuter">
 				<div class='stepCircle'>4</div>
-				<span class="tooltip" onmouseover="tooltip.pop(this, '<h4>Specify additional operators/technologies assisting your engineer during the trip</h4>')"><h3 id='assistants' class='whiteFont'>Assistants</h3></span>
+				<span class="tooltip" onmouseover="tooltip.pop(this, 'Identify if another human/technologies support the locomotive engineer. SHOW models their interaction by offloading certain tasks from engineer workload')"><h3 id='assistants' class='whiteFont'>Assistants</h3></span>
 				<div id="assist" style="overflow-x:auto;"></div>
 			</div>
 			<br>

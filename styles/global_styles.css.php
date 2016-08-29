@@ -340,7 +340,7 @@ th {
     color: white;
 }
 
-#howTab{
+#howTab, #whenTab{
  	padding:5px 15px;
  	width:fit-content;
  	width:-webkit-fit-content;
@@ -358,4 +358,41 @@ th {
  	background-color: rgba(255, 255, 255, 0.6);
  }
  
+ 
+ #conductor_summary{
+	position: relative;
+	top: 50px;
+	 
+ }
+ 
+ 
+
+/* Tooltip container */
+.tooltip1 {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip1 .tooltiptext1 {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip1:hover .tooltiptext1 {
+    visibility: visible;
+}
+
+
 

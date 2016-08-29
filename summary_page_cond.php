@@ -49,7 +49,7 @@
 	
 </style>
 
-<div id="print-content">
+<div id="print-content" >
 
 	<form>
 			<div id="next_page" class="printPdf" onclick="var submit = getElementById('button'); button.click()";>
@@ -59,26 +59,36 @@
 
 	<?php
 		require_once("assist.html");
-		require_once("graph_engineer.php");
+		require_once("temp_graph.php");
 		echo "<br>";
 		require_once("graph_nav_static.php");
-		graphText('sessions/Engineer_stats.csv');
+		graphText('sessions/Conductor_stats.csv');
 		/* require_once('graph_calculations.php'); */
-		
+		echo "<br><br>";
 
 		
 	?>
+	<div class='conductor_summary' style='text-align: center;'>
+		<button id='conductor' onclick='location.href ="summary_page_eng.php";'>Engineer summary</button>
+	</div>
 </div>
 
 <script type="text/javascript">
 
 
+document.addEventListener("DOMContentLoaded",function(){
+	
+	document.getElementById('text_box').style.display="block";
+	
+	
+	document.getElementById('howTab').style.display="block";
+	document.getElementById('whenTab').style.display="block";
+document.getElementById('operator1').style.display="none";}
+
+);
 
 
-document.getElementById('text_box').style.display="block";
-document.getElementById('introduction_text').style.display="block";
-document.getElementById('howTab').style.display="block";
-document.getElementById('operator2').style.display="none";
+
 function printDiv(divName) {
  var printContents = document.getElementById(divName).innerHTML;
  w=window.open();
