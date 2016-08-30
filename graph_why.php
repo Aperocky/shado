@@ -1,7 +1,7 @@
 
 	
 	<div id="text_box" style="display: none;">
-			<h2 style="text-align: center;"> <?php if($user_name=='engineer'){echo Engineer;} else{echo "Conductor";}?> Operations </h2>
+			<h3 style="text-align: center;"> <u><em>Why</em> is my operator over or under-utilized at work? </u></h3><br>
 			<?php if(max(array_values($count_type_high))>0) { ?>
 			<h3>These combined factors contributed to period of high workload: </h3>
 			<ul>

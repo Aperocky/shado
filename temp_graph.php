@@ -26,7 +26,7 @@
 		{
 			$skip=1;
 		}
-		$line_of_text = fgetcsv($file_handle,1024,',');
+		$line_of_text = fgetcsv($file_handle,2048,',');
 		if($line_of_text[1]=="Sum")
 		{
 			break;
@@ -189,7 +189,9 @@ var margin = {top: 20, right: 20, bottom: 50, left: 70},
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width],0.4);
 
-
+if(temp>72){
+	width=width+(temp-72)*10;
+}
 
 var yAbsolute = d3.scale.linear() // for absolute scale
     .rangeRound([height, 0]);
