@@ -3,13 +3,13 @@
 <div id="graphTextBox" >
 	<nav id="graphNav">
 		<ul>
-			<li id="when?" class="graphNavElement" onclick="graph_nav_check1()"><a id="when"><span onmouseover="tooltip.pop(this, '')">When?</span></a></li>
-			<li id="why?" class="graphNavElement" onclick="graph_nav_check2()"><a id="why"><span  onmouseover="tooltip.pop(this, '')">Why?</span></a></li>
-			<li id="how?" class="graphNavElement" onclick="graph_nav_check3()"><a id="how"><span onmouseover="tooltip.pop(this, '')">How?</span></a></li>
+			<li id="when?" style="background-color: #75D3FE;" class="graphNavElement" onclick="graph_nav_check1()"><a id="when">When?</a></li>
+			<li id="why?" class="graphNavElement" onclick="graph_nav_check2()"><a id="why">Why?</a></li>
+			<li id="how?" class="graphNavElement" onclick="graph_nav_check3()"><a id="how">How?</a></li>
 		</ul>
 	</nav>
 	<br>
 	<div id="introduction_text">
-		<h4>Please select one of the tabs above for more information</h4>
+		
 	</div>
 	
