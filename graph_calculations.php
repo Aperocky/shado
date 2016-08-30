@@ -36,7 +36,7 @@
 				$skip=1;
 			}
 
-			$line_of_text = fgetcsv($file_handle,,',');
+			$line_of_text = fgetcsv($file_handle,2048,',');
 
 			if($line_of_text[0]=="Service Time")
 			{

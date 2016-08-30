@@ -189,9 +189,7 @@ var margin = {top: 20, right: 20, bottom: 50, left: 70},
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width],0.4);
 
-if(temp>72){
-	width=width+(temp-72)*10;
-}
+
 
 var yAbsolute = d3.scale.linear() // for absolute scale
     .rangeRound([height, 0]);
@@ -233,8 +231,10 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 
 
   data.forEach(function(d) {
-	  
-	var mystate = d.time.slice(0,4);
+	
+	var index=d.time.indexOf('min');	
+	var mystate = d.time.slice(0,index);
+	console.log(mystate);
 
     var y0 = 0;
 	
@@ -259,7 +259,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 			y_height1: y_height1,
 			y_height0: y_height0,
 			name: d.ages[i].name,
-			mystate: d.time.slice(0,4),
+			mystate: d.time.slice(0,index),
 			y_pct: y_pct
 
 		});
@@ -270,7 +270,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 
  
 	
-  x.domain(data.map(function(d) { return d.time.slice(0,4); }));
+  x.domain(data.map(function(d) {var index=d.time.indexOf('min');	 return d.time.slice(0,index); }));
  
   yAbsolute.domain([0,100]);//Absolute View scale
   yRelative.domain([0,100])// Relative View domain
@@ -321,7 +321,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 	
 	stateAbsolute.selectAll("rect")
 		.on("mouseover", function(d){
-			console.log(d);
+			
 
 			var xPos = parseFloat(d3.select(this).attr("x"));
 			var yPos = parseFloat(d3.select(this).attr("y"));
