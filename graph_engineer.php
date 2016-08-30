@@ -181,7 +181,7 @@ var legend_width = 120;
 
 var temp=<?php echo $num; ?>;
 
-var margin = {top: 20, right: 20, bottom: 50, left: 70},
+var margin = {top: 30, right: 20, bottom: 50, left: 70},
     width = 800;
 
     height = 500 - margin.top - margin.bottom;
@@ -277,7 +277,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
   						  // Initial view is absolute
   svg_eng.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate("+(-width/(2*temp))+"," + height +")")
+      .attr("transform", "translate("+(-width/(2*temp)-50)+"," + height +")")
 	  .call(xAxis)
 	  .append("text")
 	  .attr("transform", "translate("+(width / 2)+",45)" )
@@ -291,7 +291,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 						.data(data)
 		    			.enter().append("g")
 		    			.attr("class", "absolute")
-		   			 .attr("transform", function(d) { return "translate(" + "0" + ",0)"; });
+		   			 .attr("transform", function(d) { return "translate(-50,0)"; });
 
 	stateAbsolute.selectAll("rect")
 			    .data(function(d) { return d.ages})
