@@ -1,24 +1,24 @@
 <style>
-h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;} 
+h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
 </style>
 <h2>Task <?php echo $taskNum + 1; ?></h2>
 <table align="center">
-  <tr>
+    <tr>
         <th>Task Parameter</th>
         <th>Phase 1</th>
         <th>Phase 2</th>
         <th>Phase 3</th>
     </tr>
     <tr>
-    <td>Name:</td>
-    <td colspan="3"><input type="text" name=<?php echo "t".$taskNum."_name"; ?> size="30" maxlength="30" value="<?php echo $_SESSION['taskNames'][$taskNum]; ?>" ></td>
-</td>
-  </tr>
-  <tr>
+        <td>Name:</td>
+        <td colspan="3"><input type="text" name=<?php echo "t".$taskNum."_name"; ?> size="30" maxlength="30" value="<?php echo $_SESSION['taskNames'][$taskNum]; ?>" ></td>
+<!-- </td> -->
+    </tr>
+    <tr>
     <td>
         Priority
 		<span class="tooltip" onmouseover="tooltip.pop(this, '<h4>What is the priority level of this task, relative to the others?</h4>')">(?)</span>
-        
+
     </td>
     <td>
         <select name=<?php echo "t".$taskNum."_priority_p0"; ?>>
@@ -208,7 +208,7 @@ h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
         <td>
             Mean Arrival Time
             <span class="tooltip" onmouseover="tooltip.pop(this, '<h4>Exponential Distribution</h4>')">(?)</span>
-                
+
         </td>
         <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p0"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][0] != 0) {echo 1/$_SESSION['taskArrPms'][$taskNum][0];} else {echo 0;} ?>" > mins</td>
         <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p1"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][1] != 0) {echo 1/$_SESSION['taskArrPms'][$taskNum][1];} else {echo 0;} ?>"> mins</td>
@@ -261,8 +261,8 @@ h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
         <td>
             Affected by Traffic Levels
             <span class="tooltip" onmouseover="tooltip.pop(this, '<h4>Is the arrival of this task affected by lower/higher levels of traffic?</h4>')">(?)</span>
-                    
-               
+
+
         </td>
         <td>
             <select name=<?php echo "t".$taskNum."_affByTraff_p0"; ?>>
