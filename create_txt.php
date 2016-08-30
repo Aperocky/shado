@@ -15,6 +15,10 @@
 	$time=60-$start_min+$stop_min+($stop_time-$start_time-1)*60;
 
 	$time=ceil($time/60);
+	
+	if ($time <= 0) {
+		$time+=24;
+	}
 	$_SESSION['traffic_time']=$time;
 //	Output number of hours
 	fwrite($myfile, "num_hours		".$time."\n");
