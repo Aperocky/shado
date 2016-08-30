@@ -8,9 +8,30 @@
 	require_once("side_navigation.php");
 ?>
 			<div id="settingsPage" class="page">
-				<div id="myData" class="hidden" data-session='<?php echo json_encode($_SESSION)?>'></div>
+				<!-- <div id="myData" class="hidden" data-session='<?php echo json_encode($_SESSION)?>'></div> -->
 				<h1 class="pageTitle">Advanced Settings</h1>
+				This page allows you to see and change our underlying assumptions for each task.  
 				<form id="taskParameters" action="settings_send.php" method="post">
+				<h2>Replications</h2>
+				<!-- <form id="change_replications" action="" method="post" class="startEndTimeStepOuter centerOuter"> -->
+				<div class="centerOuter">
+					<div class="stepBox startEndTime">
+						<h3 class="whiteFont">Number of Replications:</h3>
+						<select id='replications'>
+							<?php
+								for ($i = 100; $i <= 1000; $i+=100) {
+									if ($i==$_SESSION['numReps']) { $selected_string = ' selected="selected"'; } else { $selected_string = ''; }
+									$val = sprintf('%02d', $i);
+									echo "<option$selected_string>$val</option>";
+								}
+							?>
+						</select>
+					</div>
+				</div>
+
+				<!-- </form> -->
+				<h2>Task Details</h2>
+				<!-- <form id="taskParameters" action="settings_send.php" method="post"> -->
 					<?php
 						// print_r($_SESSION['taskAssocOps']);
 

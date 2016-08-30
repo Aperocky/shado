@@ -2,6 +2,10 @@
 	session_start();
 	// print_r($_SESSION['taskSerPms']);
 
+//	Save replications
+
+	$_SESSION['numReps']=(int)$_POST["replications"];
+
 //	Loop through each task type
 
 	// echo $_SESSION['numTasks'];

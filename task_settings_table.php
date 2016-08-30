@@ -1,7 +1,7 @@
 <style>
 h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
 </style>
-<h2>Task <?php echo $taskNum + 1; ?></h2>
+<h3>Task <?php echo $taskNum + 1; ?></h3>
 <table align="center">
     <tr>
         <th>Task Parameter</th>
