@@ -18,6 +18,7 @@
 			// 	}
 			// 	echo "<br>";
 			// }
+					echo $_SESSION['numReps'];
 		?>
 		<p>
 			To get started, provide us with three simple data points. What time of day does your operator begin <strong>(1)</strong> and end <strong>(2)</strong> his/her shift? And what’s the level of traffic <strong>(3)</strong> in the region during this shift? Lastly, specify any additional operators or technologies <strong>(4)</strong> that will assist the engineer during the trip.
@@ -101,10 +102,10 @@
 				<span class="tooltip" onmouseover="tooltip.pop(this, 'SHOW models traffic levels with a multiplier on the frequency of certain task types arriving for the operators to handle.')">
 				<h3 class="whiteFont">Traffic Levels</h3>
 				</span>
-				
+
 				</div>
 				<span class="tooltip" onmouseover="tooltip.pop(this, 'What is the projected level of traffic on your railroad for this particular shift?')"><div id="totalTime" style="overflow-x:auto;"></div></span>
-				
+
 			</div>
 
 			<br><br>

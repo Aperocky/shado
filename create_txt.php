@@ -98,26 +98,16 @@
 	// echo "Start";
 	 exec("./DES sessions/parameters.txt");
 	// echo "<br> Done";
-	
+
 ?>
 
 <html >
   <head>
     <meta charset="UTF-8">
     <title>Form Progress Bar</title>
-    
-    
-    
-    
-        <link rel="stylesheet" href="css/style.css">
-
-    
-    
-    
+    <link rel="stylesheet" href="css/style.css">
   </head>
-
   <body>
-
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <div class="progress">
   <div class="circle done">
@@ -149,11 +139,6 @@
 <div id="php">
 </div>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-        <script src="js/index.js"></script>
-
-    
-    
-    
-  </body>
+    <script src="js/index.js"></script>
+	</body>
 </html>
