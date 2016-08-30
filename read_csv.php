@@ -11,13 +11,14 @@
 	
 	while (! feof($file_handle) )
 	{
-		$line_of_text = fgetcsv($file_handle,1024,',');
+		$line_of_text = fgetcsv($file_handle,2048,',');
 		$skip++;
 		if($skip==20)
 		{
 			// echo var_dump($line_of_text);
 			// echo "<br>";
 			$num=count($line_of_text);
+			
 			for($i=2;$i<$num;$i++)
 			{
 				$var=(float)$line_of_text[$i];
@@ -57,7 +58,7 @@
 		$skip=0;
 		while (! feof($file_handle) )
 		{
-			$line_of_text = fgetcsv($file_handle,1024,',');
+			$line_of_text = fgetcsv($file_handle,2048,',');
 			$skip++;
 			if($skip==20)
 			{

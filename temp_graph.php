@@ -26,7 +26,7 @@
 		{
 			$skip=1;
 		}
-		$line_of_text = fgetcsv($file_handle,1024,',');
+		$line_of_text = fgetcsv($file_handle,2048,',');
 		if($line_of_text[1]=="Sum")
 		{
 			break;
@@ -190,7 +190,6 @@ var x = d3.scale.ordinal()
     .rangeRoundBands([0, width],0.4);
 
 
-
 var yAbsolute = d3.scale.linear() // for absolute scale
     .rangeRound([height, 0]);
 var yRelative = d3.scale.linear() // for absolute scale
@@ -231,8 +230,10 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 
 
   data.forEach(function(d) {
+	
+	var index=d.time.indexOf('min');
 	  
-	var mystate = d.time.slice(0,4);
+	var mystate = d.time.slice(0,index);
 
     var y0 = 0;
 	
@@ -257,7 +258,7 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 			y_height1: y_height1,
 			y_height0: y_height0,
 			name: d.ages[i].name,
-			mystate: d.time.slice(0,4),
+			mystate: d.time.slice(0,index),
 			y_pct: y_pct
 
 		});
@@ -268,7 +269,7 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 
  
 	
-  x.domain(data.map(function(d) { return d.time.slice(0,4); }));
+  x.domain(data.map(function(d) {var index=d.time.indexOf('min'); return d.time.slice(0,index); }));
  
   yAbsolute.domain([0,100]);//Absolute View scale
   yRelative.domain([0,100])// Relative View domain

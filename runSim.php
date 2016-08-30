@@ -1,6 +1,6 @@
 <?php
 	session_start();
-
+	require_once("set_session_vars.php");
 //
 	$page_title='Run Simulation.';
 	$curr_page='runSimPage';

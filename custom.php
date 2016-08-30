@@ -39,7 +39,7 @@
 		{
 			// echo "<tr><td>".$type_names[$i]."</td><td><input type='radio' name='custom".$i."' value='y' >Yes</input><input type='radio' name='custom".$i."' value='n' >No</input></td></tr>";
 
-			echo "<tr><td><span class='tooltip' onmouseover='tooltip.pop(this,".$text[$_SESSION['taskNames'][$i]].")'>".$_SESSION['taskNames'][$i]."</td><td><input type='checkbox' name='custom".$i."' value='y' >Yes</input><input type='checkbox' name='custom".$i."' value='n' >No</input></td></tr>";
+			echo "<tr><td><span class='tooltip' onmouseover='tooltip.pop(this,".$text[$_SESSION['taskNames'][$i]].")'>".$_SESSION['taskNames'][$i]."</td><td><input type='checkbox' name='custom".$i."' value='y' ></input></td></tr>";
 		}
 	?>
 	<?php
