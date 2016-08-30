@@ -8,7 +8,7 @@
 	$temp_count=0;
 	$skip=1;
 	$num=0;
-	
+
 	$type_names=array();
 	$type_names[0]="Communicating";
 	$type_names[1]="Exception Handling";
@@ -56,9 +56,9 @@
 			$num=count($line_of_text);
 			$s_dev[$temp_count_dev]=array();
 			for($i=2;$i<$num;$i++)
-			{		
+			{
 				$s_dev[$type_names[$temp_count_dev]][$count[0][$i-1]]=(float)$line_of_text[$i];
-				
+
 			}
 			$temp_count_dev++;
 			$skip=1;
@@ -109,7 +109,7 @@
 		<div class="engineer">
 			<div id="graph"></div>
 		</div>
-	
+
 
 <style>
 
@@ -150,21 +150,21 @@
   display: none;
 }
 
-div.tooltip {	
-    position: absolute;			
-	
+div.tooltip {
+    position: absolute;
+
     width:fit-content;
 	width:-webkit-fit-content;
-	width:-moz-fit-content;				
+	width:-moz-fit-content;
     height:fit-content;
 	height:-webkit-fit-content;
-	height:-moz-fit-content;					
-    padding: 5px;				
-    font: 15px sans-serif;		
-    background: lightsteelblue;	
-    border: 0px;		
-    border-radius: 8px;			
-    pointer-events: none;			
+	height:-moz-fit-content;
+    padding: 5px;
+    font: 15px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
 }
 
 
@@ -195,9 +195,10 @@ var yAbsolute = d3.scale.linear() // for absolute scale
     .rangeRound([height, 0]);
 var yRelative = d3.scale.linear() // for absolute scale
 	    .rangeRound([height, 0]);
-var color = d3.scale.ordinal()
-    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#dd843c", "#ff8ff0"]);
-	
+var color = d3.scale.category20();
+// var color = d3.scale.ordinal()
+    // .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#dd843c", "#ff8ff0"]);
+
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -215,10 +216,10 @@ var yAxisAbsolute = d3.svg.axis()
 	    .scale(yAbsolute)
 	    .orient("left");
 
-var div = d3.select("#graph").append("div")	
-    .attr("class", "tooltip")				
+var div = d3.select("#graph").append("div")
+    .attr("class", "tooltip")
     .style("opacity", 0);
-	
+
 var svg_eng = d3.select("#graph").append("svg")
     .attr("width", width + margin.left + margin.right+legend_width)
     .attr("height", height + margin.top + margin.bottom)
@@ -231,17 +232,16 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 
 
   data.forEach(function(d) {
-	
-	var index=d.time.indexOf('min');	
+	var index=d.time.indexOf('min');
 	var mystate = d.time.slice(0,index);
 	console.log(mystate);
 
     var y0 = 0;
-	
+
 	d.ages = color.domain().map(function(name) { return {mystate:mystate, name: name, y0: y0, y1: y0 += +d[name]}; });
-	
+
     d.total = d.ages[d.ages.length - 1].y1;// the last row
-		
+
 	d.pct = [];
 	d.total=d.total*100;
 	for (var i=0;i <d.ages.length;i ++ ){
@@ -249,7 +249,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 		d.ages[i].y0=d.ages[i].y0*100;
 	}
 	for (var i=0;i <d.ages.length;i ++ ){
-		
+
 		var y_coordinate = +d.ages[i].y1/d.total;
 	    var y_height1 = (d.ages[i].y1)/d.total;
 		var y_height0 = (d.ages[i].y0)/d.total;
@@ -263,15 +263,13 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 			y_pct: y_pct
 
 		});
-		
+
 	}
-	
+
   });
 
- 
-	
   x.domain(data.map(function(d) {var index=d.time.indexOf('min');	 return d.time.slice(0,index); }));
- 
+
   yAbsolute.domain([0,100]);//Absolute View scale
   yRelative.domain([0,100])// Relative View domain
 
@@ -286,9 +284,9 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 	  .attr("x", 1)
 	  .attr("dx", ".71em")
 	  .text("Time (min)");
-   
 
-	
+
+
 	var stateAbsolute= svg_eng.selectAll(".absolute")
 						.data(data)
 		    			.enter().append("g")
@@ -298,7 +296,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 	stateAbsolute.selectAll("rect")
 			    .data(function(d) { return d.ages})
 			    .enter().append("rect")
-			    .attr("width", x.rangeBand())    
+			    .attr("width", x.rangeBand())
 			    .attr("y", function(d) {
 
 					  return yAbsolute(d.y1);
@@ -318,35 +316,35 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 				.attr("class","absolute")
 				.style("pointer-events","all");
 				 // initially it is invisible, i.e. start with Absolute View
-	
+
 	stateAbsolute.selectAll("rect")
 		.on("mouseover", function(d){
-			
+
 
 			var xPos = parseFloat(d3.select(this).attr("x"));
 			var yPos = parseFloat(d3.select(this).attr("y"));
 			var height = parseFloat(d3.select(this).attr("height"))
-			
-			d3.select(this).attr("stroke","blue").attr("stroke-width",0.8);
-			div.transition()		
-                .duration(200)		
-                .style("opacity", .9);		
-            div	.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2))	
-                .style("left", (d3.event.pageX+20) + "px")		
-                .style("top", (d3.event.pageY - 20) + "px");	
-            					
-        
-		   	
-                
 
-			
+			d3.select(this).attr("stroke","blue").attr("stroke-width",0.8);
+			div.transition()
+                .duration(200)
+                .style("opacity", .9);
+            div	.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2))
+                .style("left", (d3.event.pageX+20) + "px")
+                .style("top", (d3.event.pageY - 20) + "px");
+
+
+
+
+
+
 		})
-		.on("mouseout", function(d) {	
-			
-			d3.select(this).attr("stroke","pink").attr("stroke-width",0.2);		
-            div.transition()		
-                .duration(100)		
-                .style("opacity", 0);	
+		.on("mouseout", function(d) {
+
+			d3.select(this).attr("stroke","pink").attr("stroke-width",0.2);
+            div.transition()
+                .duration(100)
+                .style("opacity", 0);
 		})
 	//define two different scales, but one of them will always be hidden.
 	svg_eng.append("g")

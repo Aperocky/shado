@@ -335,6 +335,10 @@ tr:nth-child(even){
 	background-color: #f1f1f1;
 }
 
+tr:nth-child(odd){
+	background-color: white;
+}
+
 th {
     background-color: <?php echo $color_theme_dark_blue; ?>;
     color: white;
@@ -350,22 +354,22 @@ th {
  	-webkit-border-radius: 5px;
  	border-radius: 25px;
  	display: inline-block;
- 	
+
  	/*width: 1200px;*/
  	/*margin: 0 auto;*/
  	margin: 20px;
  	text-align: left;
  	background-color: rgba(255, 255, 255, 0.6);
  }
- 
- 
+
+
  #conductor_summary{
 	position: relative;
 	top: 50px;
-	 
+
  }
- 
- 
+
+
 
 /* Tooltip container */
 .tooltip1 {
@@ -383,7 +387,7 @@ th {
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
- 
+
     /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
@@ -393,6 +397,3 @@ th {
 .tooltip1:hover .tooltiptext1 {
     visibility: visible;
 }
-
-
-
