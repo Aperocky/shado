@@ -31,18 +31,28 @@
 <meta charset="utf-8">
 <style>
 
-#input{
-	padding:15px 15px;
- 	width:fit-content;
+.input{
+	
+
+	display: block;
+	overflow: hidden;
+	width:fit-content;
  	width:-webkit-fit-content;
  	width:-moz-fit-content;
+}
+
+#input{
+	
+ 	
  	border: 3px solid #5D7B85;
  	cursor:pointer;
  	-webkit-border-radius: 5px;
  	border-radius: 25px;
- 	
- 	margin: 20px;
- 	
+ 	display: block;
+ 	overflow: hidden;
+	width:fit-content;
+ 	width:-webkit-fit-content;
+ 	width:-moz-fit-content;
  	
  	text-align: left;
  	background-color: rgba(255, 255, 255, 0.6);
@@ -78,7 +88,8 @@
 }
 
 </style>
-<div class='page'>
+
+<div class="page">
 <div id="input">
 	<h3 style="text-align: center;"> <u>Input summary</u></h3>
 	<ul>
