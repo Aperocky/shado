@@ -108,17 +108,9 @@
 
 	<br><br><br>
 
-	<form action="summary_page.php" method="post" style='text-align: center;'>
-		<button type="submit" id="summary">View Report</button>
-	</form>
-
 	<div id="back_button"  style='text-align: center;'>
-		<button id="back_button" onclick="goBack()">Run Again</button>
-		<script>
-			function goBack() {
-			    window.history.back();
-			}
-		</script>
+		<button id="back_button" onclick="location.href = 'runSim.php';">Run Again</button>
+		
 		<br><br>
 		<!-- <button id="back_button" onclick="location.href='replications.php'">Peek & Tweak, under the hood</button> -->
 	</div>

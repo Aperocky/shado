@@ -335,41 +335,65 @@ tr:nth-child(even){
 	background-color: #f1f1f1;
 }
 
+tr:nth-child(odd){
+	background-color: white;
+}
+
 th {
     background-color: <?php echo $color_theme_dark_blue; ?>;
     color: white;
 }
 
-.tooltip {
+#howTab, #whenTab{
+ 	padding:5px 15px;
+ 	width:fit-content;
+ 	width:-webkit-fit-content;
+ 	width:-moz-fit-content;
+ 	border: 3px solid #5D7B85;
+ 	cursor:pointer;
+ 	-webkit-border-radius: 5px;
+ 	border-radius: 25px;
+ 	display: inline-block;
+
+ 	/*width: 1200px;*/
+ 	/*margin: 0 auto;*/
+ 	margin: 20px;
+ 	text-align: left;
+ 	background-color: rgba(255, 255, 255, 0.6);
+ }
+
+
+ #conductor_summary{
+	position: relative;
+	top: 50px;
+
+ }
+
+
+
+/* Tooltip container */
+.tooltip1 {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
 }
 
-.tooltip .tooltiptext {
+/* Tooltip text */
+.tooltip1 .tooltiptext1 {
     visibility: hidden;
     width: 120px;
     background-color: black;
     color: #fff;
     text-align: center;
-    border-radius: 6px;
     padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
-    top: -5px;
-    left: 110%;
 }
 
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent black transparent transparent;
-}
-.tooltip:hover .tooltiptext {
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip1:hover .tooltiptext1 {
     visibility: visible;
 }

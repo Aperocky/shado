@@ -41,6 +41,12 @@
 				display: none !important;
 			}
 		}*/
+		
+		#text-box{display: block;}
+	#howTab{display: block;}
+	
+	
+	
 </style>
 
 <div id="print-content">
@@ -53,21 +59,26 @@
 
 	<?php
 		require_once("assist.html");
-
 		require_once("graph_engineer.php");
-		require_once("graph_text_engineer.php");
+		echo "<br>";
+		require_once("graph_nav_static.php");
+		graphText('sessions/Engineer_stats.csv');
+		/* require_once('graph_calculations.php'); */
+		
 
-		$assistant= $_SESSION['operator1'];
-		if($assistant==1)
-		{
-			require_once("graph_conductor.php");
-			require_once("graph_text_conductor.php");
-		}
+		
 	?>
 </div>
 
 <script type="text/javascript">
 
+
+
+
+document.getElementById('text_box').style.display="block";
+document.getElementById('introduction_text').style.display="block";
+document.getElementById('howTab').style.display="block";
+document.getElementById('operator2').style.display="none";
 function printDiv(divName) {
  var printContents = document.getElementById(divName).innerHTML;
  w=window.open();

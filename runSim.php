@@ -1,7 +1,6 @@
 <?php
 	session_start();
 
-//
 	$page_title='Run Simulation.';
 	$curr_page='runSimPage';
 	$html_head_insertions .= '<script type="text/javascript" src="sim_settings_entry.js"></script>';
@@ -10,7 +9,7 @@
 	require_once("side_navigation.php");
 ?>
 	<div id="runSimulationPage" class="page">
-		<h1 class="pageTitle">Run Simulation</h1>
+		<h1 class="pageTitle">Input Trip Conditions</h1>
 		<?php
 			// for ($i = 0; $i < sizeof($_SESSION['taskAssocOps']); $i++) {
 			// 	for ($j = 0; $j < sizeof($_SESSION['taskAssocOps'][$i]); $j++) {
@@ -21,6 +20,7 @@
 		?>
 		<p>
 			To get started, provide us with three simple data points. What time of day does your operator begin <strong>(1)</strong> and end <strong>(2)</strong> his/her shift? And what’s the level of traffic <strong>(3)</strong> in the region during this shift? Lastly, specify any additional operators or technologies <strong>(4)</strong> that will assist the engineer during the trip.
+			And if you're a more advanced user, look at the advanced settings.
 		</p>
 		<br>
 
@@ -28,17 +28,24 @@
 			<!-- <form action="create_txt.php"  style="text-align: center;">
 				<input type="submit" value="Run Simulation">
 			</form> -->
-			<form action="settings.php" style="text-align: center;">
-				<button type="submit"><img src="images/settings-gear.png" width="30" height="30"></button>
+			<form action="settings.php">
+				<button type="submit" style="float: right;">
+					<img src="images/settings-gear.png" width="30" height="30" align="top">
+					<div style="display: inline-block;  text-align: left; padding: 3px;">
+						Advanced <br> Settings
+					</div>
+				</button>
 			</form>
-		</div><br>
+		</div>
 
-		<form id="timeEntry" action="create_txt.php" method="post">
+		<form id="timeEntry" action="create_txt.php" method="post" onsubmit="return confirm('Please verify your provided settings and click OK to run simulation!');">
 			<div class="startEndTimeStepOuter centerOuter">
 
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>1</div>
+					<span class="tooltip" onmouseover="tooltip.pop(this, 'SHOW models the train leaving the station at Start Time + 30 minutes')">
 					<h3 id="text_start" class="whiteFont">Start Time</h3>
+					</span>
 					<select id='startHour' onchange="calculate_time();">
 						<?php
 
@@ -65,7 +72,9 @@
 
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>2</div>
+					<span class="tooltip" onmouseover="tooltip.pop(this, 'SHOW models the shift to last up to 24 hours from the Start Time. Ex: 3:00 pm to 2:00pm models into Day 2 of shift. ')">
 					<h3 id="text_stop" class="whiteFont">Stop Time</h3>
+					</span>
 					<select id='endHour' onchange="calculate_time();">
 						<?php
 
@@ -93,14 +102,21 @@
 
 			<div class="trafficTableStepOuter stepBox centerOuter">
 				<div class='stepCircle'>3</div>
+				<div class="tooltip">
+				<span class="tooltip" onmouseover="tooltip.pop(this, 'SHOW models traffic levels with a multiplier on the frequency of certain task types arriving for the operators to handle.')">
 				<h3 class="whiteFont">Traffic Levels</h3>
-				<div id="totalTime" style="overflow-x:auto;"></div>
+				</span>
+
+				</div>
+				<span class="tooltip" onmouseover="tooltip.pop(this, 'What is the projected level of traffic on your railroad for this particular shift?')"><div id="totalTime" style="overflow-x:auto;"></div></span>
+
 			</div>
 
 			<br><br>
 
 			<div class="assistantsSelectStepOuter stepBox centerOuter">
 				<div class='stepCircle'>4</div>
+				<span class="tooltip" onmouseover="tooltip.pop(this, 'Identify if another human/technologies support the locomotive engineer. SHOW models their interaction by offloading certain tasks from engineer workload')"><h3 id='assistants' class='whiteFont'>Assistants</h3></span>
 				<div id="assist" style="overflow-x:auto;"></div>
 			</div>
 			<br>

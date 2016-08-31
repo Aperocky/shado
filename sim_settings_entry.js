@@ -1,5 +1,6 @@
 
 window.onload = init;
+// init();
 
 function init() {
 	console.log("Window has loaded!");
@@ -19,7 +20,6 @@ function navClick(domElement) {
 			scrollTop: $(".startEndTimeStepOuter").offset().top -120
 		}, 500);
 	}
-
 }
 
 function scrollTo(domElement) {
@@ -134,16 +134,16 @@ function calculate_time(divName) {
 
 
 	var divobj = document.getElementById('assist');
-	divobj.innerHTML="<h3 id='assistants' class='whiteFont'>Assistants</h3><table id='assistantsTable' cellspacing='0' >"; //cellpadding='100'
+	divobj.innerHTML="<table id='assistantsTable' cellspacing='0' >"; //cellpadding='100'
 	var table=document.getElementById('assistantsTable');
 	var row=table.insertRow(0);
 	var cell1=row.insertCell(0);
 	var cell2=row.insertCell(1);
 	var cell3=row.insertCell(2);
 	var cell4=row.insertCell(3);
-	cell1.innerHTML="<input type='checkbox' name='extra1' value='1' id='conductor' />Conductor";
-	cell2.innerHTML="<input type='checkbox' name='extra2' value='2' id='train_c' />Positive Train Control";
-	cell3.innerHTML="<input type='checkbox' name='extra3' value='3' id='cruise_control' />Cruise Control";
+	cell1.innerHTML="<input type='checkbox' name='extra1' value='1' id='conductor' /><span class='tooltip' onmouseover='tooltip.pop(this, &apos; The freight conductor supervises train conditions on the ground at terminal points and remains attentive to the engineer while the train is in motion in the case of emergency, when action could be needed &apos;)'>Conductor</span>";
+	cell2.innerHTML="<input type='checkbox' name='extra2' value='2' id='train_c' /><span class='tooltip' onmouseover='tooltip.pop(this, &apos; PTC is an embedded feature of railroads set to be fully implemented by 2018. It automatically manages speed restrictions and emergency braking without human input &apos;)'>Positive Train Control";
+	cell3.innerHTML="<input type='checkbox' name='extra3' value='3' id='cruise_control' /><span class='tooltip' onmouseover='tooltip.pop(this, &apos; CC can offload motion planning tasks that involve the locomotive control system of throttle and dynamic braking &apos;)'>Cruise Control";
 	cell4.innerHTML="<input type='checkbox' name='extra4' value='4' id='other' onchange='check()'>Custom";
 
 
@@ -177,12 +177,15 @@ function leftZeroPad2(num) {
 }
 
 function check(){
-	var id = document.getElementById('other').checked; 
+	var id = document.getElementById('other').checked;
 	if (id==1){
 		document.getElementById('custom').style.display='block';
 	}
 	else{
 		document.getElementById('custom').style.display='none';
 	}
+
 	
 }
+
+

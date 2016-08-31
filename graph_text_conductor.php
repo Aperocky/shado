@@ -228,7 +228,7 @@
 			<?php
 
 			$high_keys_cond=array_keys($count_type_high_cond);
-			for($j=1;$j<$temp_count_cond-1;$j++)
+			for($j=1;$j<6;$j++)
 			{
 				if(array_sum($type_byPhase_cond[$high_keys_cond[$j-1]])>0)
 				{
@@ -268,7 +268,7 @@
 
 <?php
 	$low_keys_cond=array_keys($count_type_low_cond);
-	for($j=1;$j<$temp_count_cond-1;$j++)
+	for($j=1;$j<6;$j++)
 	{
 		if(array_sum($type_byPhase_cond[$low_keys_cond[$j-1]])>0)
 		{

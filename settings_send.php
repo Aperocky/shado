@@ -2,6 +2,11 @@
 	session_start();
 	// print_r($_SESSION['taskSerPms']);
 
+//	Save replications
+
+	$_SESSION['numReps']=(int)$_POST["num_reps"];
+	// echo $_SESSION['numReps'];
+
 //	Loop through each task type
 
 	// echo $_SESSION['numTasks'];
@@ -118,6 +123,7 @@
 		// 	echo $_SESSION['taskAssocOps'];
 	// }
 
+	// echo $_SESSION['numReps'];
 	include_once("runSim.php");
 
 	// echo "Hello";
