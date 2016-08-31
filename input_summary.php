@@ -40,13 +40,13 @@
  	cursor:pointer;
  	-webkit-border-radius: 5px;
  	border-radius: 25px;
- 	display: inline-block;
  	
- 	/*width: 1200px;*/
- 	margin: 0 auto;
+ 	margin: 20px;
+ 	
+ 	
  	text-align: left;
  	background-color: rgba(255, 255, 255, 0.6);
-	display: inline-block;
+	
 	
 }
 
@@ -78,7 +78,7 @@
 }
 
 </style>
-<div id="page" class='page'>
+<div class='page'>
 <div id="input">
 	<h3 style="text-align: center;"> <u>Input summary</u></h3>
 	<ul>
@@ -169,12 +169,12 @@ d3.csv("sessions/input_summary.txt", type, function(error, data) {
       .call(yAxis)
     .append("text")
 
-		.attr("transform", "translate(-30,"+(height/2)+") rotate(-90)" )
+		.attr("transform", "translate(-50,350) rotate(-90)" )
 
 		.attr("y", 6)
 		.attr("dy", ".71em")
-		.style("text-anchor", "end")
-		.text("Traffic level");
+		
+		.text("Traffic level (1: Low, 2: Medium, 3: High)");
 
   svg_summary.selectAll(".bar")
       .data(data)
