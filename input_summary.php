@@ -31,22 +31,32 @@
 <meta charset="utf-8">
 <style>
 
-#input{
-	padding:15px 15px;
- 	width:fit-content;
+.input{
+	
+
+	display: block;
+	overflow: hidden;
+	width:fit-content;
  	width:-webkit-fit-content;
  	width:-moz-fit-content;
+}
+
+#input{
+	
+ 	
  	border: 3px solid #5D7B85;
  	cursor:pointer;
  	-webkit-border-radius: 5px;
  	border-radius: 25px;
- 	display: inline-block;
+ 	display: block;
+ 	overflow: hidden;
+	width:fit-content;
+ 	width:-webkit-fit-content;
+ 	width:-moz-fit-content;
  	
- 	/*width: 1200px;*/
- 	margin: 0 auto;
  	text-align: left;
  	background-color: rgba(255, 255, 255, 0.6);
-	display: inline-block;
+	
 	
 }
 
@@ -78,7 +88,8 @@
 }
 
 </style>
-<div id="page" class='page'>
+
+<div class="page">
 <div id="input">
 	<h3 style="text-align: center;"> <u>Input summary</u></h3>
 	<ul>
@@ -169,12 +180,12 @@ d3.csv("sessions/input_summary.txt", type, function(error, data) {
       .call(yAxis)
     .append("text")
 
-		.attr("transform", "translate(-30,"+(height/2)+") rotate(-90)" )
+		.attr("transform", "translate(-50,350) rotate(-90)" )
 
 		.attr("y", 6)
 		.attr("dy", ".71em")
-		.style("text-anchor", "end")
-		.text("Traffic level");
+		
+		.text("Traffic level (1: Low, 2: Medium, 3: High)");
 
   svg_summary.selectAll(".bar")
       .data(data)

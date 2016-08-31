@@ -1,6 +1,6 @@
 output_path		/var/www/html/akshit_temp/sessions
-num_hours		8
-traff_levels	m m m m m m m m 
+num_hours		21
+traff_levels	m m m m m m m m m m m m m m m m m m m m m 
 num_reps		100
 ops				0
 num_task_types	9

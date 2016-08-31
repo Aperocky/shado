@@ -132,7 +132,8 @@
 	</form>
 
 	<?php
-		require_once("assist.html");
+		
+		require_once("assist.html");		
 		require_once("input_summary.php");
 		require_once("graph_engineer.php");
 		echo "<br>";
@@ -171,10 +172,13 @@ document.getElementById('operator2').style.display="none";}
 
 function printDiv(divName) {
  var printContents = document.getElementById(divName).innerHTML;
- w=window.open();
- w.document.write(printContents);
- w.print();
- w.close();
+ var originalContents = document.body.innerHTML;
+ document.body.innerHTML = printContents;
+
+ window.print();
+
+ document.body.innerHTML = originalContents;
+ 
 }
 </script>
 
