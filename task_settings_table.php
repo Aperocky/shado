@@ -17,7 +17,7 @@ h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
     <tr>
     <td>
         Priority
-		<span class="tooltip" onmouseover="tooltip.pop(this, '<h4>What is the priority level of this task, relative to the others?</h4>')">(?)</span>
+		<span class="tooltip" onmouseover="tooltip.pop(this, 'What is the priority level of this task, relative to the others?')">(?)</span>
 
     </td>
     <td>
@@ -207,8 +207,7 @@ h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
     <tr>
         <td>
             Mean Arrival Time
-            <span class="tooltip" onmouseover="tooltip.pop(this, '<h4>Exponential Distribution</h4>')">(?)</span>
-
+            <span class="tooltip" onmouseover="tooltip.pop(this, 'What is the average arrival rate for this task? (Note: exponentially distributed)')">(?)</span>
         </td>
         <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p0"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][0] != 0) {echo 1/$_SESSION['taskArrPms'][$taskNum][0];} else {echo 0;} ?>" > mins</td>
         <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p1"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][1] != 0) {echo 1/$_SESSION['taskArrPms'][$taskNum][1];} else {echo 0;} ?>"> mins</td>
@@ -217,6 +216,7 @@ h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
     <tr>
         <td>
             Service Time:
+            <span class="tooltip" onmouseover="tooltip.pop(this, 'How long does it typically take a human operator to complete this task? <br><br> <strong>Exponential:</strong> Specify the mean service time. For this distribution, the probability of each time occuring decreases exponentially as the time increases. <br><br> <strong>Lognormal:</strong> Specify the mean and standard deviation of the service time. For this distribution, the logarithm of each time forms a normal distribution. This results in a skewed distribution with many small values and fewer large values. Therefore, the mean is usually greater than the mode. <br><br> <strong>Uniform:</strong> Specify the minimum and maximum service time. For this distribution, any time within the bounds has an equally likely chance of occurring.')">(?)</span>
             <!-- <div class="tooltip">(?)
                 <span class="tooltiptext">
                     Exponential Distribution
@@ -225,7 +225,7 @@ h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
         </td>
         <td colspan="3">
             Distribution:
-            <select name=<?php echo "t".$taskNum."_serTimeDist"; ?> style="margin: 0px 10px">
+            <select id=<?php echo "t".$taskNum."_serTimeDist"; ?> name=<?php echo "t".$taskNum."_serTimeDist"; ?> style="margin: 0px 10px" onchange=<?php echo "updateSerDist(".$taskNum.")"; ?> >
                 <option value="E"
                     <?php
                         if($_SESSION['taskSerDist'][$taskNum]=="E") {
@@ -251,16 +251,28 @@ h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
                     Uniform
                 </option>
             </select>
-            P1:
-            <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][0]; ?>" style="margin: 0px 10px">
-            P2:
-            <input type="text" name=<?php echo "t".$taskNum."_serTime_1"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][1]; ?>" style="margin: 0px 10px">g
+            <div id=<?php echo "t".$taskNum."_expPms";?> <?php if($_SESSION['taskSerDist'][$taskNum]=="E") {echo "style='display: inline-block;'";} else {echo "style='display: none;'";} ?> >
+                Mean:
+                <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][0]; ?>" style="margin: 0px 10px">
+            </div>
+            <div id=<?php echo "t".$taskNum."_logPms";?> <?php if($_SESSION['taskSerDist'][$taskNum]=="L") {echo "style='display: inline-block;'";} else {echo "style='display: none;'";} ?> >
+                Mean:
+                <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][0]; ?>" style="margin: 0px 10px">
+                Std dev:
+                <input type="text" name=<?php echo "t".$taskNum."_serTime_1"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][1]; ?>" style="margin: 0px 10px">
+            </div>
+            <div id=<?php echo "t".$taskNum."_uniPms";?> <?php if($_SESSION['taskSerDist'][$taskNum]=="U") {echo "style='display: inline-block;'";} else {echo "style='display: none;'";} ?> >
+                Min:
+                <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][0]; ?>" style="margin: 0px 10px">
+                Max:
+                <input type="text" name=<?php echo "t".$taskNum."_serTime_1"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][1]; ?>" style="margin: 0px 10px">
+            </div>
         </td>
     </tr>
     <tr>
         <td>
             Affected by Traffic Levels
-            <span class="tooltip" onmouseover="tooltip.pop(this, '<h4>Is the arrival of this task affected by lower/higher levels of traffic?</h4>')">(?)</span>
+            <span class="tooltip" onmouseover="tooltip.pop(this, 'Is the arrival of this task affected by lower/higher levels of traffic?')">(?)</span>
 
 
         </td>

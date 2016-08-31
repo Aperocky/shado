@@ -1,7 +1,6 @@
 <?php
 	session_start();
-	require_once("set_session_vars.php");
-//
+
 	$page_title='Run Simulation.';
 	$curr_page='runSimPage';
 	$html_head_insertions .= '<script type="text/javascript" src="sim_settings_entry.js"></script>';
@@ -10,7 +9,7 @@
 	require_once("side_navigation.php");
 ?>
 	<div id="runSimulationPage" class="page">
-		<h1 class="pageTitle">Run Simulation</h1>
+		<h1 class="pageTitle">Input Trip Conditions</h1>
 		<?php
 			// for ($i = 0; $i < sizeof($_SESSION['taskAssocOps']); $i++) {
 			// 	for ($j = 0; $j < sizeof($_SESSION['taskAssocOps'][$i]); $j++) {
@@ -18,10 +17,10 @@
 			// 	}
 			// 	echo "<br>";
 			// }
-					echo $_SESSION['numReps'];
 		?>
 		<p>
 			To get started, provide us with three simple data points. What time of day does your operator begin <strong>(1)</strong> and end <strong>(2)</strong> his/her shift? And what’s the level of traffic <strong>(3)</strong> in the region during this shift? Lastly, specify any additional operators or technologies <strong>(4)</strong> that will assist the engineer during the trip.
+			And if you're a more advanced user, look at the advanced settings.
 		</p>
 		<br>
 
@@ -29,12 +28,17 @@
 			<!-- <form action="create_txt.php"  style="text-align: center;">
 				<input type="submit" value="Run Simulation">
 			</form> -->
-			<form action="settings.php" style="text-align: center;">
-				<button type="submit"><img src="images/settings-gear.png" width="30" height="30"></button>
+			<form action="settings.php">
+				<button type="submit" style="float: right;">
+					<img src="images/settings-gear.png" width="30" height="30" align="top">
+					<div style="display: inline-block;  text-align: left; padding: 3px;">
+						Advanced <br> Settings
+					</div>
+				</button>
 			</form>
-		</div><br>
+		</div>
 
-		<form id="timeEntry" action="create_txt.php" method="post" onsubmit="return confirm('Please verify the information provided and submit OK to run simulation!!');">
+		<form id="timeEntry" action="create_txt.php" method="post" onsubmit="return confirm('Please verify your provided settings and click OK to run simulation!');">
 			<div class="startEndTimeStepOuter centerOuter">
 
 				<div class="startEndTime stepBox">
