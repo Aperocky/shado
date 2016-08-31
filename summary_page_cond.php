@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded",function(){
 	
 	document.getElementById('howTab').style.display="block";
 	document.getElementById('whenTab').style.display="block";
-document.getElementById('operator1').style.display="none";}
+	document.getElementById('operator1').style.display="none";}
 
 );
 
@@ -164,10 +164,13 @@ document.getElementById('operator1').style.display="none";}
 
 function printDiv(divName) {
  var printContents = document.getElementById(divName).innerHTML;
- w=window.open();
- w.document.write(printContents);
- w.print();
- w.close();
+ var originalContents = document.body.innerHTML;
+ document.body.innerHTML = printContents;
+
+ window.print();
+
+ document.body.innerHTML = originalContents;
+ 
 }
 </script>
 
