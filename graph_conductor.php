@@ -48,16 +48,16 @@
 
 	fclose($file_handle);
 	$count[0][0]='time';
-	$type_names=array();
-	$type_names[0]="Communicating";
-	$type_names[1]="Exception Handling";
-	$type_names[2]="Paperwork";
-	$type_names[3]="Maintenance of Way";
-	$type_names[4]="Temporary Speed Restrictions";
-	$type_names[5]="Signal Response Management";
-	$type_names[6]="Monitoring Inside";
-	$type_names[7]="Monitoring Outside";
-	$type_names[8]="Planning Ahead";
+	// $type_names=array();
+	// $type_names[0]="Communicating";
+	// $type_names[1]="Exception Handling";
+	// $type_names[2]="Paperwork";
+	// $type_names[3]="Maintenance of Way";
+	// $type_names[4]="Temporary Speed Restrictions";
+	// $type_names[5]="Signal Response Management";
+	// $type_names[6]="Monitoring Inside";
+	// $type_names[7]="Monitoring Outside";
+	// $type_names[8]="Planning Ahead";
 
 
 
@@ -122,12 +122,21 @@
 .x.axis path {
   display: none;
 }
-.tooltip{
-	text-anchor: left;
-	font-family: sans-serif;
-	font-size: 12px;
-	font-weight: bold;
-	fill:black;
+div.tooltip1 {
+    position: absolute;
+
+    width:fit-content;
+	width:-webkit-fit-content;
+	width:-moz-fit-content;
+    height:fit-content;
+	height:-webkit-fit-content;
+	height:-moz-fit-content;
+    padding: 5px;
+    font: 15px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
 }
 .node.active {
   fill: blue;
@@ -168,6 +177,11 @@ var yAxisAbsolute = d3.svg.axis()
 	    .scale(yAbsolute)
 	    .orient("left");
 
+var div1 = d3.select("#graph2").append("div")
+    .attr("class", "tooltip1")
+    .style("opacity", 0);
+
+
 var svg = d3.select("#graph2").append("svg")
     .attr("width", width + margin.left + margin.right+legend_width)
     .attr("height", height + margin.top + margin.bottom)
@@ -183,6 +197,11 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 
     d.total = d.ages[d.ages.length - 1].y1;// the last row
 	d.pct = [];
+	d.total=d.total*100;
+	for (var i=0;i <d.ages.length;i ++ ){
+		d.ages[i].y1=d.ages[i].y1*100;
+		d.ages[i].y0=d.ages[i].y0*100;
+	}
 
 	for (var i=0;i <d.ages.length;i ++ ){
 
@@ -203,8 +222,8 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
   });
 
   x.domain(data.map(function(d) { return d.time.slice(0,4); }));
-  yAbsolute.domain([0,1]);//Absolute View scale
-  yRelative.domain([0,1])// Relative View domain
+  yAbsolute.domain([0,100]);//Absolute View scale
+  yRelative.domain([0,100])// Relative View domain
 
   var absoluteView = true // define a boolean variable, true is absolute view, false is relative view
   						  // Initial view is absolute
@@ -252,21 +271,31 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 	stateAbsolute.selectAll("rect")
 		.on("mouseover", function(d){
 
+
 			var xPos = parseFloat(d3.select(this).attr("x"));
 			var yPos = parseFloat(d3.select(this).attr("y"));
 			var height = parseFloat(d3.select(this).attr("height"))
 
 			d3.select(this).attr("stroke","blue").attr("stroke-width",0.8);
+			div1.transition()
+                .duration(200)
+                .style("opacity", .9);
+            div1.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2)+"%")
+                 .style("left", (d3.event.pageX+20) + "px")
+                .style("top", (d3.event.pageY - 20) + "px");
 
-			svg.append("text")
-				.attr("x",xPos)
-				.attr("y",yPos +height/2)
-				.attr("class","tooltip")
-				.text(((d.y1-d.y0)*100).toFixed(2)+"%");
+
+
+
+
+
 		})
-		.on("mouseout",function(){
-			svg.select(".tooltip").remove();
+		.on("mouseout", function(d) {
+
 			d3.select(this).attr("stroke","pink").attr("stroke-width",0.2);
+            div1.transition()
+                .duration(100)
+                .style("opacity", 0);
 		})
 	//define two different scales, but one of them will always be hidden.
 	svg.append("g")

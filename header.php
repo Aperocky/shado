@@ -1,12 +1,19 @@
+<?php
+	session_start();
+?>
+
 <html>
 <head>
 		<meta charset="UTF-8">
 		<title><?php echo $page_title; ?></title>
 		<link rel="stylesheet" href="styles/global_styles.css.php">
 		<link rel="stylesheet" href="graph_text.css">
+		<link rel="stylesheet" href="custom.css">
 		<!-- <script type="text/javascript" src="scripts/main.js"></script> -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<?php
+			// session_unset();
+			// session_start();
 			echo $html_head_insertions;
 		?>
 </head>

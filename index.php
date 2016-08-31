@@ -1,7 +1,30 @@
 <?php
+
+//	Start session
+
+	// session_unset();
+	session_destroy();
+
+	if(empty($_SESSION['session_started'])) {
+		include("set_session_vars.php");
+	}
+	$_SESSION['session_started'] = true;
+
+//	Include header
+
 	$page_title='Welcome!';
 	$curr_page='homePage';
 	require_once('header.php');
+
+	// print_r($_SESSION['taskAssocOps']);
+	// for ($i = 0; $i < sizeof($_SESSION['taskAssocOps']); $i++) {
+	// 	for ($j = 0; $j < sizeof($_SESSION['taskAssocOps'][$i]); $j++) {
+	// 		echo $_SESSION['taskAssocOps'][$i][$j]." ";
+	// 	}
+	// 	echo "<br>";
+	// }
+
+	// echo $_SESSION['taskNames'][0];
 ?>
 			<div id="homePage" class="page">
 				<h1 class="pageTitle">Welcome to the SHOW!</h1>
