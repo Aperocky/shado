@@ -12,7 +12,7 @@
 		<li><a id="sideNavElement" <?php if ($curr_page=='initialResultsPage') {echo 'class="active"';} ?> href="read_csv.php">View Results</a></li>
 
 		<!-- <li><a id="sideNavElement" <?php if ($curr_page=='tweakParamsPage') {echo 'class="active"';} ?> href="replications.php">Tweak Parameters</a></li> -->
-		<li><a id="sideNavElement" <?php if ($curr_page=='detailedAnalysisPage') {echo 'class="active"';} ?> href="create_graph_engineer.php">Detailed Analysis</a></li>
+		<li><a id="sideNavElement" <?php if ($curr_page=='detailedAnalysisPage') {echo 'class="active"';} ?> href="investigate_engineer.php">Detailed Analysis</a></li>
 		<li><a id="sideNavElement" <?php if ($curr_page=='summaryReportPage') {echo 'class="active"';} ?> href="summary_page_eng.php">Print Report</a></li>
 	</ul>
 </nav>

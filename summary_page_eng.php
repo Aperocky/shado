@@ -132,8 +132,7 @@
 	</form>
 
 	<?php
-		
-		require_once("assist.html");		
+		require_once("assist.html");
 		require_once("input_summary.php");
 		require_once("graph_engineer.php");
 		echo "<br>";
