@@ -30,7 +30,7 @@
 
 				<!-- </form> -->
 				<h2>Task Details</h2>
-				Below, you can see and change our underlying assumptions for each task.
+				Below, you can see and change the underlying assumptions for each task.
 				<!-- <form id="taskParameters" action="settings_send.php" method="post"> -->
 					<?php
 						// print_r($_SESSION['taskAssocOps']);
