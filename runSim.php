@@ -18,7 +18,7 @@
 			// 	}
 			// 	echo "<br>";
 			// }
-					echo $_SESSION['numReps'];
+					
 		?>
 		<p>
 			To get started, provide us with three simple data points. What time of day does your operator begin <strong>(1)</strong> and end <strong>(2)</strong> his/her shift? And what’s the level of traffic <strong>(3)</strong> in the region during this shift? Lastly, specify any additional operators or technologies <strong>(4)</strong> that will assist the engineer during the trip.

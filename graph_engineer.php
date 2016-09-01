@@ -278,7 +278,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
   						  // Initial view is absolute
   svg_eng.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate("+(-width/(2*temp)-50)+"," + height +")")
+      .attr("transform", "translate("+(-width/(2*temp))+"," + height +")")
 	  .call(xAxis)
 	  .append("text")
 	  .attr("transform", "translate("+(width / 2)+",45)" )
@@ -292,7 +292,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 						.data(data)
 		    			.enter().append("g")
 		    			.attr("class", "absolute")
-		   			 .attr("transform", function(d) { return "translate(-50,0)"; });
+		   			 .attr("transform", function(d) { return "translate(0,0)"; });
 
 	stateAbsolute.selectAll("rect")
 			    .data(function(d) { return d.ages})

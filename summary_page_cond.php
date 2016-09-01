@@ -132,7 +132,7 @@
 
 	<?php
 		require_once("assist.html");
-		require_once("temp_graph.php");
+		require_once("graph_conductor.php");
 		echo "<br>";
 		require_once("graph_nav_static.php");
 		graphText('sessions/Conductor_stats.csv');

@@ -3,9 +3,22 @@
 	$file_handle=fopen('sessions/Conductor_stats.csv','r');
 	$file=fopen("sessions/mod_type_data_conductor.txt","w");
 	$count=array();
+	$s_dev=array();
+	$temp_count_dev=0;
 	$temp_count=0;
 	$skip=1;
 	$num=0;
+
+	$type_names=array();
+	$type_names[0]="Communicating";
+	$type_names[1]="Exception Handling";
+	$type_names[2]="Paperwork";
+	$type_names[3]="Maintenance of Way";
+	$type_names[4]="Temporary Speed Restrictions";
+	$type_names[5]="Signal Response Management";
+	$type_names[6]="Monitoring Inside";
+	$type_names[7]="Monitoring Outside";
+	$type_names[8]="Planning Ahead";
 
 	while (! feof($file_handle) )
 	{
@@ -13,7 +26,7 @@
 		{
 			$skip=1;
 		}
-		$line_of_text = fgetcsv($file_handle,1024,',');
+		$line_of_text = fgetcsv($file_handle,2048,',');
 		if($line_of_text[1]=="Sum")
 		{
 			break;
@@ -40,24 +53,32 @@
 		}
 		if($skip==0)
 		{
+			$num=count($line_of_text);
+			$s_dev[$temp_count_dev]=array();
+			for($i=2;$i<$num;$i++)
+			{
+				$s_dev[$type_names[$temp_count_dev]][$count[0][$i-1]]=(float)$line_of_text[$i];
+
+			}
+			$temp_count_dev++;
 			$skip=1;
 			continue;
 		}
-
 	}
 
 	fclose($file_handle);
 	$count[0][0]='time';
-	// $type_names=array();
-	// $type_names[0]="Communicating";
-	// $type_names[1]="Exception Handling";
-	// $type_names[2]="Paperwork";
-	// $type_names[3]="Maintenance of Way";
-	// $type_names[4]="Temporary Speed Restrictions";
-	// $type_names[5]="Signal Response Management";
-	// $type_names[6]="Monitoring Inside";
-	// $type_names[7]="Monitoring Outside";
-	// $type_names[8]="Planning Ahead";
+
+	$type_names=array();
+	$type_names[0]="Communicating";
+	$type_names[1]="Exception Handling";
+	$type_names[2]="Paperwork";
+	$type_names[3]="Maintenance of Way";
+	$type_names[4]="Temporary Speed Restrictions";
+	$type_names[5]="Signal Response Management";
+	$type_names[6]="Monitoring Inside";
+	$type_names[7]="Monitoring Outside";
+	$type_names[8]="Planning Ahead";
 
 
 
@@ -77,14 +98,18 @@
 	}
 
 	fclose($file);
+
+
 ?>
-<body>
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+
 	<div class="page">
 		<div class="conductor">
 			<div id="graph2"></div>
 		</div>
-	</div>
-</body>
+
 
 <style>
 
@@ -93,7 +118,7 @@
 }
 
 #graph2{
-	padding:5px 15px;
+	padding:30px 30px;
 	width:fit-content;
 	width:-webkit-fit-content;
 	width:-moz-fit-content;
@@ -116,12 +141,15 @@
   stroke: #000;
   shape-rendering: crispEdges;
 }
+
 .bar {
   fill: steelblue;
 }
+
 .x.axis path {
   display: none;
 }
+
 div.tooltip1 {
     position: absolute;
 
@@ -138,6 +166,9 @@ div.tooltip1 {
     border-radius: 8px;
     pointer-events: none;
 }
+
+
+
 .node.active {
   fill: blue;
 }
@@ -147,16 +178,16 @@ div.tooltip1 {
 
 <script>
 var legend_width = 120;
+
 var temp=<?php echo $num; ?>;
 
 var margin = {top: 20, right: 20, bottom: 50, left: 70},
-    width = 35*temp;
+    width = 800;
 
     height = 500 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width],0.4);
-
 
 
 var yAbsolute = d3.scale.linear() // for absolute scale
@@ -165,9 +196,15 @@ var yRelative = d3.scale.linear() // for absolute scale
 	    .rangeRound([height, 0]);
 var color = d3.scale.ordinal()
     .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#dd843c", "#ff8ff0"]);
+
+
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom");
+
+var ticks_gap=Math.round((temp-2)/12);
+
+xAxis.tickFormat(function (d,counter=0) {if(counter%ticks_gap==0){counter++; return d;} });
 
 var yAxisRelative = d3.svg.axis()
     .scale(yRelative)
@@ -181,28 +218,35 @@ var div1 = d3.select("#graph2").append("div")
     .attr("class", "tooltip1")
     .style("opacity", 0);
 
-
 var svg = d3.select("#graph2").append("svg")
     .attr("width", width + margin.left + margin.right+legend_width)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
 d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "time"; }));
 
+
+
   data.forEach(function(d) {
-	var mystate = d.time.slice(0,4);
+
+	var index=d.time.indexOf('min');
+
+	var mystate = d.time.slice(0,index);
+
     var y0 = 0;
+
 	d.ages = color.domain().map(function(name) { return {mystate:mystate, name: name, y0: y0, y1: y0 += +d[name]}; });
 
     d.total = d.ages[d.ages.length - 1].y1;// the last row
+
 	d.pct = [];
 	d.total=d.total*100;
 	for (var i=0;i <d.ages.length;i ++ ){
 		d.ages[i].y1=d.ages[i].y1*100;
 		d.ages[i].y0=d.ages[i].y0*100;
 	}
-
 	for (var i=0;i <d.ages.length;i ++ ){
 
 		var y_coordinate = +d.ages[i].y1/d.total;
@@ -214,29 +258,35 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 			y_height1: y_height1,
 			y_height0: y_height0,
 			name: d.ages[i].name,
-			mystate: d.time.slice(0,4),
+			mystate: d.time.slice(0,index),
 			y_pct: y_pct
 
 		});
+
 	}
+
   });
 
-  x.domain(data.map(function(d) { return d.time.slice(0,4); }));
+
+
+  x.domain(data.map(function(d) {var index=d.time.indexOf('min'); return d.time.slice(0,index); }));
+
   yAbsolute.domain([0,100]);//Absolute View scale
   yRelative.domain([0,100])// Relative View domain
 
   var absoluteView = true // define a boolean variable, true is absolute view, false is relative view
   						  // Initial view is absolute
-    svg.append("g")
+  svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate("+(-width/(2*temp))+"," + height +")")
-      .call(xAxis)
+	  .call(xAxis)
 	  .append("text")
 	  .attr("transform", "translate("+(width / 2)+",45)" )
 	  .attr("x", 1)
 	  .attr("dx", ".71em")
-
 	  .text("Time (min)");
+
+
 
 	var stateAbsolute= svg.selectAll(".absolute")
 						.data(data)
@@ -270,7 +320,7 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 
 	stateAbsolute.selectAll("rect")
 		.on("mouseover", function(d){
-
+			console.log(d);
 
 			var xPos = parseFloat(d3.select(this).attr("x"));
 			var yPos = parseFloat(d3.select(this).attr("y"));
@@ -280,8 +330,8 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 			div1.transition()
                 .duration(200)
                 .style("opacity", .9);
-            div1.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2)+"%")
-                 .style("left", (d3.event.pageX+20) + "px")
+            div1.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2))
+                .style("left", (d3.event.pageX+20) + "px")
                 .style("top", (d3.event.pageY - 20) + "px");
 
 
@@ -308,7 +358,9 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 		.attr("y", 6)
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
-		.text("Utilization");
+		.text("Utilization (%)");
+
+
 
 	svg.append("text")
         .attr("x", (width / 2))
@@ -321,6 +373,7 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 	// end of define absolute
 
 	// adding legend
+
   	    var legend = svg.selectAll(".legend")
       	 	 			.data(color.domain().slice().reverse())
     	 			    .enter().append("g")
