@@ -30,7 +30,7 @@
 		<div id="title">
 			 <!-- style="border: 1px solid red;"> -->
 			<a href="http://hal.pratt.duke.edu">
-				<img id="footerLogo" src="images/hal.png" width=250 align="left" style="padding: 20px 20px">
+				<img id="footerLogo" src="images/hal_light.png" width=250 align="left" style="padding: 20px 20px">
 				<!-- align="left" -->
 			</a>
 			<h1>Simulator of Human Operator Workload</h1>
