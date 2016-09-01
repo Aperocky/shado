@@ -99,6 +99,7 @@
 	}
 
 	fclose($myfile);
+
 	// echo "Start";
 	 exec("./DES sessions/parameters.txt");
 	// echo "<br> Done";
