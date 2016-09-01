@@ -7,7 +7,7 @@
 
 	session_start();
 	$myfile=fopen("sessions/parameters.txt", "w") or fopen("/home/hal/des_data/parameters.txt", "w") or die("unable to open");
-	fwrite($myfile,"output_path\t\t/var/www/html/akshit_temp/sessions\n");
+	fwrite($myfile,"output_path\t\t/Users/Branch/Documents/Academic/Year 1/Summer/DES Code/DES Web/sessions\n");
 	$start_time=(int)substr($_POST ["time1"],0,2);
 	$stop_time=(int)substr($_POST ["time2"],0,2);
 	$start_min=(int)substr($_POST ["time1"],3,strlen($_POST ["time1"]));
@@ -15,7 +15,7 @@
 	$time=60-$start_min+$stop_min+($stop_time-$start_time-1)*60;
 
 	$time=ceil($time/60);
-	
+
 	if ($time <= 0) {
 		$time+=24;
 	}
