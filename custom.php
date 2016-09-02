@@ -25,7 +25,7 @@
 
 <div class="custom " id="custom">
 	<div class='stepCircle'>5</div>
-	<h3 id='custom_heading' class='whiteFont'>Custom Assistant Settings  <span class="tooltip" onmouseover="tooltip.pop(this,'Identify the name and which tasks the custom assistant(s) can offload from the locomotive engineer workload')">?</span></h3>
+	<h3 id='custom_heading' class='whiteFont'>Custom Assistant Settings  <span class="tooltip" onmouseover="tooltip.pop(this,'Identify the name and which tasks the custom assistant(s) can offload from the locomotive engineer workload')">(?)</span></h3>
 	<br>
 	<table id='custom_table' class='customTable' border='1'>
 		<tr>
@@ -37,7 +37,7 @@
 		{
 			// echo "<tr><td>".$type_names[$i]."</td><td><input type='radio' name='custom".$i."' value='y' >Yes</input><input type='radio' name='custom".$i."' value='n' >No</input></td></tr>";
 
-			echo "<tr><td>".$_SESSION['taskNames'][$i]."  <span class='tooltip' onmouseover='tooltip.pop(this,".$text[$_SESSION['taskNames'][$i]].")'>?</span></td><td><input type='checkbox' name='custom".$i."' value='y' ></input></td></tr>";
+			echo "<tr><td>".$_SESSION['taskNames'][$i]."  <span class='tooltip' onmouseover='tooltip.pop(this,".$text[$_SESSION['taskNames'][$i]].")'>(?)</span></td><td><input type='checkbox' name='custom".$i."' value='y' ></input></td></tr>";
 		}
 	?>
 	<?php

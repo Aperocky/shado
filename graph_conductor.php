@@ -375,7 +375,7 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
 			.attr("text-anchor", "middle")
 			.style("font-size", "24px")
 			
-			.html("<span class='tooltip' onmouseover='tooltip.pop(this, &apos; Hover over the graph for more information &apos;)'>?</span>");
+			.html("<span class='tooltip' onmouseover='tooltip.pop(this, &apos; Hover over the graph for more information &apos;)'>(?)</span>");
 
 	// end of define absolute
 

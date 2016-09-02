@@ -365,7 +365,7 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 			.attr("y", -12 - (margin.top / 2))
 			.attr("text-anchor", "middle")		
 			.style("font-size", "24px")			
-			.html("<span class='tooltip' onmouseover='tooltip.pop(this, &apos; Hover over the graph for more information &apos;)'>?</span>");
+			.html("<span class='tooltip' onmouseover='tooltip.pop(this, &apos; Hover over the graph for more information &apos;)'>(?)</span>");
 	
 	svg_eng.append("text")
         .attr("x", (width / 2))
