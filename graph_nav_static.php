@@ -262,7 +262,7 @@
 				<ul>
 					<li style='background-color: #75D3FE ;'>When?</li>
 					<li  style='background-color: #555 ;'>Why?</li>
-					<li  style='background-color: #555 ;'>How?</li>
+					
 				</ul>
 			</nav>";
 			
@@ -275,7 +275,7 @@
 				<ul>
 					<li  style='background-color: #555 ;'>When?</li>
 					<li style='background-color: #75D3FE ;'>Why?</li>
-					<li  style='background-color: #555 ;'>How?</li>
+					
 				</ul>
 			</nav>";
 		
@@ -283,22 +283,7 @@
 		require_once("graph_why.php"); 
 		
 					
-		echo "</div<br><br><br>
-			
-		<div id='graphTextBox' >
-			<nav id='graphNav'>
-				<ul>
-					<li  style='background-color: #555 ;'>When?</li>
-					<li style='background-color: #555 ;'>Why?</li>
-					<li  style='background-color: #75D3FE ;'>How?</li>
-				</ul>
-			</nav> ";
-			
-		
-		require_once("graph_how.php"); 
-			
-		echo "</div>";
-		
+		echo "</div";
 		
 		
 	}

@@ -255,7 +255,7 @@
 		}
 		require_once("graph_nav.php");
 		require_once("graph_when.php");
-		require_once("graph_how.php");
+		
 		require_once("graph_why.php");
 	}
 
