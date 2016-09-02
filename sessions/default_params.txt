@@ -70,7 +70,7 @@ op_nums      	0 1 2
 name			Monitoring Inside
 prty         	2 2 1
 arr_dist     	E
-arr_pms      	0.285714 0.374532 0.5
+arr_pms      	0.285714 0.374532 0.374532
 ser_dist     	E
 ser_pms      	7.5188 0
 exp_dist     	E

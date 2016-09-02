@@ -54,11 +54,11 @@
 						<input type="submit" id="submit" value="Save and Return" style="text-align: center;">
 					</div>
 				</form>
-				<div style="text-align: center;">
-					<button onclick="restore()">Restore Defaults</button>
+				<div>
+					<button class="button" onclick="restore()" style="background-color: #4CAF50; padding: 5px 10px; border-radius: 25px;">+</button>
 				</div>
 				<div style="text-align: center;">
-					<button class="button" onclick="restore()" style="background-color: #4CAF50;">Add Task</button>
+					<button onclick="location.href='reset_session_vars.php';">Restore Defaults</button>
 				</div>
 			</div>
 

@@ -1,7 +1,11 @@
 <style>
 h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
 </style>
-<h3>Task <?php echo $taskNum + 1; ?></h3>
+<h3>
+    <!-- <button class="button" onclick="deleteTask()" style="background-color: #f44336; padding: 5px 10px; border-radius: 25px;">-</button> -->
+    Task <?php echo $taskNum + 1; ?>
+    <button class="button" onclick="deleteTask()" style="background-color: #f44336; padding: 5px 10px; border-radius: 25px;">-</button>
+</h3>
 <table align="center">
     <tr>
         <th>Task Parameter</th>
@@ -209,9 +213,9 @@ h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
             Mean Arrival Time
             <span class="tooltip" onmouseover="tooltip.pop(this, 'What is the average arrival rate for this task? (Note: exponentially distributed)')">(?)</span>
         </td>
-        <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p0"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][0] != 0) {echo 1/$_SESSION['taskArrPms'][$taskNum][0];} else {echo 0;} ?>" > mins</td>
-        <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p1"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][1] != 0) {echo 1/$_SESSION['taskArrPms'][$taskNum][1];} else {echo 0;} ?>"> mins</td>
-        <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p2"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][2] != 0) {echo 1/$_SESSION['taskArrPms'][$taskNum][2];} else {echo 0;} ?>"> mins</td>
+        <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p0"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][0] != 0) {echo round(1/$_SESSION['taskArrPms'][$taskNum][0],2);} else {echo 0;} ?>" > mins</td>
+        <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p1"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][1] != 0) {echo round(1/$_SESSION['taskArrPms'][$taskNum][1],2);} else {echo 0;} ?>"> mins</td>
+        <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p2"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][2] != 0) {echo round(1/$_SESSION['taskArrPms'][$taskNum][2],2);} else {echo 0;} ?>"> mins</td>
     </tr>
     <tr>
         <td>
@@ -253,19 +257,19 @@ h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
             </select>
             <div id=<?php echo "t".$taskNum."_expPms";?> <?php if($_SESSION['taskSerDist'][$taskNum]=="E") {echo "style='display: inline-block;'";} else {echo "style='display: none;'";} ?> >
                 Mean:
-                <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][0]; ?>" style="margin: 0px 10px">
+                <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][0],2); ?>" style="margin: 0px 10px">
             </div>
             <div id=<?php echo "t".$taskNum."_logPms";?> <?php if($_SESSION['taskSerDist'][$taskNum]=="L") {echo "style='display: inline-block;'";} else {echo "style='display: none;'";} ?> >
                 Mean:
-                <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][0]; ?>" style="margin: 0px 10px">
+                <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][0],2); ?>" style="margin: 0px 10px">
                 Std dev:
-                <input type="text" name=<?php echo "t".$taskNum."_serTime_1"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][1]; ?>" style="margin: 0px 10px">
+                <input type="text" name=<?php echo "t".$taskNum."_serTime_1"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][1],2); ?>" style="margin: 0px 10px">
             </div>
             <div id=<?php echo "t".$taskNum."_uniPms";?> <?php if($_SESSION['taskSerDist'][$taskNum]=="U") {echo "style='display: inline-block;'";} else {echo "style='display: none;'";} ?> >
                 Min:
-                <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][0]; ?>" style="margin: 0px 10px">
+                <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][0],2); ?>" style="margin: 0px 10px">
                 Max:
-                <input type="text" name=<?php echo "t".$taskNum."_serTime_1"; ?> size="4" maxlength="4" value="<?php echo $_SESSION['taskSerPms'][$taskNum][1]; ?>" style="margin: 0px 10px">
+                <input type="text" name=<?php echo "t".$taskNum."_serTime_1"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][1],2); ?>" style="margin: 0px 10px">
             </div>
         </td>
     </tr>
@@ -273,8 +277,6 @@ h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
         <td>
             Affected by Traffic Levels
             <span class="tooltip" onmouseover="tooltip.pop(this, 'Is the arrival of this task affected by lower/higher levels of traffic?')">(?)</span>
-
-
         </td>
         <td>
             <select name=<?php echo "t".$taskNum."_affByTraff_p0"; ?>>
@@ -378,7 +380,3 @@ h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
         </td>
     </tr>
 </table>
-
-<div style="text-align: center;">
-    <button class="button" onclick="deleteTask()" style="background-color: #f44336;">Delete Task</button>
-</div>

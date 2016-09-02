@@ -24,7 +24,7 @@
 
     $line = fscanf($file, "%s %s");
     $_SESSION['outputPath']=$line[1];
-    echo $_SESSION['outputPath'];
+    // echo $_SESSION['outputPath'];
     // echo $line[1]."<br>";
 
 //  Set default number of replications
