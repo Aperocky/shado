@@ -1,4 +1,4 @@
-function updateSerDist(task_num){
+function updateSerDist(task_num) {
 	console.log(task_num);
 	var item = document.getElementById("t" + task_num + "_serTimeDist");
 	console.log(item);
@@ -18,4 +18,12 @@ function updateSerDist(task_num){
 		document.getElementById("t" + task_num + "_logPms").style.display='none';
 		document.getElementById("t" + task_num + "_uniPms").style.display='inline-block';
 	}
+}
+
+function addTask() {
+	document.getElementById("demo").innerHTML = "Hello world.";
+}
+
+function deleteTask() {
+
 }

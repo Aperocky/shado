@@ -48,12 +48,18 @@
 							echo "<br>";
 					    }
 					?>
-					<!-- <p><input type="submit" value="Add New Task" name="newTaskButton" style="text-align:center"></p> -->
+					<!-- <input type="submit" value="Add New Task" name="newTaskButton" style="text-align:center"> -->
 					<!-- <p><input type="submit" value="Submit" name="runSimButton"></p> -->
 					<div style="text-align: center;">
 						<input type="submit" id="submit" value="Save and Return" style="text-align: center;">
 					</div>
 				</form>
+				<div style="text-align: center;">
+					<button onclick="restore()">Restore Defaults</button>
+				</div>
+				<div style="text-align: center;">
+					<button class="button" onclick="restore()" style="background-color: #4CAF50;">Add Task</button>
+				</div>
 			</div>
 
 <?php

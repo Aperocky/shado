@@ -9,7 +9,7 @@
 					We highly value any questions or comments. To reach us, leave a message below. Thanks!
 				</p>
 				<div id="contactForm">
-					<form id="contactFormInner">
+					<form id="contactFormInner" action="mailto:bev5@duke.edu" method="post" enctype="text/plain">
 						<!-- <form id="contactForm">  -->
 						<strong>Name:</strong> <br><input type="text" name="name"><br><br>
 						<strong>Email:</strong> <br><input type="text" name="email"><br><br>

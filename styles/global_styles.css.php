@@ -140,7 +140,7 @@ body {
 
 #main {
 	margin-top: 168px;
-	margin-bottom: 120px;
+	margin-bottom: 20px;
 	/*border: 1px solid red;*/
 	/*height: 100%;*/
 }
@@ -396,4 +396,19 @@ th {
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip1:hover .tooltiptext1 {
     visibility: visible;
+}
+
+.button {
+	background-color: #e7e7e7;
+	color: black;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+	border-radius: 8px;
 }
