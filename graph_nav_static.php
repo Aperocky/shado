@@ -257,7 +257,7 @@
 			$user_name='conductor';
 		}
 		
-		echo "<div id='graphTextBox' >
+		echo "<br><br><br><br><br><br><div id='graphTextBox' >
 			<nav id='graphNav'>
 				<ul>
 					<li style='background-color: #75D3FE ;'>When?</li>
@@ -268,8 +268,7 @@
 			
 		require_once("graph_when.php"); 
 			
-		echo "</div><br><br><br>
-
+		echo "</div><br><br><br><br><br><br>
 		<div id='graphTextBox' >
 			<nav id='graphNav'>
 				<ul>
