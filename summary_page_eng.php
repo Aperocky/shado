@@ -108,17 +108,17 @@
 			display: none;
 		}
 
-	@media print
-		{
-			#graphTextBox {page-break-after: always;}
-			
-			
-			
-		}
-		
+	/*	@media print
+			{
+				#graphTextBox {page-break-inside: avoid;}
+				
+				
+				
+			}
+			*/
 		#text-box{display: block;}
 	#howTab{display: block;}
-	#graphTextBox {page-break-after: always;}
+	/*#graphTextBox {page-break-after: always;}*/
 	
 	
 </style>
