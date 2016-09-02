@@ -115,7 +115,9 @@
 			<!-- <h4 style="text-align:center;">Run Simulation</h4> -->
 			<!-- <div id="next_page" class="navArrow" onclick="var submit = getElementById('submit'); submit.click()";>
 			</div> -->
-			<input type="submit" id="submit" class="button" style="background-color: #4CAF50;" value="Run Simulation">
+			<div>
+				<input type="submit" id="submit" class="button" style="background-color: #4CAF50;" value="Run Simulation">
+			</div>
 		</form>
 	</div>
 

@@ -101,7 +101,7 @@
 	fclose($myfile);
 
 	// echo "Start";
-	 exec("bin/DES-unix sessions/parameters.txt");
+	 exec("bin/DES-unix sessions/parameters.txt &");
 	// echo "<br> Done";
 
 ?>
