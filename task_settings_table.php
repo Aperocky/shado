@@ -5,9 +5,9 @@ h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
 <table align="center">
     <tr>
         <th>Task Parameter</th>
-        <th>Phase 1</th>
-        <th>Phase 2</th>
-        <th>Phase 3</th>
+        <th>Phase 1 <span class="tooltip" onmouseover="tooltip.pop(this, 'The startup phase is generally the first 30 minutes of any shift in which the operators are preparing for the trip while in the vicinity of a station. By regulatory requirement, it includes tasks like communicating with dispatch and testing the emergency braking system.')">(?)</span></th>
+        <th>Phase 2 <span class="tooltip" onmouseover="tooltip.pop(this, 'The full motion phase begins once the train has passed its braking tests. The engineer operates the locomotive beyond the station and into the mainline following speed allowances from the physical characteristics of the region and responding to signals of the rail system.')">(?)</span></th>
+        <th>Phase 3 <span class="tooltip" onmouseover="tooltip.pop(this, 'The yard phase is the final 30 minutes of the shift. It is important to distinguish this final phase as reports from the FRA show that the highest rates of accidents occur on yard track.')">(?)</span></th>
     </tr>
     <tr>
         <td>Name:</td>
@@ -378,3 +378,7 @@ h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
         </td>
     </tr>
 </table>
+
+<div style="text-align: center;">
+    <button class="button" onclick="deleteTask()" style="background-color: #f44336;">Delete Task</button>
+</div>

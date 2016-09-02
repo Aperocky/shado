@@ -1,5 +1,5 @@
 <?php
-	
+
 	// $type_names=array();
 	// $type_names[0]="Communicating";
 	// $type_names[1]="Exception Handling";
@@ -10,9 +10,9 @@
 	// $type_names[6]="Monitoring Inside";
 	// $type_names[7]="Monitoring Outside";
 	// $type_names[8]="Planning Ahead";
-	
+
 	$text=array();
-	$text['Communicating']="&apos; Filtering through the relevant information for the engineer operation and being able to communicate information that may impact the macro-level network of operations. &apos;";   
+	$text['Communicating']="&apos; Filtering through the relevant information for the engineer operation and being able to communicate information that may impact the macro-level network of operations. &apos;";
 	$text['Exception Handling']="&apos; Attending to unexpected or unusual situations that must be handled in order to continue with the trip mission &apos;";
 	$text['Paperwork']="&apos; Reviewing and recording operating conditions &apos;";
 	$text['Maintenance of Way Interactions']="&apos; Maintaining situation awareness of other crews along track &apos;";
@@ -27,7 +27,7 @@
 	<div class='stepCircle'>5</div>
 	<span class="tooltip" onmouseover="tooltip.pop(this,'Identify the name and which tasks the custom assistant(s) can offload from the locomotive engineer workload')">
 	<h3 id='custom_heading' class='whiteFont'>Custom Assistant Settings</h3></span>
-	
+
 	<br>
 	<table id='custom_table' class='customTable' border='1'>
 		<tr>

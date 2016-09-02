@@ -10,27 +10,19 @@
 ?>
 	<div id="runSimulationPage" class="page">
 		<h1 class="pageTitle">Input Trip Conditions</h1>
-		<?php
-			// for ($i = 0; $i < sizeof($_SESSION['taskAssocOps']); $i++) {
-			// 	for ($j = 0; $j < sizeof($_SESSION['taskAssocOps'][$i]); $j++) {
-			// 		echo $_SESSION['taskAssocOps'][$i][$j]." ";
-			// 	}
-			// 	echo "<br>";
-			// }
-		?>
 		<p>
 			To get started, provide us with three simple data points. What time of day does your operator begin <strong>(1)</strong> and end <strong>(2)</strong> his/her shift? And what’s the level of traffic <strong>(3)</strong> in the region during this shift? Lastly, specify any additional operators or technologies <strong>(4)</strong> that will assist the engineer during the trip.
 			And if you're a more advanced user, look at the advanced settings.
 		</p>
 		<br>
 
-		<div style="float: right;">
+		<div style="width: 100%; float: right;">
 			<!-- <form action="create_txt.php"  style="text-align: center;">
 				<input type="submit" value="Run Simulation">
 			</form> -->
 			<form action="settings.php">
-				<button type="submit" style="float: right;">
-					<img src="images/settings-gear.png" width="30" height="30" align="top">
+				<button class="button" type="submit" style="float: right; color: black;">
+					<img src="images/settings-gear.png" width="40" height="40" align="top">
 					<div style="display: inline-block;  text-align: left; padding: 3px;">
 						Advanced <br> Settings
 					</div>
@@ -120,13 +112,12 @@
 				<div id="assist" style="overflow-x:auto;"></div>
 			</div>
 			<br>
-			<br>
 			<?php require_once("custom.php"); ?>
-			<br><br>
-			<h4 style="text-align:center;">Run Simulation</h4>
-			<div id="next_page" class="navArrow" onclick="var submit = getElementById('submit'); submit.click()";>
-			</div>
-			<input type="submit" id="submit" value="Run Simulation" style='display:none;'>
+			<br>
+			<!-- <h4 style="text-align:center;">Run Simulation</h4> -->
+			<!-- <div id="next_page" class="navArrow" onclick="var submit = getElementById('submit'); submit.click()";>
+			</div> -->
+			<input type="submit" id="submit" class="button" style="background-color: #4CAF50;" value="Run Simulation">
 		</form>
 	</div>
 
