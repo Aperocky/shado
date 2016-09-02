@@ -2,8 +2,6 @@
 
 	session_start();
 
-	$html_head_insertions .= '<link rel="stylesheet" href="styles/assist_summary.css">';
-
 	$curr_page='summaryReportPage';
 	$page_title='Print Report';
 	require_once('header.php');

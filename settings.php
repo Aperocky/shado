@@ -4,8 +4,8 @@
 	$page_title='Advanced Settings';
 	$curr_page='advSettingsPage';
 	$html_head_insertions .= '<script type="text/javascript" src="scripts/settings.js"></script>';
-	require_once("header.php");
-	require_once("side_navigation.php");
+	require_once("includes/page_parts/header.php");
+	require_once("includes/runsim/side_navigation.php");
 ?>
 			<div id="settingsPage" class="page">
 				<!-- <div id="myData" class="hidden" data-session='<?php echo json_encode($_SESSION)?>'></div> -->
@@ -63,5 +63,5 @@
 			</div>
 
 <?php
-	require_once("footer.php");
+	require_once("includes/page_parts/footer.php");
 ?>

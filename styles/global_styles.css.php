@@ -7,6 +7,9 @@ body {
 	margin: 0;
 }
 
+
+/*  Page Parts  */
+
 #fixedAll {
 }
 
@@ -138,6 +141,9 @@ body {
 	margin-bottom: 5px;
 }
 
+
+/*  General  */
+
 #main {
 	margin-top: 168px;
 	margin-bottom: 20px;
@@ -223,6 +229,8 @@ body {
 	padding-right: 35px;
 	background-color: rgba(255, 255, 255, 0.6);
 }
+
+/*  RunSim Settings  */
 
 form#timeEntry {
 	text-align: center;
@@ -335,6 +343,9 @@ p {
 	color: white;
 }
 
+
+/*  Tables  */
+
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
@@ -384,6 +395,8 @@ th {
 
 
 
+/*  Tool Tips  */
+
 /* Tooltip container */
 .tooltip1 {
     position: relative;
@@ -425,3 +438,37 @@ th {
     cursor: pointer;
 	border-radius: 8px;
 }
+
+
+
+/*  Operator Summary  */
+
+.operatorSummaryOuter {
+	text-align: center;
+}
+
+#operator2, #operator1{
+	padding:5px 15px;
+	width:fit-content;
+	width:-webkit-fit-content;
+	width:-moz-fit-content;
+	border: 3px solid #5D7B85;
+	cursor:pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 25px;
+	display: inline-block;
+	width: 450px;
+	margin: 20px;
+	text-align: left;
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+#summaryButton, button
+{
+	padding:5px 15px;
+    border: 2px solid #5D7B85;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 25px;
+}
+

@@ -124,7 +124,7 @@
 	// }
 
 	// echo $_SESSION['numReps'];
-	include_once("runSim.php");
+	header("Location: runSim.php");
 
 	// echo "Hello";
 	// var_dump($_SESSION);

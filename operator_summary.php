@@ -1,12 +1,11 @@
 <?php
 
 	session_start();
-	$html_head_insertions .= '<link rel="stylesheet" href="styles/assist_summary.css">';
 
 	$curr_page='initialResultsPage';
 	$page_title='Results';
-	require_once('header.php');
-	require_once("side_navigation.php");
+	require_once('includes/page_parts/header.php');
+	require_once("includes/runsim/side_navigation.php");
 
 	$low_count_0=$_SESSION['low_count_0'];
 	$normal_count_0=$_SESSION['normal_count_0'];

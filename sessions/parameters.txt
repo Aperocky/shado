@@ -2,7 +2,7 @@ output_path		/Users/Branch/Documents/Academic/Year 1/Summer/DES Code/DES Web/ses
 num_hours		8
 traff_levels	m m m m m m m m 
 num_reps		100
-ops				0 4
+ops				0
 num_task_types	9
 
 name			Communicating
@@ -87,7 +87,7 @@ exp_dist		E
 exp_pms_lo		0 0 0
 exp_pms_hi		0 0 0
 aff_by_traff	0 0 0
-op_nums			0 1 2 4
+op_nums			0 1 2
 
 name			Monitoring Outside
 prty			1 1 3

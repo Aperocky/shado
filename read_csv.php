@@ -19,7 +19,8 @@
 			// echo "<br>";
 			$num=count($line_of_text);
 			
-			for($i=2;$i<$num;$i++)
+			for($i=2;$i<$num;
+				$i++)
 			{
 				$var=(float)$line_of_text[$i];
 				if($var<0.3)
@@ -96,11 +97,5 @@
 		$_SESSION['high_count_1']=$high_count;
 	}
 
-	if($assistant==-1)
-	{
-		include("assist_summary.php");  // include("assist0.html");
-	}
-	else{
-		include("assist_summary.php");
-	}
+	header("Location: operator_summary.php");
 ?>
