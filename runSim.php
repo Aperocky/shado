@@ -3,10 +3,10 @@
 
 	$page_title='Run Simulation.';
 	$curr_page='runSimPage';
-	$html_head_insertions .= '<script type="text/javascript" src="sim_settings_entry.js"></script>';
+	$html_head_insertions .= '<script type="text/javascript" src="scripts/sim_settings_entry.js"></script>';
 
-	require_once("header.php");
-	require_once("side_navigation.php");
+	require_once("includes/page_parts/header.php");
+	require_once("includes/runsim/side_navigation.php");
 ?>
 	<div id="runSimulationPage" class="page">
 		<h1 class="pageTitle">Input Trip Conditions</h1>
@@ -110,7 +110,7 @@
 				<div id="assist" style="overflow-x:auto;"></div>
 			</div>
 			<br>
-			<?php require_once("custom.php"); ?>
+			<?php require_once("includes/runsim/custom_operator.php"); ?>
 			<br>
 			<!-- <h4 style="text-align:center;">Run Simulation</h4> -->
 			<!-- <div id="next_page" class="navArrow" onclick="var submit = getElementById('submit'); submit.click()";>
@@ -121,4 +121,4 @@
 		</form>
 	</div>
 
-<?php require_once("footer.php"); ?>
+<?php require_once("includes/page_parts/footer.php"); ?>
