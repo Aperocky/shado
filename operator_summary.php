@@ -1,6 +1,7 @@
 <?php
 
 	session_start();
+	include('includes/results/read_csv.php');
 
 	$curr_page='initialResultsPage';
 	$page_title='Results';

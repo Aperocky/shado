@@ -9,7 +9,7 @@
 		      <a href="#">Advanced</a>
 		    </div>
 	  	</li> -->
-		<li><a id="sideNavElement" <?php if ($curr_page=='initialResultsPage') {echo 'class="active"';} ?> href="read_csv.php">View Results</a></li>
+		<li><a id="sideNavElement" <?php if ($curr_page=='initialResultsPage') {echo 'class="active"';} ?> href="operator_summary.php">View Results</a></li>
 
 		<!-- <li><a id="sideNavElement" <?php if ($curr_page=='tweakParamsPage') {echo 'class="active"';} ?> href="replications.php">Tweak Parameters</a></li> -->
 		<li><a id="sideNavElement" <?php if ($curr_page=='detailedAnalysisPage') {echo 'class="active"';} ?> href="investigate_engineer.php">Detailed Analysis</a></li>

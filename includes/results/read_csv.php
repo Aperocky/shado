@@ -97,5 +97,4 @@
 		$_SESSION['high_count_1']=$high_count;
 	}
 
-	header("Location: operator_summary.php");
 ?>

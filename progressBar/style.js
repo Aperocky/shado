@@ -22,7 +22,7 @@ var temp=setInterval(function() {
  if(i==7){
 	 check=1;
 	 console.log("done");
-	window.open('read_csv.php','_self');
+	window.open('operator_summary.php','_self');
 	 clearInterval(temp);
 	 
  }
