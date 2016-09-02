@@ -1,4 +1,4 @@
-output_path		/var/www/html/akshit_temp/sessions
+output_path		/Users/Branch/Documents/Academic/Year 1/Summer/DES Code/DES Web/sessions
 num_reps		100
 num_task_types	9
 name       		Communicating
