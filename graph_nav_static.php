@@ -269,7 +269,7 @@
 		require_once("graph_when.php"); 
 			
 		echo "</div><br><br><br><br><br><br>
-		<div id='graphTextBox' >
+		<div id='graphTextBox' class='no-page-break'>
 			<nav id='graphNav'>
 				<ul>
 					<li  style='background-color: #555 ;'>When?</li>

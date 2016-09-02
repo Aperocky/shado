@@ -171,6 +171,10 @@ body {
 		/*background-color: red;*/
 	}
 
+	.no-page-break {
+		page-break-inside: avoid;
+	}
+
 }
 
 .page {
