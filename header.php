@@ -29,12 +29,12 @@
 
 		<div id="title">
 			 <!-- style="position: relative;" -->
-			 <!-- style="border: 1px solid red;"> -->
 			<a href="http://hal.pratt.duke.edu">
 				<img id="footerLogo" src="images/hal_light.png" width=250 style="position: absolute; left: 0; padding: 20px 20px;">
+				 <!-- border: 1px solid red; -->
 				<!-- align="left" -->
 			</a>
-			<h1>Simulator of Human Operator Workload</h1>
+			<h1 style="padding-left: 290px">Simulator of Human Operator Workload</h1>
 		</div>
 
 		<nav id="topNav">
