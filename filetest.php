@@ -1,6 +1,8 @@
 <?php
 	echo "Hello Branch!";
-
+	echo '<br>';
+	echo 'hi param = ' . $_GET['hi'];
+	echo '<br><br><br><br>';
 
 	// $handle = fopen('tmp1/hellofile', 'w') or die('failed!');
 

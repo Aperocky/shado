@@ -6,7 +6,7 @@
 	session_destroy();
 
 	if(empty($_SESSION['session_started'])) {
-		include("set_session_vars.php");
+		include("includes/index/set_session_vars.php");
 	}
 	$_SESSION['session_started'] = true;
 
