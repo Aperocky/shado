@@ -164,6 +164,15 @@ body {
   right:10px;
 }
 
+@media print {
+
+	.page {
+		margin-left: 0 !important;
+		/*background-color: red;*/
+	}
+
+}
+
 .page {
 	margin-left: 200px;
 	margin-right: 30px;
