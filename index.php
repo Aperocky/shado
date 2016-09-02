@@ -14,7 +14,7 @@
 
 	$page_title='Welcome!';
 	$curr_page='homePage';
-	require_once('header.php');
+	require_once('includes/page_parts/header.php');
 
 	// print_r($_SESSION['taskAssocOps']);
 	// for ($i = 0; $i < sizeof($_SESSION['taskAssocOps']); $i++) {
@@ -112,5 +112,5 @@
 			</div>
 
 <?php
-	require_once("footer.php");
+	require_once("includes/page_parts/footer.php");
 ?>

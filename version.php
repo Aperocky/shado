@@ -1,7 +1,7 @@
 <?php
 	$page_title='Current Version';
 	$curr_page='versionPage';
-	require_once("header.php");
+	require_once("includes/page_parts/header.php");
 ?>
 			<div id="versionPage" class="page">
 				<h1 class="pageTitle">Release Notes</h1>
@@ -17,5 +17,5 @@
 			</div>
 
 <?php
-	require_once("footer.php");
+	require_once("includes/page_parts/footer.php");
 ?>

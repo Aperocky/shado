@@ -1,7 +1,7 @@
 <?php
 	$page_title='Contact Us.';
 	$curr_page='contactPage';
-	require_once("header.php");
+	require_once("includes/page_parts/header.php");
 ?>
 			<div id="contactPage" class="page">
 				<h1 class="pageTitle">Contact Us</h1>
@@ -20,5 +20,5 @@
 			</div>
 
 <?php
-	require_once("footer.php");
+	require_once("includes/page_parts/footer.php");
 ?>
