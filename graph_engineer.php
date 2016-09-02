@@ -359,9 +359,14 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
 		.text("Utilization (%)");
-
-
-
+	
+	svg_eng.append("foreignObject")
+			.attr("x", ((width / 2)+110))
+			.attr("y", -12 - (margin.top / 2))
+			.attr("text-anchor", "middle")		
+			.style("font-size", "24px")			
+			.html("<span class='tooltip' onmouseover='tooltip.pop(this, &apos; Hover over the graph for more information &apos;)'>?</span>");
+	
 	svg_eng.append("text")
         .attr("x", (width / 2))
         .attr("y", 10 - (margin.top / 2))
@@ -369,6 +374,9 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
         .style("font-size", "24px")
         .style("text-decoration", "underline")
         .text("Engineer Workload");
+		
+
+	
 
 	// end of define absolute
 
