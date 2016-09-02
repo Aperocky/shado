@@ -369,6 +369,13 @@ d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
         .style("font-size", "24px")
         .style("text-decoration", "underline")
         .text("Conductor Workload");
+	svg.append("foreignObject")
+			.attr("x", ((width / 2)+110))
+			.attr("y", -12 - (margin.top / 2))
+			.attr("text-anchor", "middle")
+			.style("font-size", "24px")
+			
+			.html("<span class='tooltip' onmouseover='tooltip.pop(this, &apos; Hover over the graph for more information &apos;)'>?</span>");
 
 	// end of define absolute
 
