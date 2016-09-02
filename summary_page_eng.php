@@ -108,17 +108,17 @@
 			display: none;
 		}
 
-/*		@media print
+	@media print
 		{
-			.no-print, .no-print *
-			{
-				display: none !important;
-			}
-		}*/
+			#graphTextBox {page-break-after: always;}
+			
+			
+			
+		}
 		
 		#text-box{display: block;}
 	#howTab{display: block;}
-	
+	#graphTextBox {page-break-after: always;}
 	
 	
 </style>
@@ -133,9 +133,11 @@
 
 	<?php
 		require_once("assist.html");
+		echo "<br><br>";
 		require_once("input_summary.php");
+		echo "<br><br><br>";
 		require_once("graph_engineer.php");
-		echo "<br>";
+		
 		require_once("graph_nav_static.php");
 		graphText('sessions/Engineer_stats.csv');
 		/* require_once('graph_calculations.php'); */
