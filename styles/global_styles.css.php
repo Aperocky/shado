@@ -403,7 +403,7 @@ th {
 	color: black;
     border: none;
     color: white;
-    padding: 10px 5px;
+    padding: 10px 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;

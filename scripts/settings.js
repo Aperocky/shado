@@ -20,6 +20,10 @@ function updateSerDist(task_num) {
 	}
 }
 
+function restore() {
+	
+}
+
 function addTask() {
 	document.getElementById("demo").innerHTML = "Hello world.";
 }
