@@ -1,7 +1,10 @@
 <?php
 
-	$file_handle=fopen('sessions/Engineer_stats.csv','r');
-	$file=fopen("sessions/mod_type_data_engineer.txt","w");
+	// $operator_type = 'conductor';
+	// include('operator_graph.php');
+
+	$file_handle=fopen('sessions/Conductor_stats.csv','r');
+	$file=fopen("sessions/mod_type_data_conductor.txt","w");
 	$count=array();
 	$s_dev=array();
 	$temp_count_dev=0;
@@ -106,19 +109,18 @@
 <meta charset="utf-8">
 
 	<div class="page">
-
-		<div class="engineer">
-			<div id="graph"></div>
+		<div class="conductor">
+			<div id="graph2"></div>
 		</div>
 
 
 <style>
 
-.engineer{
+.conductor{
 	text-align: center;
 }
 
-#graph{
+#graph2{
 	padding:30px 30px;
 	width:fit-content;
 	width:-webkit-fit-content;
@@ -151,7 +153,7 @@
   display: none;
 }
 
-div.tooltip {
+div.tooltip1 {
     position: absolute;
 
     width:fit-content;
@@ -182,7 +184,7 @@ var legend_width = 120;
 
 var temp=<?php echo $num; ?>;
 
-var margin = {top: 30, right: 20, bottom: 50, left: 70},
+var margin = {top: 20, right: 20, bottom: 50, left: 70},
     width = 800;
 
     height = 500 - margin.top - margin.bottom;
@@ -191,14 +193,12 @@ var x = d3.scale.ordinal()
     .rangeRoundBands([0, width],0.4);
 
 
-
 var yAbsolute = d3.scale.linear() // for absolute scale
     .rangeRound([height, 0]);
 var yRelative = d3.scale.linear() // for absolute scale
 	    .rangeRound([height, 0]);
-var color = d3.scale.category20();
-// var color = d3.scale.ordinal()
-    // .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#dd843c", "#ff8ff0"]);
+var color = d3.scale.ordinal()
+    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#dd843c", "#ff8ff0"]);
 
 
 var xAxis = d3.svg.axis()
@@ -217,25 +217,26 @@ var yAxisAbsolute = d3.svg.axis()
 	    .scale(yAbsolute)
 	    .orient("left");
 
-var div = d3.select("#graph").append("div")
-    .attr("class", "tooltip")
+var div1 = d3.select("#graph2").append("div")
+    .attr("class", "tooltip1")
     .style("opacity", 0);
 
-var svg_eng = d3.select("#graph").append("svg")
+var svg = d3.select("#graph2").append("svg")
     .attr("width", width + margin.left + margin.right+legend_width)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
+d3.csv("sessions/mod_type_data_conductor.txt", function(error, data) {
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "time"; }));
 
 
 
   data.forEach(function(d) {
+
 	var index=d.time.indexOf('min');
+
 	var mystate = d.time.slice(0,index);
-	console.log(mystate);
 
     var y0 = 0;
 
@@ -269,14 +270,16 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 
   });
 
-  x.domain(data.map(function(d) {var index=d.time.indexOf('min');	 return d.time.slice(0,index); }));
+
+
+  x.domain(data.map(function(d) {var index=d.time.indexOf('min'); return d.time.slice(0,index); }));
 
   yAbsolute.domain([0,100]);//Absolute View scale
   yRelative.domain([0,100])// Relative View domain
 
   var absoluteView = true // define a boolean variable, true is absolute view, false is relative view
   						  // Initial view is absolute
-  svg_eng.append("g")
+  svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate("+(-width/(2*temp))+"," + height +")")
 	  .call(xAxis)
@@ -288,11 +291,11 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 
 
 
-	var stateAbsolute= svg_eng.selectAll(".absolute")
+	var stateAbsolute= svg.selectAll(".absolute")
 						.data(data)
 		    			.enter().append("g")
 		    			.attr("class", "absolute")
-		   			 .attr("transform", function(d) { return "translate(0,0)"; });
+		   			 .attr("transform", function(d) { return "translate(" + "0" + ",0)"; });
 
 	stateAbsolute.selectAll("rect")
 			    .data(function(d) { return d.ages})
@@ -320,17 +323,17 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 
 	stateAbsolute.selectAll("rect")
 		.on("mouseover", function(d){
-
+			console.log(d);
 
 			var xPos = parseFloat(d3.select(this).attr("x"));
 			var yPos = parseFloat(d3.select(this).attr("y"));
 			var height = parseFloat(d3.select(this).attr("height"))
 
 			d3.select(this).attr("stroke","blue").attr("stroke-width",0.8);
-			div.transition()
+			div1.transition()
                 .duration(200)
                 .style("opacity", .9);
-            div	.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2))
+            div1.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2))
                 .style("left", (d3.event.pageX+20) + "px")
                 .style("top", (d3.event.pageY - 20) + "px");
 
@@ -343,12 +346,12 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 		.on("mouseout", function(d) {
 
 			d3.select(this).attr("stroke","pink").attr("stroke-width",0.2);
-            div.transition()
+            div1.transition()
                 .duration(100)
                 .style("opacity", 0);
 		})
 	//define two different scales, but one of them will always be hidden.
-	svg_eng.append("g")
+	svg.append("g")
 		.attr("class", "y axis absolute")
 		.call(yAxisAbsolute)
 		.append("text")
@@ -359,30 +362,29 @@ d3.csv("sessions/mod_type_data_engineer.txt", function(error, data) {
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
 		.text("Utilization (%)");
-	
-	svg_eng.append("foreignObject")
-			.attr("x", ((width / 2)+110))
-			.attr("y", -12 - (margin.top / 2))
-			.attr("text-anchor", "middle")		
-			.style("font-size", "24px")			
-			.html("<span class='tooltip' onmouseover='tooltip.pop(this, &apos; Hover over the graph for more information &apos;)'>(?)</span>");
-	
-	svg_eng.append("text")
+
+
+
+	svg.append("text")
         .attr("x", (width / 2))
         .attr("y", 10 - (margin.top / 2))
         .attr("text-anchor", "middle")
         .style("font-size", "24px")
         .style("text-decoration", "underline")
-        .text("Engineer Workload");
-		
-
-	
+        .text("Conductor Workload");
+	svg.append("foreignObject")
+			.attr("x", ((width / 2)+110))
+			.attr("y", -12 - (margin.top / 2))
+			.attr("text-anchor", "middle")
+			.style("font-size", "24px")
+			
+			.html("<span class='tooltip' onmouseover='tooltip.pop(this, &apos; Hover over the graph for more information &apos;)'>(?)</span>");
 
 	// end of define absolute
 
 	// adding legend
 
-  	    var legend = svg_eng.selectAll(".legend")
+  	    var legend = svg.selectAll(".legend")
       	 	 			.data(color.domain().slice().reverse())
     	 			    .enter().append("g")
     				    	.attr("class", "legend")
