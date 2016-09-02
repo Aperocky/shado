@@ -34,7 +34,7 @@
 				 <!-- border: 1px solid red; -->
 				<!-- align="left" -->
 			</a>
-			<h1 style="padding-left: 290px">Simulator of Human Operator Workload</h1>
+			<h1 style="padding: 40px 290px;">Simulator of Human Operator Workload</h1>
 		</div>
 
 		<nav id="topNav">
