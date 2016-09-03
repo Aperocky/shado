@@ -33,15 +33,7 @@
 				Below, you can see and change the underlying assumptions for each task.
 				<!-- <form id="taskParameters" action="settings_send.php" method="post"> -->
 					<?php
-						// print_r($_SESSION['taskAssocOps']);
-
-						// for ($i = 0; $i < sizeof($_SESSION['taskAssocOps']); $i++) {
-						// 	for ($j = 0; $j < sizeof($_SESSION['taskAssocOps'][$i]); $j++) {
-						// 		echo $_SESSION['taskAssocOps'][$i][$j]." ";
-						// 	}
-						// 	echo "<br>";
-						// }
-						//
+						echo "Num types = ".$_SESSION['numTaskTypes']." types";
 						for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
 					        $taskNum = $i;
 					        include("task_settings_table.php");

@@ -2,7 +2,6 @@
 h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
 </style>
 <h3>
-    <!-- <button class="button" onclick="deleteTask()" style="background-color: #f44336; padding: 5px 10px; border-radius: 25px;">-</button> -->
     Task <?php echo $taskNum + 1; ?>
     <button class="button" onclick="deleteTask()" style="background-color: #f44336; padding: 5px 10px; border-radius: 25px;">-</button>
 </h3>
@@ -22,7 +21,6 @@ h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
     <td>
         Priority
 		<span class="tooltip" onmouseover="tooltip.pop(this, 'What is the priority level of this task, relative to the others?')">(?)</span>
-
     </td>
     <td>
         <select name=<?php echo "t".$taskNum."_priority_p0"; ?>>
