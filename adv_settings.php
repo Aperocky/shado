@@ -8,7 +8,7 @@
 ?>
 			<div id="settingsPage" class="page">
 				<div id="myData" class="hidden" data-session='<?php echo json_encode($_SESSION)?>'></div>
-				<h1 class="pageTitle">Advanced Settings</h1>
+				<h1 class="pageTitle">Input Advanced Trip Conditions</h1>
 				<form id="taskParameters" action="adv_settings_send.php" method="post">
 					<h2>Replications</h2>
 					Enter the number of replications, or the number of simulated trips. Note that more trips provides more precise results, but it may also increase the processing time.
@@ -30,11 +30,11 @@
 					<h2>Task Details</h2>
 					Below, you can see and change the underlying assumptions for each task.
 					<!-- <form id="taskParameters" action="adv_settings_send.php" method="post"> -->
-					<div id='taskParameterTable' style='border: 1px solid red;'>
+					<div id='taskParameterTable'>
 						<?php
 							for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
 								$taskNum = $i;
-								echo "<div id=task_".$taskNum." style='border: 1px solid red;'>";
+								echo "<div id=task_".$taskNum.">";
 						        include("includes/adv_settings/task_settings_table.php");
 								echo "<br> </div>";
 						    }

@@ -23,7 +23,7 @@ function restore() {
 }
 
 function addTask() {
-	document.getElementById("taskParameterTable").innerHTML += "New task here.";
+	document.getElementById("taskParameterTable").innerHTML += "New task here.<br>";
 }
 
 function deleteTask(task_num) {

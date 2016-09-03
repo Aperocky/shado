@@ -7,7 +7,7 @@
 	require_once("includes/run_sim/side_navigation.php");
 ?>
 	<div id="runSimulationPage" class="page">
-		<h1 class="pageTitle">Input Trip Conditions</h1>
+		<h1 class="pageTitle">Input Basic Trip Conditions</h1>
 		<p>
 			To get started, provide us with three simple data points. What time of day does your operator begin <strong>(1)</strong> and end <strong>(2)</strong> his/her shift? And what’s the level of traffic <strong>(3)</strong> in the region during this shift? Lastly, specify any additional operators or technologies <strong>(4)</strong> that will assist the engineer during the trip.
 			And if you're a more advanced user, look at the advanced settings.
