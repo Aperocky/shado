@@ -34,7 +34,7 @@
 				</p>
 				<h2>Background</h2>
 				<p>
-					A core set of tasks has been defined and implemented to encompass tasks that crew members may encounter during their trip. These tasks and their descriptions are summarized below. To see more underlying assumptions, visit <a href="settings.php">advanced settings</a>.
+					A core set of tasks has been defined and implemented to encompass tasks that crew members may encounter during their trip. These tasks and their descriptions are summarized below. To see more underlying assumptions, visit <a href="adv_settings.php">advanced settings</a>.
 					<table align="center" width="700" style="margin-top: 30px;">
 					    <tr>
 					        <th>Task Type</th>
@@ -98,7 +98,7 @@
 				</p>
 				<h2>Getting Started</h2>
 				<p>
-					Ready to get started? Then let's <a href="runSim.php">go</a>! And if you have any questions or comments about the simulation, please <a href="contact.php">contact us</a>!
+					Ready to get started? Then let's <a href="run_sim.php">go</a>! And if you have any questions or comments about the simulation, please <a href="contact_us.php">contact us</a>!
 				</p>
 			</div>
 

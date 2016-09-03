@@ -8,9 +8,9 @@ num_task_types	9
 name			Communicating
 prty			4 3 4
 arr_dist		E
-arr_pms			0.95238095238095 0.1 0.75187969924812
+arr_pms			0.952381 0.1 0.75188
 ser_dist		E
-ser_pms			7.52 0
+ser_pms			7.5188 0
 exp_dist		E
 exp_pms_lo		0 0.107167 0
 exp_pms_hi		0 0.0863333 0
@@ -20,7 +20,7 @@ op_nums			0
 name			Exception Handling
 prty			5 4 5
 arr_dist		E
-arr_pms			0 0.00033333333333333 0.00033333333333333
+arr_pms			0 0.000333333 0.000333333
 ser_dist		L
 ser_pms			0.98 1.39
 exp_dist		E
@@ -32,7 +32,7 @@ op_nums			0 2
 name			Paperwork
 prty			3 0 2
 arr_dist		E
-arr_pms			0.14992503748126 0.05 0.3003003003003
+arr_pms			0.149925 0.05 0.3003
 ser_dist		U
 ser_pms			0.05 1.5
 exp_dist		E
@@ -44,9 +44,9 @@ op_nums			0
 name			Maintenance of Way Interactions
 prty			0 5 0
 arr_dist		E
-arr_pms			0 0.0016666666666667 0.016666666666667
+arr_pms			0 0.00166667 0.0166667
 ser_dist		U
-ser_pms			0.17 2.5
+ser_pms			0.167 2.5
 exp_dist		E
 exp_pms_lo		0 0.184 0
 exp_pms_hi		0 0.184 0
@@ -56,7 +56,7 @@ op_nums			0
 name			Temporary Speed Restrictions
 prty			0 5 0
 arr_dist		E
-arr_pms			0 0.033333333333333 0
+arr_pms			0 0.0333333 0
 ser_dist		U
 ser_pms			0 0.5
 exp_dist		E
@@ -68,7 +68,7 @@ op_nums			0
 name			Signal Response Management
 prty			0 5 0
 arr_dist		E
-arr_pms			0.033333333333333 0.1 0.066666666666667
+arr_pms			0.0333333 0.1 0.0666667
 ser_dist		U
 ser_pms			0.5 2
 exp_dist		E
@@ -80,9 +80,9 @@ op_nums			0 1 2
 name			Monitoring Inside
 prty			2 2 1
 arr_dist		E
-arr_pms			0.28571428571429 0.37453183520599 0.37453183520599
+arr_pms			0.285714 0.374532 0.374532
 ser_dist		E
-ser_pms			7.52 0
+ser_pms			7.5188 0
 exp_dist		E
 exp_pms_lo		0 0 0
 exp_pms_hi		0 0 0
@@ -92,9 +92,9 @@ op_nums			0 1 2
 name			Monitoring Outside
 prty			1 1 3
 arr_dist		E
-arr_pms			0.11111111111111 0.2 0.57142857142857
+arr_pms			0.111111 0.2 0.571429
 ser_dist		E
-ser_pms			6.67 0
+ser_pms			6.66667 0
 exp_dist		E
 exp_pms_lo		0 0 0
 exp_pms_hi		0 0 0
@@ -104,9 +104,9 @@ op_nums			0
 name			Planning Ahead
 prty			0 5 0
 arr_dist		E
-arr_pms			0.066666666666667 0.2 0.4
+arr_pms			0.0666667 0.2 0.4
 ser_dist		E
-ser_pms			3.03 0
+ser_pms			3.0303 0
 exp_dist		E
 exp_pms_lo		0 0.166 0
 exp_pms_hi		0 0.1795 0

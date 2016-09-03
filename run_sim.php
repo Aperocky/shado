@@ -4,7 +4,7 @@
 	$curr_page='runSimPage';
 	$html_head_insertions .= '<script type="text/javascript" src="scripts/sim_settings_entry.js"></script>';
 	require_once("includes/page_parts/header.php");
-	require_once("includes/runsim/side_navigation.php");
+	require_once("includes/run_sim/side_navigation.php");
 ?>
 	<div id="runSimulationPage" class="page">
 		<h1 class="pageTitle">Input Trip Conditions</h1>
@@ -15,10 +15,10 @@
 		<br>
 
 		<div style="width: 100%; float: right;">
-			<!-- <form action="create_txt.php"  style="text-align: center;">
+			<!-- <form action="create_param_file.php"  style="text-align: center;">
 				<input type="submit" value="Run Simulation">
 			</form> -->
-			<form action="settings.php">
+			<form action="adv_settings.php">
 				<button class="button" type="submit" style="float: right; color: black;">
 					<img src="images/settings-gear.png" width="40" height="40" align="top">
 					<div style="display: inline-block;  text-align: left; padding: 3px;">
@@ -28,7 +28,7 @@
 			</form>
 		</div>
 
-		<form id="timeEntry" action="create_txt.php" method="post" onsubmit="return confirm('Please verify your provided settings and click OK to run simulation!');">
+		<form id="timeEntry" action="create_param_file.php" method="post" onsubmit="return confirm('Please verify your provided settings and click OK to run simulation!');">
 			<div class="startEndTimeStepOuter centerOuter">
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>1</div>
@@ -99,7 +99,7 @@
 				<div id="assist" style="overflow-x:auto;"></div>
 			</div>
 			<br>
-			<?php require_once("includes/runsim/custom_operator.php"); ?>
+			<?php require_once("includes/run_sim/custom_operator.php"); ?>
 			<br>
 			<!-- <h4 style="text-align:center;">Run Simulation</h4> -->
 			<!-- <div id="next_page" class="navArrow" onclick="var submit = getElementById('submit'); submit.click()";>

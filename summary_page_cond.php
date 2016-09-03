@@ -3,7 +3,7 @@
 	$curr_page='summaryReportPage';
 	$page_title='Print Report';
 	require_once('includes/page_parts/header.php');
-	require_once("includes/runsim/side_navigation.php");
+	require_once("includes/run_sim/side_navigation.php");
 
 	$low_count_0=$_SESSION['low_count_0'];
 	$normal_count_0=$_SESSION['normal_count_0'];

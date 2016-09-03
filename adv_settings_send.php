@@ -124,12 +124,12 @@
 	// }
 
 	// echo $_SESSION['numReps'];
-	header("Location: runSim.php");
+	header("Location: run_sim.php");
 
 	// echo "Hello";
 	// var_dump($_SESSION);
 	// print_r($_SESSION);
 	// print_r($_SESSION['taskNames']);
 
-	// require_once("runSim.php");
+	// require_once("run_sim.php");
 ?>

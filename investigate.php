@@ -3,7 +3,7 @@
 	require_once('includes/page_parts/header.php');
 	$curr_page='detailedAnalysisPage';
 	$page_title='Detailed Analysis';
-	require_once("includes/runsim/side_navigation.php");
+	require_once("includes/run_sim/side_navigation.php");
 	require_once('includes/results/graph_calculations.php');
 
 	if ($_GET['operator'] == 'conductor') {

@@ -1,5 +1,5 @@
 <style>
-h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
+    h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}
 </style>
 <h3>
     Task <?php echo $taskNum + 1; ?>

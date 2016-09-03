@@ -1,7 +1,7 @@
 <nav id="sideNav">
 	<ul>
-		<li><a id="sideNaveElement" <?php if ($curr_page=='runSimPage') {echo 'class="active"';} ?> href="runSim.php">Input Trip Settings</a></li>
- 		<li><a id="sideNaveElement" <?php if ($curr_page=='advSettingsPage') {echo 'class="active"';} ?> href="settings.php">Input Advanced Settings</a></li>
+		<li><a id="sideNaveElement" <?php if ($curr_page=='runSimPage') {echo 'class="active"';} ?> href="run_sim.php">Input Trip Settings</a></li>
+ 		<li><a id="sideNaveElement" <?php if ($curr_page=='advSettingsPage') {echo 'class="active"';} ?> href="adv_settings.php">Input Advanced Settings</a></li>
 			<!-- <li class="accordion">
 		    <button class="accordion">Dropdown</button>
 		    <div class="dropdown-content">
