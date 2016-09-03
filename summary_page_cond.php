@@ -2,8 +2,8 @@
 	session_start();
 	$curr_page='summaryReportPage';
 	$page_title='Print Report';
-	require_once('header.php');
-	require_once("side_navigation.php");
+	require_once('includes/page_parts/header.php');
+	require_once("includes/runsim/side_navigation.php");
 
 	$low_count_0=$_SESSION['low_count_0'];
 	$normal_count_0=$_SESSION['normal_count_0'];
@@ -126,7 +126,7 @@
 	<?php
 		require_once("assist.html");
 		echo "<br><br><br>";
-		require_once("graph_conductor.php");
+		require_once("includes/results/graph_conductor.php");
 		echo "<br><br>";
 		require_once("graph_nav_static.php");
 		graphText('sessions/Conductor_stats.csv');
@@ -139,22 +139,20 @@
 </div>
 
 <script type="text/javascript">
+	document.addEventListener("DOMContentLoaded",function() {
+		document.getElementById('text_box').style.display="block";
+		document.getElementById('howTab').style.display="block";
+		document.getElementById('whenTab').style.display="block";
+		document.getElementById('operator1').style.display="none";}
+	);
 
-document.addEventListener("DOMContentLoaded",function(){
-	document.getElementById('text_box').style.display="block";
-	document.getElementById('howTab').style.display="block";
-	document.getElementById('whenTab').style.display="block";
-	document.getElementById('operator1').style.display="none";}
-
-);
-
-function printDiv(divName) {
-	var printContents = document.getElementById(divName).innerHTML;
- 	var originalContents = document.body.innerHTML;
- 	document.body.innerHTML = printContents;
- 	window.print();
- 	document.body.innerHTML = originalContents;
-}
+	function printDiv(divName) {
+		var printContents = document.getElementById(divName).innerHTML;
+	 	var originalContents = document.body.innerHTML;
+	 	document.body.innerHTML = printContents;
+	 	window.print();
+	 	document.body.innerHTML = originalContents;
+	}
 </script>
 
 <?php

@@ -175,19 +175,19 @@
 </script>
 
 <style>
-.list{
-	padding:5px 15px;
-	border: 3px solid #5D7B85;
-	cursor:pointer;
-	-webkit-border-radius: 5px;
-	border-radius: 25px;
-	width:fit-content;
-	width:-webkit-fit-content;
-	width:-moz-fit-content;
-	/*margin: 0 auto;*/
-	margin: 20px;
-	text-align: left;
-	background-color: rgba(255, 255, 255, 0.6);
-	overflow: auto;
-}
+	.list{
+		padding:5px 15px;
+		border: 3px solid #5D7B85;
+		cursor:pointer;
+		-webkit-border-radius: 5px;
+		border-radius: 25px;
+		width:fit-content;
+		width:-webkit-fit-content;
+		width:-moz-fit-content;
+		/*margin: 0 auto;*/
+		margin: 20px;
+		text-align: left;
+		background-color: rgba(255, 255, 255, 0.6);
+		overflow: auto;
+	}
 </style>
