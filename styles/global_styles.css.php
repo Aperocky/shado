@@ -504,9 +504,14 @@ th {
     border-radius: 25px;
 }
 
-#circleButton {
-    height: 50px;
-    width: 50px;
+.roundButton {
+    height: 30px;
+    width: 30px;
     border-radius: 100px;
-    /*border: 1px solid #000;*/
+	/*padding: 5px 10px;*/
+	border: none;
+	cursor: pointer;
+	color: white;
+	font-size: 20;
+	text-align: center;
 }
