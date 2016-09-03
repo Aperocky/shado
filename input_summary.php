@@ -1,5 +1,5 @@
 <?php
-	
+
 	session_start();
 	$traffic=array();
 	$traffic['0.5']=1.0;
@@ -8,22 +8,17 @@
 	$time=$_SESSION['traffic_time'];
 	$traffic_level=array();
 	for($x = 0; $x < $time; $x++) {
-
 		$traffic_level[]=$_SESSION['traffic_level'.$x];
 	}
-	
-	
+
 	$file=fopen("sessions/input_summary.txt","w");
 	fwrite($file,"time,");
 	fwrite($file,"t_level\n");
 	for($i=0;$i<$time;$i++)
 	{
-		
 		fwrite($file,"Hour ". ($i+1) .",");
-		
 		fwrite($file,$traffic[(string)$traffic_level[$i]]."\n");
-	} 
-
+	}
 	fclose($file);
 ?>
 
@@ -40,14 +35,9 @@
  	cursor:pointer;
  	-webkit-border-radius: 5px;
  	border-radius: 25px;
- 	
  	margin: 20px;
- 	
- 	
  	text-align: left;
  	background-color: rgba(255, 255, 255, 0.6);
-	
-	
 }
 
 .bar:hover {
@@ -88,7 +78,7 @@
 	<div id="input_summary"></div>
 	<br>
 	<li>Humans/technologies supporting the locomotive engineer: <ul>
-	<?php 
+	<?php
 		$assistant[1]="Conductor";
 		$assistant[2]="Positive Train Control";
 		$assistant[3]="Cruise Control";
@@ -99,7 +89,7 @@
 				echo "<li>".$assistant[$i]."</li>";
 			}
 		}
-		
+
 		if($check==0){
 			echo "<li>None</li>";
 		}
@@ -136,7 +126,7 @@ var ticks_gap1=1;
 if(temp>8){
 	ticks_gap1=2;
 }
-   
+
 xAxis_input.tickFormat(function (d,counter=0) {if(counter%ticks_gap1==0){counter++; return d;} });
 
 var svg_summary = d3.select("#input_summary").append("svg")
@@ -149,7 +139,7 @@ d3.csv("sessions/input_summary.txt", type, function(error, data) {
   if (error) throw error;
 
   x_input.domain(data.map(function(d) { return d.time; }));
-  
+
   y.domain([0,3.5]);
 
   svg_summary.append("g")
@@ -162,18 +152,13 @@ d3.csv("sessions/input_summary.txt", type, function(error, data) {
 	  .attr("dx", ".71em")
 	  .text("Time (min)");
 
-	
-
   svg_summary.append("g")
       .attr("class", "y axis")
       .call(yAxis)
     .append("text")
-
 		.attr("transform", "translate(-50,350) rotate(-90)" )
-
 		.attr("y", 6)
 		.attr("dy", ".71em")
-		
 		.text("Traffic level (1: Low, 2: Medium, 3: High)");
 
   svg_summary.selectAll(".bar")
@@ -185,13 +170,10 @@ d3.csv("sessions/input_summary.txt", type, function(error, data) {
       .attr("width", x_input.rangeBand())
       .attr("y", function(d) { return y(d.t_level); })
       .attr("height", function(d) { return height - y(d.t_level); });
-	
-	
 });
 
 function type(d) {
   d.t_level = +d.t_level;
   return d;
 }
-
 </script>

@@ -15,17 +15,8 @@
 	$page_title='Welcome!';
 	$curr_page='homePage';
 	require_once('includes/page_parts/header.php');
-
-	// print_r($_SESSION['taskAssocOps']);
-	// for ($i = 0; $i < sizeof($_SESSION['taskAssocOps']); $i++) {
-	// 	for ($j = 0; $j < sizeof($_SESSION['taskAssocOps'][$i]); $j++) {
-	// 		echo $_SESSION['taskAssocOps'][$i][$j]." ";
-	// 	}
-	// 	echo "<br>";
-	// }
-
-	// echo $_SESSION['taskNames'][0];
 ?>
+
 			<div id="homePage" class="page">
 				<h1 class="pageTitle">Welcome to the SHOW!</h1>
 				<h2>Introduction</h2>

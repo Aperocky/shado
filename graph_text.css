@@ -8,21 +8,17 @@
  	-webkit-border-radius: 5px;
  	border-radius: 25px;
  	display: inline-block;
- 	
  	/*width: 1200px;*/
  	/*margin: 0 auto;*/
  	margin: 20px;
  	text-align: left;
  	background-color: rgba(255, 255, 255, 0.6);
- }
- 
+}
 
- 
 .engineer{
 	text-align: center;
 }
 
 .conductor{
-	text-align: center;
+    text-align: center;
 }
-

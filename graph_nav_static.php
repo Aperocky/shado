@@ -1,5 +1,5 @@
 <?php
-	
+
 	function graphText($fname){
 		session_start();
 		$traffic=array();
@@ -9,9 +9,7 @@
 				$traffic[$i]=$_SESSION['traffic_level'.$i];
 			}
 		}
-		
-		
-		
+
 		$type_names=array();
 		$type_names[0]="Communicating";
 		$type_names[1]="Exception Handling";
@@ -118,14 +116,11 @@
 
 		$count_type_low=array();
 		$count_type_high=array();
-		
+
 		$length=$num-2;
-		
 		$length_phase1=3;
 		$length_phase2=$length-6;
 		$length_phase3=3;
-		
-		
 
 		for($j=1;$j<$temp_count-1;$j++)
 		{
@@ -211,9 +206,7 @@
 
 		arsort($count_type_low);
 		arsort($count_type_high);
-		
-		
-		
+
 		$count_ops=0;
 		for($i=1;$i<5;$i++)
 		{
@@ -223,9 +216,9 @@
 						$count_ops++;
 					}
 				}
-				
+
 		}
-		
+
 		$penalty_high=0;
 		$count_high=0;
 		$count_low=0;
@@ -236,7 +229,7 @@
 			{
 				$penalty_high=$penalty_high+(3.33*$count[10][$i]-2.33);
 				$count_high++;
-				
+
 			}
 			else{
 				if($count[10][$i]<0.3){
@@ -244,49 +237,41 @@
 				}
 				else{$count_norm++;}
 			}
-			
+
 		}
-		
+
 		$penalty_high=$penalty_high/$count_high;
-		
-		
+
 		if ($fname=='sessions/Engineer_stats.csv'){
 			$user_name='engineer';
 		}
 		else{
 			$user_name='conductor';
 		}
-		
+
 		echo "<br><br><br><br><br><br><div id='graphTextBox' >
 			<nav id='graphNav'>
 				<ul>
 					<li style='background-color: #75D3FE ;'>When?</li>
 					<li  style='background-color: #555 ;'>Why?</li>
-					
+
 				</ul>
 			</nav>";
-			
-		require_once("graph_when.php"); 
-			
+
+		require_once("graph_when.php");
+
 		echo "</div><br><br><br><br><br><br>
 		<div id='graphTextBox' class='no-page-break'>
 			<nav id='graphNav'>
 				<ul>
 					<li  style='background-color: #555 ;'>When?</li>
 					<li style='background-color: #75D3FE ;'>Why?</li>
-					
+
 				</ul>
 			</nav>";
-		
-		
-		require_once("graph_why.php"); 
-		
-					
+
+		require_once("graph_why.php");
+
 		echo "</div";
-		
-		
 	}
-	
-	
-	
 ?>

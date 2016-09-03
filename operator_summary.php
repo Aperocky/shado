@@ -110,7 +110,7 @@
 
 	<div id="back_button"  style='text-align: center;'>
 		<button id="back_button" onclick="location.href = 'runSim.php';">Run Again</button>
-		
+
 		<br><br>
 		<!-- <button id="back_button" onclick="location.href='replications.php'">Peek & Tweak, under the hood</button> -->
 	</div>

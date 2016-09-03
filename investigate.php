@@ -7,12 +7,10 @@
 	require_once('includes/results/graph_calculations.php');
 
 	if ($_GET['operator'] == 'conductor') {
-		
 		require_once('includes/results/graph_conductor.php');
 		graphText('sessions/Conductor_stats.csv');
 
 	} elseif ($_GET['operator'] == 'engineer') {
-
 		require_once('includes/results/graph_engineer.php');
 		graphText('sessions/Engineer_stats.csv');
 
@@ -21,5 +19,4 @@
 	}
 
 	require_once('includes/page_parts/footer.php');
-
 ?>
