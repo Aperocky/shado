@@ -1,11 +1,8 @@
 var acc = document.getElementsByClassName("accordion");
-var i;
 
-console.log("hello")
-
-for (i = 0; i < acc.length; i++) {
+for (var i = 0; i < acc.length; i++) {
     acc[i].onclick = function() {
         this.classList.toggle("active");
         this.nextElementSibling.classList.toggle("show");
-  }
+    }
 }

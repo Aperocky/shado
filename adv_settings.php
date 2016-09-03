@@ -48,7 +48,7 @@
 					<button class="button" onclick="restore()" style="background-color: #4CAF50; padding: 5px 10px; border-radius: 25px;">+</button>
 				</div>
 				<div style="text-align: center;">
-					<button onclick="location.href='reset_session_vars.php';">Restore Defaults</button>
+					<button class="button" onclick="location.href='reset_session_vars.php';">Restore Defaults</button>
 				</div>
 			</div>
 

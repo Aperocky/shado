@@ -13,8 +13,8 @@ body {
 	margin: 0;
 }
 
-#fixedAll {
-}
+/*#fixedAll {
+}*/
 
 #fixedHead {
 	position: fixed;
@@ -78,73 +78,72 @@ body {
 #sideNav ul {
     list-style-type: none;
     margin-top: 0px;
-		padding: 20px 0px;
-		height: 100%;
+	padding: 20px 0px;
+	height: 100%;
     /*padding: 0;*/
-    width: 180px;
+    width: 200px;
     background-color: #f1f1f1;
     position: fixed;
     /*height: 90%;*/
     overflow: auto;
-		border-right: 1px solid black;
+	border-right: 1px solid black;
 }
 
-#sideNav li a {
+#sideNav li a, #sideNav li button {
     display: block;
     color: #000;
     padding: 8px 16px;
     text-decoration: none;
-		border-bottom:
+	font-size: 14;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 #sideNav li a.active {
-		color: white;
-		background-color: <?php echo $color_theme_light_blue; ?>;
+	color: white;
+	background-color: <?php echo $color_theme_light_blue; ?>;
 }
 
-#sideNav li a:hover:not(.active) {
+#sideNav li a:hover:not(.active), #sideNav li button:hover:not(.active) {
     background-color: #ddd;
 }
 
-button.accordion {
+li button.accordion {
     background-color: #eee;
     color: #444;
     cursor: pointer;
-    padding: 18px;
+    /*padding: 18px;*/
     width: 100%;
     border: none;
     text-align: left;
     outline: none;
-    font-size: 15px;
+    /*font-size: 15px;*/
     transition: 0.4s;
 }
 
-button.accordion.active, a.accordion:hover {
-    background-color: #ddd;
-}
-
-button.accordion:after {
+li button.accordion:after {
     content: '\02795';
-    font-size: 13px;
-    color: #777;
+    /*font-size: 13px;*/
+    /*color: #777;*/
     float: right;
-    margin-left: 5px;
+    /*margin-left: 5px;*/
 }
 
-button.accordion.active:after {
-    content: "\2796";
+li button.accordion.active:after {
+    content: '\2796';
 }
 
-div.dropdown-content {
+div.accordion-content {
     padding: 0 18px;
-    background-color: white;
+    /*background-color: #555;*/
+	/*color: white;*/
     max-height: 0;
     overflow: hidden;
-    transition: 0.6s ease-in-out;
+    transition: 0.5s ease-in-out;
     opacity: 0;
+	/*border: 1px solid red;*/
 }
 
-div.dropdown-content.show {
+div.accordion-content.show {
     opacity: 1;
     max-height: 500px;
 }
@@ -219,7 +218,7 @@ div.dropdown-content.show {
 }
 
 .page {
-	margin-left: 200px;
+	margin-left: 230px;
 	margin-right: 30px;
 	margin-top: 10px;
 	padding-top: 20px;
@@ -496,7 +495,8 @@ th {
 	background-color: rgba(255, 255, 255, 0.6);
 }
 
-#summaryButton, button {
+/*button*/
+#summaryButton {
 	padding:5px 15px;
     border: 2px solid #5D7B85;
     cursor:pointer;
