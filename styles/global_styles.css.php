@@ -3,12 +3,15 @@
 	$color_theme_light_blue = '#75D3FE';
 ?>
 
+/****************************************************
+*													*
+*	Section:	Page Parts							*
+*													*
+****************************************************/
+
 body {
 	margin: 0;
 }
-
-
-/*  Page Parts  */
 
 #fixedAll {
 }
@@ -17,7 +20,6 @@ body {
 	position: fixed;
 	top: 0;
 	text-align: center;
-	/*height: 200px;*/
 	width: 100%;
 	z-index: 999;
 }
@@ -42,7 +44,6 @@ body {
 	margin: 0;
 	padding: 0px;
 	overflow: hidden;
-	/*border: 1px solid red;*/
 	background-color: #555;
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
@@ -54,7 +55,6 @@ body {
 	margin: 0;
 	padding: 0px;
 	font-size: 18px;
-	/*border-right: 1px solid black;*/
 }
 
 #topNav li a {
@@ -63,7 +63,6 @@ body {
 	text-align: center;
 	padding: 12px 17px;
 	text-decoration: none;
-	/*border: 1px solid red;*/
 }
 
 #topNav li a:hover:not(.active) {
@@ -107,6 +106,49 @@ body {
     background-color: #ddd;
 }
 
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, a.accordion:hover {
+    background-color: #ddd;
+}
+
+button.accordion:after {
+    content: '\02795';
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active:after {
+    content: "\2796";
+}
+
+div.dropdown-content {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+    opacity: 0;
+}
+
+div.dropdown-content.show {
+    opacity: 1;
+    max-height: 500px;
+}
+
 #fixedFooter {
 	position: fixed;
 	bottom: 0;
@@ -141,22 +183,17 @@ body {
 	margin-bottom: 5px;
 }
 
-
-/*  General  */
+/****************************************************
+*													*
+*	Section:	General								*
+*													*
+****************************************************/
 
 #main {
 	margin-top: 168px;
 	margin-bottom: 20px;
 	/*border: 1px solid red;*/
 	/*height: 100%;*/
-}
-
-.navArrow {
-	background-image: url("../images/nav-arrow.png");
-	height: 50px;
-	width: 50px;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .printPdf {
@@ -171,7 +208,6 @@ body {
 }
 
 @media print {
-
 	.page {
 		margin-left: 0 !important;
 		/*background-color: red;*/
@@ -180,7 +216,6 @@ body {
 	.no-page-break {
 		page-break-inside: avoid;
 	}
-
 }
 
 .page {
@@ -230,7 +265,11 @@ body {
 	background-color: rgba(255, 255, 255, 0.6);
 }
 
-/*  RunSim Settings  */
+/****************************************************
+*													*
+*	Section:	RunSim Settings						*
+*													*
+****************************************************/
 
 form#timeEntry {
 	text-align: center;
@@ -316,15 +355,6 @@ h1 {
 	color: white;
 }
 
-/*#title h1::first-letter {
-	color: <?php echo $color_theme_light_blue; ?>;
-}*/
-
-/*h2.sectionHead {
-	text-align: center;
-	color: #19334d;
-}*/
-
 #note {
 	position:relative;
 	left: 0%;
@@ -343,8 +373,11 @@ p {
 	color: white;
 }
 
-
-/*  Tables  */
+/****************************************************
+*													*
+*	Section:	Table formatting					*
+*													*
+****************************************************/
 
 table, th, td {
     border: 1px solid black;
@@ -378,14 +411,10 @@ th {
  	-webkit-border-radius: 5px;
  	border-radius: 25px;
  	display: inline-block;
-
- 	/*width: 1200px;*/
- 	/*margin: 0 auto;*/
  	margin: 20px;
  	text-align: left;
  	background-color: rgba(255, 255, 255, 0.6);
  }
-
 
  #conductor_summary{
 	position: relative;
@@ -393,9 +422,11 @@ th {
 
  }
 
-
-
-/*  Tool Tips  */
+/****************************************************
+*													*
+*	Section:	Tool tips							*
+*													*
+****************************************************/
 
 /* Tooltip container */
 .tooltip1 {
@@ -439,9 +470,11 @@ th {
 	border-radius: 8px;
 }
 
-
-
-/*  Operator Summary  */
+/****************************************************
+*													*
+*	Section:	Operator Summary					*
+*													*
+****************************************************/
 
 .operatorSummaryOuter {
 	text-align: center;
@@ -463,12 +496,10 @@ th {
 	background-color: rgba(255, 255, 255, 0.6);
 }
 
-#summaryButton, button
-{
+#summaryButton, button {
 	padding:5px 15px;
     border: 2px solid #5D7B85;
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 25px;
 }
-

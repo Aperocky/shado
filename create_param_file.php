@@ -8,6 +8,7 @@
 	session_start();
 	$myfile=fopen("sessions/parameters.txt", "w") or fopen("/home/hal/des_data/parameters.txt", "w") or die("unable to open");
 	fwrite($myfile,"output_path\t\t/Users/Branch/Documents/Academic/Year 1/Summer/DES Code/DES Web/sessions\n");
+	// $_SESSSION['outputPath']
 	$start_time=(int)substr($_POST ["time1"],0,2);
 	$stop_time=(int)substr($_POST ["time2"],0,2);
 	$start_min=(int)substr($_POST ["time1"],3,strlen($_POST ["time1"]));
@@ -101,7 +102,7 @@
 	fclose($myfile);
 
 	// echo "Start";
-	 exec("bin/DES-unix sessions/parameters.txt &");
+	 exec("bin/des_unix sessions/parameters.txt &");
 	// echo "<br> Done";
 
 ?>
