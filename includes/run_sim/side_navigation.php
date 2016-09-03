@@ -1,7 +1,7 @@
 			<nav id="sideNav">
 				<ul>
 					<li>
-					    <button class="accordion">Input Trip Settings</button>
+					    <button class="accordion">Input Trip Conditions</button>
 					    <div class="accordion-content">
 					      	<a href="run_sim.php">Basic</a>
 					      	<a href="adv_settings.php">Advanced</a>

@@ -298,7 +298,7 @@ form#timeEntry {
 }
 
 .startEndTime h3 {
-	width: 105px;
+	width: 120px;
 }
 
 .trafficTableStepOuter h3 {
@@ -326,7 +326,7 @@ form#timeEntry {
 }
 
 .assistantsSelectStepOuter {
-	width: 521px;
+	width: 600px;
 }
 
 #assistantsTable {
@@ -334,9 +334,9 @@ form#timeEntry {
 	margin-right: auto;
 }
 
-#assistantsTable td {
+/*#assistantsTable td {
 	padding: 5px;
-}
+}*/
 
 h1 {
 	color: #19334d;
@@ -502,4 +502,11 @@ th {
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 25px;
+}
+
+#circleButton {
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    /*border: 1px solid #000;*/
 }
