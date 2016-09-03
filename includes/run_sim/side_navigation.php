@@ -1,10 +1,10 @@
 			<nav id="sideNav">
 				<ul>
 					<li>
-					    <button class="accordion">Input Trip Conditions</button>
-					    <div class="accordion-content">
-					      	<a href="run_sim.php">Basic</a>
-					      	<a href="adv_settings.php">Advanced</a>
+					    <button class="accordion <?php if ($curr_page=='runSimPage' or $curr_page=='advSettingsPage') {echo active;} ?>">Input Trip Conditions</button>
+					    <div class="accordion-content <?php if ($curr_page=='runSimPage' or $curr_page=='advSettingsPage') {echo show;} ?>">
+					      	<a <?php if ($curr_page=='runSimPage') {echo 'class="active"';} ?> href="run_sim.php">Basic</a>
+					      	<a <?php if ($curr_page=='advSettingsPage') {echo 'class="active"';} ?>href="adv_settings.php">Advanced</a>
 					    </div>
 				  	</li>
 					<!-- <li><a id="sideNavElement" <?php if ($curr_page=='runSimPage') {echo 'class="active"';} ?> href="run_sim.php">Input Trip Settings</a></li>
@@ -12,9 +12,9 @@
 					<li><a id="sideNavElement" <?php if ($curr_page=='initialResultsPage') {echo 'class="active"';} ?> href="operator_summary.php">View Results</a></li>
 					<!-- <li><a id="sideNavElement" <?php if ($curr_page=='detailedAnalysisPage') {echo 'class="active"';} ?> href="investigate.php?operator=engineer">Detailed Analysis</a></li> -->
 					<li>
-					    <button class="accordion">View Detailed Results</button>
-					    <div class="accordion-content">
-					      	<a href="investigate.php?operator=engineer">Engineer</a>
+					    <button class="accordion <?php if ($curr_page=='detailedAnalysisPage') {echo active;} ?>">View Detailed Results</button>
+					    <div class="accordion-content <?php if ($curr_page=='detailedAnalysisPage') {echo show;} ?>">
+					      	<a <?php if ($curr_page=='detailedAnalysisPage') {echo 'class="active"';} ?> href="investigate.php?operator=engineer">Engineer</a>
 					      	<a href="investigate.php?operator=conductor">Conductor</a>
 					    </div>
 				  	</li>
@@ -31,4 +31,5 @@
 				        this.nextElementSibling.classList.toggle("show");
 				  	}
 				}
+				console.log("Hello.");
 			</script>

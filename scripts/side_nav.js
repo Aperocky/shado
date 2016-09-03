@@ -6,3 +6,5 @@ for (var i = 0; i < acc.length; i++) {
         this.nextElementSibling.classList.toggle("show");
     }
 }
+
+// console.log("Hello.");

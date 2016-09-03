@@ -1,3 +1,5 @@
+/* Color themes */
+
 <?php
 	$color_theme_dark_blue = '#467FC9';
 	$color_theme_light_blue = '#75D3FE';
@@ -98,12 +100,16 @@ body {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
-#sideNav li a.active {
+#sideNav li a.active{
 	color: white;
 	background-color: <?php echo $color_theme_light_blue; ?>;
 }
 
-#sideNav li a:hover:not(.active), #sideNav li button:hover:not(.active) {
+#sideNav li button #accordion-content.active {
+	/*background-color: */
+}
+
+#sideNav li a:hover:not(.active), #sideNav li button:hover {
     background-color: #ddd;
 }
 
@@ -121,21 +127,29 @@ li button.accordion {
 }
 
 li button.accordion:after {
-    content: '\02795';
-    /*font-size: 13px;*/
+    content: '\25B8';
+	/*'\276F';*/
+	/*'\02795';*/
     /*color: #777;*/
     float: right;
-    /*margin-left: 5px;*/
+	/*vertical-align: middle;*/
+	/*border: 1px solid red;*/
+	/*vertical-align: -50%;*/
+    /*margin-right: 5px;*/
 }
 
 li button.accordion.active:after {
-    content: '\2796';
+    content: '\25BE';
+	/*'\25B8';*/
+	/*'\2796';*/
 }
 
 div.accordion-content {
-    padding: 0 18px;
-    /*background-color: #555;*/
-	/*color: white;*/
+    /*padding: 0 18px;*/
+	/*margin-left: 18px;*/
+    background-color: white;
+	color: white;
+	text-indent: 20px;
     max-height: 0;
     overflow: hidden;
     transition: 0.5s ease-in-out;
@@ -148,7 +162,7 @@ div.accordion-content.show {
     max-height: 500px;
 }
 
-#fixedFooter {
+/*#fixedFooter {
 	position: fixed;
 	bottom: 0;
 	background-color: rgba(255,255,255, 0.8);
@@ -174,13 +188,12 @@ div.accordion-content.show {
 
 #fixedFooter .note {
 	display: inline-block;
-	/*width: */
 }
 
 #fixedFooter .note p {
 	margin-top: 20px;
 	margin-bottom: 5px;
-}
+}*/
 
 /****************************************************
 *													*

@@ -15,7 +15,6 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<link rel="stylesheet" href="graph_nav.css">
 		<script src="graph_nav.js" type="text/javascript"></script>
-		<!-- <script src="scripts/side_nav.js" type="text/javascript"></script> -->
 		<?php
 			echo $html_head_insertions;
 		?>
