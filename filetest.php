@@ -13,4 +13,20 @@
 	fwrite($handle, "writing to tempfile TED.");
 	fclose($handle);
 
+
+	echo '<br>';
+	echo '<br>';
+
+	if ($result = (tempnam('/tmp/aaa_dir','myPrefix'))) {
+		echo 'success! ' . $result;
+	} else {
+		echo 'failure';
+	}
+
+	echo '<br>';
+	echo '<br>';
+	echo 'End of script reached!';
+
+	phpinfo();
+
 ?>
