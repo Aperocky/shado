@@ -3,8 +3,8 @@
 	session_start();
 	$curr_page='summaryReportPage';
 	$page_title='Print Report';
-	require_once('header.php');
-	require_once("side_navigation.php");
+	require_once('includes/page_parts/header.php');
+	require_once("includes/run_sim/side_navigation.php");
 
 	$low_count_0=$_SESSION['low_count_0'];
 	$normal_count_0=$_SESSION['normal_count_0'];
@@ -124,7 +124,7 @@
 		echo "<br><br>";
 		require_once("input_summary.php");
 		echo "<br><br><br>";
-		require_once("graph_engineer.php");
+		require_once("includes/results/graph_engineer.php");
 		require_once("graph_nav_static.php");
 		graphText('sessions/Engineer_stats.csv');
 		/* require_once('graph_calculations.php'); */
@@ -156,5 +156,5 @@
 </script>
 
 <?php
-	require_once("footer.php");
+	require_once("includes/page_parts/footer.php");
 ?>
