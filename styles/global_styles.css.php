@@ -132,6 +132,7 @@ li button.accordion:after {
 	/*'\02795';*/
     /*color: #777;*/
     float: right;
+	/*padding-left: 5px;*/
 	/*vertical-align: middle;*/
 	/*border: 1px solid red;*/
 	/*vertical-align: -50%;*/
@@ -152,7 +153,7 @@ div.accordion-content {
 	text-indent: 20px;
     max-height: 0;
     overflow: hidden;
-    transition: 0.5s ease-in-out;
+    transition: 0.3s ease-in-out;
     opacity: 0;
 	/*border: 1px solid red;*/
 }
@@ -629,7 +630,6 @@ th {
 	-webkit-border-radius: 5px;
 	border-radius: 25px;
 	display: inline-block;
-
 	/*margin: 0 auto;*/
 	margin: 20px;
 	text-align: left;
@@ -654,7 +654,6 @@ th {
 
 div.tooltip {
     position: absolute;
-
     width:fit-content;
 	width:-webkit-fit-content;
 	width:-moz-fit-content;
@@ -668,8 +667,6 @@ div.tooltip {
     border-radius: 8px;
     pointer-events: none;
 }
-
-
 
 .node.active {
   fill: blue;
