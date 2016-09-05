@@ -18,7 +18,7 @@
 
 //  Read in default values from file
 
-    $file = fopen("sessions/default_params.txt","r") or die("Unable to open default parameter file!");
+    $file = fopen("static_data/default_params.txt","r") or die("Unable to open default parameter file!");
 
 //  Set default output path
 
