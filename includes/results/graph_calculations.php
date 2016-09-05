@@ -253,10 +253,9 @@
 		else{
 			$user_name='conductor';
 		}
-		require_once("graph_nav.php");
-		require_once("graph_when.php");
-		
-		require_once("graph_why.php");
+		require_once('includes/results/graphTextBox/graph_navBar.php');
+		require_once('includes/results/graphTextBox/graph_whenTab.php');
+		require_once('includes/results/graphTextBox/graph_whyTab.php');
 	}
 
 
