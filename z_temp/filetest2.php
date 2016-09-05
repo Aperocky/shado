@@ -3,12 +3,11 @@
 	echo '<br>';
 	echo 'hi param = ' . $_GET['hi'];
 	echo '<br><br><br><br>';
-	echo get_current_user();
 
 	// $handle = fopen('tmp1/hellofile', 'w') or die('failed!');
 
 
-	$tmpfname = tempnam('/tmp/session1', 'aahellofile3');
+	$tmpfname = tempnam('/tmp/session1', 'hellofile3');
 	echo "Temporary file created in: " . $tmpfname;
 	$handle = fopen($tmpfname, 'w') or die('failed!');
 	fwrite($handle, "writing to tempfile TED.");

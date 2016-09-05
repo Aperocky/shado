@@ -6,7 +6,15 @@
 	$traffic['h']=2.0;
 
 	session_start();
-	$myfile=fopen("sessions/parameters.txt", "w") or fopen("/home/hal/des_data/parameters.txt", "w") or die("unable to open");
+
+	$_SESSION['files'] = [];
+	$_SESSION['files']['sim_stats'] = [];
+	$_SESSION['files']['d3_mods'] = [];
+
+	$_SESSION['files']['params'] = tempnam(sys_get_temp_dir(), "params");
+
+	$myfile = fopen($_SESSION['files']['params'], "w") or die("unable to open");
+	// $myfile=fopen("sessions/parameters.txt", "w") or fopen("/home/hal/des_data/parameters.txt", "w") or die("unable to open");
 	fwrite($myfile,"output_path\t\t/Users/Branch/Documents/Academic/Year 1/Summer/DES Code/DES Web/sessions\n");
 	// $_SESSSION['outputPath']
 	$start_time=(int)substr($_POST ["time1"],0,2);
@@ -102,7 +110,7 @@
 	fclose($myfile);
 
 	// echo "Start";
-	 exec("bin/des_unix sessions/parameters.txt &");
+	 // exec("bin/des_unix " . $_SESSION['files']['params']);
 	// echo "<br> Done";
 
 ?>

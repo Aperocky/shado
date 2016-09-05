@@ -3,6 +3,7 @@
 //	Start session
 
 	// session_unset();
+	$_SESSION = array();
 	session_destroy();
 
 	if(empty($_SESSION['session_started'])) {
