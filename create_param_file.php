@@ -7,6 +7,8 @@
 
 	session_start();
 
+	//	Remember to later close file
+
 	$_SESSION['files'] = [];
 	$_SESSION['files']['sim_stats'] = [];
 	$_SESSION['files']['d3_mods'] = [];

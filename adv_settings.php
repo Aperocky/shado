@@ -7,9 +7,10 @@
 	require_once("includes/run_sim/side_navigation.php");
 ?>
 			<div id="settingsPage" class="page">
-				<div id="myData" class="hidden" data-session='<?php echo json_encode($_SESSION)?>'></div>
+				<div id="myData" class="hidden" data-session='<?php echo json_encode($_SESSION)?>' ></div>
 				<h1 class="pageTitle">Input Advanced Trip Conditions</h1>
 				<form id="taskParameters" action="adv_settings_send.php" method="post">
+					<input type="hidden" name="removed_tasks">
 					<h2>Replications</h2>
 					Enter the number of replications, or the number of simulated trips. Note that more trips provides more precise results, but it may also increase the processing time.
 					<div class="centerOuter">
