@@ -1,23 +1,27 @@
+/* Color themes */
+
 <?php
 	$color_theme_dark_blue = '#467FC9';
 	$color_theme_light_blue = '#75D3FE';
 ?>
 
+/****************************************************
+*													*
+*	Section:	Page Parts							*
+*													*
+****************************************************/
+
 body {
 	margin: 0;
 }
 
-
-/*  Page Parts  */
-
-#fixedAll {
-}
+/*#fixedAll {
+}*/
 
 #fixedHead {
 	position: fixed;
 	top: 0;
 	text-align: center;
-	/*height: 200px;*/
 	width: 100%;
 	z-index: 999;
 }
@@ -42,7 +46,6 @@ body {
 	margin: 0;
 	padding: 0px;
 	overflow: hidden;
-	/*border: 1px solid red;*/
 	background-color: #555;
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
@@ -54,7 +57,6 @@ body {
 	margin: 0;
 	padding: 0px;
 	font-size: 18px;
-	/*border-right: 1px solid black;*/
 }
 
 #topNav li a {
@@ -63,7 +65,6 @@ body {
 	text-align: center;
 	padding: 12px 17px;
 	text-decoration: none;
-	/*border: 1px solid red;*/
 }
 
 #topNav li a:hover:not(.active) {
@@ -79,35 +80,90 @@ body {
 #sideNav ul {
     list-style-type: none;
     margin-top: 0px;
-		padding: 20px 0px;
-		height: 100%;
+	padding: 20px 0px;
+	height: 100%;
     /*padding: 0;*/
-    width: 180px;
+    width: 200px;
     background-color: #f1f1f1;
     position: fixed;
     /*height: 90%;*/
     overflow: auto;
-		border-right: 1px solid black;
+	border-right: 1px solid black;
 }
 
-#sideNav li a {
+#sideNav li a, #sideNav li button {
     display: block;
     color: #000;
     padding: 8px 16px;
     text-decoration: none;
-		border-bottom:
+	font-size: 14;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
-#sideNav li a.active {
-		color: white;
-		background-color: <?php echo $color_theme_light_blue; ?>;
+#sideNav li a.active{
+	color: white;
+	background-color: <?php echo $color_theme_light_blue; ?>;
 }
 
-#sideNav li a:hover:not(.active) {
+#sideNav li button #accordion-content.active {
+	/*background-color: */
+}
+
+#sideNav li a:hover:not(.active), #sideNav li button:hover {
     background-color: #ddd;
 }
 
-#fixedFooter {
+li button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    /*padding: 18px;*/
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    /*font-size: 15px;*/
+    transition: 0.4s;
+}
+
+li button.accordion:after {
+    content: '\25B8';
+	/*'\276F';*/
+	/*'\02795';*/
+    /*color: #777;*/
+    float: right;
+	/*padding-left: 5px;*/
+	/*vertical-align: middle;*/
+	/*border: 1px solid red;*/
+	/*vertical-align: -50%;*/
+    /*margin-right: 5px;*/
+}
+
+li button.accordion.active:after {
+    content: '\25BE';
+	/*'\25B8';*/
+	/*'\2796';*/
+}
+
+div.accordion-content {
+    /*padding: 0 18px;*/
+	/*margin-left: 18px;*/
+    background-color: white;
+	color: white;
+	text-indent: 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+    opacity: 0;
+	/*border: 1px solid red;*/
+}
+
+div.accordion-content.show {
+    opacity: 1;
+    max-height: 500px;
+}
+
+/*#fixedFooter {
 	position: fixed;
 	bottom: 0;
 	background-color: rgba(255,255,255, 0.8);
@@ -133,30 +189,24 @@ body {
 
 #fixedFooter .note {
 	display: inline-block;
-	/*width: */
 }
 
 #fixedFooter .note p {
 	margin-top: 20px;
 	margin-bottom: 5px;
-}
+}*/
 
-
-/*  General  */
+/****************************************************
+*													*
+*	Section:	General								*
+*													*
+****************************************************/
 
 #main {
 	margin-top: 168px;
 	margin-bottom: 20px;
 	/*border: 1px solid red;*/
 	/*height: 100%;*/
-}
-
-.navArrow {
-	background-image: url("../images/nav-arrow.png");
-	height: 50px;
-	width: 50px;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .printPdf {
@@ -171,7 +221,6 @@ body {
 }
 
 @media print {
-
 	.page {
 		margin-left: 0 !important;
 		/*background-color: red;*/
@@ -180,11 +229,10 @@ body {
 	.no-page-break {
 		page-break-inside: avoid;
 	}
-
 }
 
 .page {
-	margin-left: 200px;
+	margin-left: 230px;
 	margin-right: 30px;
 	margin-top: 10px;
 	padding-top: 20px;
@@ -230,7 +278,11 @@ body {
 	background-color: rgba(255, 255, 255, 0.6);
 }
 
-/*  RunSim Settings  */
+/****************************************************
+*													*
+*	Section:	RunSim Settings						*
+*													*
+****************************************************/
 
 form#timeEntry {
 	text-align: center;
@@ -260,7 +312,7 @@ form#timeEntry {
 }
 
 .startEndTime h3 {
-	width: 105px;
+	width: 120px;
 }
 
 .trafficTableStepOuter h3 {
@@ -288,7 +340,7 @@ form#timeEntry {
 }
 
 .assistantsSelectStepOuter {
-	width: 521px;
+	width: 600px;
 }
 
 #assistantsTable {
@@ -296,9 +348,9 @@ form#timeEntry {
 	margin-right: auto;
 }
 
-#assistantsTable td {
+/*#assistantsTable td {
 	padding: 5px;
-}
+}*/
 
 h1 {
 	color: #19334d;
@@ -315,15 +367,6 @@ h1 {
 #title h1 {
 	color: white;
 }
-
-/*#title h1::first-letter {
-	color: <?php echo $color_theme_light_blue; ?>;
-}*/
-
-/*h2.sectionHead {
-	text-align: center;
-	color: #19334d;
-}*/
 
 #note {
 	position:relative;
@@ -343,8 +386,11 @@ p {
 	color: white;
 }
 
-
-/*  Tables  */
+/****************************************************
+*													*
+*	Section:	Table formatting					*
+*													*
+****************************************************/
 
 table, th, td {
     border: 1px solid black;
@@ -378,14 +424,10 @@ th {
  	-webkit-border-radius: 5px;
  	border-radius: 25px;
  	display: inline-block;
-
- 	/*width: 1200px;*/
- 	/*margin: 0 auto;*/
  	margin: 20px;
  	text-align: left;
  	background-color: rgba(255, 255, 255, 0.6);
  }
-
 
  #conductor_summary{
 	position: relative;
@@ -393,9 +435,11 @@ th {
 
  }
 
-
-
-/*  Tool Tips  */
+/****************************************************
+*													*
+*	Section:	Tool tips							*
+*													*
+****************************************************/
 
 /* Tooltip container */
 .tooltip1 {
@@ -439,9 +483,11 @@ th {
 	border-radius: 8px;
 }
 
-
-
-/*  Operator Summary  */
+/****************************************************
+*													*
+*	Section:	Operator Summary					*
+*													*
+****************************************************/
 
 .operatorSummaryOuter {
 	text-align: center;
@@ -463,8 +509,8 @@ th {
 	background-color: rgba(255, 255, 255, 0.6);
 }
 
-#summaryButton, button
-{
+/*button*/
+#summaryButton {
 	padding:5px 15px;
     border: 2px solid #5D7B85;
     cursor:pointer;
@@ -472,3 +518,156 @@ th {
     border-radius: 25px;
 }
 
+.roundButton {
+    height: 30px;
+    width: 30px;
+    border-radius: 100px;
+	/*padding: 5px 10px;*/
+	border: none;
+	cursor: pointer;
+	color: white;
+	font-size: 20;
+	text-align: center;
+}
+
+
+/****************************************************
+*													*
+*	Section:	graph text box					*
+*													*
+****************************************************/
+#graphNav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0px;
+	overflow: hidden;
+	/*border: 1px solid red;*/
+	background-color: #555;
+	border: 1px solid black;
+	border-bottom: 1px solid black;
+	display: inline-block;
+}
+
+#graphNav li {
+	/*display: inline-block;*/
+	float: left;
+	display: inline-block;
+	margin: 0;
+	padding: 0px 50px;
+	font-size: 18px;
+	/*border-right: 1px solid black;*/
+}
+
+#graphNav li a {
+	color: white;
+	text-align: center;
+	padding: 12px 20px;
+	text-decoration: none;
+	display: inline-block;
+	/*border: 1px solid red;*/
+}
+
+#graphTextBox{
+ 	width:fit-content;
+ 	width:-webkit-fit-content;
+ 	width:-moz-fit-content;
+ 	border: 3px solid #5D7B85;
+ 	cursor:pointer;
+ 	-webkit-border-radius: 5px;
+ 	border-radius: 25px;
+ 	min-width: 600px;
+ 	/*width: 1200px;*/
+ 	/*margin: 0 auto;*/
+ 	margin-left: auto ;
+	margin-right: auto ;
+ 	text-align: center;
+ 	background-color: rgba(255, 255, 255, 0.6);
+}
+
+#text_box{
+ 	padding:5px 15px;
+ 	width:fit-content;
+ 	width:-webkit-fit-content;
+ 	width:-moz-fit-content;
+ 	border: 3px solid #5D7B85;
+ 	cursor:pointer;
+ 	-webkit-border-radius: 5px;
+ 	border-radius: 25px;
+ 	display: inline-block;
+ 	/*width: 1200px;*/
+ 	/*margin: 0 auto;*/
+ 	margin: 20px;
+ 	text-align: left;
+ 	background-color: rgba(255, 255, 255, 0.6);
+}
+
+
+/****************************************************
+*													*
+*	Section:	d3 visualizaiton					*
+*													*
+****************************************************/
+
+.operator{
+	text-align: center;
+}
+
+.engineer{
+	text-align: center;
+}
+
+.conductor{
+	text-align: center;
+}
+
+#graph{
+	padding:30px 30px;
+	width:fit-content;
+	width:-webkit-fit-content;
+	width:-moz-fit-content;
+	border: 3px solid #5D7B85;
+	cursor:pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 25px;
+	display: inline-block;
+	/*margin: 0 auto;*/
+	margin: 20px;
+	text-align: left;
+	background-color: rgba(255, 255, 255, 0.6);
+	overflow: auto;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.x.axis path {
+  display: none;
+}
+
+div.tooltip {
+    position: absolute;
+    width:fit-content;
+	width:-webkit-fit-content;
+	width:-moz-fit-content;
+    height:fit-content;
+	height:-webkit-fit-content;
+	height:-moz-fit-content;
+    padding: 5px;
+    font: 15px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.node.active {
+  fill: blue;
+}

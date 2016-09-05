@@ -22,7 +22,7 @@ var temp=setInterval(function() {
  if(i==7){
 	 check=1;
 	 console.log("done");
-	window.open('operator_summary.php','_self');
+	window.open('view_results.php','_self');
 	 clearInterval(temp);
 	 
  }

@@ -1,11 +1,9 @@
 <?php
-
 	session_start();
-
-	$curr_page='summaryReportPage';
+	$curr_page='Conductor_summary';
 	$page_title='Print Report';
-	require_once('header.php');
-	require_once("side_navigation.php");
+	require_once('includes/page_parts/header.php');
+	require_once("includes/run_sim/side_navigation.php");
 
 	$low_count_0=$_SESSION['low_count_0'];
 	$normal_count_0=$_SESSION['normal_count_0'];
@@ -22,124 +20,119 @@
 ?>
 
 <style>
-		#low_work_0 {
-			color:
-			<?php
-				if(($low_count_0+$high_count_0)>$normal_count_0) {
-					if($low_count_0>$high_count_0) {
-						echo "red";
-					} else {
-						echo "black";
-					}
+	#low_work_0 {
+		color:
+		<?php
+			if(($low_count_0+$high_count_0)>$normal_count_0) {
+				if($low_count_0>$high_count_0) {
+					echo "red";
 				} else {
 					echo "black";
 				}
-			?>;
-		}
-		#normal_work_0{
-			color:
-			<?php
-				if(($low_count_0+$high_count_0)<$normal_count_0) {
-					echo "green";
-				} else {
-					echo "black";
-				}
-			?>;
-		}
-		#high_work_0 {
-			color:
-			<?php
-				if(($low_count_0+$high_count_0)>$normal_count_0) {
-					if($high_count_0>$low_count_0) {
-						echo "red";
-					} else {
-						echo "black";
-					}
-				} else {
-					echo "black";
-				}
-			?>;
-		}
-		#low_work_1 {
-			color:
-			<?php
-				if(($low_count_1+$high_count_1)>$normal_count_1) {
-					if($low_count_1>$high_count_1) {
-						echo "red";
-					} else {
-						echo "black";
-					}
-				} else {
-					echo "black";
-				}
-			?>;
-		}
-
-		#normal_work_1 {
-			color:
-			<?php
-				if(($low_count_1+$high_count_1)<$normal_count_1){
-					echo "green";
-				} else {
-					echo "black";
-				}
-			?>;
-		}
-
-		#high_work_1 {
-			color:
-			<?php
-				if(($low_count_1+$high_count_1)>$normal_count_1) {
-					if($high_count_1>$low_count_1) {
-						echo "red";
-					} else {
-						echo "black";
-					}
-				} else {
-					echo "black";
-				}
-			?>;
-		}
-
-		#submit1, #submit2{
-			display: none;
-		}
-
-/*		@media print
-		{
-			.no-print, .no-print *
-			{
-				display: none !important;
+			} else {
+				echo "black";
 			}
-		}*/
-		
-		#text-box{display: block;}
+		?>;
+	}
+	#normal_work_0{
+		color:
+		<?php
+			if(($low_count_0+$high_count_0)<$normal_count_0) {
+				echo "green";
+			} else {
+				echo "black";
+			}
+		?>;
+	}
+	#high_work_0 {
+		color:
+		<?php
+			if(($low_count_0+$high_count_0)>$normal_count_0) {
+				if($high_count_0>$low_count_0) {
+					echo "red";
+				} else {
+					echo "black";
+				}
+			} else {
+				echo "black";
+			}
+		?>;
+	}
+	#low_work_1 {
+		color:
+		<?php
+			if(($low_count_1+$high_count_1)>$normal_count_1) {
+				if($low_count_1>$high_count_1) {
+					echo "red";
+				} else {
+					echo "black";
+				}
+			} else {
+				echo "black";
+			}
+		?>;
+	}
+
+	#normal_work_1 {
+		color:
+		<?php
+			if(($low_count_1+$high_count_1)<$normal_count_1){
+				echo "green";
+			} else {
+				echo "black";
+			}
+		?>;
+	}
+
+	#high_work_1 {
+		color:
+		<?php
+			if(($low_count_1+$high_count_1)>$normal_count_1) {
+				if($high_count_1>$low_count_1) {
+					echo "red";
+				} else {
+					echo "black";
+				}
+			} else {
+				echo "black";
+			}
+		?>;
+	}
+
+	#submit1, #submit2{
+		display: none;
+	}
+
+	/*@media print
+	{
+		.no-print, .no-print *
+		{
+			display: none !important;
+		}
+	}*/
+
+	#text-box{display: block;}
 	#howTab{display: block;}
 	#graphTextBox {page-break-after: always;}
-	
-	
-	
 </style>
 
 <div id="print-content" >
-
 	<form>
-			<div id="next_page" class="printPdf" onclick="var submit = getElementById('button'); button.click()";>
-			</div>
-			<input type="button" id="button" onclick="printDiv('print-content')" value="print a div!" style='display:none;'/>
+		<div id="next_page" class="printPdf" onclick="var submit = getElementById('button'); button.click()";>
+		</div>
+		<input type="button" id="button" onclick="printDiv('print-content')" value="print a div!" style='display:none;'/>
 	</form>
 
+
 	<?php
-		require_once("assist.html");
+		require_once("operator.html");
 		echo "<br><br><br>";
-		require_once("graph_conductor.php");
+		require_once("includes/results/graph_conductor.php");
 		echo "<br><br>";
 		require_once("graph_nav_static.php");
 		graphText('sessions/Conductor_stats.csv');
 		/* require_once('graph_calculations.php'); */
 		echo "<br><br>";
-
-		
 	?>
 	<div class='conductor_summary' style='text-align: center;'>
 		<button id='conductor' onclick='location.href ="summary_page_eng.php";'>Engineer summary</button>
@@ -147,31 +140,20 @@
 </div>
 
 <script type="text/javascript">
+	document.addEventListener("DOMContentLoaded",function() {
+		document.getElementById('text_box').style.display="block";
+		document.getElementById('howTab').style.display="block";
+		document.getElementById('whenTab').style.display="block";
+		document.getElementById('operator1').style.display="none";}
+	);
 
-
-document.addEventListener("DOMContentLoaded",function(){
-	
-	document.getElementById('text_box').style.display="block";
-	
-	
-	document.getElementById('howTab').style.display="block";
-	document.getElementById('whenTab').style.display="block";
-	document.getElementById('operator1').style.display="none";}
-
-);
-
-
-
-function printDiv(divName) {
- var printContents = document.getElementById(divName).innerHTML;
- var originalContents = document.body.innerHTML;
- document.body.innerHTML = printContents;
-
- window.print();
-
- document.body.innerHTML = originalContents;
- 
-}
+	function printDiv(divName) {
+		var printContents = document.getElementById(divName).innerHTML;
+	 	var originalContents = document.body.innerHTML;
+	 	document.body.innerHTML = printContents;
+	 	window.print();
+	 	document.body.innerHTML = originalContents;
+	}
 </script>
 
 <?php

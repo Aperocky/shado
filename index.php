@@ -6,7 +6,7 @@
 	session_destroy();
 
 	if(empty($_SESSION['session_started'])) {
-		include("includes/index/set_session_vars.php");
+		include("includes/session_management/set_session_vars.php");
 	}
 	$_SESSION['session_started'] = true;
 
@@ -15,17 +15,8 @@
 	$page_title='Welcome!';
 	$curr_page='homePage';
 	require_once('includes/page_parts/header.php');
-
-	// print_r($_SESSION['taskAssocOps']);
-	// for ($i = 0; $i < sizeof($_SESSION['taskAssocOps']); $i++) {
-	// 	for ($j = 0; $j < sizeof($_SESSION['taskAssocOps'][$i]); $j++) {
-	// 		echo $_SESSION['taskAssocOps'][$i][$j]." ";
-	// 	}
-	// 	echo "<br>";
-	// }
-
-	// echo $_SESSION['taskNames'][0];
 ?>
+
 			<div id="homePage" class="page">
 				<h1 class="pageTitle">Welcome to the SHOW!</h1>
 				<h2>Introduction</h2>
@@ -43,8 +34,8 @@
 				</p>
 				<h2>Background</h2>
 				<p>
-					A core set of tasks has been defined and implemented to encompass tasks that crew members may encounter during their trip. These tasks and their descriptions are summarized below. To see more underlying assumptions, visit <a href="settings.php">advanced settings</a>.
-					<table align="center" width="700" style="margin-top: 30px;">
+					A core set of tasks has been defined and implemented to encompass tasks that crew members may encounter during their trip. These tasks and their descriptions are summarized below. To see more underlying assumptions, visit <a href="adv_settings.php">advanced settings</a>.
+					<table align="center" width="1000" style="margin-top: 30px;">
 					    <tr>
 					        <th>Task Type</th>
 					        <th>Description</th>
@@ -107,9 +98,13 @@
 				</p>
 				<h2>Getting Started</h2>
 				<p>
-					Ready to get started? Then let's <a href="runSim.php">go</a>! And if you have any questions or comments about the simulation, please <a href="contact.php">contact us</a>!
+					Ready to get started? Then let's <a href="run_sim.php">go</a>! And if you have any questions or comments about the simulation, please <a href="contact_us.php">contact us</a>!
 				</p>
 			</div>
+
+			<footer style='text-align: center; padding: 20px 0; font-size: 18;'>
+				<strong>NOTE: </strong>This decision support tool is intended to inform rather than dictate decisions.
+			</footer>
 
 <?php
 	require_once("includes/page_parts/footer.php");

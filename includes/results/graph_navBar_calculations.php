@@ -10,16 +10,16 @@
 			}
 		}
 
-		$type_names=array();
-		$type_names[0]="Communicating";
-		$type_names[1]="Exception Handling";
-		$type_names[2]="Paperwork";
-		$type_names[3]="Maintenance of Way";
-		$type_names[4]="Temporary Speed Restrictions";
-		$type_names[5]="Signal Response Management";
-		$type_names[6]="Monitoring Inside";
-		$type_names[7]="Monitoring Outside";
-		$type_names[8]="Planning Ahead";
+		// $type_names=array();
+		// $type_names[0]="Communicating";
+		// $type_names[1]="Exception Handling";
+		// $type_names[2]="Paperwork";
+		// $type_names[3]="Maintenance of Way";
+		// $type_names[4]="Temporary Speed Restrictions";
+		// $type_names[5]="Signal Response Management";
+		// $type_names[6]="Monitoring Inside";
+		// $type_names[7]="Monitoring Outside";
+		// $type_names[8]="Planning Ahead";
 
 		$file_handle=fopen($fname,'r');
 		$count=array();
@@ -253,10 +253,9 @@
 		else{
 			$user_name='conductor';
 		}
-		require_once("graph_nav.php");
-		require_once("graph_when.php");
-		
-		require_once("graph_why.php");
+		require_once('includes/results/graphTextBox/graph_navBar.php');
+		require_once('includes/results/graphTextBox/graph_whenTab.php');
+		require_once('includes/results/graphTextBox/graph_whyTab.php');
 	}
 
 
