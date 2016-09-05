@@ -9,7 +9,7 @@
 				  	</li>
 					<!-- <li><a id="sideNavElement" <?php if ($curr_page=='runSimPage') {echo 'class="active"';} ?> href="run_sim.php">Input Trip Settings</a></li>
 			 		<li><a id="sideNavElement" <?php if ($curr_page=='advSettingsPage') {echo 'class="active"';} ?> href="adv_settings.php">Input Advanced Settings</a></li> -->
-					<li><a id="sideNavElement" <?php if ($curr_page=='initialResultsPage') {echo 'class="active"';} ?> href="operator_summary.php">View Results</a></li>
+					<li><a id="sideNavElement" <?php if ($curr_page=='initialResultsPage') {echo 'class="active"';} ?> href="view_results.php">View Results</a></li>
 					<!-- <li><a id="sideNavElement" <?php if ($curr_page=='detailedAnalysisPage') {echo 'class="active"';} ?> href="investigate.php?operator=engineer">Detailed Analysis</a></li> -->
 					<li>
 					    <button class="accordion <?php if ($curr_page=='detailedAnalysisPage') {echo active;} ?>">View Detailed Results</button>
