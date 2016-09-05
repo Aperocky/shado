@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$curr_page='summaryReportPage';
+	$curr_page='Conductor_summary';
 	$page_title='Print Report';
 	require_once('includes/page_parts/header.php');
 	require_once("includes/run_sim/side_navigation.php");
