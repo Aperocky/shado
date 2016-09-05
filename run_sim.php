@@ -88,7 +88,7 @@
 			<div class="trafficTableStepOuter stepBox centerOuter">
 				<div class='stepCircle'>3</div>
 				<div class="tooltip">
-				<h3 class="whiteFont">Traffic Levels   <span class="tooltip" onmouseover="tooltip.pop(this, 'SHOW models traffic levels with a multiplier on the frequency of certain task types arriving for the operators to handle.')">(?)</span></h3>
+				<h3 class="whiteFont">Traffic Levels <span class="tooltip" onmouseover="tooltip.pop(this, 'SHOW models traffic levels with a multiplier on the frequency of certain task types arriving for the operators to handle.')">(?)</span></h3>
 				</div>
 				<span class="tooltip" onmouseover="tooltip.pop(this, 'What is the projected level of traffic on your railroad for this particular shift?')"><div id="totalTime" style="overflow-x:auto;"></span></div>
 			</div>
