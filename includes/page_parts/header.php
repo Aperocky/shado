@@ -43,3 +43,4 @@
 
 		<div id="fixedBody"></div>
 		<div id="main">
+			<!-- <?php 	echo "Current file = ".pathinfo($_SERVER["SCRIPT_FILENAME"], PATHINFO_FILENAME); ?> -->

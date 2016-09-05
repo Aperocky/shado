@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	// print_r($_SESSION['taskSerPms']);
 
 //	Save replications
 
@@ -9,11 +8,7 @@
 
 //	Loop through each task type
 
-	// echo $_SESSION['numTasks'];
-
-	for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++)
-	{
-		// echo "starting ".$i." ...";
+	for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
 	// 	Store task names
 
 		$_SESSION['taskNames'][$i]=$_POST["t".$i."_name"];
@@ -25,10 +20,6 @@
 			(int)$_POST["t".$i."_priority_p0"],
 			(int)$_POST["t".$i."_priority_p1"],
 			(int)$_POST["t".$i."_priority_p2"]);
-
-		// echo $_SESSION['taskPrty'][$i][0]." ";
-		// echo $_SESSION['taskPrty'][$i][1]." ";
-		// echo $_SESSION['taskPrty'][$i][2]." ";
 
 		// for ($k = 0; $k < sizeof($_SESSION['taskPrty'][$i])) {
 		// 	echo $_SESSION['taskPrty'][$i][$k]." ";
@@ -50,7 +41,6 @@
 				$_SESSION['taskArrPms'][$i][$k] = 1/$_SESSION['taskArrPms'][$i][$k];
 			}
 		}
-
 		// echo $_SESSION['taskArrPms'][$i][0]." ";
 		// echo $_SESSION['taskArrPms'][$i][1]." ";
 		// echo $_SESSION['taskArrPms'][$i][2]." ";
@@ -94,42 +84,16 @@
 				$_SESSION['taskAssocOps'][$i][]=(int)$_POST["t".$i."_op".$j];
 			}
 		}
-
-		// echo $_SESSION['taskAssocOps'][$i][0]." ";
-		// echo $_SESSION['taskAssocOps'][$i][1]." ";
-		// echo $_SESSION['taskAssocOps'][$i][2]." ";
-		// echo $_SESSION['taskAssocOps'][$i][3]." ";
-		// echo $_SESSION['taskAssocOps'][$i][4]." ";
-		// echo $_SESSION['taskAssocOps'][$i][5]." ";
-		// echo $_SESSION['taskAssocOps'][$i][6]." ";
-		// echo $_SESSION['taskAssocOps'][$i][7]." ";
-		//
-
-		// echo "<br>";
 	}
-
-		// echo "Done.";
 		// for ($i = 0; $i < sizeof($_SESSION['taskAssocOps']); $i++) {
 		// 	for ($j = 0; $j < sizeof($_SESSION['taskAssocOps'][$i]); $j++) {
 		// 		echo $_SESSION['taskAssocOps'][$i][$j]." ";
 		// 	}
 		// 	echo "<br>";
 		// }
-		//
-		// for ($j = 0; $j < sizeof($_SESSION['taskNames']); $j++) {
-		// 	echo $_SESSION['taskNames'][$j]."<br>";
-		// }
-		// for($j = 0; $j < 5; $j++) {
-		// 	echo $_SESSION['taskAssocOps'];
-	// }
 
-	// echo $_SESSION['numReps'];
 	header("Location: run_sim.php");
 
-	// echo "Hello";
 	// var_dump($_SESSION);
 	// print_r($_SESSION);
-	// print_r($_SESSION['taskNames']);
-
-	// require_once("run_sim.php");
 ?>
