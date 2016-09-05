@@ -10,27 +10,27 @@
 			{
 				if(array_sum($type_byPhase[$high_keys[$j-1]])>0)
 				{
-					echo "<li onclick='display" . ($high_keys[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $type_names[$high_keys[$j-1]-1] ."<ul id='high". ($high_keys[$j-1]-1) . "'><li>";
+					echo "<li onclick='display" . ($high_keys[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $_SESSION['taskNames'][$high_keys[$j-1]-1] ."<ul id='high". ($high_keys[$j-1]-1) . "'><li>";
 
 					if(array_sum($type_byPhase1[$high_keys[$j-1]])==0)
 						{
-							echo "During Phase 1, your "  .$user_name. " spent 0% time on ". $type_names[$high_keys[$j-1]-1] ."</li><li>";
+							echo "During Phase 1, your "  .$user_name. " spent 0% time on ". $_SESSION['taskNames'][$high_keys[$j-1]-1] ."</li><li>";
 						}
 					else{
-						echo "During Phase 1, your ".$user_name. " spent ". round(array_sum($type_byPhase1[$high_keys[$j-1]])*100/$length_phase1,2) ."% time on ". $type_names[$high_keys[$j-1]-1] ."</li><li>";
+						echo "During Phase 1, your ".$user_name. " spent ". round(array_sum($type_byPhase1[$high_keys[$j-1]])*100/$length_phase1,2) ."% time on ". $_SESSION['taskNames'][$high_keys[$j-1]-1] ."</li><li>";
 
 					}
 					if(array_sum($type_byPhase2[$high_keys[$j-1]])==0){
-						echo "During Phase 2, your " .$user_name. " spent 0% time on ". $type_names[$high_keys[$j-1]-1] ."</li><li>";
+						echo "During Phase 2, your " .$user_name. " spent 0% time on ". $_SESSION['taskNames'][$high_keys[$j-1]-1] ."</li><li>";
 					}
 					else{
-						echo "During Phase 2, your " .$user_name. " spent ". round(array_sum($type_byPhase2[$high_keys[$j-1]])*100/$length_phase2,2) ."% time on ". $type_names[$high_keys[$j-1]-1] ."</li><li>";
+						echo "During Phase 2, your " .$user_name. " spent ". round(array_sum($type_byPhase2[$high_keys[$j-1]])*100/$length_phase2,2) ."% time on ". $_SESSION['taskNames'][$high_keys[$j-1]-1] ."</li><li>";
 					}
 					if(array_sum($type_byPhase3[$high_keys[$j-1]])==0){
-						echo "During Phase 3, your " .$user_name. " spent 0% time on ". $type_names[$high_keys[$j-1]-1] ."</li></ul></li>";
+						echo "During Phase 3, your " .$user_name. " spent 0% time on ". $_SESSION['taskNames'][$high_keys[$j-1]-1] ."</li></ul></li>";
 					}
 					else{
-						echo "During Phase 3, your " .$user_name. " spent ". round(array_sum($type_byPhase3[$high_keys[$j-1]])*100/$length_phase3,2) ."% time on ". $type_names[$high_keys[$j-1]-1] ."</li></ul></li>";
+						echo "During Phase 3, your " .$user_name. " spent ". round(array_sum($type_byPhase3[$high_keys[$j-1]])*100/$length_phase3,2) ."% time on ". $_SESSION['taskNames'][$high_keys[$j-1]-1] ."</li></ul></li>";
 
 					}
 				}
@@ -50,27 +50,27 @@
 	{
 		if(array_sum($type_byPhase[$low_keys[$j-1]])>0)
 		{
-			echo "<li onclick='display" . ($low_keys[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $type_names[$low_keys[$j-1]-1] ."<ul id='low". ($low_keys[$j-1]-1) . "'><li>";
+			echo "<li onclick='display" . ($low_keys[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $_SESSION['taskNames'][$low_keys[$j-1]-1] ."<ul id='low". ($low_keys[$j-1]-1) . "'><li>";
 
 			if(array_sum($type_byPhase1[$low_keys[$j-1]])==0)
 				{
-					echo "During Phase 1, your " .$user_name. " spent 0% time on ". $type_names[$low_keys[$j-1]-1] ."</li><li>";
+					echo "During Phase 1, your " .$user_name. " spent 0% time on ". $_SESSION['taskNames'][$low_keys[$j-1]-1] ."</li><li>";
 				}
 			else{
-				echo "During Phase 1, your " .$user_name. " spent ". round(array_sum($type_byPhase1[$low_keys[$j-1]])*100/$length_phase1,2) ."% time on ". $type_names[$low_keys[$j-1]-1] ."</li><li>";
+				echo "During Phase 1, your " .$user_name. " spent ". round(array_sum($type_byPhase1[$low_keys[$j-1]])*100/$length_phase1,2) ."% time on ". $_SESSION['taskNames'][$low_keys[$j-1]-1] ."</li><li>";
 
 			}
 			if(array_sum($type_byPhase2[$low_keys[$j-1]])==0){
-				echo "During Phase 2, your " .$user_name. " spent 0% time on ". $type_names[$low_keys[$j-1]-1] ."</li><li>";
+				echo "During Phase 2, your " .$user_name. " spent 0% time on ". $_SESSION['taskNames'][$low_keys[$j-1]-1] ."</li><li>";
 			}
 			else{
-				echo "During Phase 2, your " .$user_name. " spent ". round(array_sum($type_byPhase2[$low_keys[$j-1]])*100/$length_phase2,2) ."% time on ". $type_names[$low_keys[$j-1]-1] ."</li><li>";
+				echo "During Phase 2, your " .$user_name. " spent ". round(array_sum($type_byPhase2[$low_keys[$j-1]])*100/$length_phase2,2) ."% time on ". $_SESSION['taskNames'][$low_keys[$j-1]-1] ."</li><li>";
 			}
 			if(array_sum($type_byPhase3[$low_keys[$j-1]])==0){
-				echo "During Phase 3, your " .$user_name. " spent 0% time on ". $type_names[$low_keys[$j-1]-1] ."</li></ul></li>";
+				echo "During Phase 3, your " .$user_name. " spent 0% time on ". $_SESSION['taskNames'][$low_keys[$j-1]-1] ."</li></ul></li>";
 			}
 			else{
-				echo "During Phase 3, your " .$user_name. " spent ". round(array_sum($type_byPhase3[$low_keys[$j-1]])*100/$length_phase3,2) ."% time on ". $type_names[$low_keys[$j-1]-1] ."</li></ul></li>";
+				echo "During Phase 3, your " .$user_name. " spent ". round(array_sum($type_byPhase3[$low_keys[$j-1]])*100/$length_phase3,2) ."% time on ". $_SESSION['taskNames'][$low_keys[$j-1]-1] ."</li></ul></li>";
 			}
 		}
 	}
