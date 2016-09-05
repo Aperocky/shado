@@ -1,8 +1,12 @@
 <?php
 	function createGraphCsv($user){
 
+		
+		
 		$file_handle=fopen('sessions/'. $user . '_stats.csv','r');
 		$file=fopen('sessions/mod_type_data_'. $user. '.txt',"w");
+		
+		
 
 		$count=array();
 		$s_dev=array();
@@ -93,6 +97,7 @@
 
 		fclose($file);
 		echo '<script> d3_visual("'.$user.'",' .(string)$num. '); </script>';
+
 
 
 	}
