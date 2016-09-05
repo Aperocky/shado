@@ -120,7 +120,7 @@
 	</form>
 
 	<?php
-		require_once("assist.html");
+		require_once("operator.html");
 		echo "<br><br>";
 		require_once("input_summary.php");
 		echo "<br><br><br>";

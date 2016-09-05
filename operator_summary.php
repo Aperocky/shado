@@ -104,7 +104,7 @@
 		}
 	</style>
 
-	<?php require_once("assist.html"); ?>
+	<?php require_once("operator.html"); ?>
 
 	<br><br><br>
 

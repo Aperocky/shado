@@ -123,8 +123,9 @@
 		<input type="button" id="button" onclick="printDiv('print-content')" value="print a div!" style='display:none;'/>
 	</form>
 
+
 	<?php
-		require_once("assist.html");
+		require_once("operator.html");
 		echo "<br><br><br>";
 		require_once("includes/results/graph_conductor.php");
 		echo "<br><br>";
