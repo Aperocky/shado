@@ -1,11 +1,6 @@
 		</div>
-		<?php
-		// if ($curr_page=='homePage') {
-		// 	echo "<footer style='text-align: center; padding: 20px 0; font-size: 18;'><strong>NOTE: </strong>This decision support tool is intended to inform rather than dictate decisions.</footer>";
-		// }
-		?>
 		<!-- <footer id="fixedFooter">
-			<p class="noteLabel">NOTE:</p>
+			<p class="noteLabel">Note:</p>
 			<div class="note">
 				<p>This decision support tool is intended to inform rather than dictate decisions.</p>
 			</div>

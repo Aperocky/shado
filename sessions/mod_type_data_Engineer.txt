@@ -1,4 +1,4 @@
-time,Communicating,Exception Handling,Paperwork,Maintenance of Way,Temporary Speed Restrictions,Signal Response Management,Monitoring Inside,Monitoring Outside,Planning Ahead
+time,Communicating,Exception Handling,Paperwork,Maintenance of Way Interactions,Temporary Speed Restrictions,Signal Response Management,Monitoring Inside,Monitoring Outside,Planning Ahead
  0 min,0.133836,0,0.123027,0,0,0.0335751,0.0318643,0.0139785,0.0178929
  10 min,0.128757,0,0.123316,0,0,0.0369342,0.0308929,0.00986287,0.0187663
  20 min,0.129994,0,0.111837,0,0,0.057623,0.0323205,0.0112604,0.0147383

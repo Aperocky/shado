@@ -48,7 +48,7 @@
 					<button type="button" class="roundButton" onclick="addTask()" style="background-color: #4CAF50;"><strong>+</strong></button>
 				</div>
 				<div style="text-align: center;">
-					<button class="button" onclick="location.href='reset_session_vars.php';">Restore Defaults</button>
+					<button class="button" onclick="location.href='reset_session_vars.php';" style="color: black;">Restore Defaults</button>
 				</div>
 			</div>
 

@@ -1,11 +1,13 @@
 <?php
 	function createGraphCsv($user){
+
 		
 		
 		$file_handle=fopen('sessions/'. $user . '_stats.csv','r');
 		$file=fopen('sessions/mod_type_data_'. $user. '.txt',"w");
 		
 		
+
 		$count=array();
 		$s_dev=array();
 		$temp_count_dev=0;
@@ -13,16 +15,16 @@
 		$skip=1;
 		$num=0;
 
-		$type_names=array();
-		$type_names[0]="Communicating";
-		$type_names[1]="Exception Handling";
-		$type_names[2]="Paperwork";
-		$type_names[3]="Maintenance of Way";
-		$type_names[4]="Temporary Speed Restrictions";
-		$type_names[5]="Signal Response Management";
-		$type_names[6]="Monitoring Inside";
-		$type_names[7]="Monitoring Outside";
-		$type_names[8]="Planning Ahead";
+		// $type_names=array();
+		// $type_names[0]="Communicating";
+		// $type_names[1]="Exception Handling";
+		// $type_names[2]="Paperwork";
+		// $type_names[3]="Maintenance of Way";
+		// $type_names[4]="Temporary Speed Restrictions";
+		// $type_names[5]="Signal Response Management";
+		// $type_names[6]="Monitoring Inside";
+		// $type_names[7]="Monitoring Outside";
+		// $type_names[8]="Planning Ahead";
 
 		while (! feof($file_handle) )
 		{
@@ -61,8 +63,8 @@
 				$s_dev[$temp_count_dev]=array();
 				for($i=2;$i<$num;$i++)
 				{
-					$s_dev[$type_names[$temp_count_dev]][$count[0][$i-1]]=(float)$line_of_text[$i];
-
+					// $s_dev[$type_names[$temp_count_dev]][$count[0][$i-1]]=(float)$line_of_text[$i];
+					$s_dev[$_SESSION['taskNames'][$temp_count_dev]][$count[0][$i-1]]=(float)$line_of_text[$i];
 				}
 				$temp_count_dev++;
 				$skip=1;
@@ -73,14 +75,15 @@
 		fclose($file_handle);
 		$count[0][0]='time';
 
-		
+
 
 
 
 
 		for($i=0;$i<$temp_count-1;$i++)
 		{
-			$count[$i+1][0]=$type_names[$i];
+			// $count[$i+1][0]=$type_names[$i];
+			$count[$i+1][0]=$_SESSION['taskNames'][$i];
 		}
 
 		for($i=0;$i<$num-1;$i++)
@@ -95,7 +98,7 @@
 		fclose($file);
 		echo '<script> d3_visual("'.$user.'",' .(string)$num. '); </script>';
 
-		
+
 
 	}
 
