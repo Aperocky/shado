@@ -170,7 +170,7 @@
 
 		$count_ops=0;
 		for($i=1;$i<5;$i++)	{
-			if(isset($_SESSION['operator'.$i]) {
+			if(isset($_SESSION['operator'.$i])) {
 				if($_SESSION['operator'.$i]==1) {
 					$count_ops++;
 				}
@@ -201,28 +201,28 @@
 			$user_name='engineer';
 		} else {
 			$user_name='conductor';
-		}
+		} ?>
 
-		echo "<br><br><br><br><br><br><div id='graphTextBox'>
+		<br><br><br><br><br><br><div id='graphTextBox'>
 			<nav id='graphNav'>
 				<ul>
 					<li style='background-color: #75D3FE ;'>When?</li>
-					<li  style='background-color: #555 ;'>Why?</li>
+					<li style='background-color: #555 ;'>Why?</li>
 				</ul>
-			</nav>";
+			</nav>
 
-		require_once("graph_when.php");
+		<?php require_once("graph_when.php"); ?>
 
-		echo "</div><br><br><br><br><br><br>
+		</div><br><br><br><br><br><br>
 		<div id='graphTextBox' class='no-page-break'>
 			<nav id='graphNav'>
 				<ul>
-					<li  style='background-color: #555 ;'>When?</li>
+					<li style='background-color: #555 ;'>When?</li>
 					<li style='background-color: #75D3FE ;'>Why?</li>
 				</ul>
-			</nav>";
+			</nav>
 
-		require_once("graph_why.php");
+		<?php require_once("graph_why.php");
 
 		echo "</div";
 	}
