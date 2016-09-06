@@ -46,23 +46,6 @@
 </div>
 <?php } ?>
 
-<script type="text/javascript">
-	document.addEventListener("DOMContentLoaded",function(){
-		document.getElementsByClassName('text_box').style.display="block";
-		// document.getElementById('howTab').style.display="block";
-		document.getElementById('whenTab').style.display="block";
-		document.getElementById('operator2').style.display="none";}
-	);
-
-	function printDiv(divName) {
-	 	var printContents = document.getElementById(divName).innerHTML;
-	 	var originalContents = document.body.innerHTML;
-	 	document.body.innerHTML = printContents;
-	 	window.print();
-	 	document.body.innerHTML = originalContents;
-	}
-</script>
-
 <?php
 	require_once("includes/page_parts/footer.php");
 ?>

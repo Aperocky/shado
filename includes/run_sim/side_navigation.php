@@ -18,14 +18,7 @@
 					      	<a href="investigate.php?operator=conductor">Conductor</a>
 					    </div>
 				  	</li>
-				  	<li>
-					    <button class="accordion <?php if ($curr_page=='Engineer_summary' or $curr_page=='Conductor_summary') {echo active;} ?>">Print Report</button>
-					    <div class="accordion-content <?php if ($curr_page=='Engineer_summary' or $curr_page=='Conductor_summary') {echo show;} ?>">
-					      	<a <?php if ($curr_page=='Engineer_summary') {echo 'class="active"';} ?> href="summary_page_eng.php">Engineer</a>
-					      	<a <?php if ($curr_page=='Conductor_summary') {echo 'class="active"';} ?>href="summary_page_cond.php">Conductor</a>
-					    </div>
-				  	</li>
-					
+				    <li><a id="sideNavElement" <?php if ($curr_page=='summaryPage') {echo 'class="active"';} ?> href="sim_summary.php">Print Report</a></li>
 				</ul>
 			</nav>
 			<script>
