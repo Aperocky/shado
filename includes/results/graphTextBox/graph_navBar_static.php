@@ -1,6 +1,6 @@
 <?php
 
-	function graphText($fname){
+	function graphTextStatic($fname){
 		session_start();
 		$traffic=array();
 		if(isset($_SESSION['traffic_time'])){

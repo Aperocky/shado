@@ -1,4 +1,7 @@
 <?php
+	
+	session_start();
+
 	function createGraphCsv($user) {
 
 		// $file_handle=fopen('sessions/'. $user . '_stats.csv','r');
@@ -89,6 +92,8 @@
 		}
 
 		fclose($file);
+
+		$_SESSION['n_columnsCsv']=$num;
 		echo '<script> d3_visual("'.$user.'",' .(string)$num. '); </script>';
 	}
 
