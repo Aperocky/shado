@@ -130,7 +130,8 @@
 		require_once("includes/results/graph_conductor.php");
 		echo "<br><br>";
 		require_once("graph_nav_static.php");
-		graphText('sessions/Conductor_stats.csv');
+		// graphText('sessions/Conductor_stats.csv');
+		graphText($_SESSION['files']['sim_stats'] . 'Conductor_stats.csv');
 		/* require_once('graph_calculations.php'); */
 		echo "<br><br>";
 	?>

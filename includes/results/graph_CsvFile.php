@@ -1,12 +1,10 @@
 <?php
-	function createGraphCsv($user){
+	function createGraphCsv($user) {
 
-		
-		
-		$file_handle=fopen('sessions/'. $user . '_stats.csv','r');
-		$file=fopen('sessions/mod_type_data_'. $user. '.txt',"w");
-		
-		
+		// $file_handle=fopen('sessions/'. $user . '_stats.csv','r');
+		// $file=fopen('sessions/mod_type_data_'. $user. '.txt',"w");
+		$file_handle=fopen($_SESSION['files']['sim_stats'] . $user . '_stats.csv','r');
+		$file=fopen($_SESSION['files']['d3_mods'] . 'mod_type_data_'. $user. '.txt',"w");
 
 		$count=array();
 		$s_dev=array();
@@ -75,11 +73,6 @@
 		fclose($file_handle);
 		$count[0][0]='time';
 
-
-
-
-
-
 		for($i=0;$i<$temp_count-1;$i++)
 		{
 			// $count[$i+1][0]=$type_names[$i];
@@ -97,9 +90,6 @@
 
 		fclose($file);
 		echo '<script> d3_visual("'.$user.'",' .(string)$num. '); </script>';
-
-
-
 	}
 
 	// $operator_type = 'engineer';

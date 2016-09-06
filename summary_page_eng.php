@@ -126,7 +126,8 @@
 		echo "<br><br><br>";
 		require_once("includes/results/graph_engineer.php");
 		require_once("graph_nav_static.php");
-		graphText('sessions/Engineer_stats.csv');
+		// graphText('sessions/Engineer_stats.csv');
+		graphText($_SESSION['files']['sim_stats'] . 'Engineer_stats.csv');
 		/* require_once('graph_calculations.php'); */
 		echo "<br><br>";
 		if($_SESSION['operator1']==1){

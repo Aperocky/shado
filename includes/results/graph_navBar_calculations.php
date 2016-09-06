@@ -6,7 +6,8 @@
 		if(isset($_SESSION['traffic_time'])){
 			$time=$_SESSION['traffic_time'];
 			for($i=0;$i<$time;$i++){
-				$traffic[$i]=$_SESSION['traffic_level'.$i];
+				// $traffic[$i]=$_SESSION['traffic_level'.$i];
+				$traffic[$i]=$_SESSION['traffic_level'][$i];
 			}
 		}
 
@@ -247,7 +248,8 @@
 		$penalty_high=$penalty_high/$count_high;
 
 
-		if ($fname=='sessions/Engineer_stats.csv'){
+		// if ($fname=='sessions/Engineer_stats.csv'){
+		if ($fname==$_SESSION['files']['sim_stats'] . 'Engineer_stats.csv'){
 			$user_name='engineer';
 		}
 		else{

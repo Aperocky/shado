@@ -23,7 +23,8 @@
 //  Set default output path
 
     $line = fscanf($file, "%s %s");
-    $_SESSION['outputPath']=$line[1];
+    // $_SESSION['outputPath']=$line[1];
+    $_SESSION['outputPath'] = sys_get_temp_dir();
     // echo $_SESSION['outputPath'];
     // echo $line[1]."<br>";
 

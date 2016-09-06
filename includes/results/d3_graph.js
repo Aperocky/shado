@@ -50,7 +50,8 @@ function d3_visual(user, num){
 	  .append("g")
 	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	d3.csv("sessions/mod_type_data_"+ user +".txt", function(error, data) {
+	// d3.csv("sessions/mod_type_data_" + user + ".txt", function(error, data) {
+	d3.csv(<?php echo $_SESSION['files']['d3_mods'] . "/mod_type_data_"; ?> + user + ".txt", function(error, data) {
 	  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "time"; }));
 
 
@@ -182,14 +183,14 @@ function d3_visual(user, num){
 			.attr("dy", ".71em")
 			.style("text-anchor", "end")
 			.text("Utilization (%)");
-		
+
 		svg_eng.append("foreignObject")
 				.attr("x", ((width / 2)+110))
 				.attr("y", -12 - (margin.top / 2))
-				.attr("text-anchor", "middle")		
-				.style("font-size", "24px")			
+				.attr("text-anchor", "middle")
+				.style("font-size", "24px")
 				.html("<span class='tooltip' onmouseover='tooltip.pop(this, &apos; Hover over the graph for more information &apos;)'>(?)</span>");
-		
+
 		svg_eng.append("text")
 	        .attr("x", (width / 2))
 	        .attr("y", 10 - (margin.top / 2))
@@ -197,9 +198,9 @@ function d3_visual(user, num){
 	        .style("font-size", "24px")
 	        .style("text-decoration", "underline")
 	        .text(user+ " Workload");
-			
 
-		
+
+
 
 		// end of define absolute
 
@@ -224,5 +225,3 @@ function d3_visual(user, num){
 	});
 
 }
-
-	

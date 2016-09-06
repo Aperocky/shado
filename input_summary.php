@@ -8,10 +8,12 @@
 	$time=$_SESSION['traffic_time'];
 	$traffic_level=array();
 	for($x = 0; $x < $time; $x++) {
-		$traffic_level[]=$_SESSION['traffic_level'.$x];
+		// $traffic_level[]=$_SESSION['traffic_level'.$x];
+		$traffic_level[]=$_SESSION['traffic_level'][$x];
 	}
 
-	$file=fopen("sessions/input_summary.txt","w");
+	// $file=fopen("sessions/input_summary.txt","w");
+	$file=fopen($_SESSIONS['files']['d3_mods'] . "input_summary.txt","w");
 	fwrite($file,"time,");
 	fwrite($file,"t_level\n");
 	for($i=0;$i<$time;$i++)
@@ -135,7 +137,8 @@ var svg_summary = d3.select("#input_summary").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("sessions/input_summary.txt", type, function(error, data) {
+// d3.csv("sessions/input_summary.txt", type, function(error, data) {
+d3.csv(<?php echo $_SESSION['files']['d3_mods'] . "input_summary.txt"; ?>, type, function(error, data) {
   if (error) throw error;
 
   x_input.domain(data.map(function(d) { return d.time; }));
