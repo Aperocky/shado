@@ -94,7 +94,11 @@
 		fclose($file);
 
 		$_SESSION['n_columnsCsv']=$num;
-		echo '<script> d3_visual("'.$user.'",' .(string)$num. '); </script>';
+		echo '<script> 
+				$( document ).ready(function() {
+			    	d3_visual("'.$user.'",' .(string)$num. ');
+				});
+			</script>';
 	}
 
 	// $operator_type = 'engineer';
