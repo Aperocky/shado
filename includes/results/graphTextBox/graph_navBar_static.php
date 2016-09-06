@@ -203,16 +203,16 @@
 		} else {
 			$user_name='conductor';
 		}
-
-		echo "<br><br><br><br><br><br><div id='graphTextBox'>
-			<nav id='graphNav'>
-				<ul>
-					<li style='background-color: #75D3FE ;'>When?</li>
-					<li style='background-color: #555 ;'>Why?</li>
-				</ul>
-			</nav>";
-
-		require_once("includes/results/graphTextBox/graph_whenTab.php");
+		// echo $user_name;
+		// echo "<br><br><br><br><br><br><div id='graphTextBox'>
+		// 	<nav id='graphNav'>
+		// 		<ul>
+		// 			<li style='background-color: #75D3FE ;'>When?</li>
+		// 			<li style='background-color: #555 ;'>Why?</li>
+		// 		</ul>
+		// 	</nav>";
+		//
+		// require_once("includes/results/graphTextBox/graph_whenTab.php");
 
 		echo "</div><br><br><br><br><br><br>
 		<div id='graphTextBox' class='no-page-break'>
@@ -222,7 +222,7 @@
 					<li style='background-color: #75D3FE ;'>Why?</li>
 				</ul>
 			</nav>";
-		require_once("includes/results/graphTextBox/graph_whyTab.php");
+		include("includes/results/graphTextBox/graph_whyTab.php");
 
 		echo "</div";
 	}

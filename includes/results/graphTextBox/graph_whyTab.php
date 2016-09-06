@@ -1,4 +1,4 @@
-	<div id="text_box" style="display: none;">
+	<div id="text_box" class="text_box" style="display: none;">
 			<h3 style="text-align: center;"> <u><em>Why</em> is my operator over or under-utilized at work? </u></h3><br>
 			<?php if(max(array_values($count_type_high))>0) { ?>
 			<h3>These combined factors contributed to period of high workload: </h3>

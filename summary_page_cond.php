@@ -14,7 +14,7 @@
 <script type="text/javascript">
 	document.addEventListener("DOMContentLoaded",function() {
 		document.getElementById('text_box').style.display="block";
-		document.getElementById('howTab').style.display="block";
+		// document.getElementById('howTab').style.display="block";
 		document.getElementById('whenTab').style.display="block";
 		document.getElementById('operator1').style.display="none";}
 	);

@@ -13,7 +13,6 @@
 		$curr_page=$user.'_summary';
 		$page_title='Print Report';	?>
 
-
 	<div id="print-content">
 		<form>
 			<div id="next_page" class="printPdf" onclick="var submit = getElementById('button'); button.click()";>
@@ -21,18 +20,27 @@
 			<input type="button" id="button" onclick="printDiv('print-content')" value="print a div!" style='display:none;'/>
 		</form>
 
-
 <?php
 	require_once("operator.html");
 	echo "<br><br>";
 	require_once("input_summary.php");
 	echo "<br><br><br>";
-	require_once('includes/results/d3_graph.php');
+
+	include('includes/results/d3_graph.php');
 	createGraphCsv($user);
+	graphTextStatic($_SESSION['dir'] . $user. '_stats.csv');
+
+
+	$user = "Conductor";
+	include('includes/results/d3_graph.php');
+	createGraphCsv($user);
+	graphTextStatic($_SESSION['dir'] . $user. '_stats.csv');
+	// createGraphCsv("Conductor");
+	// graphTextStatic($_SESSION['dir'] . "Conductor". '_stats.csv');
 
 	// graphText('sessions/Engineer_stats.csv');
 	// echo $_SESSION['dir'] . $user. '_stats.csv';
-	graphTextStatic($_SESSION['dir'] . $user. '_stats.csv');
+	// graphTextStatic($_SESSION['dir'] . $user. '_stats.csv');
 	/* require_once('graph_calculations.php'); */ ?>
 
 </div>
@@ -40,8 +48,8 @@
 
 <script type="text/javascript">
 	document.addEventListener("DOMContentLoaded",function(){
-		document.getElementById('text_box').style.display="block";
-		document.getElementById('howTab').style.display="block";
+		document.getElementsByClassName('text_box').style.display="block";
+		// document.getElementById('howTab').style.display="block";
 		document.getElementById('whenTab').style.display="block";
 		document.getElementById('operator2').style.display="none";}
 	);

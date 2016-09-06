@@ -45,11 +45,11 @@ function d3_visual(user, num, filename) {
 		    .scale(yAbsolute)
 		    .orient("left");
 
-	var div = d3.select("#graph").append("div")
+	var div = d3.select("#graph_" + user).append("div")
 	    .attr("class", "tooltip")
 	    .style("opacity", 0);
 
-	var svg_eng = d3.select("#graph").append("svg")
+	var svg_eng = d3.select("#graph_" + user).append("svg")
 	    .attr("width", width + margin.left + margin.right+legend_width)
 	    .attr("height", height + margin.top + margin.bottom)
 	  .append("g")

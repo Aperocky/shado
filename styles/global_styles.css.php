@@ -620,7 +620,7 @@ th {
 	text-align: center;
 }
 
-#graph{
+#graph_Conductor, #graph_Engineer, #graph{
 	padding:30px 30px;
 	width:fit-content;
 	width:-webkit-fit-content;

@@ -6,14 +6,18 @@
 	require_once('includes/page_parts/header.php');
 	require_once("includes/run_sim/side_navigation.php");
 	require_once('includes/results/graph_navBar_calculations.php');
-	require_once('includes/results/d3_graph.php');
+	// require_once('includes/results/d3_graph.php');
 	require_once('includes/results/graph_CsvFile.php');
 
 	if ($_GET['operator'] == 'conductor') {
+		$user = "Conductor";
+		require_once('includes/results/d3_graph.php');
 		createGraphCsv('Conductor');
 		// graphText('sessions/Conductor_stats.csv');
 		graphText($_SESSION['dir'] . 'Conductor_stats.csv');
 	} elseif ($_GET['operator'] == 'engineer') {
+		$user = "Engineer";
+		require_once('includes/results/d3_graph.php');
 		createGraphCsv('Engineer');
 		// graphText('sessions/Engineer_stats.csv');
 		graphText($_SESSION['dir'] . 'Engineer_stats.csv');
