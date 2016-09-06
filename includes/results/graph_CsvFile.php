@@ -16,17 +16,6 @@
 		$skip=1;
 		$num=0;
 
-		// $type_names=array();
-		// $type_names[0]="Communicating";
-		// $type_names[1]="Exception Handling";
-		// $type_names[2]="Paperwork";
-		// $type_names[3]="Maintenance of Way";
-		// $type_names[4]="Temporary Speed Restrictions";
-		// $type_names[5]="Signal Response Management";
-		// $type_names[6]="Monitoring Inside";
-		// $type_names[7]="Monitoring Outside";
-		// $type_names[8]="Planning Ahead";
-
 		while (! feof($file_handle) )
 		{
 			if($temp_count==1)
@@ -94,13 +83,6 @@
 		fclose($file);
 
 		$_SESSION['n_columnsCsv']=$num;
-		echo '<script> 
-				$( document ).ready(function() {
-			    	d3_visual("'.$user.'",' .(string)$num. ');
-				});
-			</script>';
+		echo "'<script>d3_visual(' . $user . ',' . (string)$num . ',' . $_SESSION['files']['sim_stats'] . $user . '_stats')</script>";
 	}
-
-	// $operator_type = 'engineer';
-	// include('operator_graph.php');
 ?>

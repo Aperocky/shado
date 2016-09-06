@@ -1,4 +1,8 @@
-function d3_visual(user, num) {
+// $(document).ready(function() {
+// 	d3_visual();
+// });
+
+function d3_visual(user, num, file) {
 	console.log("started");
 	var legend_width = 120;
 
@@ -51,7 +55,7 @@ function d3_visual(user, num) {
 	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 	// d3.csv("sessions/mod_type_data_" + user + ".txt", function(error, data) {
-	d3.csv(<?php echo $_SESSION['files']['d3_mods'] . "/mod_type_data_"; ?> + user + ".txt", function(error, data) {
+	d3.csv(file, function(error, data) {
 	  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "time"; }));
 
 
