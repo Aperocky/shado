@@ -2,6 +2,7 @@
 
 	session_start();
 	require_once('includes/results/PrintReport/summary_page.php');
+	// echo "<br> Here <br>";
 	createSummary('Engineer');
 
 	if($_SESSION['operator1']==1){

@@ -202,28 +202,27 @@
 			$user_name='engineer';
 		} else {
 			$user_name='conductor';
-		} ?>
+		}
 
-		<br><br><br><br><br><br><div id='graphTextBox'>
+		echo "<br><br><br><br><br><br><div id='graphTextBox'>
 			<nav id='graphNav'>
 				<ul>
 					<li style='background-color: #75D3FE ;'>When?</li>
 					<li style='background-color: #555 ;'>Why?</li>
 				</ul>
-			</nav>
+			</nav>";
 
-		<?php require_once("graph_when.php"); ?>
+		require_once("includes/results/graphTextBox/graph_whenTab.php");
 
-		</div><br><br><br><br><br><br>
+		echo "</div><br><br><br><br><br><br>
 		<div id='graphTextBox' class='no-page-break'>
 			<nav id='graphNav'>
 				<ul>
 					<li style='background-color: #555 ;'>When?</li>
 					<li style='background-color: #75D3FE ;'>Why?</li>
 				</ul>
-			</nav>
-
-		<?php require_once("graph_why.php");
+			</nav>";
+		require_once("includes/results/graphTextBox/graph_whyTab.php");
 
 		echo "</div";
 	}
