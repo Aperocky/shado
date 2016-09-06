@@ -6,8 +6,8 @@
 
 		// $file_handle=fopen('sessions/'. $user . '_stats.csv','r');
 		// $file=fopen('sessions/mod_type_data_'. $user. '.txt',"w");
-		$file_handle=fopen($_SESSION['files']['sim_stats'] . $user . '_stats.csv','r');
-		$file=fopen($_SESSION['files']['d3_mods'] . 'mod_type_data_'. $user. '.txt',"w");
+		$file_handle=fopen($_SESSION['dir'] . $user . '_stats.csv','r');
+		$file=fopen($_SESSION['dir'] . 'mod_type_data_'. $user. '.txt',"w");
 
 		$count=array();
 		$s_dev=array();
@@ -83,6 +83,6 @@
 		fclose($file);
 
 		$_SESSION['n_columnsCsv']=$num;
-		echo "'<script>d3_visual(' . $user . ',' . (string)$num . ',' . $_SESSION['files']['sim_stats'] . $user . '_stats')</script>";
+		echo "<script>d3_visual('" . $user . "'," . (string)$num . ", 'mod_type_data_" . $user . ".txt')</script>";
 	}
 ?>

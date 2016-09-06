@@ -5,7 +5,7 @@
 	session_start();
 	$assistant= $_SESSION['operator1'];
 	// $file_handle=fopen('sessions/Engineer_stats.csv','r');
-	$file_handle=fopen($_SESSION['files']['sim_stats'] . 'Engineer_stats.csv','r');
+	$file_handle=fopen($_SESSION['dir'] . 'Engineer_stats.csv','r');
 	$count=0;
 	$low_count=0;
 	$normal_count=0;
@@ -43,7 +43,7 @@
 
 	if($assistant==1) {
 		// $file_handle=fopen('sessions/Conductor_stats.csv','r');
-		$file_handle=fopen($_SESSION['files']['sim_stats'] . 'Conductor_stats.csv','r');
+		$file_handle=fopen($_SESSION['dir'] . 'Conductor_stats.csv','r');
 		$count=0;
 		$low_count=0;
 		$normal_count=0;

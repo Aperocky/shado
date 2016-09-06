@@ -27,22 +27,22 @@
 
 //	Store filepaths
 
-	$_SESSION['files'] = [];
-	$_SESSION['files']['sim_stats'] = sys_get_temp_dir() . "/";
-	$_SESSION['files']['d3_mods'] = sys_get_temp_dir() . "/";
+	// $_SESSION['files'] = [];
+	// $_SESSION['files']['sim_stats'] = sys_get_temp_dir() . "/";
+	// $_SESSION['files']['d3_mods'] = sys_get_temp_dir() . "/";
 
 	// echo "Old file path = " . $_SESSION['files']['params'];
 	// unlink($_SESSION['files']['params']) or die("did not unlink");
-	$_SESSION['files']['params'] = tempnam(sys_get_temp_dir(), "params");
+	// $_SESSION['files']['params'] = tempnam(sys_get_temp_dir(), "params");
 	// echo "File path = " . $_SESSION['files']['params'];
 
-	$myfile = fopen($_SESSION['files']['params'], "w") or die("Unable to open parameter file.");
+	$myfile = fopen($_SESSION['dir'] . "params", "w") or die("Unable to open parameter file.");
 	// $myfile=fopen("sessions/parameters.txt", "w") or die("unable to open");
 
 //	Output file path
 
 	// fwrite($myfile, "output_path\t\t" . $_SESSION['outputPath'] . "\n");
-	fwrite($myfile, "output_path\t\t" . $_SESSION['files']['sim_stats'] . "\n");
+	fwrite($myfile, "output_path\t\t" . $_SESSION['dir'] . "\n");
 	fwrite($myfile, "num_hours\t\t" . $time . "\n");
 	fwrite($myfile, "traff_levels\t" . implode(" ", $_SESSION['traffic_levels']) . "\n");
 	fwrite($myfile,"num_reps\t\t" . $_SESSION['numReps'] . "\n");
@@ -88,9 +88,9 @@
 //	Run des application
 
 	if (PHP_OS == "Darwin") {
-		exec("bin/des_mac " . $_SESSION['files']['params']);
+		echo passthru("bin/des_mac " . $_SESSION['dir'] . "params");
 	} else if (PHP_OS == "Linux"){
-		echo passthru("bin/des_unix " . $_SESSION['files']['params']);
+		exec("bin/des_unix " . $_SESSION['dir'] . "param");
 	} else {
 		die("Operating system not recognized.");
 	}

@@ -2,6 +2,13 @@
     session_start();
     // echo "<h1>Calling set_default_tasks...</h1>";
 
+//  Set user's filepath
+
+    $dir = sys_get_temp_dir() . "/" . uniqid();
+    mkdir($dir);
+    $dir .= "/";
+    $_SESSION['dir'] = $dir;
+
 //  Create session variables
 
     $_SESSION['taskNames'] = array();

@@ -1,9 +1,10 @@
 // $(document).ready(function() {
 // 	d3_visual();
 // });
+// alert('Here');
 
-function d3_visual(user, num, file) {
-	console.log("started");
+function d3_visual(user, num, filename) {
+	console.log("started d3 visual");
 	var legend_width = 120;
 
 	// var temp=<?php echo $num; ?>;
@@ -55,7 +56,8 @@ function d3_visual(user, num, file) {
 	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 	// d3.csv("sessions/mod_type_data_" + user + ".txt", function(error, data) {
-	d3.csv(file, function(error, data) {
+	console.log("read_file.php?filename=" + filename);
+	d3.csv("read_file.php?filename=" + filename, function(error, data) {
 	  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "time"; }));
 
 

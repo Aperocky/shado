@@ -198,7 +198,7 @@
 
 		$penalty_high=$penalty_high/$count_high;
 
-		if ($fname == $_SESSION['files']['sim_stats']. '/Engineer_stats.csv') {
+		if ($fname == $_SESSION['dir'] . 'Engineer_stats.csv') {
 			$user_name='engineer';
 		} else {
 			$user_name='conductor';
