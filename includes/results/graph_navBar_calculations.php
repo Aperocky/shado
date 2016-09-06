@@ -1,6 +1,6 @@
 <?php
 
-	function graphText($fname){
+	function graphText($fname) {
 		session_start();
 		$traffic=array();
 		if(isset($_SESSION['traffic_time'])){
@@ -249,17 +249,13 @@
 
 
 		// if ($fname=='sessions/Engineer_stats.csv'){
-		if ($fname==$_SESSION['files']['sim_stats'] . 'Engineer_stats.csv'){
+		if ($fname == $_SESSION['files']['sim_stats'] . 'Engineer_stats.csv') {
 			$user_name='engineer';
-		}
-		else{
+		} else {
 			$user_name='conductor';
 		}
 		require_once('includes/results/graphTextBox/graph_navBar.php');
 		require_once('includes/results/graphTextBox/graph_whenTab.php');
 		require_once('includes/results/graphTextBox/graph_whyTab.php');
 	}
-
-
-
 ?>

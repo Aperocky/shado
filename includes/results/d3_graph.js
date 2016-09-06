@@ -1,4 +1,4 @@
-function d3_visual(user, num){
+function d3_visual(user, num) {
 	console.log("started");
 	var legend_width = 120;
 
