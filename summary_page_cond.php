@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	equire_once('includes/results/PrintReport/summary_page.php');
+	require_once('includes/results/PrintReport/summary_page.php');
 	createSummary('Conductor');
 
 ?>
