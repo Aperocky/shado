@@ -16,6 +16,7 @@
 	$_SESSION['traffic_time'] = $time;
 
 //  Store number of hours
+
     $_SESSION['numHours'] = $time;
 
 //  Store traffic levels
@@ -55,8 +56,6 @@
         }
     }
 
-    // print_r($_POST);
-
     if ($_POST['run_sim']) {
         header('Location: run_sim.php');
     } else if ($_POST['adv_settings']) {
@@ -64,6 +63,4 @@
     } else {
         die("Could not determine action.");
     }
-
-    // print_r($_SESSION);
 ?>

@@ -78,7 +78,7 @@
 
 	// 	Store service distribution type
 
-		$_SESSION['taskSerDist'][$i]=$_POST["t".$j."_serTimeDist"];
+		$_SESSION['taskSerDist'][$i] = $_POST["t".$j."_serTimeDist"];
 
 		// echo $_SESSION['taskSerDist'][$i];
 
@@ -98,13 +98,17 @@
 				(float)$_POST["t".$j."_uni_serTime_1"]);
 		}
 
-
 		// echo $_SESSION['taskSerPms'][$i][0]." ";
 		// echo $_SESSION['taskSerPms'][$i][1]." ";
 
 	// 	Store exponential distribution type
 
+		$_SESSION['taskExpDist'][$i] = "E";
+
 	//	Store exponential distribution parameters (lo + hi)
+
+		$_SESSION['taskExpPmsLo'][$i] = array(0, 0, 0);
+		$_SESSION['taskExpPmsHi'][$i] = array(0, 0, 0);
 
 	// 	Store affected by traffic
 

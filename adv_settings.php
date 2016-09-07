@@ -1,10 +1,10 @@
 <?php
 	session_start();
-	$page_title='Advanced Settings';
-	$curr_page='advSettingsPage';
-	$html_head_insertions .= '<script type="text/javascript" src="scripts/adv_settings.js"></script>';
-	require_once("includes/page_parts/header.php");
-	require_once("includes/run_sim/side_navigation.php");
+	$page_title = 'Advanced Settings';
+	$curr_page = 'advSettingsPage';
+	$html_head_insertions = '<script type="text/javascript" src="scripts/adv_settings.js"></script>';
+	require_once('includes/page_parts/header.php');
+	require_once('includes/run_sim/side_navigation.php');
 
 	function print_task_ids() {
 		for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
@@ -40,7 +40,6 @@
 
 					<h2>Task Details</h2>
 					Below, you can see and change the underlying assumptions for each task.
-					<!-- <form id="taskParameters" action="adv_settings_send.php" method="post"> -->
 					<div id='taskParameterTable'>
 						<?php
 							// for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
@@ -57,9 +56,6 @@
 							$num_tasks = $_SESSION['numTaskTypes'];
 						?>
 					</div>
-					<!-- <div style="text-align: center;">
-						<input type="submit" id="submit" value="Save and Return" style="text-align: center;">
-					</div> -->
 					<div>
 						<button type="button" class="roundButton" onclick=<?php echo "addTask(" . $num_tasks . ")"; ?> style="background-color: #4CAF50;"><strong>+</strong></button>
 					</div>
@@ -78,7 +74,4 @@
 					</div>
 				</form>
 			</div>
-
-<?php
-	require_once("includes/page_parts/footer.php");
-?>
+<?php require_once("includes/page_parts/footer.php");?>

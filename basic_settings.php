@@ -1,10 +1,10 @@
 <?php
 	session_start();
-	$page_title='Run Simulation.';
-	$curr_page='runSimPage';
-	$html_head_insertions .= '<script type="text/javascript" src="scripts/sim_settings_entry.js"></script>';
-	require_once("includes/page_parts/header.php");
-	require_once("includes/run_sim/side_navigation.php");
+	$page_title = 'Run Simulation';
+	$curr_page = 'runSimPage';
+	$html_head_insertions = '<script type="text/javascript" src="scripts/sim_settings_entry.js"></script>';
+	require_once('includes/page_parts/header.php');
+	require_once('includes/run_sim/side_navigation.php');
 ?>
 	<div id="runSimulationPage" class="page">
 		<h1 class="pageTitle">Input Basic Trip Conditions</h1>
@@ -15,19 +15,16 @@
 		</p>
 		<br>
 
-		<div style="width: 100%; float: right;">
-			<!-- <form action="create_param_file.php"  style="text-align: center;">
-				<input type="submit" value="Run Simulation">
-			</form> -->
-			<!-- <form action="adv_settings.php">
+		<!-- <div style="width: 100%; float: right;">
+			<form action="adv_settings.php">
 				<button class="button" type="submit" style="float: right; color: black;">
 					<img src="images/settings-gear.png" width="40" height="40" align="top">
 					<div style="display: inline-block;  text-align: left; padding: 3px;">
 						Advanced <br> Settings
 					</div>
 				</button>
-			</form> -->
-		</div>
+			</form>
+		</div> -->
 
 		<form id="timeEntry" action="basic_settings_send.php" method="post" onsubmit="return confirm('Please verify your provided settings and click OK to continue!');">
 			<div class="startEndTimeStepOuter centerOuter">
@@ -88,12 +85,10 @@
 
 			<div class="trafficTableStepOuter stepBox centerOuter">
 				<div class='stepCircle'>3</div>
-				<!-- <div class="tooltip"> -->
 					<h3 class="whiteFont">
 						What are the Levels of Traffic?
 						<span class="tooltip" onmouseover="tooltip.pop(this, 'Enter the local levels of traffic during this shift. This will modify the frequency of certain tasks arriving.')"><sup>(?)</sup></span>
 					</h3>
-					<!-- </div> -->
 					<span class="tooltip" onmouseover="tooltip.pop(this, 'What is the projected level of traffic on your railroad for this particular shift?')">
 						<div id="totalTime" style="overflow-x:auto;">
 					</span>
@@ -106,13 +101,10 @@
 				<div id="assist" style="overflow-x:auto;"></div>
 			</div>
 			<br>
-			<?php require_once("includes/run_sim/custom_operator.php"); ?>
+			<?php require_once('includes/run_sim/custom_operator.php'); ?>
 			<br>
 			<!-- <h4 style="text-align:center;">Run Simulation</h4> -->
 			<!-- <div id="next_page" class="navArrow" onclick="var submit = getElementById('submit'); submit.click()";>
-			</div> -->
-			<!-- <div>
-				<input type="submit" id="submit" class="button" style="background-color: #4CAF50;" value="Run Simulation">
 			</div> -->
 			<div id="bottomNav">
 				<ul>
@@ -129,5 +121,4 @@
 			</div>
 		</form>
 	</div>
-
-<?php require_once("includes/page_parts/footer.php"); ?>
+<?php require_once('includes/page_parts/footer.php');?>

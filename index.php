@@ -1,24 +1,19 @@
 <?php
-
 //	Start session
 
 	session_unset();
-	$_SESSION = array();
 	session_destroy();
-
-	if(empty($_SESSION['session_started'])) {
-		include("includes/session_management/set_session_vars.php");
+	if (empty($_SESSION['session_started'])) {
+		require_once('includes/session_management/set_session_vars.php');
 	}
-	$_SESSION['session_started'] = true;
 
 //	Include header
 
-	$page_title='Welcome!';
-	$curr_page='homePage';
+	$page_title = 'SHOW';
+	$curr_page = 'homePage';
 	require_once('includes/page_parts/header.php');
-	print_r($_SESSION['dir']);
+	// print_r($_SESSION['dir']);
 ?>
-
 			<div id="homePage" class="page">
 				<h1 class="pageTitle">Welcome to the SHOW!</h1>
 				<h2>Introduction</h2>
@@ -27,7 +22,6 @@
 				</p>
 				<p>
 					You should use this tool to answer the following questions:
-					 <!-- style="list-style-type:circle" -->
 					<ul style="margin-top: -15px;">
 						<li><em>When</em> are my operators over or under-utilized at work?</li>
 						<li><em>Why</em> are my operators over or under-utilized at work?</li>
@@ -107,7 +101,4 @@
 			<footer style='text-align: center; padding: 20px 0; font-size: 18;'>
 				<strong>NOTE: </strong>This decision support tool is intended to inform rather than dictate decisions.
 			</footer>
-
-<?php
-	require_once("includes/page_parts/footer.php");
-?>
+<?php require_once('includes/page_parts/footer.php');?>

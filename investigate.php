@@ -1,5 +1,5 @@
 <?php
-	$html_head_insertions .= '<script src="http://d3js.org/d3.v3.min.js"></script>';
+	$html_head_insertions .= '<script src="http://d3js.org/d3.v3.min.js"></script>' . "\r\n\t\t";
 	$html_head_insertions .= '<script type="text/javascript" src="includes/results/d3_graph.js"></script>';
 	$curr_page = 'detailedAnalysisPage';
 	$page_title = 'Detailed Analysis';
@@ -15,7 +15,7 @@
 		createGraphCsv('Conductor');
 		// graphText('sessions/Conductor_stats.csv');
 		graphText($_SESSION['dir'] . 'Conductor_stats.csv');
-	} elseif ($_GET['operator'] == 'engineer') {
+	} else if ($_GET['operator'] == 'engineer') {
 		$user = "Engineer";
 		require_once('includes/results/d3_graph.php');
 		createGraphCsv('Engineer');

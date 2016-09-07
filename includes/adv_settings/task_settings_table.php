@@ -253,7 +253,7 @@
                     Uniform
                 </option>
             </select>
-            <div id=<?php echo "t".$taskNum."_expPms";?> <?php if($_SESSION['taskSerDist'][$taskNum]=="E") {echo "style='display: inline-block;'";} else {echo "style='display: none;'";} ?> >
+            <div id=<?php echo "t".$taskNum."_expPms";?> <?php if($_SESSION['taskSerDist'][$taskNum]=="E" or !$_SESSION['taskSerDist'][$taskNum]) {echo "style='display: inline-block;'";} else {echo "style='display: none;'";} ?> >
                 Mean:
                 <input type="text" name=<?php echo "t".$taskNum."_exp_serTime_0"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][0],2); ?>" style="margin: 0px 10px">
             </div>

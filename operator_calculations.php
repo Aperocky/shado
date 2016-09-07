@@ -1,5 +1,7 @@
 <?php
 
+	session_start();
+	
 	$low_count_0=$_SESSION['low_count_0'];
 	$normal_count_0=$_SESSION['normal_count_0'];
 	$high_count_0=$_SESSION['high_count_0'];
