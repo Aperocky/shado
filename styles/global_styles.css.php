@@ -11,6 +11,13 @@
 *													*
 ****************************************************/
 
+h1, h2, h3, h4 {
+   /*font-size: 1em !important;*/
+   /*color: #000 !important;*/
+   font-family: Arial;
+   /*!important;*/
+}
+
 body {
 	margin: 0;
 }
@@ -324,7 +331,7 @@ form#timeEntry {
 }
 
 .startEndTime {
-	width: 200px;
+	width: 300px;
 	display: inline-block;
 	margin: 20px;
 	position: relative;
@@ -343,7 +350,7 @@ form#timeEntry {
 }
 
 .startEndTime h3 {
-	width: 120px;
+	width: 150px;
 }
 
 .trafficTableStepOuter h3 {
@@ -450,7 +457,7 @@ th {
  	width:fit-content;
  	width:-webkit-fit-content;
  	width:-moz-fit-content;
- 	border: 3px solid #5D7B85;
+ 	/*border: 3px solid #5D7B85;*/
  	cursor:pointer;
  	-webkit-border-radius: 5px;
  	border-radius: 25px;
@@ -620,7 +627,7 @@ th {
  	width:fit-content;
  	width:-webkit-fit-content;
  	width:-moz-fit-content;
- 	border: 3px solid #5D7B85;
+ 	/*border: 3px solid #5D7B85;*/
  	cursor:pointer;
  	-webkit-border-radius: 5px;
  	border-radius: 25px;

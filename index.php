@@ -16,7 +16,7 @@
 	$page_title='Welcome!';
 	$curr_page='homePage';
 	require_once('includes/page_parts/header.php');
-	
+	print_r($_SESSION['dir']);
 ?>
 
 			<div id="homePage" class="page">

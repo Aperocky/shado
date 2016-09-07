@@ -8,9 +8,9 @@
 <table align="center">
     <tr>
         <th>Task Parameter</th>
-        <th>Phase 1 <span class="tooltip" onmouseover="tooltip.pop(this, 'The startup phase is generally the first 30 minutes of any shift in which the operators are preparing for the trip while in the vicinity of a station. By regulatory requirement, it includes tasks like communicating with dispatch and testing the emergency braking system.')">(?)</span></th>
-        <th>Phase 2 <span class="tooltip" onmouseover="tooltip.pop(this, 'The full motion phase begins once the train has passed its braking tests. The engineer operates the locomotive beyond the station and into the mainline following speed allowances from the physical characteristics of the region and responding to signals of the rail system.')">(?)</span></th>
-        <th>Phase 3 <span class="tooltip" onmouseover="tooltip.pop(this, 'The yard phase is the final 30 minutes of the shift. It is important to distinguish this final phase as reports from the FRA show that the highest rates of accidents occur on yard track.')">(?)</span></th>
+        <th>Phase 1 <span class="tooltip" onmouseover="tooltip.pop(this, 'The startup phase is generally the first 30 minutes of any shift in which the operators are preparing for the trip while in the vicinity of a station. By regulatory requirement, it includes tasks like communicating with dispatch and testing the emergency braking system.')"><sup>(?)</sup></span></th>
+        <th>Phase 2 <span class="tooltip" onmouseover="tooltip.pop(this, 'The full motion phase begins once the train has passed its braking tests. The engineer operates the locomotive beyond the station and into the mainline following speed allowances from the physical characteristics of the region and responding to signals of the rail system.')"><sup>(?)</sup></span></th>
+        <th>Phase 3 <span class="tooltip" onmouseover="tooltip.pop(this, 'The yard phase is the final 30 minutes of the shift. It is important to distinguish this final phase as reports from the FRA show that the highest rates of accidents occur on yard track.')"><sup>(?)</sup></span></th>
     </tr>
     <tr>
         <td>Name:</td>
@@ -20,7 +20,7 @@
     <tr>
     <td>
         Priority
-		<span class="tooltip" onmouseover="tooltip.pop(this, 'What is the priority level of this task, relative to the others?')">(?)</span>
+		<span class="tooltip" onmouseover="tooltip.pop(this, 'What is the priority level of this task, relative to the others?')"><sup>(?)</sup></span>
     </td>
     <td>
         <select name=<?php echo "t".$taskNum."_priority_p0"; ?>>
@@ -209,7 +209,7 @@
     <tr>
         <td>
             Mean Arrival Time
-            <span class="tooltip" onmouseover="tooltip.pop(this, 'What is the average arrival rate for this task? (Note: exponentially distributed)')">(?)</span>
+            <span class="tooltip" onmouseover="tooltip.pop(this, 'What is the average arrival rate for this task? (Note: exponentially distributed)')"><sup>(?)</sup></span>
         </td>
         <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p0"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][0] != 0) {echo round(1/$_SESSION['taskArrPms'][$taskNum][0],2);} else {echo 0;} ?>" > mins</td>
         <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p1"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][1] != 0) {echo round(1/$_SESSION['taskArrPms'][$taskNum][1],2);} else {echo 0;} ?>"> mins</td>
@@ -218,8 +218,8 @@
     <tr>
         <td>
             Service Time:
-            <span class="tooltip" onmouseover="tooltip.pop(this, 'How long does it typically take a human operator to complete this task? <br><br> <strong>Exponential:</strong> Specify the mean service time. For this distribution, the probability of each time occuring decreases exponentially as the time increases. <br><br> <strong>Lognormal:</strong> Specify the mean and standard deviation of the service time. For this distribution, the logarithm of each time forms a normal distribution. This results in a skewed distribution with many small values and fewer large values. Therefore, the mean is usually greater than the mode. <br><br> <strong>Uniform:</strong> Specify the minimum and maximum service time. For this distribution, any time within the bounds has an equally likely chance of occurring.')">(?)</span>
-            <!-- <div class="tooltip">(?)
+            <span class="tooltip" onmouseover="tooltip.pop(this, 'How long does it typically take a human operator to complete this task? <br><br> <strong>Exponential:</strong> Specify the mean service time. For this distribution, the probability of each time occuring decreases exponentially as the time increases. <br><br> <strong>Lognormal:</strong> Specify the mean and standard deviation of the service time. For this distribution, the logarithm of each time forms a normal distribution. This results in a skewed distribution with many small values and fewer large values. Therefore, the mean is usually greater than the mode. <br><br> <strong>Uniform:</strong> Specify the minimum and maximum service time. For this distribution, any time within the bounds has an equally likely chance of occurring.')"><sup>(?)</sup></span>
+            <!-- <div class="tooltip"><sup>(?)</sup>
                 <span class="tooltiptext">
                     Exponential Distribution
                 </span>
@@ -274,7 +274,7 @@
     <tr>
         <td>
             Affected by Traffic Levels
-            <span class="tooltip" onmouseover="tooltip.pop(this, 'Is the arrival of this task affected by lower/higher levels of traffic?')">(?)</span>
+            <span class="tooltip" onmouseover="tooltip.pop(this, 'Is the arrival of this task affected by lower/higher levels of traffic?')"><sup>(?)</sup></span>
         </td>
         <td>
             <select name=<?php echo "t".$taskNum."_affByTraff_p0"; ?>>

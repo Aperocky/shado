@@ -5,7 +5,7 @@
 
 	$curr_tasks = explode(',', $_POST['current_tasks']);
 	// array_pop($deleted_tasks);  // Remove blank space
-	print_r($curr_tasks);
+	// print_r($curr_tasks);
 
 //	Remove old task parameters
 
@@ -15,9 +15,9 @@
 	$_SESSION['taskArrPms'] = array();
 	$_SESSION['taskSerDist'] = array();
 	$_SESSION['taskSerPms'] = array();
-	$_SESSION['taskExpDist'] = array();
-	$_SESSION['taskExpPmsLo'] = array();
-	$_SESSION['taskExpPmsHi'] = array();
+	// $_SESSION['taskExpDist'] = array();
+	// $_SESSION['taskExpPmsLo'] = array();
+	// $_SESSION['taskExpPmsHi'] = array();
 	$_SESSION['taskAffByTraff'] = array();
 	$_SESSION['taskNames'] = array();
 	$_SESSION['taskAffByTraff'] = array();
@@ -99,8 +99,8 @@
 		}
 
 
-		echo $_SESSION['taskSerPms'][$i][0]." ";
-		echo $_SESSION['taskSerPms'][$i][1]." ";
+		// echo $_SESSION['taskSerPms'][$i][0]." ";
+		// echo $_SESSION['taskSerPms'][$i][1]." ";
 
 	// 	Store exponential distribution type
 
@@ -134,8 +134,8 @@
 		// 	echo "<br>";
 		// }
 
-	// header("Location: run_sim.php");
+	header("Location: run_sim.php");
 
 	// var_dump($_SESSION);
-	print_r($_SESSION);
+	// print_r($_SESSION);
 ?>

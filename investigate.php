@@ -25,6 +25,21 @@
 	} else {
 		die('There was an error');
 	}
+?>
+	<div id="bottomNav">
+		<ul>
+			<li>
+				<button class="button" type="button" onclick="location.href='view_results.php';" style="color: black">&#8678 Results</button>
+			</li>
+			<li>
+				<button type="button" class="button" onclick="location.href='sim_summary.php';" style="color: black; visibility: hidden;">Print Report</button>
+			</li>
+			<li>
+				<button type="button" class="button" onclick="location.href='sim_summary.php';" style="color: black;">Print Report &#8680</button>
+			</li>
+		</ul>
+	</div>
 
+<?php
 	require_once('includes/page_parts/footer.php');
 ?>

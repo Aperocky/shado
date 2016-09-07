@@ -2,7 +2,6 @@
 
 	session_start();
 	include('includes/results/read_csv.php');
-
 	$curr_page='initialResultsPage';
 	$page_title='Results';
 	require_once('includes/page_parts/header.php');
@@ -11,15 +10,26 @@
 	require_once("operator.html");
 ?>
 
+			<br><br><br>
 
-	<br><br><br>
+			<!-- <div id="back_button"  style='text-align: center;'>
+				<button id="back_button" onclick="location.href = 'basic_settings.php';">Run Again</button>
+				<br><br>
+			</div> -->
+		</div>
 
-	<div id="back_button"  style='text-align: center;'>
-		<button id="back_button" onclick="location.href = 'basic_settings.php';">Run Again</button>
-
-		<br><br>
-		<!-- <button id="back_button" onclick="location.href='replications.php'">Peek & Tweak, under the hood</button> -->
-	</div>
-</div>
+		<div id="bottomNav" style="padding-left: 200px">
+			<ul>
+				<li>
+					<button class="button" type="button" onclick="location.href='basic_settings.php';" style="color: black">&#8678 Re-run Simulation</button>
+				</li>
+				<li>
+					<button type="button" class="button" onclick="location.href='sim_summary.php';" style="color: black">Print Report</button>
+				</li>
+				<li>
+					<button type="button" class="button" onclick="location.href='investigate.php?operator=engineer';" style="color: black;">Detailed Results &#8680</button>
+				</li>
+			</ul>
+		</div>
 
 <?php require_once('footer.php'); ?>

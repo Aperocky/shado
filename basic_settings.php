@@ -9,8 +9,9 @@
 	<div id="runSimulationPage" class="page">
 		<h1 class="pageTitle">Input Basic Trip Conditions</h1>
 		<p>
-			To get started, provide us with three simple data points. What time of day does your operator begin <strong>(1)</strong> and end <strong>(2)</strong> his/her shift? And what’s the level of traffic <strong>(3)</strong> in the region during this shift? Lastly, specify any additional operators or technologies <strong>(4)</strong> that will assist the engineer during the trip.
-			And if you're a more advanced user, look at the advanced settings.
+			To get started, provide the following information. Then, you can either run the simulation or change more assumptions.
+			<!-- What time of day does your operator begin <strong>(1)</strong> and end <strong>(2)</strong> his/her shift? And what’s the level of traffic <strong>(3)</strong> in the region during this shift? Lastly, specify any additional operators or technologies <strong>(4)</strong> that will assist the engineer during the trip.
+			And if you're a more advanced user, look at the advanced settings. -->
 		</p>
 		<br>
 
@@ -32,7 +33,7 @@
 			<div class="startEndTimeStepOuter centerOuter">
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>1</div>
-					<h3 id="text_start" class="whiteFont">Start Time <span class="tooltip" onmouseover="tooltip.pop(this, 'SHOW models the train leaving the station at Start Time + 30 minutes')">(?)</span></h3>
+					<h3 id="text_start" class="whiteFont">When Does Your Trip Begin? <span class="tooltip" onmouseover="tooltip.pop(this, 'Enter the time of day that your engineer begins his/her shift.')"><sup>(?)</sup></span></h3>
 
 					<select id='startHour' onchange="calculate_time();">
 						<?php
@@ -59,7 +60,7 @@
 
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>2</div>
-					<h3 id="text_stop" class="whiteFont">Stop Time    <span class="tooltip" onmouseover="tooltip.pop(this, 'SHOW models the shift to last up to 24 hours from the Start Time. Ex: 3:00 pm to 2:00pm models into Day 2 of shift. ')">(?)</span></h3>
+					<h3 id="text_stop" class="whiteFont">When Does Your Trip End? <span class="tooltip" onmouseover="tooltip.pop(this, 'Enter the time of day that your engineer is expected to end his/her shift.')"><sup>(?)</sup></span></h3>
 
 					<select id='endHour' onchange="calculate_time();">
 						<?php
@@ -89,8 +90,8 @@
 				<div class='stepCircle'>3</div>
 				<!-- <div class="tooltip"> -->
 					<h3 class="whiteFont">
-						Traffic Levels
-						<span class="tooltip" onmouseover="tooltip.pop(this, 'SHOW models traffic levels with a multiplier on the frequency of certain task types arriving for the operators to handle.')">(?)</span>
+						What are the Levels of Traffic?
+						<span class="tooltip" onmouseover="tooltip.pop(this, 'Enter the local levels of traffic during this shift. This will modify the frequency of certain tasks arriving.')"><sup>(?)</sup></span>
 					</h3>
 					<!-- </div> -->
 					<span class="tooltip" onmouseover="tooltip.pop(this, 'What is the projected level of traffic on your railroad for this particular shift?')">
@@ -101,7 +102,7 @@
 			<br><br>
 			<div class="assistantsSelectStepOuter stepBox centerOuter">
 				<div class='stepCircle'>4</div>
-				<h3 id='assistants' class='whiteFont'>Assistants  <span class="tooltip" onmouseover="tooltip.pop(this, 'Identify if another human/technologies support the locomotive engineer. SHOW models their interaction by offloading certain tasks from engineer workload')">(?)</span></h3>
+				<h3 id='assistants' class='whiteFont'>Who Will Assist the Engineer? <span class="tooltip" onmouseover="tooltip.pop(this, 'Identify any humans or technologies that will support the locomotive engineer. SHOW models their interaction by offloading certain tasks from the engineer.')"><sup>(?)</sup></span></h3>
 				<div id="assist" style="overflow-x:auto;"></div>
 			</div>
 			<br>

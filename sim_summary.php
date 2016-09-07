@@ -14,14 +14,14 @@
 
     <div id="print-content">
         <form>
-            <div id="next_page" class="printPdf" onclick="var submit = getElementById('button'); button.click()";>
+            <div id="next_page" class="printPdf" onclick="var submit = getElementById('button'); button.click()" style="cursor: pointer;">
             </div>
             <input type="button" id="button" onclick="printDiv('print-content')" value="print a div!" style='display:none;'/>
         </form>
 
 <?php
     function createSummary($user) {
-        require_once("operator_calculations.php"); 
+        require_once("operator_calculations.php");
         require_once("operator.html");
         echo "<br><br>";
         require_once("input_summary.php");

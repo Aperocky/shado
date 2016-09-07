@@ -1,35 +1,35 @@
 <div id="page" class='page'>
 		<div id="operators" class="operatorSummaryOuter">
 			<div id="operator1">
-				
+
 				<h3>On average, your <em>engineer</em> is projected to experience:</h3>
 				<div id="bullets">
 					<ul>
-						<li id="low_work_0">low workload range for <?php echo $low_count_0*10; ?> minutes  <span class="tooltip" onmouseover="tooltip.pop(this, 'Levels of utilization below 30% have been associated with poor performance due to boredom and distraction')">(?)</span></li>
+						<li id="low_work_0">low workload range for <?php echo $low_count_0*10; ?> minutes  <span class="tooltip" onmouseover="tooltip.pop(this, 'Levels of utilization below 30% have been associated with poor performance due to boredom and distraction')"><sup>(?)</sup></span></li>
 						<li id="normal_work_0">moderate workload range for <?php echo $normal_count_0*10; ?> minutes  </li>
-						<li id="high_work_0">high workload range for <?php echo $high_count_0*10; ?> minutes  <span class="tooltip" onmouseover="tooltip.pop(this, 'A 70% utilization threshold was selected to indicate an upper bound of optimal task loading, at which point operators may be too busy to accumulate information required to maintain situational awareness for safety')">(?)</span></li>
+						<li id="high_work_0">high workload range for <?php echo $high_count_0*10; ?> minutes  <span class="tooltip" onmouseover="tooltip.pop(this, 'A 70% utilization threshold was selected to indicate an upper bound of optimal task loading, at which point operators may be too busy to accumulate information required to maintain situational awareness for safety')"><sup>(?)</sup></span></li>
 					</ul>
 				</div>
 
 				<form action="investigate.php?operator=engineer" method="post" style='text-align: center;'>
-					<button type="submit" id="submit1">Investigate</button>
+					<button type="submit" id="submit1" class="button" style="background-color: #4CAF50;">Investigate</button>
 				</form>
 			</div>
 
 			<div id="operator2" style='<?php echo $operator2Style; ?>'>
-				
+
 				<h3>On average, your <em>conductor</em> is projected to experience:</h3>
 				<div id="bullets">
 					<ul>
-						<li id="low_work_1">low workload range for <?php echo $low_count_1*10; ?> minutes  <span class="tooltip" onmouseover="tooltip.pop(this, 'Levels of utilization below 30% have been associated with poor performance due to boredom and distraction')">(?)</span></li>
+						<li id="low_work_1">low workload range for <?php echo $low_count_1*10; ?> minutes  <span class="tooltip" onmouseover="tooltip.pop(this, 'Levels of utilization below 30% have been associated with poor performance due to boredom and distraction')"><sup>(?)</sup></span></li>
 						<li id="normal_work_1">moderate workload range for <?php echo $normal_count_1*10; ?> minutes</li>
-		
-						<li id="high_work_1">high workload range for <?php echo $high_count_1*10; ?> minutes  <span class="tooltip" onmouseover="tooltip.pop(this, 'A 70% utilization threshold was selected to indicate an upper bound of optimal task loading, at which point operators may be too busy to accumulate information required to maintain situational awareness for safety')">(?)</span></li>
+
+						<li id="high_work_1">high workload range for <?php echo $high_count_1*10; ?> minutes  <span class="tooltip" onmouseover="tooltip.pop(this, 'A 70% utilization threshold was selected to indicate an upper bound of optimal task loading, at which point operators may be too busy to accumulate information required to maintain situational awareness for safety')"><sup>(?)</sup></span></li>
 					</ul>
 				</div>
 
 				<form action="investigate.php?operator=conductor" method="post" style='text-align: center;'>
-					<button type="submit" id="submit2">Investigate</button>
+					<button type="submit" id="submit2" class="button" style="background-color: #4CAF50;">Investigate</button>
 				</form>
 			</div>
 		</div>

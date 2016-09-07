@@ -177,7 +177,7 @@
 <style>
 	.list{
 		padding:5px 15px;
-		border: 3px solid #5D7B85;
+		border: 2px solid #5D7B85;
 		cursor:pointer;
 		-webkit-border-radius: 5px;
 		border-radius: 25px;
