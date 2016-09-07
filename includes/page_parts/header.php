@@ -34,7 +34,7 @@
 				<ul>
 					<!-- <li id="topNavElement" style="float:left">SHOW</li> -->
 					<li><a id="topNavElement" <?php if ($curr_page=='homePage') {echo 'class="active"';} ?> href="index.php">Home</a></li>
-					<li><a id="topNavElement" <?php if ($curr_page!='homePage' And $curr_page!='contactPage' And $curr_page!='versionPage') {echo 'class="active"';} ?> href="run_sim.php">Run Simulation</a></li>
+					<li><a id="topNavElement" <?php if ($curr_page!='homePage' And $curr_page!='contactPage' And $curr_page!='versionPage') {echo 'class="active"';} ?> href="basic_settings.php">Run Simulation</a></li>
 					<li><a id="topNavElement" <?php if ($curr_page=='contactPage') {echo 'class="active"';} ?> href="contact_us.php">Contact Us</a></li>
 					<li style="float:right"><a id="topNavElement" <?php if ($curr_page=='versionPage') {echo 'class="active"';} ?> href="version_history.php">Version: Alpha</a></li>
 				</ul>

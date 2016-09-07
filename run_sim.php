@@ -1,119 +1,86 @@
 <?php
 	session_start();
-	$page_title='Run Simulation.';
-	$curr_page='runSimPage';
-	$html_head_insertions .= '<script type="text/javascript" src="scripts/sim_settings_entry.js"></script>';
-	require_once("includes/page_parts/header.php");
-	require_once("includes/run_sim/side_navigation.php");
+
+//	!!!Remember to later close file
+
+//	Create parameter file
+
+	// unlink($_SESSION['files']['params']) or die("did not unlink");
+	// $_SESSION['files']['params'] = tempnam(sys_get_temp_dir(), "params");
+
+	$file = fopen($_SESSION['dir'] . "params", "w") or die("Unable to open parameter file.");
+	fwrite($file, "output_path\t\t" . $_SESSION['dir'] . "\n");
+	fwrite($file, "num_hours\t\t" . $_SESSION['numHours'] . "\n");
+	fwrite($file, "traff_levels\t" . implode(" ", $_SESSION['traffic_levels']) . "\n");
+	fwrite($file, "num_reps\t\t" . $_SESSION['numReps'] . "\n");
+	fwrite($file, "ops\t\t\t\t" . implode(" ", $_SESSION['assistants']) . "\n");
+	fwrite($file, "num_task_types\t" . $_SESSION['numTaskTypes'] . "\n");
+
+	for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
+		fwrite($file, "\nname\t\t\t" . $_SESSION['taskNames'][$i] . "\n");
+		fwrite($file, "prty\t\t\t" . implode(" ", $_SESSION['taskPrty'][$i]) . "\n");
+		fwrite($file, "arr_dist\t\t" . $_SESSION['taskArrDist'][$i] . "\n");
+		fwrite($file, "arr_pms\t\t\t" . implode(" ", $_SESSION['taskArrPms'][$i]) . "\n");
+		fwrite($file, "ser_dist\t\t" . $_SESSION['taskSerDist'][$i] . "\n");
+		fwrite($file, "ser_pms\t\t\t" . implode(" ", $_SESSION['taskSerPms'][$i]) . "\n");
+		fwrite($file, "exp_dist\t\t" . $_SESSION['taskExpDist'][$i] . "\n");
+		fwrite($file, "exp_pms_lo\t\t" . implode(" ", $_SESSION['taskExpPmsLo'][$i]) . "\n");
+		fwrite($file, "exp_pms_hi\t\t" . implode(" ", $_SESSION['taskExpPmsHi'][$i]) . "\n");
+		fwrite($file, "aff_by_traff\t" . implode(" ", $_SESSION['taskAffByTraff'][$i]) . "\n");
+		fwrite($file, "op_nums\t\t\t" . implode(" ", $_SESSION['taskAssocOps'][$i]));
+	}
+
+	fclose($file);
+
+//	Run simulation
+
+	if (PHP_OS == "Darwin") {
+		echo passthru("bin/des_mac " . $_SESSION['dir'] . "params");
+	} else if (PHP_OS == "Linux"){
+		exec("bin/des_unix " . $_SESSION['dir'] . "params");
+	} else {
+		die("Operating system not recognized.");
+	}
 ?>
-	<div id="runSimulationPage" class="page">
-		<h1 class="pageTitle">Input Basic Trip Conditions</h1>
-		<p>
-			To get started, provide us with three simple data points. What time of day does your operator begin <strong>(1)</strong> and end <strong>(2)</strong> his/her shift? And what’s the level of traffic <strong>(3)</strong> in the region during this shift? Lastly, specify any additional operators or technologies <strong>(4)</strong> that will assist the engineer during the trip.
-			And if you're a more advanced user, look at the advanced settings.
-		</p>
-		<br>
 
-		<div style="width: 100%; float: right;">
-			<!-- <form action="create_param_file.php"  style="text-align: center;">
-				<input type="submit" value="Run Simulation">
-			</form> -->
-			<form action="adv_settings.php">
-				<button class="button" type="submit" style="float: right; color: black;">
-					<img src="images/settings-gear.png" width="40" height="40" align="top">
-					<div style="display: inline-block;  text-align: left; padding: 3px;">
-						Advanced <br> Settings
-					</div>
-				</button>
-			</form>
+<!-- Show loading bar -->
+
+<html>
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Form Progress Bar</title>
+	    <link rel="stylesheet" href="progressBar/style.css">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	  </head>
+	<body>
+		<div class="progress">
+			<div class="circle done">
+				<span class="label">1</span>
+				<span class="title">Fetching Input</span>
+			</div>
+				<span class="bar done"></span>
+				<div class="circle done">
+					<span class="label">2</span>
+					<span class="title">Formatting data</span>
+				</div>
+			<span class="bar half"></span>
+			<div class="circle active">
+				<span class="label">3</span>
+				<span class="title">Running simulation </span>
+			</div>
+			<span class="bar"></span>
+			<div class="circle">
+				<span class="label">4</span>
+				<span class="title">Fetching results</span>
+			</div>
+			<span class="bar"></span>
+			<div class="circle">
+	    		<span class="label">5</span>
+	    		<span class="title">Finish simulation</span>
+			</div>
 		</div>
-
-		<form id="timeEntry" action="create_param_file.php" method="post" onsubmit="return confirm('Please verify your provided settings and click OK to run simulation!');">
-			<div class="startEndTimeStepOuter centerOuter">
-				<div class="startEndTime stepBox">
-					<div class='stepCircle'>1</div>
-					<h3 id="text_start" class="whiteFont">Start Time <span class="tooltip" onmouseover="tooltip.pop(this, 'SHOW models the train leaving the station at Start Time + 30 minutes')">(?)</span></h3>
-
-					<select id='startHour' onchange="calculate_time();">
-						<?php
-							for ($i = 1; $i <= 12; $i++) {
-								if ($i==9) { $selected_string = ' selected="selected"'; } else { $selected_string = ''; }
-								$val = sprintf('%02d', $i);
-								echo "<option$selected_string>$val</option>";
-							}
-						?>
-					</select>:<select id='startMin' onchange="calculate_time();">
-						<?php
-							for ($i = 0; $i <= 50; $i+=10) {
-								$val = sprintf('%02d', $i);
-								echo "<option>$val</option>";
-							}
-						?>
-					</select>
-					<select id='startAmpm' onchange="calculate_time();">
-						<option>AM</option>
-						<option>PM</option>
-					</select>
-					<input id="start_time" type="hidden" name="time1">
-				</div>
-
-				<div class="startEndTime stepBox">
-					<div class='stepCircle'>2</div>
-					<h3 id="text_stop" class="whiteFont">Stop Time    <span class="tooltip" onmouseover="tooltip.pop(this, 'SHOW models the shift to last up to 24 hours from the Start Time. Ex: 3:00 pm to 2:00pm models into Day 2 of shift. ')">(?)</span></h3>
-
-					<select id='endHour' onchange="calculate_time();">
-						<?php
-							for ($i = 1; $i <= 12; $i++) {
-								if ($i==5) { $selected_string = ' selected="selected"'; } else { $selected_string = ''; }
-								$val = sprintf('%02d', $i);
-								echo "<option$selected_string>$val</option>";
-							}
-						?>
-					</select>:<select id='endMin' onchange="calculate_time();">
-						<?php
-							for ($i = 0; $i <= 50; $i+=10) {
-								$val = sprintf('%02d', $i);
-								echo "<option>$val</option>";
-							}
-						?>
-					</select>
-					<select id='endAmpm' onchange="calculate_time();">
-						<option>AM</option>
-						<option selected="selected">PM</option>
-					</select>
-					<input id="stop_time" type="hidden" name="time2">
-				</div>
-			</div>
-
-			<div class="trafficTableStepOuter stepBox centerOuter">
-				<div class='stepCircle'>3</div>
-				<!-- <div class="tooltip"> -->
-					<h3 class="whiteFont">
-						Traffic Levels
-						<span class="tooltip" onmouseover="tooltip.pop(this, 'SHOW models traffic levels with a multiplier on the frequency of certain task types arriving for the operators to handle.')">(?)</span>
-					</h3>
-					<!-- </div> -->
-					<span class="tooltip" onmouseover="tooltip.pop(this, 'What is the projected level of traffic on your railroad for this particular shift?')">
-						<div id="totalTime" style="overflow-x:auto;">
-					</span>
-				</div>
-			</div>
-			<br><br>
-			<div class="assistantsSelectStepOuter stepBox centerOuter">
-				<div class='stepCircle'>4</div>
-				<h3 id='assistants' class='whiteFont'>Assistants  <span class="tooltip" onmouseover="tooltip.pop(this, 'Identify if another human/technologies support the locomotive engineer. SHOW models their interaction by offloading certain tasks from engineer workload')">(?)</span></h3>
-				<div id="assist" style="overflow-x:auto;"></div>
-			</div>
-			<br>
-			<?php require_once("includes/run_sim/custom_operator.php"); ?>
-			<br>
-			<!-- <h4 style="text-align:center;">Run Simulation</h4> -->
-			<!-- <div id="next_page" class="navArrow" onclick="var submit = getElementById('submit'); submit.click()";>
-			</div> -->
-			<div>
-				<input type="submit" id="submit" class="button" style="background-color: #4CAF50;" value="Run Simulation">
-			</div>
-		</form>
-	</div>
-
-<?php require_once("includes/page_parts/footer.php"); ?>
+		<div id="php"></div>
+    	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    	<script src="progressBar/style.js"></script>
+	</body>
+</html>

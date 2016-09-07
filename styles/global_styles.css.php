@@ -163,6 +163,37 @@ div.accordion-content.show {
     max-height: 500px;
 }
 
+#bottomNav {
+	display: table;
+	margin: auto;
+	/*border: 1px solid red;*/
+}
+#bottomNav ul {
+	list-style-type: none;
+	margin: auto;
+	padding: 0;
+	/*overflow: hidden;*/
+	/*background-color: #555;*/
+}
+
+#bottomNav li {
+	display: inline-block;
+	/*text-align: center;*/
+	/*float: right;*/
+	margin: auto;
+	padding: 20px;
+	font-size: 18px;
+	/*border: 1px solid red;*/
+}
+
+/*#bottomNav li {
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding: 12px 17px;
+	text-decoration: none;
+}*/
+
 /*#fixedFooter {
 	position: fixed;
 	bottom: 0;
@@ -470,8 +501,8 @@ th {
 
 .button {
 	background-color: #e7e7e7;
-	color: black;
-    border: none;
+	border: 1px solid black;
+    /*border: none;*/
     color: white;
     padding: 10px 15px;
     text-align: center;

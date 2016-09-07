@@ -2,7 +2,7 @@
 
 //	Start session
 
-	// session_unset();
+	session_unset();
 	$_SESSION = array();
 	session_destroy();
 
@@ -100,7 +100,7 @@
 				</p>
 				<h2>Getting Started</h2>
 				<p>
-					Ready to get started? Then let's <a href="run_sim.php">go</a>! And if you have any questions or comments about the simulation, please <a href="contact_us.php">contact us</a>!
+					Ready to get started? Then let's <a href="basic_settings.php">go</a>! And if you have any questions or comments about the simulation, please <a href="contact_us.php">contact us</a>!
 				</p>
 			</div>
 

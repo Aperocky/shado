@@ -3,7 +3,7 @@
 					<li>
 					    <button class="accordion <?php if ($curr_page=='runSimPage' or $curr_page=='advSettingsPage') {echo active;} ?>">Input Trip Conditions</button>
 					    <div class="accordion-content <?php if ($curr_page=='runSimPage' or $curr_page=='advSettingsPage') {echo show;} ?>">
-					      	<a <?php if ($curr_page=='runSimPage') {echo 'class="active"';} ?> href="run_sim.php">Basic</a>
+					      	<a <?php if ($curr_page=='runSimPage') {echo 'class="active"';} ?> href="basic_settings.php">Basic</a>
 					      	<a <?php if ($curr_page=='advSettingsPage') {echo 'class="active"';} ?>href="adv_settings.php">Advanced</a>
 					    </div>
 				  	</li>

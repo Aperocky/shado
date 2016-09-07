@@ -9,7 +9,7 @@
 			<div id="settingsPage" class="page">
 				<div id="myData" class="hidden" data-session='<?php echo json_encode($_SESSION)?>' ></div>
 				<h1 class="pageTitle">Input Advanced Trip Conditions</h1>
-				<form id="taskParameters" action="adv_settings_send.php" method="post">
+				<form id="taskParameters" action="adv_settings_send.php" method="post" onsubmit="return confirm('Please verify your provided settings and click OK to run simulation!');">
 					<input type="hidden" name="removed_tasks">
 					<h2>Replications</h2>
 					Enter the number of replications, or the number of simulated trips. Note that more trips provides more precise results, but it may also increase the processing time.
@@ -41,16 +41,26 @@
 						    }
 						?>
 					</div>
-					<div style="text-align: center;">
+					<!-- <div style="text-align: center;">
 						<input type="submit" id="submit" value="Save and Return" style="text-align: center;">
+					</div> -->
+					<div>
+						<button type="button" class="roundButton" onclick="addTask()" style="background-color: #4CAF50;"><strong>+</strong></button>
+					</div>
+					<div id="bottomNav">
+						<ul>
+							<li>
+								<button class="button" type="button" onclick="location.href='basic_settings.php';" style="color: black;">&#8678 Basic Conditions</button>
+							</li>
+							<li>
+								<button class="button" type="button" onclick="location.href='reset_session_vars.php';" style="background-color: #4CAF50;">Restore Defaults</button>
+							</li>
+							<li>
+								<input type="submit" id="submit" class="button" value="Run Simulation &#8680" style="color: black;">
+							</li>
+						</ul>
 					</div>
 				</form>
-				<div>
-					<button type="button" class="roundButton" onclick="addTask()" style="background-color: #4CAF50;"><strong>+</strong></button>
-				</div>
-				<div style="text-align: center;">
-					<button class="button" onclick="location.href='reset_session_vars.php';" style="color: black;">Restore Defaults</button>
-				</div>
 			</div>
 
 <?php
