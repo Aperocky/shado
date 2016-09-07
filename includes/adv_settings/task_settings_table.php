@@ -255,19 +255,19 @@
             </select>
             <div id=<?php echo "t".$taskNum."_expPms";?> <?php if($_SESSION['taskSerDist'][$taskNum]=="E") {echo "style='display: inline-block;'";} else {echo "style='display: none;'";} ?> >
                 Mean:
-                <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][0],2); ?>" style="margin: 0px 10px">
+                <input type="text" name=<?php echo "t".$taskNum."_exp_serTime_0"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][0],2); ?>" style="margin: 0px 10px">
             </div>
             <div id=<?php echo "t".$taskNum."_logPms";?> <?php if($_SESSION['taskSerDist'][$taskNum]=="L") {echo "style='display: inline-block;'";} else {echo "style='display: none;'";} ?> >
                 Mean:
-                <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][0],2); ?>" style="margin: 0px 10px">
+                <input type="text" name=<?php echo "t".$taskNum."_log_serTime_0"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][0],2); ?>" style="margin: 0px 10px">
                 Std dev:
-                <input type="text" name=<?php echo "t".$taskNum."_serTime_1"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][1],2); ?>" style="margin: 0px 10px">
+                <input type="text" name=<?php echo "t".$taskNum."_log_serTime_1"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][1],2); ?>" style="margin: 0px 10px">
             </div>
             <div id=<?php echo "t".$taskNum."_uniPms";?> <?php if($_SESSION['taskSerDist'][$taskNum]=="U") {echo "style='display: inline-block;'";} else {echo "style='display: none;'";} ?> >
                 Min:
-                <input type="text" name=<?php echo "t".$taskNum."_serTime_0"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][0],2); ?>" style="margin: 0px 10px">
+                <input type="text" name=<?php echo "t".$taskNum."_uni_serTime_0"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][0],2); ?>" style="margin: 0px 10px">
                 Max:
-                <input type="text" name=<?php echo "t".$taskNum."_serTime_1"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][1],2); ?>" style="margin: 0px 10px">
+                <input type="text" name=<?php echo "t".$taskNum."_uni_serTime_1"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][1],2); ?>" style="margin: 0px 10px">
             </div>
         </td>
     </tr>

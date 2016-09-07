@@ -1,16 +1,27 @@
 <?php
-	// session_start();
+	session_start();
 	$page_title='Advanced Settings';
 	$curr_page='advSettingsPage';
 	$html_head_insertions .= '<script type="text/javascript" src="scripts/adv_settings.js"></script>';
 	require_once("includes/page_parts/header.php");
 	require_once("includes/run_sim/side_navigation.php");
+
+	function print_task_ids() {
+		for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
+			if ($i == 0) {
+				echo $i;
+			} else {
+				echo "," . $i;
+			}
+		}
+	}
 ?>
 			<div id="settingsPage" class="page">
-				<div id="myData" class="hidden" data-session='<?php echo json_encode($_SESSION)?>' ></div>
+				<!-- <div id="myData" class="hidden" data-session='<?php echo json_encode($_SESSION)?>' ></div> -->
 				<h1 class="pageTitle">Input Advanced Trip Conditions</h1>
 				<form id="taskParameters" action="adv_settings_send.php" method="post" onsubmit="return confirm('Please verify your provided settings and click OK to run simulation!');">
-					<input type="hidden" name="removed_tasks">
+					<input id="current_tasks" name="current_tasks" value=<?php print_task_ids();?>>
+					<!-- type="hidden"  -->
 					<h2>Replications</h2>
 					Enter the number of replications, or the number of simulated trips. Note that more trips provides more precise results, but it may also increase the processing time.
 					<div class="centerOuter">
@@ -33,19 +44,25 @@
 					<!-- <form id="taskParameters" action="adv_settings_send.php" method="post"> -->
 					<div id='taskParameterTable'>
 						<?php
-							for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
+							// for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
+							for ($i = 0; $i < 15; $i++) {
 								$taskNum = $i;
-								echo "<div id=task_".$taskNum.">";
+								if ($i < $_SESSION['numTaskTypes']) {
+									echo "<div id=task_" . $taskNum . ">";
+								} else {
+									echo "<div id=task_" . $taskNum . " style='display: none'>";
+								}
 						        include("includes/adv_settings/task_settings_table.php");
 								echo "<br> </div>";
 						    }
+							$num_tasks = $_SESSION['numTaskTypes'];
 						?>
 					</div>
 					<!-- <div style="text-align: center;">
 						<input type="submit" id="submit" value="Save and Return" style="text-align: center;">
 					</div> -->
 					<div>
-						<button type="button" class="roundButton" onclick="addTask()" style="background-color: #4CAF50;"><strong>+</strong></button>
+						<button type="button" class="roundButton" onclick=<?php echo "addTask(" . $num_tasks . ")"; ?> style="background-color: #4CAF50;"><strong>+</strong></button>
 					</div>
 					<div id="bottomNav">
 						<ul>

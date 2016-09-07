@@ -1,6 +1,34 @@
 <?php
 	session_start();
 
+//	Delete tasks
+
+	$curr_tasks = explode(',', $_POST['current_tasks']);
+	// array_pop($deleted_tasks);  // Remove blank space
+	print_r($curr_tasks);
+
+//	Remove old task parameters
+
+	$_SESSION['taskNames'] = array();
+	$_SESSION['taskPrty'] = array();
+	$_SESSION['taskArrDist'] = array();
+	$_SESSION['taskArrPms'] = array();
+	$_SESSION['taskSerDist'] = array();
+	$_SESSION['taskSerPms'] = array();
+	$_SESSION['taskExpDist'] = array();
+	$_SESSION['taskExpPmsLo'] = array();
+	$_SESSION['taskExpPmsHi'] = array();
+	$_SESSION['taskAffByTraff'] = array();
+	$_SESSION['taskNames'] = array();
+	$_SESSION['taskAffByTraff'] = array();
+	$_SESSION['taskAssocOps'] = array();
+
+//	Update with new parameters
+
+	$_SESSION['numTaskTypes'] = sizeof($curr_tasks);
+	// print_r(arr_diff_key($_SESSION['taskNames'], $deleted_tasks));
+	// print_r($_SESSION['taskNames']);
+
 //	Save replications
 
 	$_SESSION['numReps']=(int)$_POST["num_reps"];
@@ -9,17 +37,20 @@
 //	Loop through each task type
 
 	for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
+
+		$j = $curr_tasks[$i];
+
 	// 	Store task names
 
-		$_SESSION['taskNames'][$i]=$_POST["t".$i."_name"];
+		$_SESSION['taskNames'][$i]=$_POST["t".$j."_name"];
 		// echo $_SESSION['taskNames'][$i];
 
 	// 	Store priorities
 
 		$_SESSION['taskPrty'][$i]=array(
-			(int)$_POST["t".$i."_priority_p0"],
-			(int)$_POST["t".$i."_priority_p1"],
-			(int)$_POST["t".$i."_priority_p2"]);
+			(int)$_POST["t".$j."_priority_p0"],
+			(int)$_POST["t".$j."_priority_p1"],
+			(int)$_POST["t".$j."_priority_p2"]);
 
 		// for ($k = 0; $k < sizeof($_SESSION['taskPrty'][$i])) {
 		// 	echo $_SESSION['taskPrty'][$i][$k]." ";
@@ -32,9 +63,9 @@
 	// 	Store arrival distribution parameters
 
 		$_SESSION['taskArrPms'][$i]=array(
-			(float)$_POST["t".$i."_arrTime_p0"],
-			(float)$_POST["t".$i."_arrTime_p1"],
-			(float)$_POST["t".$i."_arrTime_p2"]);
+			(float)$_POST["t".$j."_arrTime_p0"],
+			(float)$_POST["t".$j."_arrTime_p1"],
+			(float)$_POST["t".$j."_arrTime_p2"]);
 
 		for ($k = 0; $k < sizeof($_SESSION['taskArrPms'][$i]); $k++) {
 			if ($_SESSION['taskArrPms'][$i][$k] != 0) {
@@ -47,18 +78,29 @@
 
 	// 	Store service distribution type
 
-		$_SESSION['taskSerDist'][$i]=$_POST["t".$i."_serTimeDist"];
+		$_SESSION['taskSerDist'][$i]=$_POST["t".$j."_serTimeDist"];
 
 		// echo $_SESSION['taskSerDist'][$i];
 
 		// Store service distribution parameters
 
-		$_SESSION['taskSerPms'][$i]= array(
-			(float)$_POST["t".$i."_serTime_0"],
-			(float)$_POST["t".$i."_serTime_1"]);
+		if ($_SESSION['taskSerDist'][$i] == "E") {
+			$_SESSION['taskSerPms'][$i]= array(
+				(float)$_POST["t".$j."_exp_serTime_0"],
+				0);
+		} else if ($_SESSION['taskSerDist'][$i] == "L") {
+			$_SESSION['taskSerPms'][$i]= array(
+				(float)$_POST["t".$j."_log_serTime_0"],
+				(float)$_POST["t".$j."_log_serTime_1"]);
+		} else {
+			$_SESSION['taskSerPms'][$i]= array(
+				(float)$_POST["t".$j."_uni_serTime_0"],
+				(float)$_POST["t".$j."_uni_serTime_1"]);
+		}
 
-		// echo $_SESSION['taskSerPms'][$i][0]." ";
-		// echo $_SESSION['taskSerPms'][$i][1]." ";
+
+		echo $_SESSION['taskSerPms'][$i][0]." ";
+		echo $_SESSION['taskSerPms'][$i][1]." ";
 
 	// 	Store exponential distribution type
 
@@ -67,8 +109,8 @@
 	// 	Store affected by traffic
 
 		$_SESSION['taskAffByTraff'][$i]=array(
-			(int)$_POST["t".$i."_affByTraff_p0"],
-			(int)$_POST["t".$i."_affByTraff_p1"],
+			(int)$_POST["t".$j."_affByTraff_p0"],
+			(int)$_POST["t".$j."_affByTraff_p1"],
 			(int)$_POST["t".$i."_affByTraff_p2"]);
 
 			// echo $_SESSION['taskAffByTraff'][$i][0]." ";
@@ -79,9 +121,9 @@
 
 		$_SESSION['taskAssocOps'][$i] = array();
 
-		for ($j = 0; $j < 5; $j++) {
-			if(isset($_POST["t".$i."_op".$j])) {
-				$_SESSION['taskAssocOps'][$i][]=(int)$_POST["t".$i."_op".$j];
+		for ($k = 0; $k < 5; $k++) {
+			if(isset($_POST["t".$j."_op".$k])) {
+				$_SESSION['taskAssocOps'][$i][]=(int)$_POST["t".$j."_op".$k];
 			}
 		}
 	}
@@ -92,8 +134,8 @@
 		// 	echo "<br>";
 		// }
 
-	header("Location: run_sim.php");
+	// header("Location: run_sim.php");
 
 	// var_dump($_SESSION);
-	// print_r($_SESSION);
+	print_r($_SESSION);
 ?>
