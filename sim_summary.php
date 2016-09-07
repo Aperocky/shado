@@ -21,6 +21,7 @@
 
 <?php
     function createSummary($user) {
+        require_once("operator_calculations.php"); 
         require_once("operator.html");
         echo "<br><br>";
         require_once("input_summary.php");

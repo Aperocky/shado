@@ -8,6 +8,8 @@
     mkdir($dir);
     $dir .= "/";
     $_SESSION['dir'] = $dir;
+    echo $dir;
+    
 
 //  Create session variables
 

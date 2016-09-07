@@ -77,7 +77,7 @@
 	<li>Duration of the trip: <?php echo $time." hours"; ?></li>
 	<br>
 	<li> Traffic levels for this particular shift:</li>
-	<div id="input_summary"></div>
+	<div id="input_summary" class="no-page-break"></div>
 	<br>
 	<li>Humans/technologies supporting the locomotive engineer: <ul>
 	<?php
