@@ -98,14 +98,49 @@
 			<div class="assistantsSelectStepOuter stepBox centerOuter">
 				<div class='stepCircle'>4</div>
 				<h3 id='assistants' class='whiteFont'>Who Will Assist the Engineer? <span class="tooltip" onmouseover="tooltip.pop(this, 'Identify any humans or technologies that will support the locomotive engineer. SHOW models their interaction by offloading certain tasks from the engineer.')"><sup>(?)</sup></span></h3>
-				<div id="assist" style="overflow-x:auto;"></div>
+				<div id="assist" style="overflow-x: auto;">
+					<table id="assistantsTable" cellspacing="0">
+						<tr>
+							<td>
+								<input type="checkbox" name="extra1" value="1" id="conductor">Conductor  <span class="tooltip" onmouseover="tooltip.pop(this, 'The freight conductor supervises train conditions on the ground at terminal points and remains attentive to the engineer while the train is in motion in the case of emergency, when action could be needed ')"><sup>(?)</sup></span>
+							</td>
+							<td>
+								<input type="checkbox" name="extra2" value="2" id="train_c">Positive Train Control  <span class="tooltip" onmouseover="tooltip.pop(this, 'PTC is an embedded feature of railroads set to be fully implemented by 2018. It automatically manages speed restrictions and emergency braking without human input ')"><sup>(?)</sup></span>
+							</td>
+							<td>
+								<input type="checkbox" name="extra3" value="3" id="cruise_control">Cruise Control  <span class="tooltip" onmouseover="tooltip.pop(this, ' CC can offload motion planning tasks that involve the locomotive control system of throttle and dynamic braking ')"><sup>(?)</sup></span>
+							</td>
+							<td>
+								<input type="checkbox" name="extra4" value="4" id="other" onchange="check()">Custom
+							</td>
+						</tr>
+					</table>
+				</div>
 			</div>
 			<br>
-			<?php require_once('includes/run_sim/custom_operator.php'); ?>
+			<div class="custom " id="custom">
+				<div class='stepCircle'>5</div>
+				<h3 id='custom_heading' class='whiteFont'>Which Tasks Will this Assistant Handle? <span class="tooltip" onmouseover="tooltip.pop(this,'Identify the name and which tasks the custom assistant(s) can offload from the locomotive engineer workload')"><sup>(?)</sup></span></h3>
+				<br>
+				<table id='custom_table' class='customTable' border='1'>
+					<tr>
+						<th>Assistant Name:</td>
+						<td><input type='text' id='custom_name' name="custom_name" value="<?php echo $_SESSION['operators']['Custom']; ?>"></input></td>
+					</tr>
+				<?php
+					for($i = 0; $i < $_SESSION['numTaskTypes']; $i++)
+					{
+						echo "<tr><td>" . $_SESSION['taskNames'][$i] . "  <span class='tooltip' onmouseover='tooltip.pop(this, &apos;" . $_SESSION['taskDescription'][$_SESSION['taskNames'][$i]] . "&apos;)'><sup>(?)</sup></span></td><td><input type='checkbox' name='custom" . $i . "' value='y'";
+						if(($key = array_search(4, $_SESSION['taskAssocOps'][$i])) !== false) {
+			                echo ' checked';
+			            }
+						echo "></input></td></tr>";
+					}
+				?>
+				</table>
+			</div>
+
 			<br>
-			<!-- <h4 style="text-align:center;">Run Simulation</h4> -->
-			<!-- <div id="next_page" class="navArrow" onclick="var submit = getElementById('submit'); submit.click()";>
-			</div> -->
 			<div id="bottomNav">
 				<ul>
 					<li>

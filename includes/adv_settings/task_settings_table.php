@@ -374,7 +374,7 @@
                         echo "checked";
                     }
                 ?>>
-            Custom
+                <?php echo $_SESSION['operators']['Custom'];?>
         </td>
     </tr>
 </table>

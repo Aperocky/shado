@@ -46,6 +46,8 @@
 		}
 	}
 
+	$_SESSION['operators']['Custom'] = $_POST['custom_name'];
+
     for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
         if($_POST["custom".$i] == 'y') {
             $_SESSION['taskAssocOps'][$i][] = 4;
