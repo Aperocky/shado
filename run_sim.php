@@ -35,9 +35,9 @@
 //	Run simulation
 
 	if (PHP_OS == "Darwin") {
-		echo passthru("bin/des_mac " . $_SESSION['dir'] . "params");
+		echo passthru("bin/des_1.1_mac " . $_SESSION['dir'] . "params");
 	} else if (PHP_OS == "Linux") {
-		exec("bin/des_unix " . $_SESSION['dir'] . "params");
+		exec("bin/des_1.1_unix " . $_SESSION['dir'] . "params");
 	} else {
 		die("Operating system not recognized.");
 	}
