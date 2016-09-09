@@ -12,7 +12,6 @@
 		$traffic_level[]=$_SESSION['traffic_level'][$x];
 	}
 
-	// $file=fopen("sessions/input_summary.txt","w");
 	$file = fopen($_SESSION['dir'] . "input_summary.txt", "w");
 	fwrite($file,"time,");
 	fwrite($file,"t_level\n");

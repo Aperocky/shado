@@ -72,9 +72,9 @@
 			$type_byPhase3[$j]=array();
 			$type_byPhase[$j]=array();
 
-			for($i=2;$i<$num;$i++)
+			for($i=1;$i<$num-1;$i++)
 			{
-				if($i<5)
+				if($i<4)
 				{
 					/* $type_byPhase1[$j][]=$count[$j][$i]; */
 					array_push($type_byPhase1[$j], $count[$j][$i]);
@@ -82,7 +82,7 @@
 				}
 				else
 				{
-					if($i>($num-4))
+					if($i>($num-5))
 					{
 						array_push($type_byPhase3[$j], $count[$j][$i]);
 						array_push($type_byPhase[$j], $count[$j][$i]);
@@ -126,13 +126,13 @@
 			$count_type_low[$j]=0;
 		}
 
-		for($i=2;$i<$num;$i++)
+		for($i=1;$i<$num-1;$i++)
 		{
 			for($j=1;$j<$temp_count-1;$j++)
 			{
 				if($count[10][$i]>0.7)
 				{
-					if($i<5)
+					if($i<4)
 					{
 						if($count[$j][$i]>(array_sum($type_byPhase1[$j])/count($type_byPhase1[$j])))
 						{
@@ -142,7 +142,7 @@
 					}
 					else
 					{
-						if($i>($num-4))
+						if($i>($num-5))
 						{
 							if($count[$j][$i]>(array_sum($type_byPhase3[$j])/count($type_byPhase3[$j])))
 							{
@@ -164,7 +164,7 @@
 
 				if($count[10][$i]<0.3)
 				{
-					if($i<5)
+					if($i<4)
 					{
 						if($count[$j][$i]<(array_sum($type_byPhase1[$j])/count($type_byPhase1[$j])))
 						{
@@ -174,7 +174,7 @@
 					}
 					else
 					{
-						if($i>($num-4))
+						if($i>($num-5))
 						{
 							if($count[$j][$i]<(array_sum($type_byPhase3[$j])/count($type_byPhase3[$j])))
 							{
@@ -198,7 +198,7 @@
 
 		arsort($count_type_low);
 		arsort($count_type_high);
-
+		// print_r($count[10]);
 
 		$count_ops=0;
 		for($i=1;$i<5;$i++)
@@ -216,7 +216,7 @@
 		$count_high=0;
 		$count_low=0;
 		$count_norm=0;
-		for($i=2;$i<$num;$i++)
+		for($i=1;$i<$num-1;$i++)
 		{
 			if($count[10][$i]>0.7)
 			{
