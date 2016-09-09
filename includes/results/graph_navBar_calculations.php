@@ -70,7 +70,7 @@
 			$type_byPhase1[$j]=array();
 			$type_byPhase2[$j]=array();
 			$type_byPhase3[$j]=array();
-			$type_byPhase[$j]=array();
+			$type_byPhase[$j]=0;
 
 			for($i=1;$i<$num-1;$i++)
 			{
@@ -78,8 +78,9 @@
 				{
 					/* $type_byPhase1[$j][]=$count[$j][$i]; */
 					array_push($type_byPhase1[$j], $count[$j][$i]);
-					array_push($type_byPhase[$j], $count[$j][$i]);
-				}
+					$type_byPhase[$j]=$type_byPhase[$j]+$count[$j][$i];
+/* 					array_push($type_byPhase[$j], $count[$j][$i]);
+ */				}
 				else
 				{
 					if($i>($num-5))
@@ -198,6 +199,7 @@
 
 		arsort($count_type_low);
 		arsort($count_type_high);
+		arsort($type_byPhase);
 		// print_r($count[10]);
 
 		$count_ops=0;
