@@ -2,7 +2,7 @@
 	session_start();
 	$page_title = 'Run Simulation';
 	$curr_page = 'runSimPage';
-	$html_head_insertions = '<script type="text/javascript" src="scripts/sim_settings_entry.js"></script>';
+	$html_head_insertions = '<script type="text/javascript" src="scripts/basic_settings.js"></script>';
 	require_once('includes/page_parts/header.php');
 	require_once('includes/run_sim/side_navigation.php');
 ?>
@@ -35,7 +35,11 @@
 					<select id='startHour' onchange="calculate_time();">
 						<?php
 							for ($i = 1; $i <= 12; $i++) {
-								if ($i==9) { $selected_string = ' selected="selected"'; } else { $selected_string = ''; }
+								if ($i == 9) {
+									$selected_string = ' selected="selected"';
+								} else {
+									$selected_string = '';
+								}
 								$val = sprintf('%02d', $i);
 								echo "<option$selected_string>$val</option>";
 							}
@@ -52,7 +56,8 @@
 						<option>AM</option>
 						<option>PM</option>
 					</select>
-					<input id="start_time" type="hidden" name="time1">
+					<input id="start_time" name="time1">
+					<!-- type="hidden" -->
 				</div>
 
 				<div class="startEndTime stepBox">
@@ -62,7 +67,11 @@
 					<select id='endHour' onchange="calculate_time();">
 						<?php
 							for ($i = 1; $i <= 12; $i++) {
-								if ($i==5) { $selected_string = ' selected="selected"'; } else { $selected_string = ''; }
+								if ($i==5) {
+									$selected_string = ' selected="selected"';
+								} else {
+									$selected_string = '';
+								}
 								$val = sprintf('%02d', $i);
 								echo "<option$selected_string>$val</option>";
 							}
@@ -79,7 +88,8 @@
 						<option>AM</option>
 						<option selected="selected">PM</option>
 					</select>
-					<input id="stop_time" type="hidden" name="time2">
+					<input id="stop_time" name="time2">
+					<!-- type="hidden" -->
 				</div>
 			</div>
 
@@ -144,7 +154,7 @@
 			<div id="bottomNav">
 				<ul>
 					<li>
-						<button class="button" type="button" onclick="location.href='adv_settings.php';" style="color: black; visibility: hidden;">&#8678 Advanced Conditions</button>
+						<button class="button hide" type="button" onclick="location.href='adv_settings.php';" style="color: black;">&#8678 Advanced Conditions</button>
 					</li>
 					<li>
 						<input type="submit" class="button" name="run_sim" style="background-color: #4CAF50;" value="Run Simulation">

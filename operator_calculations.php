@@ -1,13 +1,13 @@
 <?php
 
 	session_start();
-	
-	$low_count_0=$_SESSION['low_count_0'];
-	$normal_count_0=$_SESSION['normal_count_0'];
-	$high_count_0=$_SESSION['high_count_0'];
-	$low_count_1=$_SESSION['low_count_1'];
-	$normal_count_1=$_SESSION['normal_count_1'];
-	$high_count_1=$_SESSION['high_count_1'];
+
+	$low_count_0 = $_SESSION['low_count_0'];
+	$normal_count_0 = $_SESSION['normal_count_0'];
+	$high_count_0 = $_SESSION['high_count_0'];
+	$low_count_1 = $_SESSION['low_count_1'];
+	$normal_count_1 = $_SESSION['normal_count_1'];
+	$high_count_1 = $_SESSION['high_count_1'];
 
 	if ($_SESSION['operator1'] == -1) {
 		$operator2Style = 'display:none; ';

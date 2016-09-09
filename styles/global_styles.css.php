@@ -745,3 +745,10 @@ div.tooltip {
 #custom_table td {
 	padding: 5px;
 }
+
+.remove {
+	display: none;
+}
+.hide {
+	visibility: hidden;
+}
