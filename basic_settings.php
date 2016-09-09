@@ -3,6 +3,7 @@
 	$page_title = 'Run Simulation';
 	$curr_page = 'runSimPage';
 	$html_head_insertions = '<script type="text/javascript" src="scripts/basic_settings.js"></script>';
+	$html_head_insertions .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>';
 	require_once('includes/page_parts/header.php');
 	require_once('includes/run_sim/side_navigation.php');
 ?>
@@ -26,25 +27,22 @@
 			</form>
 		</div> -->
 
-		<form id="timeEntry" action="basic_settings_send.php" method="post" onsubmit="return confirm('Please verify your provided settings and click OK to continue!');">
-			<div class="startEndTimeStepOuter centerOuter">
+		<form class="centerOuter" action="basic_settings_send.php" method="post" onsubmit="return confirm('Please verify your provided settings before continuing!');">
+			<div class="centerOuter">
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>1</div>
-					<h3 id="text_start" class="whiteFont">When Does Your Trip Begin? <span class="tooltip" onmouseover="tooltip.pop(this, 'Enter the time of day that your engineer begins his/her shift.')"><sup>(?)</sup></span></h3>
+					<h3 class="whiteFont">When Does Your Trip Begin? <span class="tooltip" onmouseover="tooltip.pop(this, 'Enter the time of day that your engineer begins his/her shift.')"><sup>(?)</sup></span></h3>
 
-					<select id='startHour' onchange="calculate_time();">
+					<select id='beginHour' onchange="calculate_time();">
 						<?php
 							for ($i = 1; $i <= 12; $i++) {
-								if ($i == 9) {
-									$selected_string = ' selected="selected"';
-								} else {
-									$selected_string = '';
-								}
+								$selected_string = '';
+								if ($i == 9) $selected_string = ' selected="selected"';
 								$val = sprintf('%02d', $i);
 								echo "<option$selected_string>$val</option>";
 							}
 						?>
-					</select>:<select id='startMin' onchange="calculate_time();">
+					</select>:<select id='beginMin' onchange="calculate_time();">
 						<?php
 							for ($i = 0; $i <= 50; $i+=10) {
 								$val = sprintf('%02d', $i);
@@ -52,26 +50,22 @@
 							}
 						?>
 					</select>
-					<select id='startAmpm' onchange="calculate_time();">
+					<select id='beginMd' onchange="calculate_time();">
 						<option>AM</option>
 						<option>PM</option>
 					</select>
-					<input id="start_time" name="time1">
-					<!-- type="hidden" -->
+					<input id="begin_time" name="begin_time" type="hidden">
 				</div>
 
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>2</div>
-					<h3 id="text_stop" class="whiteFont">When Does Your Trip End? <span class="tooltip" onmouseover="tooltip.pop(this, 'Enter the time of day that your engineer is expected to end his/her shift.')"><sup>(?)</sup></span></h3>
+					<h3 class="whiteFont">When Does Your Trip End? <span class="tooltip" onmouseover="tooltip.pop(this, 'Enter the time of day that your engineer is expected to end his/her shift.')"><sup>(?)</sup></span></h3>
 
 					<select id='endHour' onchange="calculate_time();">
 						<?php
 							for ($i = 1; $i <= 12; $i++) {
-								if ($i==5) {
-									$selected_string = ' selected="selected"';
-								} else {
-									$selected_string = '';
-								}
+								$selected_string = '';
+								if ($i == 5) $selected_string = ' selected="selected"';
 								$val = sprintf('%02d', $i);
 								echo "<option$selected_string>$val</option>";
 							}
@@ -84,12 +78,12 @@
 							}
 						?>
 					</select>
-					<select id='endAmpm' onchange="calculate_time();">
+					<select id='endMd' onchange="calculate_time();">
 						<option>AM</option>
 						<option selected="selected">PM</option>
 					</select>
-					<input id="stop_time" name="time2">
-					<!-- type="hidden" -->
+					<input id="end_time" name="end_time" type="hidden">
+					<input id="num_hours" name="num_hours" type="hidden">
 				</div>
 			</div>
 
@@ -101,6 +95,9 @@
 					</h3>
 					<span class="tooltip" onmouseover="tooltip.pop(this, 'What is the projected level of traffic on your railroad for this particular shift?')">
 						<div id="totalTime" style="overflow-x:auto;">
+							<table id='table' class='trafficTable'>
+							</table>
+						<!-- </div> -->
 					</span>
 				</div>
 			</div>
@@ -128,11 +125,11 @@
 				</div>
 			</div>
 			<br>
-			<div class="custom " id="custom">
+			<div class="custom" id="custom">
 				<div class='stepCircle'>5</div>
-				<h3 id='custom_heading' class='whiteFont'>Which Tasks Will this Assistant Handle? <span class="tooltip" onmouseover="tooltip.pop(this,'Identify the name and which tasks the custom assistant(s) can offload from the locomotive engineer workload')"><sup>(?)</sup></span></h3>
+				<h3 id='custom_heading' class='whiteFont'>Which Tasks Will This Custom Assistant Handle? <span class="tooltip" onmouseover="tooltip.pop(this,'Identify the name and which tasks the custom assistant(s) can offload from the locomotive engineer workload')"><sup>(?)</sup></span></h3>
 				<br>
-				<table id='custom_table' class='customTable' border='1'>
+				<table id='custom_table' class='customTable'>
 					<tr>
 						<th>Assistant Name:</td>
 						<td><input type='text' id='custom_name' name="custom_name" value="<?php echo $_SESSION['operators']['Custom']; ?>"></input></td>

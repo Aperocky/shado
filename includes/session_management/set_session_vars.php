@@ -107,7 +107,7 @@
     $_SESSION['operators']['Conductor'] = array();
     $_SESSION['operators']['Positive Train Control'] = array();
     $_SESSION['operators']['Cruise Control'] = array();
-    $_SESSION['operators']['Custom'] = array();
+    // $_SESSION['operators']['Custom'] = array();
 
 //  Set session
 

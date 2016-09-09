@@ -31,5 +31,4 @@
 				        this.nextElementSibling.classList.toggle("show");
 				  	}
 				}
-				console.log("Hello.");
 			</script>

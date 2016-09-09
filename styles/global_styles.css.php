@@ -243,8 +243,6 @@ div.accordion-content.show {
 #main {
 	margin-top: 168px;
 	margin-bottom: 20px;
-	/*border: 1px solid red;*/
-	/*height: 100%;*/
 }
 
 .printPdf {
@@ -322,13 +320,9 @@ div.accordion-content.show {
 *													*
 ****************************************************/
 
-form#timeEntry {
+/*.centerText {
 	text-align: center;
-}
-
-.startEndTimeStepOuter {
-	text-align: center;
-}
+}*/
 
 .startEndTime {
 	width: 300px;

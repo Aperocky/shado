@@ -1,22 +1,10 @@
 <?php
 	session_start();
 
-//	Make calculations
+//	Store time
 
-	$start_time = (int)substr($_POST["time1"],0,2);
-	$stop_time = (int)substr($_POST["time2"],0,2);
-	$start_min = (int)substr($_POST["time1"],3,strlen($_POST["time1"]));
-	$stop_min = (int)substr($_POST["time2"],3,strlen($_POST["time2"]));
-	$time = 60-$start_min+$stop_min+($stop_time-$start_time-1)*60;
-	$time = ceil($time/60);
-
-	if ($time <= 0) {
-		$time += 24;
-	}
+	$time = $_POST['num_hours'];
 	$_SESSION['traffic_time'] = $time;
-
-//  Store number of hours
-
     $_SESSION['numHours'] = $time;
 
 //  Store traffic levels
