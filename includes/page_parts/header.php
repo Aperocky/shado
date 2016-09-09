@@ -1,4 +1,7 @@
-<?php session_start();?>
+<?php 
+	session_start();
+	// require_once('init.php');
+?>
 <html>
 	<head>
 		<meta charset="UTF-8">

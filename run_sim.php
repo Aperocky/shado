@@ -1,6 +1,19 @@
 <?php
 	session_start();
 
+//	Connect to database
+
+	require_once('init.php');
+	$conn = connect_database();
+
+	$sql = 'INSERT INTO runs(hours) values("' . $_SESSION['numHours'] . '")';
+
+	if ($conn->query($sql) === TRUE) {
+    	echo "New record created successfully";
+	} else {
+	    echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+
 //	!!!Remember to later close file
 
 //	Create parameter file

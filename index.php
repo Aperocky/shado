@@ -2,7 +2,7 @@
 //	Start session
 
 	session_unset();
-	session_destroy();
+	// session_destroy();
 	if (empty($_SESSION['session_started'])) {
 		require_once('includes/session_management/set_session_vars.php');
 	}

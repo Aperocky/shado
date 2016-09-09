@@ -114,4 +114,3 @@
     $_SESSION['session_started'] = true;
 
     // print_r($_SESSION);
-?>
