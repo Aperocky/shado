@@ -6,8 +6,8 @@
 
 		// $file_handle=fopen('sessions/'. $user . '_stats.csv','r');
 		// $file=fopen('sessions/mod_type_data_'. $user. '.txt',"w");
-		$file_handle=fopen($_SESSION['dir'] . $user . '_stats.csv','r');
-		$file=fopen($_SESSION['dir'] . 'mod_type_data_'. $user. '.txt',"w");
+		$file_handle=fopen($_SESSION['session_dir'] . $user . '_stats.csv','r');
+		$file=fopen($_SESSION['session_dir'] . 'mod_type_data_'. $user. '.txt',"w");
 
 		$count=array();
 		$s_dev=array();

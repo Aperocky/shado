@@ -1,29 +1,60 @@
-/* Color themes */
+/****************************************************************************
+*																			*
+*	File:		global_styles.php  											*
+*																			*
+*	Author:		Branch Vincent												*
+*																			*
+*	Date:		Sep 9, 2016													*
+*																			*
+*	Purpose:	This file defines the global stying of the webpages.		*
+*																			*
+****************************************************************************/
 
 <?php
 	$color_theme_dark_blue = '#467FC9';
 	$color_theme_light_blue = '#75D3FE';
 ?>
 
-/****************************************************
-*													*
-*	Section:	Page Parts							*
-*													*
-****************************************************/
+/****************************************************************************
+*																			*
+*	Section:	Page Parts													*
+*																			*
+*	Purpose:	This section defines the general page styles 				*
+*																			*
+****************************************************************************/
 
 h1, h2, h3, h4 {
-   /*font-size: 1em !important;*/
-   /*color: #000 !important;*/
    font-family: Arial;
-   /*!important;*/
 }
+
+/*	Page Body	*/
 
 body {
 	margin: 0;
 }
 
-/*#fixedAll {
-}*/
+#main {
+	margin-top: 168px;
+	margin-bottom: 20px;
+}
+
+h1 {
+	color: #19334d;
+	/*font-family: Verdana, Geneva, sans-serif;*/
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
+	font-size: 32px;
+}
+
+#title {
+	background: <?php echo $color_theme_dark_blue; ?>;
+	height:120px;
+}
+
+#title h1 {
+	color: white;
+}
+
+/*	Page Header	*/
 
 #fixedHead {
 	position: fixed;
@@ -32,6 +63,14 @@ body {
 	width: 100%;
 	z-index: 999;
 }
+
+#fixedHead h1 {
+	margin: 0;
+	padding: 40px;
+	padding-bottom: 0;
+}
+
+/*	Page Body	*/
 
 #fixedBody {
 	position: fixed;
@@ -42,11 +81,7 @@ body {
 	z-index: -999;
 }
 
-#fixedHead h1 {
-	margin: 0;
-	padding: 40px;
-	padding-bottom: 0;
-}
+/*	Top Navigation	*/
 
 #topNav ul {
 	list-style-type: none;
@@ -83,6 +118,8 @@ body {
 #topNav li a.active {
 	background-color: <?php echo $color_theme_light_blue; ?>;
 }
+
+/*	Side Navigation	*/
 
 #sideNav ul {
     list-style-type: none;
@@ -170,11 +207,14 @@ div.accordion-content.show {
     max-height: 500px;
 }
 
+/*	Bottom Navigation	*/
+
 #bottomNav {
 	display: table;
 	margin: auto;
 	/*border: 1px solid red;*/
 }
+
 #bottomNav ul {
 	list-style-type: none;
 	margin: auto;
@@ -193,13 +233,7 @@ div.accordion-content.show {
 	/*border: 1px solid red;*/
 }
 
-/*#bottomNav li {
-	display: inline-block;
-	color: white;
-	text-align: center;
-	padding: 12px 17px;
-	text-decoration: none;
-}*/
+/*	Page Footer	*/
 
 /*#fixedFooter {
 	position: fixed;
@@ -234,16 +268,14 @@ div.accordion-content.show {
 	margin-bottom: 5px;
 }*/
 
-/****************************************************
-*													*
-*	Section:	General								*
-*													*
-****************************************************/
+/****************************************************************************
+*																			*
+*	Section:	General														*
+*																			*
+*	Purpose:	This section defines...										*
+*																			*
+****************************************************************************/
 
-#main {
-	margin-top: 168px;
-	margin-bottom: 20px;
-}
 
 .printPdf {
 	background-image: url("../images/print.png");
@@ -314,11 +346,13 @@ div.accordion-content.show {
 	background-color: rgba(255, 255, 255, 0.6);
 }
 
-/****************************************************
-*													*
-*	Section:	RunSim Settings						*
-*													*
-****************************************************/
+/****************************************************************************
+*																			*
+*	Section:	Run Sim														*
+*																			*
+*	Purpose:	This section defines...										*
+*																			*
+****************************************************************************/
 
 /*.centerText {
 	text-align: center;
@@ -380,49 +414,21 @@ div.accordion-content.show {
 	margin-right: auto;
 }
 
-/*#assistantsTable td {
-	padding: 5px;
-}*/
-
-h1 {
-	color: #19334d;
-	/*font-family: Verdana, Geneva, sans-serif;*/
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
-	font-size: 32px;
-}
-
-#title {
-	background: <?php echo $color_theme_dark_blue; ?>;
-	height:120px;
-}
-
-#title h1 {
-	color: white;
-}
-
-#note {
-	position:relative;
-	left: 0%;
-}
-
 p {
 	font-size: 20px;
-}
-
-#contactFormInner {
-	/*text-align: center;*/
-	/*align-content: left;*/
 }
 
 .whiteFont {
 	color: white;
 }
 
-/****************************************************
-*													*
-*	Section:	Table formatting					*
-*													*
-****************************************************/
+/****************************************************************************
+*																			*
+*	Section:	Tables														*
+*																			*
+*	Purpose:	This section defines...										*
+*																			*
+****************************************************************************/
 
 table, th, td {
     border: 1px solid black;
@@ -467,11 +473,13 @@ th {
 
  }
 
-/****************************************************
-*													*
-*	Section:	Tool tips							*
-*													*
-****************************************************/
+/****************************************************************************
+*																			*
+*	Section:	Tool Tips													*
+*																			*
+*	Purpose:	This section defines...										*
+*																			*
+****************************************************************************/
 
 /* Tooltip container */
 .tooltip1 {
@@ -515,11 +523,13 @@ th {
 	border-radius: 8px;
 }
 
-/****************************************************
-*													*
-*	Section:	Operator Summary					*
-*													*
-****************************************************/
+/****************************************************************************
+*																			*
+*	Section:	Operator Summary											*
+*																			*
+*	Purpose:	This section defines...										*
+*																			*
+****************************************************************************/
 
 .operatorSummaryOuter {
 	text-align: center;
@@ -563,11 +573,14 @@ th {
 }
 
 
-/****************************************************
-*													*
-*	Section:	graph text box					*
-*													*
-****************************************************/
+/****************************************************************************
+*																			*
+*	Section:	Graph Text Boxes											*
+*																			*
+*	Purpose:	This section defines...										*
+*																			*
+****************************************************************************/
+
 #graphNav ul {
 	list-style-type: none;
 	margin: 0;
@@ -633,12 +646,13 @@ th {
  	background-color: rgba(255, 255, 255, 0.6);
 }
 
-
-/****************************************************
-*													*
-*	Section:	d3 visualizaiton					*
-*													*
-****************************************************/
+/****************************************************************************
+*																			*
+*	Section:	D3 Visuals													*
+*																			*
+*	Purpose:	This section defines...										*
+*																			*
+****************************************************************************/
 
 .operator{
 	text-align: center;

@@ -10,7 +10,6 @@
 
 	function createSummary($user) {
 		session_start();
-		$curr_page=$user.'_summary';
 		$page_title='Print Report';	?>
 
 	<div id="print-content">
@@ -28,12 +27,12 @@
 
 		include('includes/results/d3_graph.php');
 		createGraphCsv($user);
-		graphTextStatic($_SESSION['dir'] . $user. '_stats.csv');
+		graphTextStatic($_SESSION['session_dir'] . $user. '_stats.csv');
 
 		$user = "Conductor";
 		include('includes/results/d3_graph.php');
 		createGraphCsv($user);
-		graphTextStatic($_SESSION['dir'] . $user. '_stats.csv');
+		graphTextStatic($_SESSION['session_dir'] . $user. '_stats.csv');
 		echo "</div>";
 		require_once('includes/page_parts/footer.php');
 	}

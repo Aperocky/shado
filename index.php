@@ -1,18 +1,29 @@
 <?php
-//	Start session
+
+/****************************************************************************
+*																			*
+*	File:		index.php  													*
+*																			*
+*	Author:		Branch Vincent												*
+*																			*
+*	Date:		Sep 9, 2016													*
+*																			*
+*	Purpose:	This file sets the homepage.								*
+*																			*
+****************************************************************************/
+
+//	Initialize session
 
 	session_unset();
-	// session_destroy();
-	if (empty($_SESSION['session_started'])) {
-		require_once('includes/session_management/set_session_vars.php');
-	}
+	session_destroy();
+	if (!empty($_SESSION['session_started'])) session_destroy();
+	require_once('includes/session_management/init.php');
 
-//	Include header
+//	Include page header
 
 	$page_title = 'SHOW';
-	$curr_page = 'homePage';
 	require_once('includes/page_parts/header.php');
-	// print_r($_SESSION['dir']);
+	print_r($_SESSION);
 ?>
 			<div id="homePage" class="page">
 				<h1 class="pageTitle">Welcome to the SHOW!</h1>

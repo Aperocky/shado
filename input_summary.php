@@ -5,20 +5,14 @@
 	$traffic['0.5']=1.0;
 	$traffic['1']=2.0;
 	$traffic['2']=3.0;
-	$time=$_SESSION['traffic_time'];
-	$traffic_level=array();
-	for($x = 0; $x < $time; $x++) {
-		// $traffic_level[]=$_SESSION['traffic_level'.$x];
-		$traffic_level[]=$_SESSION['traffic_level'][$x];
-	}
 
-	$file = fopen($_SESSION['dir'] . "input_summary.txt", "w");
+	$file = fopen($_SESSION['session_dir'] . "input_summary.txt", "w");
 	fwrite($file,"time,");
 	fwrite($file,"t_level\n");
-	for($i=0;$i<$time;$i++)
+	for ($i = 0; $i < $_SESSION['numHours']; $i++)
 	{
 		fwrite($file,"Hour ". ($i+1) .",");
-		fwrite($file,$traffic[(string)$traffic_level[$i]]."\n");
+		fwrite($file, $traffic[(string)$_SESSION['traffic_levels'][$i]] . "\n");		//	!!Fix
 	}
 	fclose($file);
 ?>
@@ -73,7 +67,7 @@
 <div id="input">
 	<h3 style="text-align: center;"> <u>Input summary</u></h3>
 	<ul>
-	<li>Duration of the trip: <?php echo $time." hours"; ?></li>
+	<li>Duration of the trip: <?php echo $_SESSION['numHours'] . " hours"; ?></li>
 	<br>
 	<li> Traffic levels for this particular shift:</li>
 	<div id="input_summary" class="no-page-break"></div>
@@ -102,7 +96,7 @@
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 
-var temp= <?php echo $time; ?>;
+var temp= <?php echo $_SESSION['numHours']; ?>;
 
 var margin = {top: 20, right: 50, bottom: 80, left: 50},
     width = 960,
@@ -137,7 +131,7 @@ var svg_summary = d3.select("#input_summary").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // d3.csv("sessions/input_summary.txt", type, function(error, data) {
-// d3.csv('<?php echo $_SESSION['dir'] . "input_summary.txt"; ?>', type, function(error, data) {
+// d3.csv('<?php echo $_SESSION['session_dir'] . "input_summary.txt"; ?>', type, function(error, data) {
 d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
 
   if (error) throw error;

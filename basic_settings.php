@@ -1,7 +1,6 @@
 <?php
-	session_start();
+	require_once('includes/session_management/init.php');
 	$page_title = 'Run Simulation';
-	$curr_page = 'runSimPage';
 	$html_head_insertions = '<script type="text/javascript" src="scripts/basic_settings.js"></script>';
 	$html_head_insertions .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>';
 	require_once('includes/page_parts/header.php');
@@ -36,10 +35,10 @@
 					<select id='beginHour' onchange="calculate_time();">
 						<?php
 							for ($i = 1; $i <= 12; $i++) {
-								$selected_string = '';
-								if ($i == 9) $selected_string = ' selected="selected"';
+								$selected = '';
+								if ($i == 9) $selected = ' selected="selected"';
 								$val = sprintf('%02d', $i);
-								echo "<option$selected_string>$val</option>";
+								echo "<option$selected>$val</option>";
 							}
 						?>
 					</select>:<select id='beginMin' onchange="calculate_time();">
@@ -64,10 +63,10 @@
 					<select id='endHour' onchange="calculate_time();">
 						<?php
 							for ($i = 1; $i <= 12; $i++) {
-								$selected_string = '';
-								if ($i == 5) $selected_string = ' selected="selected"';
+								$selected = '';
+								if ($i == 5) $selected = ' selected="selected"';
 								$val = sprintf('%02d', $i);
-								echo "<option$selected_string>$val</option>";
+								echo "<option$selected>$val</option>";
 							}
 						?>
 					</select>:<select id='endMin' onchange="calculate_time();">
@@ -109,16 +108,16 @@
 					<table id="assistantsTable" cellspacing="0">
 						<tr>
 							<td>
-								<input type="checkbox" name="extra1" value="1" id="conductor">Conductor  <span class="tooltip" onmouseover="tooltip.pop(this, 'The freight conductor supervises train conditions on the ground at terminal points and remains attentive to the engineer while the train is in motion in the case of emergency, when action could be needed ')"><sup>(?)</sup></span>
+								<input type="checkbox" name="assistant_1" value="1" id="conductor">Conductor  <span class="tooltip" onmouseover="tooltip.pop(this, 'The freight conductor supervises train conditions on the ground at terminal points and remains attentive to the engineer while the train is in motion in the case of emergency, when action could be needed ')"><sup>(?)</sup></span>
 							</td>
 							<td>
-								<input type="checkbox" name="extra2" value="2" id="train_c">Positive Train Control  <span class="tooltip" onmouseover="tooltip.pop(this, 'PTC is an embedded feature of railroads set to be fully implemented by 2018. It automatically manages speed restrictions and emergency braking without human input ')"><sup>(?)</sup></span>
+								<input type="checkbox" name="assistant_2" value="2" id="train_c">Positive Train Control  <span class="tooltip" onmouseover="tooltip.pop(this, 'PTC is an embedded feature of railroads set to be fully implemented by 2018. It automatically manages speed restrictions and emergency braking without human input ')"><sup>(?)</sup></span>
 							</td>
 							<td>
-								<input type="checkbox" name="extra3" value="3" id="cruise_control">Cruise Control  <span class="tooltip" onmouseover="tooltip.pop(this, ' CC can offload motion planning tasks that involve the locomotive control system of throttle and dynamic braking ')"><sup>(?)</sup></span>
+								<input type="checkbox" name="assistant_3" value="3" id="cruise_control">Cruise Control  <span class="tooltip" onmouseover="tooltip.pop(this, ' CC can offload motion planning tasks that involve the locomotive control system of throttle and dynamic braking ')"><sup>(?)</sup></span>
 							</td>
 							<td>
-								<input type="checkbox" name="extra4" value="4" id="other" onchange="check()">Custom
+								<input type="checkbox" name="assistant_4" value="4" id="other" onchange="check()">Custom
 							</td>
 						</tr>
 					</table>
@@ -132,12 +131,13 @@
 				<table id='custom_table' class='customTable'>
 					<tr>
 						<th>Assistant Name:</td>
-						<td><input type='text' id='custom_name' name="custom_name" value="<?php echo $_SESSION['operators']['Custom']; ?>"></input></td>
+						<td><input type='text' id='custom_name' name="custom_op_name"></input></td>
+						<!-- echo <?php if (isset($_SESSION['operators']['Custom'])) echo 'value="' . $_SESSION['operators']['Custom'] . '"'?> -->
 					</tr>
 				<?php
 					for($i = 0; $i < $_SESSION['numTaskTypes']; $i++)
 					{
-						echo "<tr><td>" . $_SESSION['taskNames'][$i] . "  <span class='tooltip' onmouseover='tooltip.pop(this, &apos;" . $_SESSION['taskDescription'][$_SESSION['taskNames'][$i]] . "&apos;)'><sup>(?)</sup></span></td><td><input type='checkbox' name='custom" . $i . "' value='y'";
+						echo "<tr><td>" . $_SESSION['taskNames'][$i] . "  <span class='tooltip' onmouseover='tooltip.pop(this, &apos;" . $_SESSION['taskDescription'][$_SESSION['taskNames'][$i]] . "&apos;)'><sup>(?)</sup></span></td><td><input type='checkbox' name='custom_op_task_" . $i . "' value='y'";
 						if(($key = array_search(4, $_SESSION['taskAssocOps'][$i])) !== false) {
 			                echo ' checked';
 			            }

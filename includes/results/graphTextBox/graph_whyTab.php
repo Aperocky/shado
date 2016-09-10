@@ -99,7 +99,7 @@
 	<?php
 		$check=0;
 		$id=0;
-		if(array_sum(array_slice($traffic,0,$time/2))>=array_sum(array_slice($traffic,$time/2,$time))){
+		if(array_sum(array_slice($traffic,0,$_SESSION['numHours']/2))>=array_sum(array_slice($traffic,$_SESSION['numHours']/2,$_SESSION['numHours']))){
 			for($i=2+$length/2;$i<$num;$i++){
 				if($count[10][$i]>0.7){
 					$check=1.0;

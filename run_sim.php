@@ -3,16 +3,16 @@
 
 //	Connect to database
 
-	require_once('init.php');
-	$conn = connect_database();
-
-	$sql = 'INSERT INTO runs(hours) values("' . $_SESSION['numHours'] . '")';
-
-	if ($conn->query($sql) === TRUE) {
-    	echo "New record created successfully";
-	} else {
-	    echo "Error: " . $sql . "<br>" . $conn->error;
-	}
+	// require_once('init.php');
+	// $conn = connect_database();
+	//
+	// $sql = 'INSERT INTO runs(hours) values("' . $_SESSION['numHours'] . '")';
+	//
+	// if ($conn->query($sql) === TRUE) {
+    // 	echo "New record created successfully";
+	// } else {
+	//     echo "Error: " . $sql . "<br>" . $conn->error;
+	// }
 
 //	!!!Remember to later close file
 
@@ -21,8 +21,8 @@
 	// unlink($_SESSION['files']['params']) or die("did not unlink");
 	// $_SESSION['files']['params'] = tempnam(sys_get_temp_dir(), "params");
 
-	$file = fopen($_SESSION['dir'] . "params", "w") or die("Unable to open parameter file.");
-	fwrite($file, "output_path\t\t" . $_SESSION['dir'] . "\n");
+	$file = fopen($_SESSION['session_dir'] . "params", "w") or die("Unable to open parameter file.");
+	fwrite($file, "output_path\t\t" . $_SESSION['session_dir'] . "\n");
 	fwrite($file, "num_hours\t\t" . $_SESSION['numHours'] . "\n");
 	fwrite($file, "traff_levels\t" . implode(" ", $_SESSION['traffic_levels']) . "\n");
 	fwrite($file, "num_reps\t\t" . $_SESSION['numReps'] . "\n");
@@ -48,9 +48,9 @@
 //	Run simulation
 
 	if (PHP_OS == "Darwin") {
-		echo passthru("bin/des_1.1_mac " . $_SESSION['dir'] . "params");
+		echo passthru("bin/des_1.1_mac " . $_SESSION['session_dir'] . "params");
 	} else if (PHP_OS == "Linux") {
-		exec("bin/des_1.1_unix " . $_SESSION['dir'] . "params");
+		exec("bin/des_1.1_unix " . $_SESSION['session_dir'] . "params");
 	} else {
 		die("Operating system not recognized.");
 	}

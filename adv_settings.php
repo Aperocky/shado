@@ -1,7 +1,5 @@
 <?php
-	session_start();
 	$page_title = 'Advanced Settings';
-	$curr_page = 'advSettingsPage';
 	$html_head_insertions = '<script type="text/javascript" src="scripts/adv_settings.js"></script>';
 	require_once('includes/page_parts/header.php');
 	require_once('includes/run_sim/side_navigation.php');

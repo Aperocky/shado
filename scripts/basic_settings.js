@@ -1,16 +1,46 @@
-window.onload = init;
+/****************************************************************************
+*																			*
+*	File:		basic_settings.js  											*
+*																			*
+*	Author:		Branch Vincent												*
+*																			*
+*	Date:		Sep 9, 2016													*
+*																			*
+*	Purpose:	This file makes calculations for the basic input settings 	*
+*				page.														*
+*																			*
+****************************************************************************/
+
+jQuery.noConflict()(function ($) {
+    $(document).ready(init());
+});
+
+/****************************************************************************
+*																			*
+*	Function:	init														*
+*																			*
+*	Purpose:	To initialize the page with the correct traffic table size 	*
+*																			*
+****************************************************************************/
 
 function init() {
 	console.log("Window has loaded!");
-	// moment().format();
 	calculate_time();
 }
+
+/****************************************************************************
+*																			*
+*	Function:	calculate_time												*
+*																			*
+*	Purpose:	To calculate the time difference between the provided 		*
+*				inputs														*
+*																			*
+****************************************************************************/
 
 function calculate_time() {
 
 //	Get times and calculate hour difference
 
-	console.log("Time has changed!");
 	var begin_time = get_date('begin');
 	var end_time = get_date('end');
 	var hours = get_hour_diff(begin_time, end_time);
@@ -18,13 +48,13 @@ function calculate_time() {
 
 //	Store new times
 
-	$('#begin_time').val(begin_time.format("h:mm A"));
-	$('#end_time').val(end_time.format("h:mm A"));
-	$('#num_hours').val(hours);
+	jQuery('#begin_time').val(begin_time.format("h:mm A"));
+	jQuery('#end_time').val(end_time.format("h:mm A"));
+	jQuery('#num_hours').val(hours);
 
 //	Empty traffic table
 
-	$('#table').empty();
+	jQuery('#table').empty();
 	var table = document.getElementById('table');
 	var row = table.insertRow(0);
 
@@ -50,23 +80,45 @@ function calculate_time() {
 	}
 }
 
-//	Returns a date created from the specified input divison
+/****************************************************************************
+*																			*
+*	Function:	get_date													*
+*																			*
+*	Purpose:	To create a date from the current input in the specified 	*
+*				html division		 										*
+*																			*
+****************************************************************************/
 
 function get_date(html_div) {
-	var hr = $('#' + html_div + 'Hour').val();
-	var min = $('#' + html_div + 'Min').val();
-	var md = $('#' + html_div + 'Md').val();
+	var hr = jQuery('#' + html_div + 'Hour').val();
+	var min = jQuery('#' + html_div + 'Min').val();
+	var md = jQuery('#' + html_div + 'Md').val();
 	time = hr + ':' + min + ' ' + md;
 	return moment("2016-01-01 " + time, "YYYY-MM-DD HH:mm A");
 }
 
-//	Returns the number of hours between two dates
+/****************************************************************************
+*																			*
+*	Function:	get_hour_diff												*
+*																			*
+*	Purpose:	To calculate the number of hours between the two 			*
+*				specified dates 											*
+*																			*
+****************************************************************************/
 
 function get_hour_diff(date1, date2) {
 	if (date1 >= date2) date2.add(1, 'day');
 	var mins = date2.diff(date1, 'minutes');
 	return Math.ceil(mins / 60);
 }
+
+/****************************************************************************
+*																			*
+*	Function:	check														*
+*																			*
+*	Purpose:	To toggle the visibility of the custom operator settings 	*
+*																			*
+****************************************************************************/
 
 function check() {
 	var id = document.getElementById('other').checked;
@@ -76,17 +128,3 @@ function check() {
 		document.getElementById('custom').style.display = 'none';
 	}
 }
-
-// function setup_nav() {
-// 	var navToStartTime = document.getElementById("navToStartTime");
-// 	navToStartTime.onclick =
-// 	console.log(navToStartTime);
-// }
-
-// function navClick(domElement) {
-// 	if (domElement.id == "navToStartTime") {
-// 		$('html, body').animate({
-// 			scrollTop: $(".startEndTimeStepOuter").offset().top -120
-// 		}, 500);
-// 	}
-// }

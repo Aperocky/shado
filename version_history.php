@@ -1,6 +1,5 @@
 <?php
 	$page_title = 'Current Version';
-	$curr_page = 'versionPage';
 	require_once('includes/page_parts/header.php');
 ?>
 			<div id="versionPage" class="page">

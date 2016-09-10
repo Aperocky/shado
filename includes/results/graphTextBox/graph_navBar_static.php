@@ -1,34 +1,16 @@
 <?php
 
 	function graphTextStatic($fname){
+
 		session_start();
-		$traffic=array();
-		if(isset($_SESSION['traffic_time'])){
-			$time=$_SESSION['traffic_time'];
-			for($i=0;$i<$time;$i++){
-				// $traffic[$i]=$_SESSION['traffic_level'.$i];
-				$traffic[$i]=$_SESSION['traffic_level'][$i];
-			}
-		}
 
-		// $type_names=array();
-		// $type_names[0]="Communicating";
-		// $type_names[1]="Exception Handling";
-		// $type_names[2]="Paperwork";
-		// $type_names[3]="Maintenance of Way";
-		// $type_names[4]="Temporary Speed Restrictions";
-		// $type_names[5]="Signal Response Management";
-		// $type_names[6]="Monitoring Inside";
-		// $type_names[7]="Monitoring Outside";
-		// $type_names[8]="Planning Ahead";
+		$file_handle = fopen($fname,'r');
+		$count = array();
+		$temp_count = 0;
+		$skip = 1;
+		$num = 0;
 
-		$file_handle=fopen($fname,'r');
-		$count=array();
-		$temp_count=0;
-		$skip=1;
-		$num=0;
-
-		while (! feof($file_handle)) {
+		while (!feof($file_handle)) {
 			if($temp_count==1) {
 				$skip=1;
 			}
@@ -198,21 +180,11 @@
 
 		$penalty_high=$penalty_high/$count_high;
 
-		if ($fname == $_SESSION['dir'] . 'Engineer_stats.csv') {
+		if ($fname == $_SESSION['session_dir'] . 'Engineer_stats.csv') {
 			$user_name='engineer';
 		} else {
 			$user_name='conductor';
 		}
-		// echo $user_name;
-		// echo "<br><br><br><br><br><br><div id='graphTextBox'>
-		// 	<nav id='graphNav'>
-		// 		<ul>
-		// 			<li style='background-color: #75D3FE ;'>When?</li>
-		// 			<li style='background-color: #555 ;'>Why?</li>
-		// 		</ul>
-		// 	</nav>";
-		//
-		// require_once("includes/results/graphTextBox/graph_whenTab.php");
 
 		echo "</div><br><br><br><br><br><br>
 		<div id='graphTextBox' class='no-page-break'>

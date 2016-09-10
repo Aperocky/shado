@@ -1,6 +1,5 @@
 <?php
 	$page_title = 'Contact Us';
-	$curr_page = 'contactPage';
 	require_once('includes/page_parts/header.php');
 ?>
 			<div id="contactPage" class="page">
