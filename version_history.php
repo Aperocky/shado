@@ -1,4 +1,22 @@
 <?php
+/****************************************************************************
+*																			*
+*	File:		version_history.php  										*
+*																			*
+*	Author:		Branch Vincent												*
+*																			*
+*	Date:		Sep 9, 2016													*
+*																			*
+*	Purpose:	This file sets the version history page.					*
+*																			*
+****************************************************************************/
+
+//	Initialize session
+
+	require_once('includes/session_management/init.php');
+
+//	Include page header
+
 	$page_title = 'Current Version';
 	require_once('includes/page_parts/header.php');
 ?>
@@ -14,4 +32,4 @@
 					<li>Change the number of replications.</li>
 				</ul>
 			</div>
-<?php require_once("includes/page_parts/footer.php");?>
+<?php require_once('includes/page_parts/footer.php');?>

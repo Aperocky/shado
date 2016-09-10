@@ -3,7 +3,7 @@
 	include('includes/results/read_csv.php');
 	$page_title = 'Results';
 	require_once('includes/page_parts/header.php');
-	require_once('includes/run_sim/side_navigation.php');
+	require_once('includes/page_parts/side_navigation.php');
 	require_once('operator_calculations.php');
 	require_once('operator.html');
 ?>

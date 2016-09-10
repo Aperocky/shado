@@ -1,10 +1,28 @@
 <?php
+/****************************************************************************
+*																			*
+*	File:		basic_settings.php  										*
+*																			*
+*	Author:		Branch Vincent												*
+*																			*
+*	Date:		Sep 9, 2016													*
+*																			*
+*	Purpose:	This page allows the user to change basic settings for the 	*
+*				simulation. 												*
+*																			*
+****************************************************************************/
+
+//	Initialize session
+
 	require_once('includes/session_management/init.php');
+
+//	Set header info
+
 	$page_title = 'Run Simulation';
 	$html_head_insertions = '<script type="text/javascript" src="scripts/basic_settings.js"></script>';
 	$html_head_insertions .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>';
 	require_once('includes/page_parts/header.php');
-	require_once('includes/run_sim/side_navigation.php');
+	require_once('includes/page_parts/side_navigation.php');
 ?>
 	<div id="runSimulationPage" class="page">
 		<h1 class="pageTitle">Input Basic Trip Conditions</h1>
@@ -90,14 +108,12 @@
 				<div class='stepCircle'>3</div>
 					<h3 class="whiteFont">
 						What are the Traffic Levels?
-						<span class="tooltip" onmouseover="tooltip.pop(this, 'Enter the local levels of traffic during this shift. This will modify the frequency of certain tasks arriving.')"><sup>(?)</sup></span>
+						<span class="tooltip" onmouseover="tooltip.pop(this, 'Enter the projected levels of traffic during this shift. This will modify the frequency of certain tasks arriving.')"><sup>(?)</sup></span>
 					</h3>
-					<span class="tooltip" onmouseover="tooltip.pop(this, 'What is the projected level of traffic on your railroad for this particular shift?')">
-						<div id="totalTime" style="overflow-x:auto;">
-							<table id='table' class='trafficTable'>
-							</table>
-						<!-- </div> -->
-					</span>
+					<div id="totalTime" style="overflow-x:auto;">
+						<table id='table' class='trafficTable'>
+						</table>
+					<!-- </div> -->
 				</div>
 			</div>
 			<br><br>
@@ -107,42 +123,57 @@
 				<div id="assist" style="overflow-x: auto;">
 					<table id="assistantsTable" cellspacing="0">
 						<tr>
-							<td>
-								<input type="checkbox" name="assistant_1" value="1" id="conductor">Conductor  <span class="tooltip" onmouseover="tooltip.pop(this, 'The freight conductor supervises train conditions on the ground at terminal points and remains attentive to the engineer while the train is in motion in the case of emergency, when action could be needed ')"><sup>(?)</sup></span>
-							</td>
-							<td>
-								<input type="checkbox" name="assistant_2" value="2" id="train_c">Positive Train Control  <span class="tooltip" onmouseover="tooltip.pop(this, 'PTC is an embedded feature of railroads set to be fully implemented by 2018. It automatically manages speed restrictions and emergency braking without human input ')"><sup>(?)</sup></span>
-							</td>
-							<td>
-								<input type="checkbox" name="assistant_3" value="3" id="cruise_control">Cruise Control  <span class="tooltip" onmouseover="tooltip.pop(this, ' CC can offload motion planning tasks that involve the locomotive control system of throttle and dynamic braking ')"><sup>(?)</sup></span>
-							</td>
-							<td>
-								<input type="checkbox" name="assistant_4" value="4" id="other" onchange="check()">Custom
-							</td>
+							<?php
+								$assistant_names = array_keys($_SESSION['assistants']);
+								for ($i = 1; $i < sizeof($assistant_names); $i++) {
+									$assistant = $assistant_names[$i];
+									echo '<td><input ';
+									if ($assistant == 'custom') echo 'id="custom_assistant" onchange="toggle_custom_settings();"';
+									echo 'type="checkbox" name="assistant_' . $i . '">' . ucwords($assistant) . ' ';
+									echo '<span class="tooltip" onmouseover="tooltip.pop(this, \'' . $_SESSION['assistants'][$assistant]['description'] . '\')"><sup>(?)</sup></span>';
+									echo '</td>';
+								}
+							?>
 						</tr>
 					</table>
 				</div>
 			</div>
 			<br>
-			<div class="custom" id="custom">
+			<div class="custom remove" id="custom_assistant_settings">
 				<div class='stepCircle'>5</div>
-				<h3 id='custom_heading' class='whiteFont'>Which Tasks Will This Custom Assistant Handle? <span class="tooltip" onmouseover="tooltip.pop(this,'Identify the name and which tasks the custom assistant(s) can offload from the locomotive engineer workload')"><sup>(?)</sup></span></h3>
+				<h3 id='custom_heading' class='whiteFont'>Which Tasks Will This Custom Assistant Handle? <span class="tooltip" onmouseover="tooltip.pop(this,'Identify which tasks the custom assistant can offload from the locomotive engineer workload')"><sup>(?)</sup></span></h3>
 				<br>
-				<table id='custom_table' class='customTable'>
+				<table id='custom_table'>
 					<tr>
+						<?php $custom_name = $_SESSION['assistants']['custom']['name']; ?>
 						<th>Assistant Name:</td>
-						<td><input type='text' id='custom_name' name="custom_op_name"></input></td>
-						<!-- echo <?php if (isset($_SESSION['operators']['Custom'])) echo 'value="' . $_SESSION['operators']['Custom'] . '"'?> -->
+						<td><input type='text' name="custom_op_name" value="<?php if ($custom_name != 'custom') echo ucwords($custom_name); ?>"></input></td>
 					</tr>
 				<?php
-					for($i = 0; $i < $_SESSION['numTaskTypes']; $i++)
-					{
-						echo "<tr><td>" . $_SESSION['taskNames'][$i] . "  <span class='tooltip' onmouseover='tooltip.pop(this, &apos;" . $_SESSION['taskDescription'][$_SESSION['taskNames'][$i]] . "&apos;)'><sup>(?)</sup></span></td><td><input type='checkbox' name='custom_op_task_" . $i . "' value='y'";
-						if(($key = array_search(4, $_SESSION['taskAssocOps'][$i])) !== false) {
-			                echo ' checked';
-			            }
-						echo "></input></td></tr>";
+					if (isset($_SESSION['assistants']['custom']))
+						$custom_tasks = $_SESSION['assistants']['custom']['tasks'];
+					else
+						$custom_tasks = array();
+					$task_names = array_keys($_SESSION['tasks']);
+
+					$i = 0;
+					foreach ($task_names as $task) {
+						echo '<tr><td>' . ucwords($task) . ' <span class="tooltip" onmouseover="tooltip.pop(this, \'' . $_SESSION['tasks'][$task]['description'] . '\')">';
+						echo '<sup>(?)</sup></span></td><td>';
+						echo '<input type="checkbox" name="custom_op_task_' . $i++ . '"';
+						if ($key = array_search($task, $custom_tasks) !== false) echo ' checked';
+						echo '></input>';
+						echo '</td></tr>';
 					}
+
+					// for($i = 0; $i < sizeof($_SESSION['tasks']); $i++)
+					// {
+					// 	echo "<tr><td>" . array_keys($_SESSION['tasks']) . "  <span class='tooltip' onmouseover='tooltip.pop(this, \'" . $_SESSION['taskDescription'][$_SESSION['taskNames'][$i]] . "\';)'><sup>(?)</sup></span></td><td><input type='checkbox' name='custom_op_task_" . $i . "' value='y'";
+					// 	if(($key = array_search(4, $_SESSION['taskAssocOps'][$i])) !== false) {
+			        //         echo ' checked';
+			        //     }
+					// 	echo "></input></td></tr>";
+					// }
 				?>
 				</table>
 			</div>

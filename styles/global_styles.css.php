@@ -70,6 +70,13 @@ h1 {
 	padding-bottom: 0;
 }
 
+#halLogo {
+	position: absolute;
+	left: 0;
+	padding: 20px 20px;
+	width: 250px;
+}
+
 /*	Page Body	*/
 
 #fixedBody {
@@ -718,8 +725,8 @@ div.tooltip {
   fill: blue;
 }
 
-#custom{
-	display: none;
+#custom_assistant_settings{
+	/*display: block;*/
 }
 
 .custom{

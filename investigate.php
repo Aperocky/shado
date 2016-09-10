@@ -3,7 +3,7 @@
 	$html_head_insertions .= '<script type="text/javascript" src="includes/results/d3_graph.js"></script>';
 	$page_title = 'Detailed Analysis';
 	require_once('includes/page_parts/header.php');
-	require_once("includes/run_sim/side_navigation.php");
+	require_once('includes/page_parts/side_navigation.php');
 	require_once('includes/results/graph_navBar_calculations.php');
 	// require_once('includes/results/d3_graph.php');
 	require_once('includes/results/graph_CsvFile.php');

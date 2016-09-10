@@ -1,5 +1,4 @@
 <?php
-
 /****************************************************************************
 *																			*
 *	File:		index.php  													*
@@ -14,16 +13,18 @@
 
 //	Initialize session
 
-	session_unset();
-	session_destroy();
-	if (!empty($_SESSION['session_started'])) session_destroy();
 	require_once('includes/session_management/init.php');
+
+//	Reset session, for testing purposes
+
+	session_unset();
+	include('includes/session_management/set_session_vars.php');
 
 //	Include page header
 
 	$page_title = 'SHOW';
 	require_once('includes/page_parts/header.php');
-	print_r($_SESSION);
+	// print_r($_SESSION);
 ?>
 			<div id="homePage" class="page">
 				<h1 class="pageTitle">Welcome to the SHOW!</h1>
@@ -47,60 +48,15 @@
 					        <th>Task Type</th>
 					        <th>Description</th>
 					    </tr>
-					    <tr>
-					        <td>Communicating</td>
-							<td>
-								Filtering through relevant information for the operation and communicating information that may impact the macro-level network of operations.
-							</td>
-					    </tr>
-						<tr>
-					        <td>Exception Handling</td>
-							<td>
-								Attending to unexpected or unusual situations that must be handled in order to continue with the trip.
-							</td>
-					    </tr>
-						<tr>
-							<td>Paperwork</td>
-							<td>
-								Reviewing and recording operating conditions.
-							</td>
-						</tr>
-						<tr>
-							<td>Maintenance of Way Interactions</td>
-							<td>
-								Maintaining situational awareness of other crews along the track.
-							</td>
-						</tr>
-						<tr>
-							<td>Temporary Speed Restrictions</td>
-							<td>
-								Recalling information issued on track bulletins and adapting to updates while train is in motion.
-							</td>
-						</tr>
-						<tr>
-							<td>Signal Response Management</td>
-							<td>
-								Attentive to direction from track signaling system and responding with proper control system within a safely allotted time.
-							</td>
-						</tr>
-						<tr>
-							<td>Monitoring Inside</td>
-							<td>
-								Attentive to information from displays and of engineer's performance for safe operation.
-							</td>
-						</tr>
-						<tr>
-							<td>Monitoring Outside</td>
-							<td>
-								Attentive to warnings and environmental conditions that may affect operations.
-							</td>
-						</tr>
-						<tr>
-							<td>Planning Ahead</td>
-							<td>
-								Maneuvering locomotive control system for throttle, braking and other subtasks like horn-blowing before railroad crossing. (Key function)
-							</td>
-						</tr>
+						<?php
+							$task_names = array_keys($_SESSION['default_tasks']);
+							foreach ($task_names as $task) {
+								echo '<tr>';
+								echo '<td>' . ucwords($task) . '</td>';
+								echo '<td>' . $_SESSION['default_tasks'][$task]['description'] . '</td>';
+								echo '</tr>';
+							}
+						?>
 					</table>
 				</p>
 				<h2>Getting Started</h2>

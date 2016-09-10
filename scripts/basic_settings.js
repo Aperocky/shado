@@ -26,6 +26,7 @@ jQuery.noConflict()(function ($) {
 function init() {
 	console.log("Window has loaded!");
 	calculate_time();
+    toggle_custom_settings();
 }
 
 /****************************************************************************
@@ -62,22 +63,28 @@ function calculate_time() {
 
 	for (i = 0; i < hours; i++) {
 		var cell = row.insertCell(i);
-		cell.innerHTML = "" +
-		"<input type='radio' name=" + i + " value='h' id='load1'>High</input>"+
-		"<br><input type='radio' name=" + i + " value='m' id='load1' checked>Med</input>"+
-		"<br><input type='radio' name=" + i + " value='l' id='load1'>Low</input>";
+		cell.innerHTML = "";
+		cell.innerHTML += "<input type='radio' name=traffic_level_" + i + " value='h'>High</input>"
+		cell.innerHTML += "<br><input type='radio' name=traffic_level_" + i + " value='m' checked>Med</input>"
+		cell.innerHTML += "<br><input type='radio' name=traffic_level_" + i + " value='l'>Low</input>";
 	}
 
 //	Change hour labels
 
 	var hour_label = begin_time;
-	// hour_label.minutes(0);
 	var row = table.insertRow(1);
 	for (i = 0; i < hours; i++) {
 		var cell = row.insertCell(i);
 		cell.innerHTML = hour_label.format("h A");
 		hour_label.add(1, 'hour');
 	}
+
+//  Add animation to custom assistant
+
+    // var custom = jQuery('#custom_assistant');
+    // custom.onclick = function() {
+    //     jQuery('#custom_assistant_settings').toggleClass('hide');
+    // }
 }
 
 /****************************************************************************
@@ -120,11 +127,14 @@ function get_hour_diff(date1, date2) {
 *																			*
 ****************************************************************************/
 
-function check() {
-	var id = document.getElementById('other').checked;
-	if (id == 1){
-		document.getElementById('custom').style.display = 'block';
-	} else{
-		document.getElementById('custom').style.display = 'none';
-	}
+function toggle_custom_settings() {
+    var checked = jQuery('#custom_assistant').prop('checked') ;
+    if (checked)
+        jQuery('#custom_assistant_settings').removeClass('remove');
+    else
+        jQuery('#custom_assistant_settings').addClass('remove');
+
+    // console.log(test);
+    // if (jQuery('#custom_assistant'))
+    // jQuery('#custom_assistant_settings').toggleClass('hide');
 }

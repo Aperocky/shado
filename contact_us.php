@@ -1,4 +1,22 @@
 <?php
+/****************************************************************************
+*																			*
+*	File:		contact_us.php  											*
+*																			*
+*	Author:		Branch Vincent												*
+*																			*
+*	Date:		Sep 9, 2016													*
+*																			*
+*	Purpose:	This file sets the contact us page.							*
+*																			*
+****************************************************************************/
+
+//	Initialize session
+
+	require_once('includes/session_management/init.php');
+
+//	Include page header
+
 	$page_title = 'Contact Us';
 	require_once('includes/page_parts/header.php');
 ?>
@@ -17,4 +35,4 @@
 					</form>
 				</div>
 			</div>
-<?php require_once("includes/page_parts/footer.php");?>
+<?php require_once('includes/page_parts/footer.php');?>
