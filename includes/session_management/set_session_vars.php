@@ -99,7 +99,7 @@
     $_SESSION['taskDescription']['Signal Response Management'] = "Attentive to direction from track signalling system and responsive with proper control system within safely allotted time";
     $_SESSION['taskDescription']['Monitoring Inside'] = "Attention to information from displays and of engineer performance for safe operation";
     $_SESSION['taskDescription']['Monitoring Outside'] = "Attention to warnings and environmental conditions that may affect operations";
-    $_SESSION['taskDescription']['Planning Ahead'] = "Key function. Manoeuvring locomotive control system for throttle, braking and other subtasks like horn-blowing before railroad crossing";
+    $_SESSION['taskDescription']['Planning Ahead'] = "Manoeuvring locomotive control system for throttle, braking and other subtasks like horn-blowing before railroad crossing";
 
 //  Set operators
 
@@ -114,16 +114,6 @@
     $_SESSION['session_started'] = true;
 
 //  Set task description
-	$_SESSION['text'] = array();
-	$_SESSION['text']['Communicating'] = "&apos; Filtering through the relevant information for the engineer operation and being able to communicate information that may impact the macro-level network of operations. &apos;";
-	$_SESSION['text']['Exception Handling'] = "&apos; Attending to unexpected or unusual situations that must be handled in order to continue with the trip mission &apos;";
-	$_SESSION['text']t['Paperwork'] = "&apos; Reviewing and recording operating conditions &apos;";
-	$_SESSION['text']['Maintenance of Way Interactions'] = "&apos; Maintaining situation awareness of other crews along track &apos;";
-	$_SESSION['text']['Temporary Speed Restrictions'] = "&apos; Recalling information issued on track bulletins and adapting to updates while train in motion &apos;";
-	$_SESSION['text']['Signal Response Management'] = "&apos; Attentive to direction from track signalling system and responsive with proper control system within safely allotted time &apos;";
-	$_SESSION['text']['Monitoring Inside'] = "&apos; Attention to information from displays and of engineer performance for safe operation &apos;";
-	$_SESSION['text']['Monitoring Outside'] = "&apos; Attention to warnings and environmental conditions that may affect operations &apos;";
-	$_SESSION['text']['Planning Ahead'] = "&apos; Key function. Manoeuvring locomotive control system for throttle, braking and other subtasks like horn-blowing before railroad crossing &apos;";
-
+	
 
     // print_r($_SESSION);

@@ -86,12 +86,12 @@
 					if($i>($num-5))
 					{
 						array_push($type_byPhase3[$j], $count[$j][$i]);
-						array_push($type_byPhase[$j], $count[$j][$i]);
+						$type_byPhase[$j]=$type_byPhase[$j]+$count[$j][$i];
 					}
 					else
 					{
 						array_push($type_byPhase2[$j], $count[$j][$i]);
-						array_push($type_byPhase[$j], $count[$j][$i]);
+						$type_byPhase[$j]=$type_byPhase[$j]+$count[$j][$i];
 					}
 				}
 			}
@@ -244,6 +244,7 @@
 		} else {
 			$user_name='conductor';
 		}
+
 		require_once('includes/results/graphTextBox/graph_navBar.php');
 		require_once('includes/results/graphTextBox/graph_whenTab.php');
 		require_once('includes/results/graphTextBox/graph_whyTab.php');

@@ -1,26 +1,29 @@
-	session_start();
+	<?php session_start();
 	$keys=array_keys($type_byPhase);
-	<h4>We simulated <?php echo $_SESSION['numReps']; ?> trips and plotted the mean value per interval of time. The model shows that <?php echo round($type_byPhase[$keys[0]]*100/$length,2); ?>% of the engineer’s workload can be attributed to <?php echo $_SESSION['taskNames'][$keys[0]-1]; ?>. <?php echo $_SESSION['taskNames'][$keys[0]-1]; ?> involves <?php echo $_SESSION['text'][$_SESSION['taskNames'][$keys[0]-1]]; ?>. </h4> 
-	<br>
-	<h4> <?php echo $_SESSION['text'][$_SESSION['taskNames'][$keys[1]-1]]; ?> makes <?php echo $_SESSION['taskNames'][$keys[1]-1]; ?> an important secondary task that accounts for <?php echo round($type_byPhase[$keys[1]]*100/$length,2); ?>% of their total time on task.</h4>
-	<br>
-	<?php if($count_high>0){
-			if($count_low>0){ ?>
-				<h4>During this trip, the engineer spent approximately <?php echo round($count_high*100/$length,2); ?>% of time at or above a high level of workload (>70% utilization) and <?php echo round($count_low*100/$length,2); ?>% with too little work (<30% utilization).</h4>
-			<?php } 
-			else{ ?>
-				<h4>During this trip, the engineer spent approximately <?php echo round($count_high*100/$length,2); ?>% of time at or above a high level of workload (>70% utilization)</h4>
-				<?php } }
-			else{
-				if($count_low>0){ ?>
-				<h4>During this trip, the engineer spent approximately <?php echo round($count_low*100/$length,2); ?>% of time at or above a low level of workload (<30% utilization).</h4>
-	<?php } } ?>
-			
-				
-				
-	<br><br><br>
+	?>
+
+	
 	<div id="text_box" class="why_tab" style="display: none;">
 			<h3 style="text-align: center;"> <u><em>Why</em> is my operator over or under-utilized at work? </u></h3><br>
+			We simulated <?php echo $_SESSION['numReps']; ?> trips and plotted the mean value per interval of time. The model shows that <?php echo round($type_byPhase[$keys[0]]*100/$length,2); ?>% of the engineer’s workload can be attributed to <?php echo $_SESSION['taskNames'][$keys[0]-1]; ?>. <?php echo $_SESSION['taskNames'][$keys[0]-1]; ?> involves <?php echo $_SESSION['taskDescription'][$_SESSION['taskNames'][$keys[0]-1]]; ?>. 
+			<br><br>
+			 <?php echo $_SESSION['taskDescription'][$_SESSION['taskNames'][$keys[1]-1]]; ?> makes <?php echo $_SESSION['taskNames'][$keys[1]-1]; ?> an important secondary task that accounts for <?php echo round($type_byPhase[$keys[1]]*100/$length,2); ?>% of their total time on task.
+			<br><br>
+			<?php if($count_high>0){
+					if($count_low>0){ ?>
+						During this trip, the engineer spent approximately <?php echo round($count_high*100/$length,2); ?>% of time at or above a high level of workload (>70% utilization) and <?php echo round($count_low*100/$length,2); ?>% with too little work (<30% utilization).
+					<?php } 
+					else{ ?>
+						During this trip, the engineer spent approximately <?php echo round($count_high*100/$length,2); ?>% of time at or above a high level of workload (>70% utilization)
+						<?php } }
+					else{
+						if($count_low>0){ ?>
+						During this trip, the engineer spent approximately <?php echo round($count_low*100/$length,2); ?>% of time at or below a low level of workload (<30% utilization).
+			<?php } } ?>
+					
+						
+						
+			<br><br><br>
 			<?php if(max(array_values($count_type_high))>0) { ?>
 			<h3>These combined factors contributed to period of high workload: </h3>
 			<ul>
@@ -29,7 +32,7 @@
 			$high_keys=array_keys($count_type_high);
 			for($j=1;$j<6;$j++)
 			{
-				if((array_sum($type_byPhase[$high_keys[$j-1]])>0) && ($count_type_high[$high_keys[$j-1]]>0))
+				if((($type_byPhase[$high_keys[$j-1]])>0) && ($count_type_high[$high_keys[$j-1]]>0))
 				{
 					echo "<li onclick='display" . ($high_keys[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $_SESSION['taskNames'][$high_keys[$j-1]-1] ."<ul id='high". ($high_keys[$j-1]-1) . "'>";
 
@@ -79,7 +82,7 @@
 	$low_keys=array_keys($count_type_low);
 	for($j=1;$j<6;$j++)
 	{
-		if((array_sum($type_byPhase[$low_keys[$j-1]])>0) && ($count_type_low[$low_keys[$j-1]]>0))
+		if((($type_byPhase[$low_keys[$j-1]])>0) && ($count_type_low[$low_keys[$j-1]]>0))
 		{
 			echo "<li onclick='display" . ($low_keys[$j-1]-1) ."();' style='cursor: pointer; cursor: hand;' class='list'>". $_SESSION['taskNames'][$low_keys[$j-1]-1] ."<ul id='low". ($low_keys[$j-1]-1) . "'>";
 
