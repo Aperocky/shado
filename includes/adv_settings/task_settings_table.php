@@ -50,9 +50,18 @@
             Mean Arrival Time
             <span class="tooltip" onmouseover="tooltip.pop(this, 'What is the average arrival rate for this task? (Note: exponentially distributed)')"><sup>(?)</sup></span>
         </td>
-        <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p0"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][0] != 0) {echo round(1/$_SESSION['taskArrPms'][$taskNum][0],2);} else {echo 0;} ?>" > mins</td>
+        <?php
+            for ($i = 0; $i < 3; $i++) {
+                $arr_pms = $_SESSION['tasks'][$task]['arrPms'][$i];
+                echo '<td>Once every <input type="text" name="t"' . $taskNum .'"_arrTime_p0" size="4" maxlength="4"';
+                echo 'value="';
+                if ($arr_pms != 0) echo round(1/$arr_pms, 2); else echo 0;
+                echo '"> mins</td>';
+            }
+        ?>
+        <!-- <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p0"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][0] != 0) {echo round(1/$_SESSION['taskArrPms'][$taskNum][0],2);} else {echo 0;} ?>" > mins</td>
         <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p1"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][1] != 0) {echo round(1/$_SESSION['taskArrPms'][$taskNum][1],2);} else {echo 0;} ?>"> mins</td>
-        <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p2"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][2] != 0) {echo round(1/$_SESSION['taskArrPms'][$taskNum][2],2);} else {echo 0;} ?>"> mins</td>
+        <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p2"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][2] != 0) {echo round(1/$_SESSION['taskArrPms'][$taskNum][2],2);} else {echo 0;} ?>"> mins</td> -->
     </tr>
     <tr>
         <td>
@@ -66,7 +75,19 @@
         </td>
         <td colspan="3">
             Distribution:
-            <select id=<?php echo "t".$taskNum."_serTimeDist"; ?> name=<?php echo "t".$taskNum."_serTimeDist"; ?> style="margin: 0px 10px" onchange=<?php echo "updateSerDist(".$taskNum.")"; ?> >
+            <?php
+                $dist_char = ["E", "L", "U"];
+                $dist_name = ["Exponential", "Lognormal", "Uniform"];
+                echo '<select id="' . $taskNum . '_serTimeDist" name="t' . $taskNum . '_serTimeDist"';
+                echo 'style="margin: 0px 10px" onchange="updateSerDist(' . $taskNum . ')">';
+                for ($i = 0; $i < 3; $i++) {
+                    echo '<option value="' . $dist_char . '"';
+                    if ($_SESSION['tasks'][$task]['serDist'] == $dist_char[$i]) echo 'selected="selected"';
+                    echo ">$dist_name[$i]</option>";
+                }
+                echo '</select>';
+            ?>
+            <!-- <select id=<?php echo "t".$taskNum."_serTimeDist"; ?> name=<?php echo "t".$taskNum."_serTimeDist"; ?> style="margin: 0px 10px" onchange=<?php echo "updateSerDist(".$taskNum.")"; ?> >
                 <option value="E"
                     <?php
                         if($_SESSION['taskSerDist'][$taskNum]=="E") {
@@ -90,9 +111,23 @@
                         }
                     ?>>
                     Uniform
-                </option>
-            </select>
-            <div id=<?php echo "t".$taskNum."_expPms";?> <?php if($_SESSION['taskSerDist'][$taskNum]=="E" or !$_SESSION['taskSerDist'][$taskNum]) {echo "style='display: inline-block;'";} else {echo "style='display: none;'";} ?> >
+                </option> -->
+            <!-- </select> -->
+            <?php
+                $dist_string = ["exp", "log", "uni"];
+                for ($i = 0; $i < 3; $i++) {
+                    echo '<div id="t' . $taskNum . '_' . $dist_string[$i] . 'Pms" style="display: ';
+                    if ($_SESSION['tasks'][$task]['serDist'] == $dist_char[$i])
+                        echo 'inline-block;"';
+                    else
+                        echo 'none;"';
+                    echo '> Mean: <input type="text" name="t' . $taskNum . '_' . $dist_string[$i] . 'serTime_' . $i . '"';
+                    echo 'size="4" maxlength="4" value="' . round($_SESSION['tasks'][$task]['serPms'][$i], 2) . '"';
+                    echo 'style="margin: 0px 10px;"></div>';
+                }
+
+            ?>
+            <!-- <div id=<?php echo "t".$taskNum."_expPms";?> <?php if($_SESSION['taskSerDist'][$taskNum]=="E" or !$_SESSION['taskSerDist'][$taskNum]) {echo "style='display: inline-block;'";} else {echo "style='display: none;'";} ?> >
                 Mean:
                 <input type="text" name=<?php echo "t".$taskNum."_exp_serTime_0"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][0],2); ?>" style="margin: 0px 10px">
             </div>
@@ -107,7 +142,7 @@
                 <input type="text" name=<?php echo "t".$taskNum."_uni_serTime_0"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][0],2); ?>" style="margin: 0px 10px">
                 Max:
                 <input type="text" name=<?php echo "t".$taskNum."_uni_serTime_1"; ?> size="4" maxlength="4" value="<?php echo round($_SESSION['taskSerPms'][$taskNum][1],2); ?>" style="margin: 0px 10px">
-            </div>
+            </div> -->
         </td>
     </tr>
     <tr>
@@ -115,7 +150,20 @@
             Affected by Traffic Levels
             <span class="tooltip" onmouseover="tooltip.pop(this, 'Is the arrival of this task affected by lower/higher levels of traffic?')"><sup>(?)</sup></span>
         </td>
-        <td>
+        <?php
+            $options = ["No", "Yes"];
+            for ($i = 0; $i < 3; $i++) {
+                echo '<td><select name="t' . $taskNum . '_affByTraff_p' . $i . '">';
+                for ($j = 1; $j >= 0; $j--) {
+                    echo '<option value="' . $j . '"';
+                    if ($_SESSION['tasks'][$task]['affByTraff'][$i] == $j)
+                        echo 'selected="selected">';
+                    echo $options[$j] . '</option>';
+                }
+                echo '</select></td>';
+            }
+        ?>
+        <!-- <td>
             <select name=<?php echo "t".$taskNum."_affByTraff_p0"; ?>>
                 <option value="1"
                   <?php
@@ -174,12 +222,20 @@
                   No
               </option>
             </select>
-        </td>
+        </td> -->
     </tr>
     <tr>
         <td>Associated Assistants:</td>
         <td colspan="3">
-            <input type="checkbox" name=<?php echo "t".$taskNum."_op0"; ?> value="0" style:"padding: 10px"
+            <?php
+                foreach (array_keys($_SESSION['assistants']) as $assistant) {
+                    echo '<input type="checkbox" name="t' . $taskNum . '_op' . $i . '" value="' . $i . '"';
+                    if (in_array($taskNum, $_SESSION['assistants'][$assistant]['tasks']))
+                        echo ' checked';
+                    echo '>' . ucwords($assistant);
+                }
+            ?>
+            <!-- <input type="checkbox" name=<?php echo "t".$taskNum."_op0"; ?> value="0" style:"padding: 10px"
                 <?php
                     if(in_array(0, $_SESSION['taskAssocOps'][$taskNum])) {
                         echo "checked";
@@ -213,7 +269,7 @@
                         echo "checked";
                     }
                 ?>>
-                <?php echo $_SESSION['operators']['Custom'];?>
+                <?php echo $_SESSION['operators']['Custom'];?> -->
         </td>
     </tr>
 </table>
