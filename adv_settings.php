@@ -41,7 +41,7 @@
 			<div id="settingsPage" class="page">
 				<h1 class="pageTitle">Input Advanced Trip Conditions</h1>
 				<form id="taskParameters" action="adv_settings_send.php" method="post" onsubmit="return confirm('Please verify your provided settings and click OK to run simulation!');">
-					<input id="current_tasks" name="current_tasks" value=<?php print_task_ids();?> type="hidden">
+					<input id="current_tasks" name="current_tasks" value=<?php print_task_ids();?>>
 					<h2>Replications</h2>
 					Enter the number of replications, or the number of simulated trips. Note that more trips provides more precise results, but it may also increase the processing time.
 					<div class="centerOuter">
@@ -64,9 +64,9 @@
 					Below, you can see and change the underlying assumptions for each task.
 					<div id='taskParameterTable'>
 						<?php
-							$i = 0;
+							$index = 0;
 							foreach (array_keys($_SESSION['tasks']) as $task) {
-								$taskNum = $i;
+								$taskNum = $index++;
 								echo "<div id=task_$taskNum";
 								// if ($i > sizeof($_SESSION['tasks'])) echo 'class="remove"';
 								echo '>';

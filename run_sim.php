@@ -1,9 +1,11 @@
 <?php
-	session_start();
+
+//	Initialize session
+
+	require_once('includes/session_management/init.php');
 
 //	Connect to database
 
-	// require_once('init.php');
 	// $conn = connect_database();
 	//
 	// $sql = 'INSERT INTO runs(hours) values("' . $_SESSION['numHours'] . '")';
@@ -21,26 +23,31 @@
 	// unlink($_SESSION['files']['params']) or die("did not unlink");
 	// $_SESSION['files']['params'] = tempnam(sys_get_temp_dir(), "params");
 
-	$file = fopen($_SESSION['session_dir'] . "params", "w") or die("Unable to open parameter file.");
-	fwrite($file, "output_path\t\t" . $_SESSION['session_dir'] . "\n");
-	fwrite($file, "num_hours\t\t" . $_SESSION['numHours'] . "\n");
-	fwrite($file, "traff_levels\t" . implode(" ", $_SESSION['traffic_levels']) . "\n");
-	fwrite($file, "num_reps\t\t" . $_SESSION['numReps'] . "\n");
-	fwrite($file, "ops\t\t\t\t" . implode(" ", $_SESSION['assistants']) . "\n");
-	fwrite($file, "num_task_types\t" . $_SESSION['numTaskTypes'] . "\n");
+	$file = fopen($_SESSION['session_dir'] . 'params', 'w') or die('Unable to open parameter file.');
+	fwrite($file, "output_path\t\t$_SESSION['session_dir']\n");
+	fwrite($file, "num_hours\t\t$_SESSION['parameters']['hours']\n");
+	fwrite($file, "traff_levels\t" . implode(" ", $_SESSION['traffic_chars']) . "\n");
+	fwrite($file, "num_reps\t\t$_SESSION['parameters']['reps']\n");
+	fwrite($file, "num_ops\t\t" . sizeof($_SESSION['parameters']['assistants']) . "\n");
+	fwrite($file, "num_task_types\t$_SESSION['numTaskTypes']\n");
 
-	for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
-		fwrite($file, "\nname\t\t\t" . $_SESSION['taskNames'][$i] . "\n");
-		fwrite($file, "prty\t\t\t" . implode(" ", $_SESSION['taskPrty'][$i]) . "\n");
-		fwrite($file, "arr_dist\t\t" . $_SESSION['taskArrDist'][$i] . "\n");
-		fwrite($file, "arr_pms\t\t\t" . implode(" ", $_SESSION['taskArrPms'][$i]) . "\n");
-		fwrite($file, "ser_dist\t\t" . $_SESSION['taskSerDist'][$i] . "\n");
-		fwrite($file, "ser_pms\t\t\t" . implode(" ", $_SESSION['taskSerPms'][$i]) . "\n");
-		fwrite($file, "exp_dist\t\t" . $_SESSION['taskExpDist'][$i] . "\n");
-		fwrite($file, "exp_pms_lo\t\t" . implode(" ", $_SESSION['taskExpPmsLo'][$i]) . "\n");
-		fwrite($file, "exp_pms_hi\t\t" . implode(" ", $_SESSION['taskExpPmsHi'][$i]) . "\n");
-		fwrite($file, "aff_by_traff\t" . implode(" ", $_SESSION['taskAffByTraff'][$i]) . "\n");
-		fwrite($file, "op_nums\t\t\t" . implode(" ", $_SESSION['taskAssocOps'][$i]));
+	foreach (array_keys($_SESSION['parameters']['assistants']) as $assistant) {
+		fwrite($file, "op_name\t\t" . ucwords($assistant) . "\n");
+		fwrite($file, "op_tasks\t\t" . implode(" ", $_SESSION['assistants'][$assistant]['tasks']) . "\n");
+	}
+
+	foreach (array_keys($_SESSION['tasks']) as $task) {
+	// for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
+		fwrite($file, "\nname\t\t\t$task\n");
+		fwrite($file, "prty\t\t\t" . implode(" ", $_SESSION['tasks'][$task]['priority']) . "\n");
+		fwrite($file, "arr_dist\t\t$_SESSION['tasks'][$task]['arrDist']\n");
+		fwrite($file, "arr_pms\t\t\t" . implode(" ", $_SESSION['tasks'][$task]['arrPms']) . "\n");
+		fwrite($file, "ser_dist\t\t$_SESSION['tasks'][$task]['serDist']\n");
+		fwrite($file, "ser_pms\t\t\t" . implode(" ", $_SESSION['tasks'][$task]['serPms']) . "\n");
+		fwrite($file, "exp_dist\t\t$_SESSION['tasks'][$task]['expDist']\n");
+		fwrite($file, "exp_pms_lo\t\t" . implode(" ", $_SESSION['tasks'][$task]['expPmsLo']) . "\n");
+		fwrite($file, "exp_pms_hi\t\t" . implode(" ", $_SESSION['tasks'][$task]['expPmsHi']) . "\n");
+		fwrite($file, "aff_by_traff\t" . implode(" ", $_SESSION['tasks'][$task]['affByTraff']) . "\n");
 	}
 
 	fclose($file);
@@ -48,9 +55,9 @@
 //	Run simulation
 
 	if (PHP_OS == "Darwin") {
-		echo passthru("bin/des_1.1_mac " . $_SESSION['session_dir'] . "params");
+		echo passthru("bin/des_1.1_mac $_SESSION['session_dir']params");
 	} else if (PHP_OS == "Linux") {
-		exec("bin/des_1.1_unix " . $_SESSION['session_dir'] . "params");
+		exec("bin/des_1.1_unix $_SESSION['session_dir']params");
 	} else {
 		die("Operating system not recognized.");
 	}

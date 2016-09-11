@@ -11,7 +11,7 @@
     </tr>
     <tr>
         <td>Name:</td>
-        <td colspan="3"><input type="text" name=<?php echo "t".$taskNum."_name"; ?> size="30" maxlength="30" value="<?php echo $task;?>" ></td>
+        <td colspan="3"><input type="text" name=<?php echo "t" . $taskNum . "_name";?> size="30" maxlength="30" value="<?php echo ucwords($task);?>"></td>
     </tr>
     <tr>
     <td>
@@ -21,12 +21,11 @@
         <?php
             $labels = ["Not a", "Low", "Somewhat", "Neutral", "Moderate", "High", "Essential"];
             for ($i = 0; $i < 3; $i++) {
-                echo '<td><select name="t' . $taskNum . '_priority_p' . $i . '">';
+                echo "<td><select name='t$taskNum" . "_priority_p$i'>";
                 for ($j = 6; $j >= 0; $j--) {
-                    echo '<option value="' . $j . '"';
-                    if ($_SESSION['tasks'][$task]['priority'][$i] == $j)
-                        echo 'selected="selected"';
-                    echo ">$labels[$j] Priority </option>";
+                    $selected = '';
+                    if ($_SESSION['tasks'][$task]['priority'][$i] == $j) $selected = ' selected="selected"';
+                    echo "<option value='$j'$selected>$labels[$j] Priority </option>";
                 }
                 echo '</select></td>';
             }
@@ -52,11 +51,10 @@
         </td>
         <?php
             for ($i = 0; $i < 3; $i++) {
-                $arr_pms = $_SESSION['tasks'][$task]['arrPms'][$i];
-                echo '<td>Once every <input type="text" name="t"' . $taskNum .'"_arrTime_p0" size="4" maxlength="4"';
-                echo 'value="';
-                if ($arr_pms != 0) echo round(1/$arr_pms, 2); else echo 0;
-                echo '"> mins</td>';
+                $arrival = $_SESSION['tasks'][$task]['arrPms'][$i];
+                if ($arrival != 0) $arrival = round(1/$arrival, 2);
+                echo "<td>Once every <input type='text' name='t$taskNum" . "_arrTime_p$i' size='4' maxlength='4' ";
+                echo "value='$arrival'> mins</td>";
             }
         ?>
         <!-- <td>Once every <input type="text" name=<?php echo "t".$taskNum."_arrTime_p0"; ?> size="4" maxlength="4" value="<?php if ($_SESSION['taskArrPms'][$taskNum][0] != 0) {echo round(1/$_SESSION['taskArrPms'][$taskNum][0],2);} else {echo 0;} ?>" > mins</td>
@@ -78,12 +76,13 @@
             <?php
                 $dist_char = ["E", "L", "U"];
                 $dist_name = ["Exponential", "Lognormal", "Uniform"];
-                echo '<select id="' . $taskNum . '_serTimeDist" name="t' . $taskNum . '_serTimeDist"';
-                echo 'style="margin: 0px 10px" onchange="updateSerDist(' . $taskNum . ')">';
+                echo "<select id='t$taskNum" . "_serTimeDist' name='t$taskNum" . "_serTimeDist'";
+                echo "style='margin: 0px 10px' onchange='updateSerDist($taskNum)'>";
                 for ($i = 0; $i < 3; $i++) {
-                    echo '<option value="' . $dist_char . '"';
-                    if ($_SESSION['tasks'][$task]['serDist'] == $dist_char[$i]) echo 'selected="selected"';
-                    echo ">$dist_name[$i]</option>";
+                    $selected = '';
+                    if ($_SESSION['tasks'][$task]['serDist'][$i] == $dist_char[$i])
+                        $selected = ' selected="selected"';
+                    echo "<option value='$dist_char[$i]'$selected>$dist_name[$i]</option>";
                 }
                 echo '</select>';
             ?>
@@ -116,14 +115,30 @@
             <?php
                 $dist_string = ["exp", "log", "uni"];
                 for ($i = 0; $i < 3; $i++) {
-                    echo '<div id="t' . $taskNum . '_' . $dist_string[$i] . 'Pms" style="display: ';
+
+                    $style = 'none';
                     if ($_SESSION['tasks'][$task]['serDist'] == $dist_char[$i])
-                        echo 'inline-block;"';
-                    else
-                        echo 'none;"';
-                    echo '> Mean: <input type="text" name="t' . $taskNum . '_' . $dist_string[$i] . 'serTime_' . $i . '"';
-                    echo 'size="4" maxlength="4" value="' . round($_SESSION['tasks'][$task]['serPms'][$i], 2) . '"';
-                    echo 'style="margin: 0px 10px;"></div>';
+                        $style = 'inline-block';
+                    echo "<div id='t$taskNum" . "_$dist_string[$i]Pms' style='display: $style;'>";
+                    if ($i == 0) {
+                        echo "Mean: <input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_0'";
+                        echo 'size="4" maxlength="4" value="' . round($_SESSION['tasks'][$task]['serPms'][0], 2) . '"';
+                        echo 'style="margin: 0px 10px;"></div>';
+                    } else if ($i == 1) {
+                        echo "Mean: <input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_0'";
+                        echo 'size="4" maxlength="4" value="' . round($_SESSION['tasks'][$task]['serPms'][0], 2) . '"';
+                        echo 'style="margin: 0px 10px;">';
+                        echo "Std dev: <input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_1'";
+                        echo 'size="4" maxlength="4" value="' . round($_SESSION['tasks'][$task]['serPms'][1], 2) . '"';
+                        echo 'style="margin: 0px 10px;"></div>';
+                    } else {
+                        echo "Min: <input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_0'";
+                        echo 'size="4" maxlength="4" value="' . round($_SESSION['tasks'][$task]['serPms'][0], 2) . '"';
+                        echo 'style="margin: 0px 10px;">';
+                        echo "Max: <input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_1'";
+                        echo 'size="4" maxlength="4" value="' . round($_SESSION['tasks'][$task]['serPms'][1], 2) . '"';
+                        echo 'style="margin: 0px 10px;"></div>';
+                    }
                 }
 
             ?>
@@ -155,10 +170,10 @@
             for ($i = 0; $i < 3; $i++) {
                 echo '<td><select name="t' . $taskNum . '_affByTraff_p' . $i . '">';
                 for ($j = 1; $j >= 0; $j--) {
-                    echo '<option value="' . $j . '"';
+                    $selected = '';
                     if ($_SESSION['tasks'][$task]['affByTraff'][$i] == $j)
-                        echo 'selected="selected">';
-                    echo $options[$j] . '</option>';
+                        $selected = ' selected="selected"';
+                    echo "<option value='$j'$selected>$options[$j]</option>";
                 }
                 echo '</select></td>';
             }
@@ -228,11 +243,12 @@
         <td>Associated Assistants:</td>
         <td colspan="3">
             <?php
+                $i = 0;
                 foreach (array_keys($_SESSION['assistants']) as $assistant) {
-                    echo '<input type="checkbox" name="t' . $taskNum . '_op' . $i . '" value="' . $i . '"';
-                    if (in_array($taskNum, $_SESSION['assistants'][$assistant]['tasks']))
-                        echo ' checked';
-                    echo '>' . ucwords($assistant);
+                    $checked = '';
+                    if (in_array($taskNum, $_SESSION['assistants'][$assistant]['tasks'])) $checked = ' checked';
+                    echo "<input type='checkbox' name='t$taskNum" . "_op$i' value='$i'$checked>" . ucwords($assistant);
+                    $i++;
                 }
             ?>
             <!-- <input type="checkbox" name=<?php echo "t".$taskNum."_op0"; ?> value="0" style:"padding: 10px"
