@@ -20,7 +20,7 @@
 				<h1 style="padding: 40px 290px;">Simulator of Human Operator Workload</h1>
 			</div>
 
-			<nav id="topNav">
+			<nav id="topNav" class="hide">
 				<ul>
 					<li><a href="index.php">Home</a></li>
 					<li><a href="basic_settings.php">Run Simulation</a></li>

@@ -28,7 +28,7 @@
 				<div id="contactForm">
 					<form id="contactFormInner" action="mailto:bev5@duke.edu" method="post" enctype="text/plain">
 						<strong>Name:</strong> <br><input type="text" name="name"><br><br>
-						<strong>Employer:</strong> <br><input type="text" name="employer"><br><br>
+						<!-- <strong>Employer:</strong> <br><input type="text" name="employer"><br><br> -->
 						<strong>Email:</strong> <br><input type="text" name="email"><br><br>
 						<strong>Your Message:</strong> <br><textarea rows="4" cols="50"></textarea><br><br>
 						<input type="submit" value="Send Message">

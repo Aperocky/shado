@@ -1,4 +1,4 @@
-			<nav id="sideNav">
+			<nav id="sideNav" class="hide">
 				<ul>
 					<li>
 						<!-- active -->
@@ -9,7 +9,7 @@
 					      	<a href="adv_settings.php">Advanced</a>
 					    </div>
 				  	</li>
-					<li><a shref="view_results.php">View Results</a></li>
+					<li><a href="view_results.php">View Results</a></li>
 					<li>
 					    <button class="accordion">View Detailed Results</button>
 					    <div class="accordion-content">
