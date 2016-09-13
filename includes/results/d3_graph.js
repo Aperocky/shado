@@ -10,7 +10,7 @@ function d3_visual(user, num, filename) {
 	// var temp=<?php echo $num; ?>;
 	var temp=num;
 
-	var margin = {top: 30, right: 20, bottom: 50, left: 70},
+	var margin = {top: 30, right: 120, bottom: 50, left: 70},
 	    width = 800;
 
 	    height = 500 - margin.top - margin.bottom;
@@ -165,7 +165,7 @@ function d3_visual(user, num, filename) {
 				div.transition()
 	                .duration(200)
 	                .style("opacity", .9);
-	            div	.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2)+"<br> Total Utilization: "+d.total.toFixed(2))
+	            div	.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2)+"<br> Total Utilization: "+d.total.toFixed(2)) 
 	                .style("left", (d3.event.pageX+20) + "px")
 	                .style("top", (d3.event.pageY - 20) + "px");
 
@@ -223,15 +223,15 @@ function d3_visual(user, num, filename) {
 	    				    	.attr("class", "legend")
 	    	 			    	.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 	 		 legend.append("rect")
-	   	   			.attr("x", width - 18+legend_width)
+	   	   			.attr("x", width+20)
 	    			.attr("width", 18)
 	     	    	.attr("height", 18)
 	     	    	.attr("fill", color);
 	 		 legend.append("text")
-	      		.attr("x", width - 24+legend_width)
+	      		.attr("x", width+50)
 	     	    .attr("y", 9)
 	      	    .attr("dy", ".35em")
-	      	    .style("text-anchor", "end")
+	      	    .style("text-anchor", "start")
 	     	    .text(function(d) { return d; });
 	});
 
