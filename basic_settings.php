@@ -109,13 +109,13 @@
 					<table id="assistantsTable" cellspacing="0">
 						<tr>
 							<td>
-								<input type="checkbox" name="extra1" value="1" id="conductor">Conductor  <span class="tooltip" onmouseover="tooltip.pop(this, 'The freight conductor supervises train conditions on the ground at terminal points and remains attentive to the engineer while the train is in motion in the case of emergency, when action could be needed ')"><sup>(?)</sup></span>
+								<input type="checkbox" name="extra1" value="1" id="conductor">Conductor  <span class="tooltip" onmouseover="tooltip.pop(this, 'The freight conductor supervises train conditions on the ground at terminal points and remains attentive to the engineer while the train is in motion in the case of emergency, when action could be needed. ')"><sup>(?)</sup></span>
 							</td>
 							<td>
-								<input type="checkbox" name="extra2" value="2" id="train_c">Positive Train Control  <span class="tooltip" onmouseover="tooltip.pop(this, 'PTC is an embedded feature of railroads set to be fully implemented by 2018. It automatically manages speed restrictions and emergency braking without human input ')"><sup>(?)</sup></span>
+								<input type="checkbox" name="extra2" value="2" id="train_c">Positive Train Control  <span class="tooltip" onmouseover="tooltip.pop(this, 'PTC is an embedded feature of railroads set to be fully implemented by 2018. It automatically manages speed restrictions and emergency braking without human input. ')"><sup>(?)</sup></span>
 							</td>
 							<td>
-								<input type="checkbox" name="extra3" value="3" id="cruise_control">Cruise Control  <span class="tooltip" onmouseover="tooltip.pop(this, ' CC can offload motion planning tasks that involve the locomotive control system of throttle and dynamic braking ')"><sup>(?)</sup></span>
+								<input type="checkbox" name="extra3" value="3" id="cruise_control">Cruise Control  <span class="tooltip" onmouseover="tooltip.pop(this, ' CC can offload motion planning tasks that involve the locomotive control system of throttle and dynamic braking. ')"><sup>(?)</sup></span>
 							</td>
 							<td>
 								<input type="checkbox" name="extra4" value="4" id="other" onchange="check()">Custom
