@@ -602,7 +602,7 @@ th {
 
 #graphTextBox{
  	
- 	width: 1050px;
+ 	width: 1170px;
  	border: 3px solid #5D7B85;
  	cursor:pointer;
  	-webkit-border-radius: 5px;

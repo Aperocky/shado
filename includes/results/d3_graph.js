@@ -195,12 +195,12 @@ function d3_visual(user, num, filename) {
 			.style("text-anchor", "end")
 			.text("Utilization (%)");
 
-		svg_eng.append("foreignObject")
-				.attr("x", ((width / 2)+110))
-				.attr("y", -12 - (margin.top / 2))
-				.attr("text-anchor", "middle")
-				.style("font-size", "24px")
-				.html("<span class='tooltip' onmouseover='tooltip.pop(this, &apos; Hover over the graph for more information &apos;)'><sup>(?)</sup></span>");
+		// svg_eng.append("foreignObject")
+		// 		.attr("x", ((width / 2)+110))
+		// 		.attr("y", -12 - (margin.top / 2))
+		// 		.attr("text-anchor", "middle")
+		// 		.style("font-size", "24px")
+		// 		.html("<span class='tooltip' onmouseover='tooltip.pop(this, &apos; Hover over the graph for more information &apos;)'><sup>(?)</sup></span>");
 
 		svg_eng.append("text")
 	        .attr("x", (width / 2))

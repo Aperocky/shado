@@ -4,7 +4,7 @@
 
 <div class="custom " id="custom">
 	<div class='stepCircle'>5</div>
-	<h3 id='custom_heading' class='whiteFont'>Which Tasks Will this Assistant Handle? <span class="tooltip" onmouseover="tooltip.pop(this,'Identify the name and which tasks the custom assistant(s) can offload from the locomotive engineer workload')"><sup>(?)</sup></span></h3>
+	<h3 id='custom_heading' class='whiteFont'>Which Tasks Will this Assistant Handle? <span class="tooltip" onmouseover="tooltip.pop(this,'Identify the name and which tasks the custom assistant(s) can offload from the locomotive engineer workload.')"><sup>(?)</sup></span></h3>
 	<br>
 	<table id='custom_table' class='customTable' border='1'>
 		<tr>
