@@ -54,6 +54,8 @@
 	} else {
 		die("Operating system not recognized.");
 	}
+
+	require_once('includes/page_parts/header.php');
 ?>
 
 <!-- Show loading bar -->
