@@ -578,6 +578,7 @@ th {
 	border: 1px solid black;
 	border-bottom: 1px solid black;
 	display: inline-block;
+
 }
 
 #graphNav li {
@@ -600,9 +601,8 @@ th {
 }
 
 #graphTextBox{
- 	width:fit-content;
- 	width:-webkit-fit-content;
- 	width:-moz-fit-content;
+ 	
+ 	width: 1050px;
  	border: 3px solid #5D7B85;
  	cursor:pointer;
  	-webkit-border-radius: 5px;

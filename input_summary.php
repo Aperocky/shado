@@ -17,7 +17,7 @@
 	fwrite($file,"t_level\n");
 	for($i=0;$i<$time;$i++)
 	{
-		fwrite($file,"Hour ". ($i+1) .",");
+		fwrite($file,($i+1) .",");
 		fwrite($file,$traffic[(string)$traffic_level[$i]]."\n");
 	}
 	fclose($file);
@@ -104,8 +104,8 @@
 
 var temp= <?php echo $time; ?>;
 
-var margin = {top: 20, right: 50, bottom: 80, left: 50},
-    width = 960,
+var margin = {top: 20, right: 50, bottom: 65, left: 50},
+    width = 400,
     height = 500 - margin.top - margin.bottom;
 
 var x_input = d3.scale.ordinal()
@@ -148,13 +148,13 @@ d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
 
   svg_summary.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate("+(-width/(2*temp))+"," + height + ")")
+      .attr("transform", "translate("+(-width/(2*temp))+"," + (height+0) + ")")
       .call(xAxis_input)
 	  .append("text")
-	  .attr("transform", "translate("+(width / 2)+",40)" )
+	  .attr("transform", "translate("+((width / 2)-30)+",40)" )
 	  .attr("x", 1)
 	  .attr("dx", ".71em")
-	  .text("Time (min)");
+	  .text("Time (hour)");
 
   svg_summary.append("g")
       .attr("class", "y axis")

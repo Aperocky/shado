@@ -4,11 +4,13 @@
 
 	
 	<div id="text_box" class="why_tab" style="display: none;">
+			
 			<h3 style="text-align: center;"> <u><em>Why</em> is my operator over or under-utilized at work? </u></h3><br>
+			<ul><li >
 			We simulated <?php echo $_SESSION['numReps']; ?> trips and plotted the mean value per interval of time. The model shows that <?php echo round($type_byPhase[$keys[0]]*100/$length,2); ?>% of the engineer’s workload can be attributed to <?php echo $_SESSION['taskNames'][$keys[0]-1]; ?>. <?php echo $_SESSION['taskNames'][$keys[0]-1]; ?> involves <?php echo $_SESSION['taskDescription'][$_SESSION['taskNames'][$keys[0]-1]]; ?>. 
-			<br><br>
+			</li><br><li >
 			 <?php echo $_SESSION['taskDescription'][$_SESSION['taskNames'][$keys[1]-1]]; ?> makes <?php echo $_SESSION['taskNames'][$keys[1]-1]; ?> an important secondary task that accounts for <?php echo round($type_byPhase[$keys[1]]*100/$length,2); ?>% of their total time on task.
-			<br><br>
+			</li><br><li >
 			<?php if($count_high>0){
 					if($count_low>0){ ?>
 						During this trip, the engineer spent approximately <?php echo round($count_high*100/$length,2); ?>% of time at or above a high level of workload (>70% utilization) and <?php echo round($count_low*100/$length,2); ?>% with too little work (<30% utilization).
@@ -19,13 +21,13 @@
 					else{
 						if($count_low>0){ ?>
 						During this trip, the engineer spent approximately <?php echo round($count_low*100/$length,2); ?>% of time at or below a low level of workload (<30% utilization).
-			<?php } } ?>
+			<?php } } ?></li></ul>
 					
 						
 						
-			<br><br><br>
+			
 			<?php if(max(array_values($count_type_high))>0) { ?>
-			<h3>These combined factors contributed to period of high workload: </h3>
+			<h3>These combined factors <em>highly</em> contributed to period of high workload: </h3>
 			<ul>
 			<?php
 
@@ -75,7 +77,7 @@
 		<br><br><br>
 			<?php } ?>
 		<?php if(max(array_values($count_type_low))>0) { ?>
-		<h3>These combined factors contributed to period of low workload: </h3>
+		<h3>These combined factors <em>highly</em> contributed to period of low workload: </h3>
 		<ul>
 
 <?php

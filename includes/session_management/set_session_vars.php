@@ -113,6 +113,8 @@
 
     $_SESSION['session_started'] = true;
 
+    
+
 
 //  Set task description
 	
