@@ -71,7 +71,7 @@
 </style>
 <div class='page'>
 <div id="input">
-	<h3 style="text-align: center;"> <u>Input summary</u></h3>
+	<h3 style="text-align: center;"> <u>Here are the trip conditions you set:</u></h3>
 	<ul>
 	<li>Duration of the trip: <?php echo $time." hours"; ?></li>
 	<br>
