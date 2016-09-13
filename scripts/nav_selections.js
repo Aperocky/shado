@@ -17,12 +17,10 @@ jQuery.noConflict()(function ($) {
     $('#sideNav').removeClass('hide');
 });
 
-// $(setup_nav());
 // function setup_nav() {
 //
 //     var url = document.location.href;
 //     var str = url.substring(url.lastIndexOf('/') + 1);
-//     console.log(str);
 //     jQuery("#topNav li a").each(function() {
 //         if (str.indexOf(this.href.toLowerCase()) > -1) {
 //             jQuery("li.active").removeClass("active");
