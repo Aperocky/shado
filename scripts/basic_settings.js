@@ -25,7 +25,8 @@ jQuery.noConflict()(function ($) {
 
 function init() {
 	console.log("Window has loaded!");
-	calculate_time();
+	// calculate_time();
+    init_hour_labels();
     toggle_custom_settings();
 }
 
@@ -89,6 +90,26 @@ function calculate_time() {
 
 /****************************************************************************
 *																			*
+*	Function:	init_hour_labels										    *
+*																			*
+*	Purpose:	To toggle the visibility of the custom operator settings 	*
+*																			*
+****************************************************************************/
+
+function init_hour_labels() {
+    var begin_time = jQuery('#begin_time').val();
+    console.log(begin_time);
+    var hour_label = moment("2016-01-01 " + begin_time, "YYYY-MM-DD HH:mm A");
+    var traffic_table = document.getElementById('traffic_level_labels');
+    for (var i = 0; i < jQuery('#num_hours').val(); i++) {
+        var cell = traffic_table.insertCell(i);
+        cell.innerHTML = hour_label.format("h A");
+        hour_label.add(1, 'hour');
+    }
+    jQuery('#table').removeClass('remove');
+}
+/****************************************************************************
+*																			*
 *	Function:	get_date													*
 *																			*
 *	Purpose:	To create a date from the current input in the specified 	*
@@ -121,7 +142,7 @@ function get_hour_diff(date1, date2) {
 
 /****************************************************************************
 *																			*
-*	Function:	check														*
+*	Function:	toggle_custom_settings										*
 *																			*
 *	Purpose:	To toggle the visibility of the custom operator settings 	*
 *																			*

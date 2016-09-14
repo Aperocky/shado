@@ -18,6 +18,8 @@
 //	Store time
 
 	$_SESSION['parameters']['hours'] = $_POST['num_hours'];
+	$_SESSION['parameters']['begin'] = $_POST['begin_time'];
+	$_SESSION['parameters']['end'] = $_POST['end_time'];
 
 //  Store traffic levels
 

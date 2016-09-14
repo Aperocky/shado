@@ -40,6 +40,22 @@
     // $_SESSION['taskAssocOps'] = array();
     // $_SESSION['taskDescription'] = array();
 
+//  Set basic settings
+
+    $_SESSION['parameters']['hours'] = 8;
+    $_SESSION['parameters']['begin'] = '09:00 AM';
+    $_SESSION['parameters']['end'] = '05:00 PM';
+
+    $_SESSION['parameters']['traffic_chars'] = array();
+    for ($i = 0; $i < 8; $i++) {
+        $_SESSION['parameters']['traffic_chars'][] = 'm';
+        $_SESSION['parameters']['traffic_nums'][] = 1;
+    }
+
+    $_SESSION['parameters']['assistants'] = array();
+    $_SESSION['parameters']['assistants'][] = 'engineer';
+
+
 //  Read in default values
 
     $file = fopen('./static_data/default_params_new.txt', 'r') or die('Unable to open default parameter file!');

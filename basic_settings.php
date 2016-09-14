@@ -52,26 +52,37 @@
 
 					<select id='beginHour' onchange="calculate_time();">
 						<?php
+							$hr = (int)substr($_SESSION['parameters']['begin'], 0, 2);
 							for ($i = 1; $i <= 12; $i++) {
 								$selected = '';
-								if ($i == 9) $selected = ' selected="selected"';
+								if ($i == $hr) $selected = ' selected="selected"';
 								$val = sprintf('%02d', $i);
 								echo "<option$selected>$val</option>";
 							}
 						?>
 					</select>:<select id='beginMin' onchange="calculate_time();">
 						<?php
+							$min = (int)substr($_SESSION['parameters']['begin'], 3, 5);
 							for ($i = 0; $i <= 50; $i+=10) {
+								$selected = '';
+								if ($i == $min) $selected = ' selected="selected"';
 								$val = sprintf('%02d', $i);
-								echo "<option>$val</option>";
+								echo "<option$selected>$val</option>";
 							}
 						?>
 					</select>
 					<select id='beginMd' onchange="calculate_time();">
-						<option>AM</option>
-						<option>PM</option>
+						<?php
+							$options = ['AM', 'PM'];
+							$md = substr($_SESSION['parameters']['begin'], 6);
+							for ($i = 0; $i < sizeof($options); $i++) {
+								$selected = '';
+								if ($options[$i] == $md) $selected = ' selected="selected"';
+								echo "<option$selected>$options[$i]</option>";
+							}
+						?>
 					</select>
-					<input id="begin_time" name="begin_time" type="hidden">
+					<input id="begin_time" name="begin_time" type="hidden" value="<?php echo $_SESSION['parameters']['begin'];?>">
 				</div>
 
 				<div class="startEndTime stepBox">
@@ -80,27 +91,38 @@
 
 					<select id='endHour' onchange="calculate_time();">
 						<?php
+							$hr = (int)substr($_SESSION['parameters']['end'], 0, 2);
 							for ($i = 1; $i <= 12; $i++) {
 								$selected = '';
-								if ($i == 5) $selected = ' selected="selected"';
+								if ($i == $hr) $selected = ' selected="selected"';
 								$val = sprintf('%02d', $i);
 								echo "<option$selected>$val</option>";
 							}
 						?>
 					</select>:<select id='endMin' onchange="calculate_time();">
 						<?php
+							$min = (int)substr($_SESSION['parameters']['end'], 3, 5);
 							for ($i = 0; $i <= 50; $i+=10) {
+								$selected = '';
+								if ($i == $min) $selected = ' selected="selected"';
 								$val = sprintf('%02d', $i);
-								echo "<option>$val</option>";
+								echo "<option$selected>$val</option>";
 							}
 						?>
 					</select>
 					<select id='endMd' onchange="calculate_time();">
-						<option>AM</option>
-						<option selected="selected">PM</option>
+						<?php
+							$options = ['AM', 'PM'];
+							$md = substr($_SESSION['parameters']['end'], 6);
+							for ($i = 0; $i < sizeof($options); $i++) {
+								$selected = '';
+								if ($options[$i] == $md) $selected = ' selected="selected"';
+								echo "<option$selected>$options[$i]</option>";
+							}
+						?>
 					</select>
-					<input id="end_time" name="end_time" type="hidden">
-					<input id="num_hours" name="num_hours" type="hidden">
+					<input id="end_time" name="end_time" type="hidden" value="<?php echo $_SESSION['parameters']['end'];?>">
+					<input id="num_hours" name="num_hours" type="hidden" value="<?php echo $_SESSION['parameters']['hours'];?>">
 				</div>
 			</div>
 
@@ -111,7 +133,25 @@
 						<span class="tooltip" onmouseover="tooltip.pop(this, 'Enter the projected levels of traffic during this shift. This will modify the frequency of certain tasks arriving.')"><sup>(?)</sup></span>
 					</h3>
 					<div id="totalTime" style="overflow-x:auto;">
-						<table id='table' class='trafficTable'>
+						<table id='table' class='trafficTable remove'>
+							<?php
+								echo '<tr id="traffic_levels">';
+								$chars = ['h', 'm', 'l'];
+								$labels = ['High', 'Med', 'Low'];
+								for ($i = 0; $i < $_SESSION['parameters']['hours']; $i++) {
+									$val = $_SESSION['parameters']['traffic_chars'][$i];
+									echo '<td>';
+									for ($j = 0; $j < sizeof($labels); $j++) {
+										$selected = '';
+										if ($chars[$j] == $val) $selected = ' checked';
+										echo "<input type='radio' name='traffic_level_$i' value='$chars[$j]'$selected>$labels[$j]</input><br>";
+									}
+									echo '</td>';
+								}
+								echo '</tr>';
+								echo '<tr id="traffic_level_labels">';
+								echo '</tr>';
+							?>
 						</table>
 					<!-- </div> -->
 				</div>
@@ -127,9 +167,13 @@
 								$assistant_names = array_keys($_SESSION['assistants']);
 								for ($i = 1; $i < sizeof($assistant_names); $i++) {
 									$assistant = $assistant_names[$i];
+									$selected = '';
+									if (in_array($assistant, $_SESSION['parameters']['assistants'])) {
+										$selected = ' checked';
+									}
 									echo '<td><input ';
 									if ($assistant == 'custom') echo 'id="custom_assistant" onchange="toggle_custom_settings();"';
-									echo 'type="checkbox" name="assistant_' . $i . '">' . ucwords($assistant) . ' ';
+									echo 'type="checkbox" name="assistant_' . $i . '"' . $selected . '>' . ucwords($assistant) . ' ';
 									echo '<span class="tooltip" onmouseover="tooltip.pop(this, \'' . $_SESSION['assistants'][$assistant]['description'] . '\')"><sup>(?)</sup></span>';
 									echo '</td>';
 								}
