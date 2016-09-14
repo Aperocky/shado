@@ -1,26 +1,47 @@
 <?php
-	session_start();
+/****************************************************************************
+*																			*
+*	File:		adv_settings.php  											*
+*																			*
+*	Author:		Branch Vincent												*
+*																			*
+*	Date:		Sep 9, 2016													*
+*																			*
+*	Purpose:	This page allows the user to change advanced settings for  	*
+*				the simulation. 											*
+*																			*
+****************************************************************************/
+
+//	Start session
+
+	require_once('includes/session_management/init.php');
+
+//	Set header info
+
 	$page_title = 'Advanced Settings';
-	$curr_page = 'advSettingsPage';
 	$html_head_insertions = '<script type="text/javascript" src="scripts/adv_settings.js"></script>';
 	require_once('includes/page_parts/header.php');
-	require_once('includes/run_sim/side_navigation.php');
+	require_once('includes/page_parts/side_navigation.php');
+
+/****************************************************************************
+*																			*
+*	Function:	print_task_ids												*
+*																			*
+*	Purpose:	To print the current active tasks						 	*
+*																			*
+****************************************************************************/
 
 	function print_task_ids() {
-		for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
-			if ($i == 0) {
-				echo $i;
-			} else {
-				echo "," . $i;
-			}
+		for ($i = 0; $i < sizeof($_SESSION['tasks']); $i++) {
+			if ($i == 0) echo $i;
+			else echo "," . $i;
 		}
 	}
 ?>
 			<div id="settingsPage" class="page">
-				<!-- <div id="myData" class="hidden" data-session='<?php echo json_encode($_SESSION)?>' ></div> -->
 				<h1 class="pageTitle">Input Advanced Trip Conditions</h1>
-				<form id="taskParameters" action="adv_settings_send.php" method="post" onsubmit="return confirm('Please verify your provided settings and click OK to run simulation!');">
-					<input id="current_tasks" name="current_tasks" value=<?php print_task_ids();?> type="hidden">
+				<form id="taskParameters" action="adv_settings_send.php" method="post" onsubmit="return confirm('Please verify your provided settings before continuing!');">
+					<input id="current_tasks" name="current_tasks" type="hidden" value=<?php print_task_ids();?>>
 					<h2>Replications</h2>
 					Enter the number of replications, or the number of simulated trips. Note that more trips provides more precise results, but it may also increase the processing time.
 					<div class="centerOuter">
@@ -28,10 +49,11 @@
 							<h3 class="whiteFont" style="width: 150px;">How Many Trips Will There Be? <span class="hint--right hint--rounded hint--large" aria-label= "You might be wondering how many trips you need. Well, it depends on how precise and robust you want the model to test parameters. The more replications, generally, the more precise the stochastic results since there are more instances to test out different situations. However, more replications may increase the processing time."><sup><sup>(?)</sup></sup></span></h3>
 							<select name='num_reps'>
 								<?php
-									for ($i = 100; $i <= 1000; $i+=100) {
-										if ($i==$_SESSION['numReps']) { $selected_string = ' selected="selected"'; } else { $selected_string = ''; }
+									for ($i = 100; $i <= 1000; $i += 100) {
+										$selected = '';
+										if ($i == $_SESSION['parameters']['reps']) $selected = ' selected="selected"';
 										$val = sprintf('%02d', $i);
-										echo "<option$selected_string>$val</option>";
+										echo "<option$selected>$val</option>";
 									}
 								?>
 							</select>
@@ -42,33 +64,35 @@
 					Below, you can see and change the underlying assumptions for each task.
 					<div id='taskParameterTable'>
 						<?php
-							// for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
-							for ($i = 0; $i < 15; $i++) {
-								$taskNum = $i;
-								if ($i < $_SESSION['numTaskTypes']) {
-									echo "<div id=task_" . $taskNum . ">";
-								} else {
-									echo "<div id=task_" . $taskNum . " style='display: none'>";
-								}
-						        include("includes/adv_settings/task_settings_table.php");
+							$index = 0;
+							foreach (array_keys($_SESSION['tasks']) as $task) {
+								$taskNum = $index++;
+								echo "<div id=task_$taskNum>";
+						        include('includes/adv_settings/task_settings_table.php');
 								echo "<br> </div>";
 						    }
-							$num_tasks = $_SESSION['numTaskTypes'];
+							while ($index < 15) {
+								$task = "default";
+								$taskNum = $index++;
+								echo "<div id=task_$taskNum class='remove'>";
+						        include('includes/adv_settings/task_settings_table.php');
+								echo "<br> </div>";
+							}
 						?>
 					</div>
 					<div>
-						<button type="button" class="roundButton" onclick=<?php echo "addTask(" . $num_tasks . ")"; ?> style="background-color: #4CAF50;"><strong>+</strong></button>
+						<button type="button" class="roundButton" onclick=<?php echo "addTask(" . sizeof($_SESSION['tasks']) . ")"; ?> style="background-color: #4CAF50;" onmouseover="tooltip.pop(this, 'Add a new task')"><strong>+</strong></button>
 					</div>
 					<div id="bottomNav">
 						<ul>
 							<li>
-								<button class="button" type="button" onclick="location.href='basic_settings.php';" style="color: black;">&#8678 Basic Conditions</button>
+								<input type="submit" class="button" name="basic_settings" value="&#8678 Basic Conditions" style="color: black;">
 							</li>
 							<li>
-								<button class="button" type="button" onclick="location.href='reset_session_vars.php';" style="background-color: #4CAF50;">Restore Defaults</button>
+								<button type="button" class="button" onclick="location.href='reset_session_vars.php';" style="background-color: #4CAF50;">Restore Defaults</button>
 							</li>
 							<li>
-								<input type="submit" id="submit" class="button" value="Run Simulation &#8680" style="color: black;">
+								<input type="submit" class="button" name="run_sim" value="Run Simulation &#8680" style="color: black;">
 							</li>
 						</ul>
 					</div>

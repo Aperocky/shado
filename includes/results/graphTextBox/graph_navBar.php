@@ -1,4 +1,4 @@
-<?php echo "<div class='".$user_name."'>"; ?>
+<?php echo "<div class='".$assistant."'>"; ?>
 <div id="graphTextBox" >
 	<nav id="graphNav">
 		<ul>
@@ -7,5 +7,5 @@
 		</ul>
 	</nav>
 	<br>
-	<div id="introduction_text">	
+	<div id="introduction_text">
 	</div>

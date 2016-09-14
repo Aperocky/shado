@@ -1,24 +1,19 @@
 <?php
 
 	session_start();
-	$traffic=array();
-	$traffic['0.5']=1.0;
-	$traffic['1']=2.0;
-	$traffic['2']=3.0;
-	$time=$_SESSION['traffic_time'];
-	$traffic_level=array();
-	for($x = 0; $x < $time; $x++) {
-		// $traffic_level[]=$_SESSION['traffic_level'.$x];
-		$traffic_level[]=$_SESSION['traffic_level'][$x];
-	}
+	// $traffic=array();
+	// $traffic['0.5']=1.0;
+	// $traffic['1']=2.0;
+	// $traffic['2']=3.0;
 
-	$file = fopen($_SESSION['dir'] . "input_summary.txt", "w");
+	$file = fopen($_SESSION['session_dir'] . "input_summary.txt", "w");
 	fwrite($file,"time,");
 	fwrite($file,"t_level\n");
-	for($i=0;$i<$time;$i++)
+	for ($i = 0; $i < $_SESSION['parameters']['hours']; $i++)
 	{
 		fwrite($file,($i) .",");
-		fwrite($file,$traffic[(string)$traffic_level[$i]]."\n");
+		// fwrite($file,$traffic[(string)$traffic_level[$i]]."\n");
+		fwrite($file, $_SESSION['parameters']['traffic_nums'][$i]."\n");
 	}
 	fwrite($file,($time) .",");
 	fwrite($file,"0\n");
@@ -40,7 +35,7 @@
 	-webkit-border-radius: 5px;
 	border-radius: 25px;
 	display: inline-block;
-	
+
 	margin: 50px;
 	text-align: left;
 	background-color: rgba(255, 255, 255, 0.6);
@@ -78,25 +73,32 @@
 <div id="input">
 	<h3 style="text-align: center;"> <u>Here are the trip conditions you set:</u></h3>
 	<ul>
-	<li>Duration of the trip: <?php echo $time." hours"; ?></li>
+	<li>Trip Duration: <?php echo $_SESSION['parameters']['hours'] . " hours"; ?></li>
 	<br>
-	<li> Traffic levels for this particular shift:</li>
+	<li>Traffic levels during this shift:</li>
 	<div id="input_summary" class="no-page-break"></div>
 	<br>
 	<li>Humans/technologies supporting the locomotive engineer: <ul>
 	<?php
-		$assistant[1]="Conductor";
-		$assistant[2]="Positive Train Control";
-		$assistant[3]="Cruise Control";
-		$check=0;
-		for($i=1;$i<4;$i++){
-			if($_SESSION['operator'.$i]==1){
-				$check=1;
-				echo "<li>".$assistant[$i]."</li>";
+		// $assistant[1]="Conductor";
+		// $assistant[2]="Positive Train Control";
+		// $assistant[3]="Cruise Control";
+		$found = false;
+
+		foreach ($_SESSION['parameters']['assistants'] as $assistant) {
+			if ($assistant != 'engineer') {
+				echo "<li>". ucwords($assistant)."</li>";
+				$found = true;
 			}
 		}
-
-		if($check==0){
+		// for($i=1;$i<4;$i++){
+		// 	if(in_array('conductor', $_SESSION['parameters']['assistants'])){
+		// 		$check=1;
+		// 		echo "<li>".$assistant[$i]."</li>";
+		// 	}
+		// }
+		//
+		if(!$found){
 			echo "<li>None</li>";
 		}
 	?>
@@ -108,10 +110,10 @@
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 
-var temp= <?php echo $time; ?>;
+var temp= <?php echo $_SESSION['parameters']['hours']; ?>;
 
 var margin = {top: 20, right: 50, bottom: 45, left: 50},
-    width = 400,
+    width = 300,
     height = 300 - margin.top - margin.bottom;
 
 var x_input = d3.scale.ordinal()
@@ -135,6 +137,7 @@ if(temp>8){
 }
 
 xAxis_input.tickFormat(function (d,counter=0) {if(counter%ticks_gap1==0){counter++; return d;} });
+// yAxis_input.tickFormat(function(d, i) {return d;});
 
 var svg_summary = d3.select("#input_summary").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -143,7 +146,7 @@ var svg_summary = d3.select("#input_summary").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // d3.csv("sessions/input_summary.txt", type, function(error, data) {
-// d3.csv('<?php echo $_SESSION['dir'] . "input_summary.txt"; ?>', type, function(error, data) {
+// d3.csv('<?php echo $_SESSION['session_dir'] . "input_summary.txt"; ?>', type, function(error, data) {
 d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
 
   if (error) throw error;
@@ -165,11 +168,11 @@ d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
   svg_summary.append("g")
       .attr("class", "y axis")
       .call(yAxis)
-    .append("text")
+    	.append("text")
 		.attr("transform", "translate(-50,265) rotate(-90)" )
 		.attr("y", 6)
 		.attr("dy", ".71em")
-		.text("Traffic level (1: Low, 2: Medium, 3: High)");
+		.text("Traffic level (1 = Low, 2 = Med, 3 = High)");
 
   svg_summary.selectAll(".bar")
       .data(data)

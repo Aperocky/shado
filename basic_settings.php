@@ -1,11 +1,28 @@
 <?php
-	session_start();
+/****************************************************************************
+*																			*
+*	File:		basic_settings.php  										*
+*																			*
+*	Author:		Branch Vincent												*
+*																			*
+*	Date:		Sep 9, 2016													*
+*																			*
+*	Purpose:	This page allows the user to change basic settings for the 	*
+*				simulation. 												*
+*																			*
+****************************************************************************/
+
+//	Initialize session
+
+	require_once('includes/session_management/init.php');
+
+//	Set header info
+
 	$page_title = 'Run Simulation';
-	$curr_page = 'runSimPage';
 	$html_head_insertions = '<script type="text/javascript" src="scripts/basic_settings.js"></script>';
 	$html_head_insertions .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>';
 	require_once('includes/page_parts/header.php');
-	require_once('includes/run_sim/side_navigation.php');
+	require_once('includes/page_parts/side_navigation.php');
 ?>
 	<div id="runSimulationPage" class="page">
 		<h1 class="pageTitle">Input Basic Trip Conditions</h1>
@@ -35,26 +52,37 @@
 
 					<select id='beginHour' onchange="calculate_time();">
 						<?php
+							$hr = (int)substr($_SESSION['parameters']['begin'], 0, 2);
 							for ($i = 1; $i <= 12; $i++) {
-								$selected_string = '';
-								if ($i == 9) $selected_string = ' selected="selected"';
+								$selected = '';
+								if ($i == $hr) $selected = ' selected="selected"';
 								$val = sprintf('%02d', $i);
-								echo "<option$selected_string>$val</option>";
+								echo "<option$selected>$val</option>";
 							}
 						?>
 					</select>:<select id='beginMin' onchange="calculate_time();">
 						<?php
+							$min = (int)substr($_SESSION['parameters']['begin'], 3, 5);
 							for ($i = 0; $i <= 50; $i+=10) {
+								$selected = '';
+								if ($i == $min) $selected = ' selected="selected"';
 								$val = sprintf('%02d', $i);
-								echo "<option>$val</option>";
+								echo "<option$selected>$val</option>";
 							}
 						?>
 					</select>
 					<select id='beginMd' onchange="calculate_time();">
-						<option>AM</option>
-						<option>PM</option>
+						<?php
+							$options = ['AM', 'PM'];
+							$md = substr($_SESSION['parameters']['begin'], 6);
+							for ($i = 0; $i < sizeof($options); $i++) {
+								$selected = '';
+								if ($options[$i] == $md) $selected = ' selected="selected"';
+								echo "<option$selected>$options[$i]</option>";
+							}
+						?>
 					</select>
-					<input id="begin_time" name="begin_time" type="hidden">
+					<input id="begin_time" name="begin_time" type="hidden" value="<?php echo $_SESSION['parameters']['begin'];?>">
 				</div>
 
 				<div class="startEndTime stepBox">
@@ -63,27 +91,38 @@
 
 					<select id='endHour' onchange="calculate_time();">
 						<?php
+							$hr = (int)substr($_SESSION['parameters']['end'], 0, 2);
 							for ($i = 1; $i <= 12; $i++) {
-								$selected_string = '';
-								if ($i == 5) $selected_string = ' selected="selected"';
+								$selected = '';
+								if ($i == $hr) $selected = ' selected="selected"';
 								$val = sprintf('%02d', $i);
-								echo "<option$selected_string>$val</option>";
+								echo "<option$selected>$val</option>";
 							}
 						?>
 					</select>:<select id='endMin' onchange="calculate_time();">
 						<?php
+							$min = (int)substr($_SESSION['parameters']['end'], 3, 5);
 							for ($i = 0; $i <= 50; $i+=10) {
+								$selected = '';
+								if ($i == $min) $selected = ' selected="selected"';
 								$val = sprintf('%02d', $i);
-								echo "<option>$val</option>";
+								echo "<option$selected>$val</option>";
 							}
 						?>
 					</select>
 					<select id='endMd' onchange="calculate_time();">
-						<option>AM</option>
-						<option selected="selected">PM</option>
+						<?php
+							$options = ['AM', 'PM'];
+							$md = substr($_SESSION['parameters']['end'], 6);
+							for ($i = 0; $i < sizeof($options); $i++) {
+								$selected = '';
+								if ($options[$i] == $md) $selected = ' selected="selected"';
+								echo "<option$selected>$options[$i]</option>";
+							}
+						?>
 					</select>
-					<input id="end_time" name="end_time" type="hidden">
-					<input id="num_hours" name="num_hours" type="hidden">
+					<input id="end_time" name="end_time" type="hidden" value="<?php echo $_SESSION['parameters']['end'];?>">
+					<input id="num_hours" name="num_hours" type="hidden" value="<?php echo $_SESSION['parameters']['hours'];?>">
 				</div>
 			</div>
 
@@ -91,14 +130,43 @@
 				<div class='stepCircle'>3</div>
 					<h3 class="whiteFont">
 						What are the Traffic Levels?
+
+<!-- text head conflict
+
 						<span class="hint--right hint--rounded hint--large" aria-label= "Enter the local levels of traffic during this shift. This will modify the frequency of certain tasks arriving."><sup>(?)</sup></span>
 					</h3>
 					<span class="hint--left hint--rounded hint--large" aria-label= "What is the projected level of traffic on your railroad for this particular shift?">
 						<div id="totalTime" style="overflow-x:auto;">
 							<table id='table' class='trafficTable'>
 							</table>
-						<!-- </div> -->
-					</span>
+						 </div> 
+					</span> -->
+
+						<span class="hint--right hint--rounded hint--large" aria-label= "Enter the local levels of traffic during this shift. This will modify the frequency of certain tasks arriving."><sup>(?)</sup></span>
+					</h3>
+					<div id="totalTime" style="overflow-x:auto;">
+						<table id='table' class='trafficTable remove'>
+							<?php
+								echo '<tr id="traffic_levels">';
+								$chars = ['h', 'm', 'l'];
+								$labels = ['High', 'Med', 'Low'];
+								for ($i = 0; $i < $_SESSION['parameters']['hours']; $i++) {
+									$val = $_SESSION['parameters']['traffic_chars'][$i];
+									echo '<td>';
+									for ($j = 0; $j < sizeof($labels); $j++) {
+										$selected = '';
+										if ($chars[$j] == $val) $selected = ' checked';
+										echo "<input type='radio' name='traffic_level_$i' value='$chars[$j]'$selected>$labels[$j]</input><br>";
+									}
+									echo '</td>';
+								}
+								echo '</tr>';
+								echo '<tr id="traffic_level_labels">';
+								echo '</tr>';
+							?>
+						</table>
+					<!-- </div> -->
+
 				</div>
 			</div>
 			<br><br>
@@ -108,6 +176,7 @@
 				<div id="assist">
 					<table id="assistantsTable" cellspacing="0">
 						<tr>
+<<<<<<< HEAD
 							<td>
 								<input type="checkbox" name="extra1" value="1" id="conductor">Conductor <span class="hint--right hint--rounded hint--large" aria-label= "The freight conductor supervises train conditions on the ground at terminal points and remains attentive to the engineer while the train is in motion in the case of emergency, when action could be needed. "><sup>(?)</sup></span>
 							</td>
@@ -120,29 +189,69 @@
 							<td>
 								<input type="checkbox" name="extra4" value="4" id="other" onchange="check()">Custom
 							</td>
+
+							<?php
+								$assistant_names = array_keys($_SESSION['assistants']);
+								for ($i = 1; $i < sizeof($assistant_names); $i++) {
+									$assistant = $assistant_names[$i];
+									$selected = '';
+									if (in_array($assistant, $_SESSION['parameters']['assistants'])) {
+										$selected = ' checked';
+									}
+									echo '<td><input ';
+									if ($assistant == 'custom') echo 'id="custom_assistant" onchange="toggle_custom_settings();"';
+									echo 'type="checkbox" name="assistant_' . $i . '"' . $selected . '>' . ucwords($assistant) . ' ';
+									echo "<span class='hint--right hint--rounded hint--large' aria-label= '". $_SESSION['assistants'][$assistant]['description'] . "'><sup>(?)</sup></span>";
+									echo '</td>';
+								}
+							?>
+
 						</tr>
 					</table>
 				</div>
 			</div>
 			<br>
-			<div class="custom" id="custom">
+			<div class="custom remove" id="custom_assistant_settings">
 				<div class='stepCircle'>5</div>
+
 				<h3 id='custom_heading' class='whiteFont'>Which Tasks Will This Custom Assistant Handle? <span class="hint--right hint--rounded hint--large" aria-label= "Identify the name and which tasks the custom assistant(s) can offload from the locomotive engineer workload."><sup>(?)</sup></span></h3>
+
+				
+
 				<br>
-				<table id='custom_table' class='customTable'>
+				<table id='custom_table'>
 					<tr>
+						<?php $custom_name = $_SESSION['assistants']['custom']['name']; ?>
 						<th>Assistant Name:</td>
-						<td><input type='text' id='custom_name' name="custom_name" value="<?php echo $_SESSION['operators']['Custom']; ?>"></input></td>
+						<td><input type='text' name="custom_op_name" value="<?php if ($custom_name != 'custom') echo ucwords($custom_name); ?>"></input></td>
 					</tr>
 				<?php
-					for($i = 0; $i < $_SESSION['numTaskTypes']; $i++)
-					{
-						echo "<tr><td>" . $_SESSION['taskNames'][$i] . "  <span class='hint--right hint--rounded hint--large' aria-label= '". $_SESSION['taskDescription'][$_SESSION['taskNames'][$i]] . "'><sup>(?)</sup></span></td><td><input type='checkbox' name='custom" . $i . "' value='y'";
-						if(($key = array_search(4, $_SESSION['taskAssocOps'][$i])) !== false) {
-			                echo ' checked';
-			            }
-						echo "></input></td></tr>";
+
+					if (isset($_SESSION['assistants']['custom']))
+						$custom_tasks = $_SESSION['assistants']['custom']['tasks'];
+					else
+						$custom_tasks = array();
+					$task_names = array_keys($_SESSION['tasks']);
+
+					$i = 0;
+					foreach ($task_names as $task) {
+						echo "<tr><td>" . ucwords($task) . " <span class='hint--right hint--rounded hint--large' aria-label= '".  $_SESSION['tasks'][$task]['description'] . "'>";
+						echo '<sup>(?)</sup></span></td><td>';
+						echo '<input type="checkbox" name="custom_op_task_' . $i++ . '"';
+						if ($key = array_search($task, $custom_tasks) !== false) echo ' checked';
+						echo '></input>';
+						echo '</td></tr>';
+
 					}
+
+					// for($i = 0; $i < sizeof($_SESSION['tasks']); $i++)
+					// {
+					// 	echo "<tr><td>" . array_keys($_SESSION['tasks']) . "  <span class='tooltip' onmouseover='tooltip.pop(this, \'" . $_SESSION['taskDescription'][$_SESSION['taskNames'][$i]] . "\';)'><sup>(?)</sup></span></td><td><input type='checkbox' name='custom_op_task_" . $i . "' value='y'";
+					// 	if(($key = array_search(4, $_SESSION['taskAssocOps'][$i])) !== false) {
+			        //         echo ' checked';
+			        //     }
+					// 	echo "></input></td></tr>";
+					// }
 				?>
 				</table>
 			</div>

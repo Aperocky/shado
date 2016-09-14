@@ -1,3 +1,12 @@
+jQuery.noConflict()(function ($) {
+    $(document).ready(init());
+});
+
+function init() {
+    jQuery('#submit1').addClass('remove');
+    jQuery('#submit2').addClass('remove');
+}
+
 document.addEventListener("DOMContentLoaded",function() {
 	// document.getElementByClassName('text_box').style.display="block";
 	var why_tab = document.getElementsByClassName('why_tab')

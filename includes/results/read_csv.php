@@ -1,24 +1,34 @@
 <?php
+/****************************************************************************
+*																			*
+*	File:		read_csv.php  												*
+*																			*
+*	Author:		Branch Vincent												*
+*																			*
+*	Date:		Sep 9, 2016													*
+*																			*
+*	Purpose:	This file fetches the simulation results.					*
+*																			*
+****************************************************************************/
 
-// 	Question:  Need assistant?
+//	Initialize session
 
-	session_start();
-	$assistant= $_SESSION['operator1'];
-	// $file_handle=fopen('sessions/Engineer_stats.csv','r');
-	$file_handle=fopen($_SESSION['dir'] . 'Engineer_stats.csv','r');
-	$count=0;
-	$low_count=0;
-	$normal_count=0;
-	$high_count=0;
-	$skip=0;
+	require_once('includes/session_management/init.php');
 
-	while (!feof($file_handle)){
-		$line_of_text = fgetcsv($file_handle,2048,',');
+//	Open file
+
+	$file = fopen($_SESSION['session_dir'] . 'stats_engineer.csv','r') or die('Could not find engineer file!');
+	$count = 0;
+	$low_count = 0;
+	$normal_count = 0;
+	$high_count = 0;
+	$skip = 0;
+
+	while (!feof($file)) {
+		$line_of_text = fgetcsv($file, 2048, ',');
 		$skip++;
-		if($skip==20) {
-			// echo var_dump($line_of_text);
-			// echo "<br>";
-			$num=count($line_of_text);
+		if ($skip == 20) {
+			$num = count($line_of_text);
 
 			for($i=2; $i<$num; $i++){
 				$var=(float)$line_of_text[$i];
@@ -36,25 +46,22 @@
 		}
 	}
 
-	fclose($file_handle);
+	fclose($file);
 	$_SESSION['low_count_0']=$low_count;
 	$_SESSION['normal_count_0']=$normal_count;
 	$_SESSION['high_count_0']=$high_count;
 
-	if($assistant==1) {
-		// $file_handle=fopen('sessions/Conductor_stats.csv','r');
-		$file_handle=fopen($_SESSION['dir'] . 'Conductor_stats.csv','r');
+	if (in_array('conductor', $_SESSION['parameters']['assistants'])) {
+		$file = fopen($_SESSION['session_dir'] . 'stats_conductor.csv', 'r') or die('Could not find conductor file!');
 		$count=0;
 		$low_count=0;
 		$normal_count=0;
 		$high_count=0;
 		$skip=0;
-		while (!feof($file_handle)) {
-			$line_of_text = fgetcsv($file_handle,2048,',');
+		while (!feof($file)) {
+			$line_of_text = fgetcsv($file,2048,',');
 			$skip++;
 			if($skip==20) {
-				// echo var_dump($line_of_text);
-				// echo "<br>";
 				$num=count($line_of_text);
 				for($i=2;$i<$num;$i++) {
 					$var=(float)$line_of_text[$i];
@@ -68,12 +75,11 @@
 						}
 					}
 				}
-				/* echo "LOW: $low_count;   NORMAL: $normal_count;   HIGH: $high_count;\n"; */
 				break;
 			}
 		}
 
-		fclose($file_handle);
+		fclose($file);
 		$_SESSION['low_count_1']=$low_count;
 		$_SESSION['normal_count_1']=$normal_count;
 		$_SESSION['high_count_1']=$high_count;

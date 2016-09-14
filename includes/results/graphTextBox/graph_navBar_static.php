@@ -1,7 +1,19 @@
 <?php
 
 	function graphTextStatic($fname){
+
 		session_start();
+// <<<<<<< HEAD
+//
+// 		$file_handle = fopen($fname,'r');
+// 		$count = array();
+// 		$temp_count = 0;
+// 		$skip = 1;
+// 		$num = 0;
+//
+// 		while (!feof($file_handle)) {
+// 			if($temp_count==1) {
+// =======
 		$traffic=array();
 		if(isset($_SESSION['traffic_time'])){
 			$time=$_SESSION['traffic_time'];
@@ -20,6 +32,7 @@
 		{
 			if($temp_count==1)
 			{
+// >>>>>>> 7f0fb161ef371c8638e485226d441e876059a563
 				$skip=1;
 			}
 
@@ -235,17 +248,19 @@
 
 		}
 
-		$penalty_high=$penalty_high/$count_high;
+		if ($count_high != 0)
+			$penalty_high=$penalty_high/$count_high;
+		else
+			$penalty_high = 0;
 
-
-		// if ($fname=='sessions/Engineer_stats.csv'){
-		if ($fname == $_SESSION['dir'] . 'Engineer_stats.csv') {
-			$user_name='engineer';
+		if ($fname == $_SESSION['session_dir'] . 'stats_engineer.csv') {
+			$assistant='engineer';
 		} else {
-			$user_name='conductor';
+			$assistant='conductor';
 		}
 
 		echo "<br><br><br><br><br><br>
+
 		<div id='graphTextBox' class='no-page-break'>
 			<nav id='graphNav'>
 				<ul>
@@ -255,6 +270,5 @@
 			</nav>";
 		include("includes/results/graphTextBox/graph_whyTab.php");
 
-		
 	}
 ?>

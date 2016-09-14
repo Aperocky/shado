@@ -3,11 +3,11 @@
 	<br>
 	<ul>
 	<?php if($penalty_high>0.5){ ?>
-	<li>Providing additional support to your <?php echo $user_name;?> for some part of their shift may help him/her maintain moderate levels of workload</li>
+	<li>Providing additional support to your <?php echo $assistant;?> for some part of their shift may help him/her maintain moderate levels of workload</li>
 	<?php } ?>
 
 	<?php if($count_low>$count_norm){ ?>
-	<li>Providing situational awareness to your <?php echo $user_name;?> for some part of their shift may help him/her maintain moderate levels of workload</li>
+	<li>Providing situational awareness to your <?php echo $assistant;?> for some part of their shift may help him/her maintain moderate levels of workload</li>
 	<?php } ?>
 	</ul>
 </div>

@@ -3,11 +3,10 @@
 // });
 // alert('Here');
 
-function d3_visual(user, num, filename) {
+function d3_visual(assistant, num, filename) {
 	console.log("started d3 visual");
 	var legend_width = 120;
 
-	// var temp=<?php echo $num; ?>;
 	var temp=num;
 
 	var margin = {top: 30, right: 130, bottom: 50, left: 70},
@@ -18,8 +17,6 @@ function d3_visual(user, num, filename) {
 	var x = d3.scale.ordinal()
 	    .rangeRoundBands([0, width],0.4);
 
-
-
 	var yAbsolute = d3.scale.linear() // for absolute scale
 	    .rangeRound([height, 0]);
 	var yRelative = d3.scale.linear() // for absolute scale
@@ -27,7 +24,6 @@ function d3_visual(user, num, filename) {
 	var color = d3.scale.category20();
 	// var color = d3.scale.ordinal()
 	    // .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#dd843c", "#ff8ff0"]);
-
 
 	var xAxis = d3.svg.axis()
 	    .scale(x)
@@ -45,31 +41,27 @@ function d3_visual(user, num, filename) {
 		    .scale(yAbsolute)
 		    .orient("left");
 
-	var div = d3.select("#graph_" + user).append("div")
+	var div = d3.select("#graph_" + assistant).append("div")
 	    .attr("class", "tooltip")
 	    .style("opacity", 0);
 
-	var svg_eng = d3.select("#graph_" + user).append("svg")
+	var svg_eng = d3.select("#graph_" + assistant).append("svg")
 	    .attr("width", width + margin.left + margin.right+legend_width)
 	    .attr("height", height + margin.top + margin.bottom)
 	  .append("g")
 	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	// d3.csv("sessions/mod_type_data_" + user + ".txt", function(error, data) {
 	console.log("read_file.php?filename=" + filename);
 	d3.csv("read_file.php?filename=" + filename, function(error, data) {
 	  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "time"; }));
 
-
-
 	  data.forEach(function(d) {
-	  	console.log(d);
+		//  	console.log(d);
 		var index=d.time.indexOf('min');
 		var mystate = d.time.slice(0,index);
-		console.log(mystate);
+		// console.log(mystate);
 
 	    var y0 = 0;
-	   
 
 		d.ages = color.domain().map(function(name) { return { mystate:mystate, name: name, y0: y0, y1: y0 += +d[name]}; });
 
@@ -77,7 +69,7 @@ function d3_visual(user, num, filename) {
 
 		d.pct = [];
 		d.total=d.total*100;
-		
+
 		for (var i=0;i <d.ages.length;i ++ ){
 			d.ages[i].y1=d.ages[i].y1*100;
 			d.ages[i].y0=d.ages[i].y0*100;
@@ -96,12 +88,8 @@ function d3_visual(user, num, filename) {
 				name: d.ages[i].name,
 				mystate: d.time.slice(0,index),
 				y_pct: y_pct
-				
-
 			});
-
 		}
-
 	  });
 
 	  x.domain(data.map(function(d) {var index=d.time.indexOf('min');	 return d.time.slice(0,index); }));
@@ -120,8 +108,6 @@ function d3_visual(user, num, filename) {
 		  .attr("x", 1)
 		  .attr("dx", ".71em")
 		  .text("Time (min)");
-
-
 
 		var stateAbsolute= svg_eng.selectAll(".absolute")
 							.data(data)
@@ -155,7 +141,7 @@ function d3_visual(user, num, filename) {
 
 		stateAbsolute.selectAll("rect")
 			.on("mouseover", function(d){
-				console.log(d);
+				// console.log(d);
 
 				var xPos = parseFloat(d3.select(this).attr("x"));
 				var yPos = parseFloat(d3.select(this).attr("y"));
@@ -165,14 +151,9 @@ function d3_visual(user, num, filename) {
 				div.transition()
 	                .duration(200)
 	                .style("opacity", .9);
-	            div	.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2)+"<br> Total Utilization: "+d.total.toFixed(2)) 
+	            div	.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2)+"<br> Total Utilization: "+d.total.toFixed(2))
 	                .style("left", (d3.event.pageX+20) + "px")
 	                .style("top", (d3.event.pageY - 20) + "px");
-
-
-
-
-
 
 			})
 			.on("mouseout", function(d) {
@@ -208,10 +189,7 @@ function d3_visual(user, num, filename) {
 	        .attr("text-anchor", "middle")
 	        .style("font-size", "24px")
 	        .style("text-decoration", "underline")
-	        .text(user+ " Workload");
-
-
-
+	        .text(assistant + " Workload");
 
 		// end of define absolute
 
@@ -235,4 +213,5 @@ function d3_visual(user, num, filename) {
 	     	    .text(function(d) { return d; });
 	});
 
+	console.log("DONE!");
 }

@@ -14,7 +14,6 @@
 	fwrite($handle, "writing to tempfile TED.");
 	fclose($handle);
 
-
 	echo '<br>';
 	echo '<br>';
 

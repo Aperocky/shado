@@ -1,122 +1,212 @@
 <?php
     session_start();
 
-//  Set filepath
+/****************************************************************************
+*																			*
+*	File:		set_session_vars.php  									    *
+*																			*
+*	Author:		Branch Vincent												*
+*																			*
+*	Date:		Sep 9, 2016													*
+*																			*
+*	Purpose:	This sets default session variables, which is defined by    *
+*               the default_params.txt file				                    *
+*																			*
+****************************************************************************/
 
-    $dir = sys_get_temp_dir() . '/' . uniqid();
-    mkdir($dir);
-    $_SESSION['dir'] = $dir . '/';
+//  Set session id and directory
+
+    $_SESSION['session_id'] = uniqid();
+    $dir = sys_get_temp_dir() . '/' . $_SESSION['session_id'];
+    // mkdir($dir);
+    // $_SESSION['session_dir'] = $dir . '/';
+    $_SESSION['session_dir'] = '/Users/Branch/Desktop/';
+    $_SESSION['des_version'] = '1.0.0';
 
 //  Create session variables
 
-    $_SESSION['taskNames'] = array();
-    $_SESSION['taskPrty'] = array();
-    $_SESSION['taskArrDist'] = array();
-    $_SESSION['taskArrPms'] = array();
-    $_SESSION['taskSerDist'] = array();
-    $_SESSION['taskSerPms'] = array();
-    $_SESSION['taskExpDist'] = array();
-    $_SESSION['taskExpPmsLo'] = array();
-    $_SESSION['taskExpPmsHi'] = array();
-    $_SESSION['taskAffByTraff'] = array();
-    $_SESSION['taskAssocOps'] = array();
-    $_SESSION['taskDescription'] = array();
-    $_SESSION['operators'] = array();
+    $_SESSION['default_tasks'] = array();
+    $_SESSION['parameters'] = array();
+    $_SESSION['tasks'] = array();
+    $_SESSION['assistants'] = array();
+    // $_SESSION['taskNames'] = array();
+    // $_SESSION['taskPrty'] = array();
+    // $_SESSION['taskArrDist'] = array();
+    // $_SESSION['taskArrPms'] = array();
+    // $_SESSION['taskSerDist'] = array();
+    // $_SESSION['taskSerPms'] = array();
+    // $_SESSION['taskExpDist'] = array();
+    // $_SESSION['taskExpPmsLo'] = array();
+    // $_SESSION['taskExpPmsHi'] = array();
+    // $_SESSION['taskAffByTraff'] = array();
+    // $_SESSION['taskAssocOps'] = array();
+    // $_SESSION['taskDescription'] = array();
+
+//  Set basic settings
+
+    $_SESSION['parameters']['hours'] = 8;
+    $_SESSION['parameters']['begin'] = '09:00 AM';
+    $_SESSION['parameters']['end'] = '05:00 PM';
+
+    $_SESSION['parameters']['traffic_chars'] = array();
+    for ($i = 0; $i < 8; $i++) {
+        $_SESSION['parameters']['traffic_chars'][] = 'm';
+        $_SESSION['parameters']['traffic_nums'][] = 1;
+    }
+
+    $_SESSION['parameters']['assistants'] = array();
+    $_SESSION['parameters']['assistants'][] = 'engineer';
+
 
 //  Read in default values
 
-    $file = fopen('static_data/default_params.txt','r') or die('Unable to open default parameter file!');
+    $file = fopen('./static_data/default_params.txt', 'r') or die('Unable to open default parameter file!');
 
 //  Set default number of replications
 
     $line = fscanf($file, "%s %d");
-    $_SESSION['numReps'] = $line[1];
+    $_SESSION['parameters']['reps'] = $line[1];
+
+//  Set default number of assistants
+
+    $line = fscanf($file, "%s %d");
+    $num_ops = $line[1];
 
 //  Set default number of task types
 
     $line = fscanf($file, "%s %d");
-    $_SESSION['numTaskTypes'] = $line[1];
+    $num_tasks = $line[1];
+
+//  Read in assistants
+
+    for ($i = 0; $i < $num_ops; $i++) {
+
+    //  Set name
+
+        $line = strstr(fgets($file), "\t");
+        $line = strtolower(trim($line));
+        $_SESSION['assistants'][$line] = array();
+        $curr_op = $line;
+
+    //  Set tasks to handle
+
+        $line = strstr(fgets($file), "\t");
+        $data = array_map('intval', explode(" ", $line));
+        $_SESSION['assistants'][$curr_op]['tasks'] = $data;
+    }
+
+    $_SESSION['assistants']['custom'] = array();
+    $_SESSION['assistants']['custom']['name'] = 'custom';
+    $_SESSION['assistants']['custom']['tasks'] = array();
 
 //  Read in tasks
 
-    for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
+    for ($i = 0; $i < $num_tasks; $i++) {
 
     //  Set task name
         $line = strstr(fgets($file), "\t");
-        $line = trim($line);
-        $_SESSION['taskNames'][$i] = $line;
+        $line = strtolower(trim($line));
+        $_SESSION['tasks'][$line] = array();
+        $curr_task = $line;
 
     //  Set priority
-        list ($name, $data[0], $data[1], $data[2]) = fscanf($file, "%s %d %d %d");
-        $_SESSION['taskPrty'][$i] = $data;
+        list($name, $data[0], $data[1], $data[2]) = fscanf($file, "%s %d %d %d");
+        // $_SESSION['taskPrty'][$i] = $data;
+        $_SESSION['tasks'][$curr_task]['priority'] = $data;
 
     //  Set arrival distribution type
         $line = fscanf($file, "%s %s");
-        $_SESSION['taskArrDist'][$i] = $line[1];
+        // $_SESSION['taskArrDist'][$i] = $line[1];
+        $_SESSION['tasks'][$curr_task]['arrDist'] = $line[1];
 
     //  Set arrival distribution parameters
-        list ($name, $data[0], $data[1], $data[2]) = fscanf($file, "%s %f %f %f");
-        $_SESSION['taskArrPms'][$i] = $data;
+        list($name, $data[0], $data[1], $data[2]) = fscanf($file, "%s %f %f %f");
+        // $_SESSION['taskArrPms'][$i] = $data;
+        $_SESSION['tasks'][$curr_task]['arrPms'] = $data;
 
     //  Set service distribution type
         $line = fscanf($file, "%s %s");
-        $_SESSION['taskSerDist'][$i] = $line[1];
+        // $_SESSION['taskSerDist'][$i] = $line[1];
+        $_SESSION['tasks'][$curr_task]['serDist'] = $line[1];
 
     //  Set service distribution parameters
-        list ($name, $data2[0], $data2[1]) = fscanf($file, "%s %f %f");
-        $_SESSION['taskSerPms'][$i] = $data2;
+        list($name, $data2[0], $data2[1]) = fscanf($file, "%s %f %f");
+        // $_SESSION['taskSerPms'][$i] = $data2;
+        $_SESSION['tasks'][$curr_task]['serPms'] = $data2;
 
     //  Set expiration distribution type
         $line = fscanf($file, "%s %s");
-        $_SESSION['taskExpDist'][$i] = $line[1];
+        // $_SESSION['taskExpDist'][$i] = $line[1];
+        $_SESSION['tasks'][$curr_task]['expDist'] = $line[1];
 
     //  Set expiration distribution parameters (lo + hi)
-        list ($name, $data[0], $data[1], $data[2]) = fscanf($file, "%s %f %f %f");
-        $_SESSION['taskExpPmsLo'][$i] = $data;
+        list($name, $data[0], $data[1], $data[2]) = fscanf($file, "%s %f %f %f");
+        // $_SESSION['taskExpPmsLo'][$i] = $data;
+        $_SESSION['tasks'][$curr_task]['expPmsLo'] = $data;
 
-        list ($name, $data[0], $data[1], $data[2]) = fscanf($file, "%s %f %f %f");
-        $_SESSION['taskExpPmsHi'][$i] = $data;
+        list($name, $data[0], $data[1], $data[2]) = fscanf($file, "%s %f %f %f");
+        // $_SESSION['taskExpPmsHi'][$i] = $data;
+        $_SESSION['tasks'][$curr_task]['expPmsHi'] = $data;
 
     //  Set affected by traffic
-        list ($name, $data[0], $data[1], $data[2]) = fscanf($file, "%s %d %d %d");
-        $_SESSION['taskAffByTraff'][$i] = $data;
+        list($name, $data[0], $data[1], $data[2]) = fscanf($file, "%s %d %d %d");
+        // $_SESSION['taskAffByTraff'][$i] = $data;
+        $_SESSION['tasks'][$curr_task]['affByTraff'] = $data;
 
     //  Set associated operators
-        $line = strstr(fgets($file), "\t");
-        $data = array_map('intval', explode(" ", $line));
-        $_SESSION['taskAssocOps'][$i] = $data;
+        // $line = strstr(fgets($file), "\t");
+        // $data = array_map('intval', explode(" ", $line));
+        // // $_SESSION['taskAssocOps'][$i] = $data;
+        // $_SESSION['tasks'][$curr_task]['assocOps'] = $data;
     }
-
     fclose($file);
+
+//  Set assistant descriptions
+
+
+    $_SESSION['assistants']['engineer']['description'] = 'The engineer is responsible for operating the train';
+    $_SESSION['assistants']['conductor']['description'] = 'The freight conductor supervises train conditions on the ground at terminal points and remains attentive to the engineer while the train is in motion in the case of emergency, when action could be needed';
+    $_SESSION['assistants']['positive train control']['description'] = 'Positive Train Control (PTC), set to be fully implemented by 2018, is an embedded feature of railroads that automatically manages speed restrictions and emergency braking without human input';
+    $_SESSION['assistants']['cruise control']['description'] = 'Cruise control can offload motion planning tasks that involve the locomotive control system of throttle and dynamic braking';
+    $_SESSION['assistants']['custom']['description'] = 'This assistant is defined by you';
+
 
 //  Set task descriptions
 
-    $_SESSION['taskDescription']['Communicating'] = "Filtering through the relevant information for the engineer operation and being able to communicate information that may impact the macro-level network of operations.";
-    $_SESSION['taskDescription']['Exception Handling'] = "Attending to unexpected or unusual situations that must be handled in order to continue with the trip mission.";
-    $_SESSION['taskDescription']['Paperwork'] = "Reviewing and recording operating conditions.";
-    $_SESSION['taskDescription']['Maintenance of Way Interactions'] = "Maintaining situation awareness of other crews along track.";
-    $_SESSION['taskDescription']['Temporary Speed Restrictions'] = "Recalling information issued on track bulletins and adapting to updates while train in motion.";
-    $_SESSION['taskDescription']['Signal Response Management'] = "Attentive to direction from track signalling system and responsive with proper control system within safely allotted time.";
-    $_SESSION['taskDescription']['Monitoring Inside'] = "Attention to information from displays and of engineer performance for safe operation.";
-    $_SESSION['taskDescription']['Monitoring Outside'] = "Attention to warnings and environmental conditions that may affect operations.";
-    $_SESSION['taskDescription']['Planning Ahead'] = "Manoeuvring locomotive control system for throttle, braking and other subtasks like horn-blowing before railroad crossing.";
+    $_SESSION['tasks']['communicating']['description'] = 'Filtering through relevant information for the operation and communicating information that may impact the macro-level network of operations';
+    $_SESSION['tasks']['exception handling']['description'] = 'Attending to unexpected or unusual situations that must be handled in order to continue with the trip';
+    $_SESSION['tasks']['paperwork']['description'] = 'Reviewing and recording operating conditions';
+    $_SESSION['tasks']['maintenance of way interactions']['description'] = 'Maintaining situational awareness of other crews along the track';
+    $_SESSION['tasks']['temporary speed restrictions']['description'] = 'Recalling information issued on track bulletins and adapting to updates while train is in motion';
+    $_SESSION['tasks']['signal response management']['description'] = 'Attentive to direction from track signaling system and reponsive to proper control system within a safely allotted time';
+    $_SESSION['tasks']['monitoring inside']['description'] = 'Attentive to informational displays and to engineer\'s performance to maintain a safe operation';
+    $_SESSION['tasks']['monitoring outside']['description'] = 'Attentive to warnings and environmental conditions that may affect operations';
+    $_SESSION['tasks']['planning ahead']['description'] = 'Maneuvering locomotive control system for throttle, braking and other subtasks like horn-blowing before railroad crossing';
 
-//  Set operators
+    $_SESSION['default_tasks'] = $_SESSION['tasks'];
 
-    $_SESSION['operators']['Engineer'] = array();
-    $_SESSION['operators']['Conductor'] = array();
-    $_SESSION['operators']['Positive Train Control'] = array();
-    $_SESSION['operators']['Cruise Control'] = array();
-    // $_SESSION['operators']['Custom'] = array();
+//  Set empty task
+
+    $_SESSION['empty_task'] = array();
+    $_SESSION['empty_task']['priority'] = array(3, 3, 3);
+    $_SESSION['empty_task']['arrDist'] = 'E';
+    $_SESSION['empty_task']['arrPms'] = array(1/30, 1/30, 1/30);
+    $_SESSION['empty_task']['serDist'] = 'E';
+    $_SESSION['empty_task']['serPms'] = array(5, 5);
+    $_SESSION['empty_task']['expDist'] = 'E';
+    $_SESSION['empty_task']['expPmsLo'] = array(0, 0, 0);
+    $_SESSION['empty_task']['expPmsHi'] = array(0, 0, 0);
+    $_SESSION['empty_task']['affByTraff'] = array(0, 0, 0);
 
 //  Set session
 
     $_SESSION['session_started'] = true;
+    $_SESSION['session_results'] = false;
 
-    
-
-
-//  Set task description
-	
-
-    // print_r($_SESSION);
+    // function read_param($file, $session_prefix) {
+    //     $line = fscanf($file, "%s %s");
+    //     echo "line = $line \n";
+    //     $_SESSION["$session_prefix"]["$line[0]"] = $line[1];
+    //     $line = strtolower(trim($line));
+    //     if (is_numeric($line[1])) echo "$line[1] is numeric! \n";
+    // }
