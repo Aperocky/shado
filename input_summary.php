@@ -28,17 +28,19 @@
 <style>
 
 #input{
-	padding:15px 15px;
- 	width:fit-content;
- 	width:-webkit-fit-content;
- 	width:-moz-fit-content;
- 	border: 3px solid #5D7B85;
- 	cursor:pointer;
- 	-webkit-border-radius: 5px;
- 	border-radius: 25px;
- 	margin: 20px;
- 	text-align: left;
- 	background-color: rgba(255, 255, 255, 0.6);
+	padding:5px 15px;
+	width:fit-content;
+	width:-webkit-fit-content;
+	width:-moz-fit-content;
+	border: 3px solid #5D7B85;
+	cursor:pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 25px;
+	display: inline-block;
+	
+	margin: 20px;
+	text-align: left;
+	background-color: rgba(255, 255, 255, 0.6);
 }
 
 .bar:hover {
@@ -69,7 +71,7 @@
 }
 
 </style>
-<div class='page'>
+<div class= 'operatorSummaryOuter'>
 <div id="input">
 	<h3 style="text-align: center;"> <u>Here are the trip conditions you set:</u></h3>
 	<ul>
@@ -99,6 +101,7 @@
 	</ul>
 </div>
 </div>
+
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 

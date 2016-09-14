@@ -245,7 +245,7 @@
 			$user_name='conductor';
 		}
 
-		echo "</div><br><br><br><br><br><br>
+		echo "<br><br><br><br><br><br>
 		<div id='graphTextBox' class='no-page-break'>
 			<nav id='graphNav'>
 				<ul>
@@ -255,6 +255,6 @@
 			</nav>";
 		include("includes/results/graphTextBox/graph_whyTab.php");
 
-		echo "</div";
+		
 	}
 ?>

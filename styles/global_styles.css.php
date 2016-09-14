@@ -11,15 +11,17 @@
 *													*
 ****************************************************/
 
-h1, h2, h3, h4 {
+
+h1, h2, h3, h4, h5, h6 {
    /*font-size: 1em !important;*/
    /*color: #000 !important;*/
-   font-family: Arial;
+   font-family: "Open Sans";
    /*!important;*/
 }
 
 body {
 	margin: 0;
+	font-family: "Open Sans";
 }
 
 /*#fixedAll {
