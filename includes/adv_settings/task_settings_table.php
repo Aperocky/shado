@@ -1,3 +1,22 @@
+<?php 
+  
+  for($i=0; $i<72; $i++){
+    $serviceTime1=$serviceTime1." &nbsp ";
+  }
+
+
+  for($i=0; $i<62; $i++){
+    $serviceTime2=$serviceTime2." &nbsp ";
+  }
+
+
+  for($i=0; $i<52; $i++){
+    $serviceTime3=$serviceTime3." &nbsp ";
+  }
+  $serviceTime="How long does it typically take a human operator to complete this task?".$serviceTime1."Exponential: Specify the mean service time. For this distribution, the probability of each time occuring decreases exponentially as the time increases.".$serviceTime2."Lognormal: Specify the mean and standard deviation of the service time. For this distribution, the logarithm of each time forms a normal distribution. This results in a skewed distribution with many small values and fewer large values. Therefore, the mean is usually greater than the mode.".$serviceTime3."Uniform: Specify the minimum and maximum service time. For this distribution, any time within the bounds has an equally likely chance of occurring.";
+  
+?>
+
 <style>
     /*h4 { font-size: 16px; font-family: "Trebuchet MS", Verdana; line-height:18px;}*/
 </style>
@@ -217,8 +236,9 @@
     </tr>
     <tr>
         <td>
+            
             Service Time:
-            <span class="hint--right hint--rounded hint--large" aria-label= "How long does it typically take a human operator to complete this task? Exponential: Specify the mean service time. For this distribution, the probability of each time occuring decreases exponentially as the time increases. Lognormal: Specify the mean and standard deviation of the service time. For this distribution, the logarithm of each time forms a normal distribution. This results in a skewed distribution with many small values and fewer large values. Therefore, the mean is usually greater than the mode. Uniform: Specify the minimum and maximum service time. For this distribution, any time within the bounds has an equally likely chance of occurring."><sup>(?)</sup></span>
+            <span class="hint--right hint--rounded hint--large" aria-label= ' <?php echo $serviceTime; ?> '><sup>(?)</sup></span>
             <!-- <div class="tooltip"><sup>(?)</sup>
                 <span class="tooltiptext">
                     Exponential Distribution
