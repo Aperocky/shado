@@ -139,22 +139,41 @@ function select_side_tabs(page) {
     var acc_content = jQuery('#sideNav .accordion-content');
 
     for (var i = 0; i < acc.length; i++) {
+        jQuery(acc[i]).removeClass('active');
+        jQuery(acc_content[i]).removeClass('show');
+    }
+
+    for (var i = 0; i < acc.length; i++) {
+
         var kids = jQuery(acc_content[i]).children();
         var hrefs = [];
         for (var j = 0; j < kids.length; j++)
             hrefs[j] = jQuery(kids[j]).attr('href');
-        console.log(hrefs);
-        if (jQuery.inArray(page, hrefs) && !found) {
+        if (jQuery.inArray(page, hrefs) != -1 && !found) {
             jQuery(acc[i]).addClass('active');
             jQuery(acc_content[i]).addClass('show');
-            console.log(page);
-            // console.log(hrefs);
+            console.log(acc[i]);
             found = true;
-        } else if (!found) {
-            jQuery(acc[i]).removeClass('active');
-            jQuery(acc_content[i]).removeClass('show');
         }
     }
+
+    // for (var i = 0; i < acc.length; i++) {
+    //     var kids = jQuery(acc_content[i]).children();
+    //     var hrefs = [];
+    //     for (var j = 0; j < kids.length; j++)
+    //         hrefs[j] = jQuery(kids[j]).attr('href');
+    //     console.log(hrefs);
+    //     if (jQuery.inArray(page, hrefs) && !found) {
+    //         jQuery(acc[i]).addClass('active');
+    //         jQuery(acc_content[i]).addClass('show');
+    //         console.log(page);
+    //         // console.log(hrefs);
+    //         found = true;
+    //     } else if (!found) {
+    //         jQuery(acc[i]).removeClass('active');
+    //         jQuery(acc_content[i]).removeClass('show');
+    //     }
+    // }
 }
 
 function disable_links() {

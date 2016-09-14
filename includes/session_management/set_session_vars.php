@@ -60,7 +60,7 @@
 
 //  Read in default values
 
-    $file = fopen('./static_data/default_params_new.txt', 'r') or die('Unable to open default parameter file!');
+    $file = fopen('./static_data/default_params.txt', 'r') or die('Unable to open default parameter file!');
 
 //  Set default number of replications
 
