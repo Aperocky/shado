@@ -1,21 +1,20 @@
-<?php 
-  
-  for($i=0; $i<72; $i++){
-    $serviceTime1=$serviceTime1." &nbsp ";
+<?php
+
+
+  for ($i = 0; $i < 72; $i++) {
+      $serviceTime1 .= " &nbsp ";
   }
 
 
-  for($i=0; $i<62; $i++){
-    $serviceTime2=$serviceTime2." &nbsp ";
+  for ($i = 0; $i < 62; $i++) {
+      $serviceTime2 .= " &nbsp ";
   }
 
 
-  for($i=0; $i<52; $i++){
-    $serviceTime3=$serviceTime3." &nbsp ";
+  for ($i = 0; $i < 52; $i++) {
+      $serviceTime3 .= " &nbsp ";
   }
-  $serviceTime="How long does it typically take a human operator to complete this task?".$serviceTime1."Exponential: Specify the mean service time. For this distribution, the probability of each time occuring decreases exponentially as the time increases.".$serviceTime2."Lognormal: Specify the mean and standard deviation of the service time. For this distribution, the logarithm of each time forms a normal distribution. This results in a skewed distribution with many small values and fewer large values. Therefore, the mean is usually greater than the mode.".$serviceTime3."Uniform: Specify the minimum and maximum service time. For this distribution, any time within the bounds has an equally likely chance of occurring.";
-
-
+  $serviceTime = "How long does it typically take a human operator to complete this task?".$serviceTime1."Exponential: Specify the mean service time. For this distribution, the probability of each time occuring decreases exponentially as the time increases.".$serviceTime2."Lognormal: Specify the mean and standard deviation of the service time. For this distribution, the logarithm of each time forms a normal distribution. This results in a skewed distribution with many small values and fewer large values. Therefore, the mean is usually greater than the mode.".$serviceTime3."Uniform: Specify the minimum and maximum service time. For this distribution, any time within the bounds has an equally likely chance of occurring.";
 
     if ($task == "default") {
         $taskName = "new";
@@ -28,8 +27,8 @@
 ?>
 
 <h3>
-    <button class="roundButton hint--right hint--rounded hint--large" type="button" onclick=<?php echo "deleteTask(".$taskNum.")"; ?> style="background-color: #f44336;" aria-label= "Delete this task"><strong>x</strong></button>
-    <?php echo ucwords($taskName);?> Task
+    <?php echo ucwords($taskName);?> Task (
+    <button class="roundButton hint--right hint--rounded hint--large" type="button" onclick=<?php echo "deleteTask(".$taskNum.")"; ?> style="background-color: #f44336;" aria-label= "Delete this task"><strong>x</strong></button> Delete)
 </h3>
 <table align="center">
     <tr>
@@ -76,7 +75,7 @@
     </tr>
     <tr>
         <td>
-            
+
             Service Time:
 
             <span class="hint--right hint--rounded hint--large" aria-label= ' <?php echo $serviceTime; ?> '><sup>(?)</sup></span>

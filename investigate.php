@@ -32,7 +32,7 @@
 				<button type="button" class="button" onclick="location.href='sim_summary.php';" style="color: black; visibility: hidden;">Print Report</button>
 			</li>
 			<li>
-				<button type="button" class="button" onclick="location.href='sim_summary.php';" style="color: black;">Print Report &#8680</button>
+				<button type="button" class="button" onclick="location.href='sim_summary.php';" style="color: black;">Preview Report &#8680</button>
 			</li>
 		</ul>
 	</div>

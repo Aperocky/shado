@@ -24,7 +24,9 @@
 	// 	Store task names
 
 		$curr_task = strtolower($_POST["t".$task_num."_name"]);
-		$_SESSION['tasks'][$curr_task] = array();
+		// print_r($_SESSION['default_tasks']);
+		if (!in_array($curr_task, array_keys($_SESSION['default_tasks'])))
+			$_SESSION['tasks'][$curr_task]['description'] = $_SESSION['empty_task']['description'];
 
 	// 	Store priorities
 
@@ -89,19 +91,13 @@
 	// 	Store associated operators
 
 		$op_num = 0;
-		// echo "Task " . $curr_task . '<br>';
 		foreach (array_keys($_SESSION['assistants']) as $assistant) {
 			if (isset($_POST["t$task_num" . "_op$op_num"]) && $_POST["t$task_num" . "_op$op_num"] == 'on') {
-				// echo $assistant . " ($op_num) <br>";
 				$_SESSION['assistants'][$assistant]['tasks'][] = (int)array_search($task_num, $curr_tasks);
 			}
-			// else
-			// 	echo "NOT " . $assistant . " ($op_num) <br>";
 			$op_num++;
 		}
 	}
-
-	// print_r($_SESSION);
 
 //	Continue to next page
 

@@ -69,7 +69,6 @@
 
 //	Run simulation
 
-	$vers = $_SESSION['des_version'];
 	if (PHP_OS == "Darwin") {
 		echo passthru("bin/des_mac " . $_SESSION['session_dir'] . "params");
 	} else if (PHP_OS == "Linux") {
@@ -86,19 +85,24 @@
 	//
 	// 	}
 
+	$html_head_insertions = '<link rel="stylesheet" href="includes/results/progressBar/style.css">';
+	$html_head_insertions .= "<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>";
 	require_once('includes/page_parts/header.php');
+	require_once('includes/results/progressBar/loading_bar.php');
+	require_once('includes/page_parts/footer.php');
 ?>
 
-<!-- Show loading bar -->
-
+<!--
 <html>
 	<head>
 	    <meta charset="UTF-8">
 	    <title>Form Progress Bar</title>
-	    <link rel="stylesheet" href="progressBar/style.css">
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-	  </head>
+	    <link rel="stylesheet" href="includes/results/progressBar/style.css"> -->
+		<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+		<!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
+	  <!-- </head>
 	<body>
+		<div id="php"></div>
 		<div class="progress">
 			<div class="circle done">
 				<span class="label">1</span>
@@ -120,8 +124,6 @@
 				<span class="title">Fetching Results</span>
 			</div>
 		</div>
-		<div id="php"></div>
-    	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    	<script src="progressBar/style.js"></script>
+		<script src="includes/results/progressBar/style.js"></script>
 	</body>
-</html>
+</html> -->

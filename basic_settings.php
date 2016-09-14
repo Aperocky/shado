@@ -44,7 +44,7 @@
 			</form>
 		</div> -->
 
-		<form class="centerOuter" action="basic_settings_send.php" method="post" onsubmit="return confirm('Please verify your provided settings before continuing!');">
+		<form class="centerOuter" action="basic_settings_send.php" method="post">
 			<div class="centerOuter">
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>1</div>
@@ -130,18 +130,6 @@
 				<div class='stepCircle'>3</div>
 					<h3 class="whiteFont">
 						What are the Traffic Levels?
-
-<!-- text head conflict
-
-						<span class="hint--right hint--rounded hint--large" aria-label= "Enter the local levels of traffic during this shift. This will modify the frequency of certain tasks arriving."><sup>(?)</sup></span>
-					</h3>
-					<span class="hint--left hint--rounded hint--large" aria-label= "What is the projected level of traffic on your railroad for this particular shift?">
-						<div id="totalTime" style="overflow-x:auto;">
-							<table id='table' class='trafficTable'>
-							</table>
-						 </div> 
-					</span> -->
-
 						<span class="hint--right hint--rounded hint--large" aria-label= "Enter the local levels of traffic during this shift. This will modify the frequency of certain tasks arriving."><sup>(?)</sup></span>
 					</h3>
 					<div id="totalTime" style="overflow-x:auto;">
@@ -176,7 +164,7 @@
 				<div id="assist">
 					<table id="assistantsTable" cellspacing="0">
 						<tr>
-	
+
 
 							<?php
 								$assistant_names = array_keys($_SESSION['assistants']);
@@ -204,7 +192,7 @@
 
 				<h3 id='custom_heading' class='whiteFont'>Which Tasks Will This Custom Assistant Handle? <span class="hint--right hint--rounded hint--large" aria-label= "Identify the name and which tasks the custom assistant(s) can offload from the locomotive engineer workload."><sup>(?)</sup></span></h3>
 
-				
+
 
 				<br>
 				<table id='custom_table'>

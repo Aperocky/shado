@@ -287,7 +287,6 @@ div.accordion-content.show {
 *																			*
 ****************************************************************************/
 
-
 .printPdf {
 	background-image: url("../images/print.png");
 	height: 50px;
@@ -312,7 +311,7 @@ div.accordion-content.show {
 
 .page {
 	margin-left: 230px;
-	margin-right: 30px;
+	<!-- margin-right: 30px; -->
 	margin-top: 10px;
 	padding-top: 20px;
 }
@@ -463,7 +462,7 @@ th {
     color: white;
 }
 
-#howTab, #whenTab{
+<!-- #howTab, #whenTab{
  	padding:5px 15px;
  	width:fit-content;
  	width:-webkit-fit-content;
@@ -476,7 +475,7 @@ th {
  	margin: 20px;
  	text-align: left;
  	background-color: rgba(255, 255, 255, 0.6);
- }
+ } -->
 
  #conductor_summary{
 	position: relative;
@@ -597,22 +596,18 @@ th {
 	margin: 0;
 	padding: 0px;
 	overflow: hidden;
-	/*border: 1px solid red;*/
 	background-color: #555;
 	border: 1px solid black;
-	border-bottom: 1px solid black;
 	display: inline-block;
 
 }
 
 #graphNav li {
-	/*display: inline-block;*/
 	float: left;
 	display: inline-block;
 	margin: 0;
 	padding: 0px 50px;
 	font-size: 18px;
-	/*border-right: 1px solid black;*/
 }
 
 #graphNav li a {
@@ -621,11 +616,9 @@ th {
 	padding: 12px 20px;
 	text-decoration: none;
 	display: inline-block;
-	/*border: 1px solid red;*/
 }
 
 #graphTextBox{
-
  	width: 1170px;
  	border: 3px solid #5D7B85;
  	cursor:pointer;
@@ -646,7 +639,7 @@ th {
  	width:-webkit-fit-content;
  	width:-moz-fit-content;
  	/*border: 3px solid #5D7B85;*/
- 	cursor:pointer;
+ 	cursor: pointer;
  	-webkit-border-radius: 5px;
  	border-radius: 25px;
  	display: inline-block;

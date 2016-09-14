@@ -7,5 +7,4 @@
 		</ul>
 	</nav>
 	<br>
-	<div id="introduction_text">
-	</div>
+	<div id="introduction_text"></div>

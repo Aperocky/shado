@@ -5,7 +5,6 @@
   font-family: "Open Sans";
 }
 
-
 /* Form Progress */
 .progress {
   width: 1000px;
@@ -23,7 +22,6 @@
 
 .progress .bar {
   position: relative;
-
   width: 80px;
   height: 2px;
   margin: 0 -5px 17px -5px;
@@ -38,7 +36,6 @@
   line-height: 32px;
   border-radius: 32px;
   margin-top: 3px;
-   
   color: #b5b5ba;
   font-size: 17px;
 }
@@ -62,8 +59,6 @@
   color: #b5b5ba;
   font-size: 13px;
   line-height: 25px;
-  
-  
 }
 
 /* Done / Active */
