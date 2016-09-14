@@ -11,6 +11,7 @@
 	fwrite($file,"t_level\n");
 	for ($i = 0; $i < $_SESSION['parameters']['hours']; $i++)
 	{
+<<<<<<< HEAD
 // <<<<<<< HEAD
 // 		fwrite($file,"Hour ". ($i+1) .",");
 // 		fwrite($file, $traffic[(string)$_SESSION['traffic_levels'][$i]] . "\n");		//	!!Fix
@@ -19,7 +20,14 @@
 		// fwrite($file,$traffic[(string)$traffic_level[$i]]."\n");
 		fwrite($file, $_SESSION['parameters']['traffic_nums'][$i]."\n");
 // >>>>>>> 7f0fb161ef371c8638e485226d441e876059a563
+=======
+		fwrite($file,($i) .",");
+		fwrite($file,$traffic[(string)$traffic_level[$i]]."\n");
+>>>>>>> 29474c03ad4dbb9e80f97286676bb4c4b3229945
 	}
+	fwrite($file,($time) .",");
+	fwrite($file,"0\n");
+
 	fclose($file);
 ?>
 
@@ -114,7 +122,7 @@
 
 var temp= <?php echo $_SESSION['parameters']['hours']; ?>;
 
-var margin = {top: 20, right: 50, bottom: 50, left: 50},
+var margin = {top: 20, right: 50, bottom: 45, left: 50},
     width = 300,
     height = 300 - margin.top - margin.bottom;
 
@@ -159,7 +167,7 @@ d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
 
   svg_summary.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate("+(-width/(2*temp))+"," + (height-185) + ")")
+      .attr("transform", "translate("+(-width/(2*temp)+24/temp)+"," + (height-185) + ")")
       .call(xAxis_input)
 	  .append("text")
 	  .attr("transform", "translate("+((width / 2)-30)+",40)" )
