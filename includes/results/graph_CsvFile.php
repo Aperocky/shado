@@ -65,7 +65,7 @@
 		$taskNames = array_keys($_SESSION['tasks']);
 		for($i=0;$i<$temp_count-1;$i++)
 		{
-			$count[$i+1][0] = $taskNames[$i];	// fix
+			$count[$i+1][0] = ucwords($taskNames[$i]);	// fix
 		}
 
 		for($i=0;$i<$num-1;$i++)

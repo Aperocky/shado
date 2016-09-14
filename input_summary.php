@@ -11,19 +11,9 @@
 	fwrite($file,"t_level\n");
 	for ($i = 0; $i < $_SESSION['parameters']['hours']; $i++)
 	{
-<<<<<<< HEAD
-// <<<<<<< HEAD
-// 		fwrite($file,"Hour ". ($i+1) .",");
-// 		fwrite($file, $traffic[(string)$_SESSION['traffic_levels'][$i]] . "\n");		//	!!Fix
-// =======
-		fwrite($file,($i+1) .",");
+		fwrite($file,($i) .",");
 		// fwrite($file,$traffic[(string)$traffic_level[$i]]."\n");
 		fwrite($file, $_SESSION['parameters']['traffic_nums'][$i]."\n");
-// >>>>>>> 7f0fb161ef371c8638e485226d441e876059a563
-=======
-		fwrite($file,($i) .",");
-		fwrite($file,$traffic[(string)$traffic_level[$i]]."\n");
->>>>>>> 29474c03ad4dbb9e80f97286676bb4c4b3229945
 	}
 	fwrite($file,($time) .",");
 	fwrite($file,"0\n");

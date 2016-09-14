@@ -25,7 +25,6 @@ function d3_visual(assistant, num, filename) {
 	// var color = d3.scale.ordinal()
 	    // .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#dd843c", "#ff8ff0"]);
 
-
 	var xAxis = d3.svg.axis()
 	    .scale(x)
 	    .orient("bottom");
@@ -52,7 +51,6 @@ function d3_visual(assistant, num, filename) {
 	  .append("g")
 	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	// d3.csv("sessions/mod_type_data_" + assistant + ".txt", function(error, data) {
 	console.log("read_file.php?filename=" + filename);
 	d3.csv("read_file.php?filename=" + filename, function(error, data) {
 	  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "time"; }));
@@ -90,12 +88,8 @@ function d3_visual(assistant, num, filename) {
 				name: d.ages[i].name,
 				mystate: d.time.slice(0,index),
 				y_pct: y_pct
-
-
 			});
-
 		}
-
 	  });
 
 	  x.domain(data.map(function(d) {var index=d.time.indexOf('min');	 return d.time.slice(0,index); }));
