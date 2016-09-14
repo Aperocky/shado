@@ -1,23 +1,35 @@
 <?php
+/****************************************************************************
+*																			*
+*	File:		read_csv.php  												*
+*																			*
+*	Author:		Branch Vincent												*
+*																			*
+*	Date:		Sep 9, 2016													*
+*																			*
+*	Purpose:	This file fetches the simulation results.					*
+*																			*
+****************************************************************************/
 
-// 	Question:  Need assistant?
+//	Initialize session
 
-	session_start();
-	$assistant= $_SESSION['operator1'];
+	require_once('includes/session_management/init.php');
+
+//	Open file
+
+	$assistant = $_SESSION['operator1'];
 	// $file_handle=fopen('sessions/Engineer_stats.csv','r');
-	$file_handle=fopen($_SESSION['session_dir'] . 'Engineer_stats.csv','r');
+	$file_handle = fopen($_SESSION['session_dir'] . 'stats.csv','r') or die('Could not find file!');
 	$count=0;
 	$low_count=0;
 	$normal_count=0;
 	$high_count=0;
 	$skip=0;
 
-	while (!feof($file_handle)){
+	while (!feof($file_handle)) {
 		$line_of_text = fgetcsv($file_handle,2048,',');
 		$skip++;
-		if($skip==20) {
-			// echo var_dump($line_of_text);
-			// echo "<br>";
+		if ($skip == 20) {
 			$num=count($line_of_text);
 
 			for($i=2; $i<$num; $i++){

@@ -18,8 +18,10 @@
 
     $_SESSION['session_id'] = uniqid();
     $dir = sys_get_temp_dir() . '/' . $_SESSION['session_id'];
-    mkdir($dir);
-    $_SESSION['session_dir'] = $dir . '/';
+    // mkdir($dir);
+    // $_SESSION['session_dir'] = $dir . '/';
+    $_SESSION['session_dir'] = '/Users/Branch/Desktop/';
+    $_SESSION['des_version'] = '1.0.0';
 
 //  Create session variables
 
@@ -59,7 +61,6 @@
 //  Read in default values
 
     $file = fopen('./static_data/default_params_new.txt', 'r') or die('Unable to open default parameter file!');
-    // print_r(error_get_last());
 
 //  Set default number of replications
 
@@ -181,6 +182,19 @@
     $_SESSION['tasks']['planning ahead']['description'] = 'Maneuvering locomotive control system for throttle, braking and other subtasks like horn-blowing before railroad crossing';
 
     $_SESSION['default_tasks'] = $_SESSION['tasks'];
+
+//  Set empty task
+
+    $_SESSION['empty_task'] = array();
+    $_SESSION['empty_task']['priority'] = array(3, 3, 3);
+    $_SESSION['empty_task']['arrDist'] = 'E';
+    $_SESSION['empty_task']['arrPms'] = array(1/30, 1/30, 1/30);
+    $_SESSION['empty_task']['serDist'] = 'E';
+    $_SESSION['empty_task']['serPms'] = array(5, 5);
+    $_SESSION['empty_task']['expDist'] = 'E';
+    $_SESSION['empty_task']['expPmsLo'] = array(0, 0, 0);
+    $_SESSION['empty_task']['expPmsHi'] = array(0, 0, 0);
+    $_SESSION['empty_task']['affByTraff'] = array(0, 0, 0);
 
 //  Set session
 

@@ -40,8 +40,8 @@
 ?>
 			<div id="settingsPage" class="page">
 				<h1 class="pageTitle">Input Advanced Trip Conditions</h1>
-				<form id="taskParameters" action="adv_settings_send.php" method="post" onsubmit="return confirm('Please verify your provided settings and click OK to run simulation!');">
-					<input id="current_tasks" name="current_tasks" value=<?php print_task_ids();?>>
+				<form id="taskParameters" action="adv_settings_send.php" method="post" onsubmit="return confirm('Please verify your provided settings before continuing!');">
+					<input id="current_tasks" name="current_tasks" type="hidden" value=<?php print_task_ids();?>>
 					<h2>Replications</h2>
 					Enter the number of replications, or the number of simulated trips. Note that more trips provides more precise results, but it may also increase the processing time.
 					<div class="centerOuter">
@@ -67,12 +67,17 @@
 							$index = 0;
 							foreach (array_keys($_SESSION['tasks']) as $task) {
 								$taskNum = $index++;
-								echo "<div id=task_$taskNum";
-								// if ($i > sizeof($_SESSION['tasks'])) echo 'class="remove"';
-								echo '>';
+								echo "<div id=task_$taskNum>";
 						        include('includes/adv_settings/task_settings_table.php');
 								echo "<br> </div>";
 						    }
+							while ($index < 15) {
+								$task = "default";
+								$taskNum = $index++;
+								echo "<div id=task_$taskNum class='remove'>";
+						        include('includes/adv_settings/task_settings_table.php');
+								echo "<br> </div>";
+							}
 						?>
 					</div>
 					<div>
@@ -81,13 +86,13 @@
 					<div id="bottomNav">
 						<ul>
 							<li>
-								<button class="button" type="button" onclick="location.href='basic_settings.php';" style="color: black;">&#8678 Basic Conditions</button>
+								<input type="submit" class="button" name="basic_settings" value="&#8678 Basic Conditions" style="color: black;">
 							</li>
 							<li>
-								<button class="button" type="button" onclick="location.href='reset_session_vars.php';" style="background-color: #4CAF50;">Restore Defaults</button>
+								<button type="button" class="button" onclick="location.href='reset_session_vars.php';" style="background-color: #4CAF50;">Restore Defaults</button>
 							</li>
 							<li>
-								<input type="submit" id="submit" class="button" value="Run Simulation &#8680" style="color: black;">
+								<input type="submit" class="button" name="run_sim" value="Run Simulation &#8680" style="color: black;">
 							</li>
 						</ul>
 					</div>

@@ -102,4 +102,13 @@
 	}
 
 	// print_r($_SESSION);
-	header("Location: run_sim.php");
+
+//	Continue to next page
+
+    if (isset($_POST['run_sim'])) {
+        header('Location: run_sim.php');
+    } else if (isset($_POST['basic_settings'])) {
+        header('Location: basic_settings.php');
+    } else {
+        die("Could not determine action.");
+    }
