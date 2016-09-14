@@ -13,12 +13,12 @@
 
 //	Initialize session
 
-	// require_once('includes/session_management/init.php');
+	include('includes/session_management/init.php');
 
 //	Reset session, for testing purposes
 
-	session_unset();
-	include('includes/session_management/set_session_vars.php');
+	// session_unset();
+	// include('includes/session_management/set_session_vars.php');
 
 //	Include page header
 

@@ -73,7 +73,7 @@
 	if (PHP_OS == "Darwin") {
 		echo passthru("bin/des_mac " . $_SESSION['session_dir'] . "params");
 	} else if (PHP_OS == "Linux") {
-		exec("bin/des_unix " . $_SESSION['session_dir'] . "params");
+		echo passthru("bin/des_unix " . $_SESSION['session_dir'] . "params");
 	} else {
 		die("Operating system not recognized.");
 	}

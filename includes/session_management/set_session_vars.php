@@ -18,9 +18,8 @@
 
     $_SESSION['session_id'] = uniqid();
     $dir = sys_get_temp_dir() . '/' . $_SESSION['session_id'];
-    // mkdir($dir);
-    // $_SESSION['session_dir'] = $dir . '/';
-    $_SESSION['session_dir'] = '/Users/Branch/Desktop/';
+    mkdir($dir);
+    $_SESSION['session_dir'] = $dir . '/';
     $_SESSION['des_version'] = '1.0.0';
 
 //  Create session variables
