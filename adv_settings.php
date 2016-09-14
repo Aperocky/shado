@@ -25,7 +25,7 @@
 					Enter the number of replications, or the number of simulated trips. Note that more trips provides more precise results, but it may also increase the processing time.
 					<div class="centerOuter">
 						<div class="stepBox startEndTime">
-							<h3 class="whiteFont" style="width: 150px;">How Many Trips Will There Be? <span class="tooltip" onmouseover="tooltip.pop(this, 'You might be wondering how many trips you need. Well, it depends on how precise and robust you want the model to test parameters. The more replications, generally, the more precise the stochastic results since there are more instances to test out different situations. However, more replications may increase the processing time.')"><sup><sup>(?)</sup></sup></span></h3>
+							<h3 class="whiteFont" style="width: 150px;">How Many Trips Will There Be? <span class="hint--right hint--rounded hint--large" aria-label= "You might be wondering how many trips you need. Well, it depends on how precise and robust you want the model to test parameters. The more replications, generally, the more precise the stochastic results since there are more instances to test out different situations. However, more replications may increase the processing time."><sup><sup>(?)</sup></sup></span></h3>
 							<select name='num_reps'>
 								<?php
 									for ($i = 100; $i <= 1000; $i+=100) {

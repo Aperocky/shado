@@ -8,9 +8,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title><?php echo $page_title;?></title>
 		<link rel="stylesheet" type="text/css" href="styles/global_styles.css.php">
-		<link rel="stylesheet" type="text/css" href="tooltips/tooltip.css">
+		<!-- <link rel="stylesheet" type="text/css" href="tooltips/tooltip.css"> -->
+		<link rel="stylesheet" type="text/css" href="tooltips/new_tooltip.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-		<script type="text/javascript" src="tooltips/tooltip.js"></script>
+		<!-- <script type="text/javascript" src="tooltips/tooltip.js"></script> -->
 		<script type="text/javascript" src="scripts/graph_navBar.js"></script>
 		<?php if (!empty($html_head_insertions)) {echo $html_head_insertions;} else {echo "";}?>
 		<!-- <?php if (!empty($html_head_insertions)) {foreach($html_head_insertions as $line) {echo $line . "\r\n\t";}} else {echo "";}?>  -->

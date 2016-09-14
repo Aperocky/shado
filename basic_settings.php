@@ -31,7 +31,7 @@
 			<div class="centerOuter">
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>1</div>
-					<h3 class="whiteFont">When Does Your Trip Begin? <span class="tooltip" onmouseover="tooltip.pop(this, 'Enter the time of day that your engineer begins his/her shift.')"><sup>(?)</sup></span></h3>
+					<h3 class="whiteFont">When Does Your Trip Begin? <span class="hint--bottom-right hint--rounded hint--large" aria-label= "Enter the time of day that your engineer begins his/her shift."><sup>(?)</sup></span></h3>
 
 					<select id='beginHour' onchange="calculate_time();">
 						<?php
@@ -59,7 +59,7 @@
 
 				<div class="startEndTime stepBox">
 					<div class='stepCircle'>2</div>
-					<h3 class="whiteFont">When Does Your Trip End? <span class="tooltip" onmouseover="tooltip.pop(this, 'Enter the time of day that your engineer is expected to end his/her shift.')"><sup>(?)</sup></span></h3>
+					<h3 class="whiteFont">When Does Your Trip End? <span class="hint--bottom-left hint--rounded hint--large" aria-label= "Enter the time of day that your engineer is expected to end his/her shift."><sup>(?)</sup></span></h3>
 
 					<select id='endHour' onchange="calculate_time();">
 						<?php
@@ -91,9 +91,9 @@
 				<div class='stepCircle'>3</div>
 					<h3 class="whiteFont">
 						What are the Traffic Levels?
-						<span class="tooltip" onmouseover="tooltip.pop(this, 'Enter the local levels of traffic during this shift. This will modify the frequency of certain tasks arriving.')"><sup>(?)</sup></span>
+						<span class="hint--right hint--rounded hint--large" aria-label= "Enter the local levels of traffic during this shift. This will modify the frequency of certain tasks arriving."><sup>(?)</sup></span>
 					</h3>
-					<span class="tooltip" onmouseover="tooltip.pop(this, 'What is the projected level of traffic on your railroad for this particular shift?')">
+					<span class="hint--left hint--rounded hint--large" aria-label= "What is the projected level of traffic on your railroad for this particular shift?">
 						<div id="totalTime" style="overflow-x:auto;">
 							<table id='table' class='trafficTable'>
 							</table>
@@ -104,18 +104,18 @@
 			<br><br>
 			<div class="assistantsSelectStepOuter stepBox centerOuter">
 				<div class='stepCircle'>4</div>
-				<h3 id='assistants' class='whiteFont'>Who Will Assist the Engineer? <span class="tooltip" onmouseover="tooltip.pop(this, 'Identify any humans or technologies that will support the locomotive engineer. SHOW models their interaction by offloading certain tasks from the engineer.')"><sup>(?)</sup></span></h3>
-				<div id="assist" style="overflow-x: auto;">
+				<h3 id='assistants' class='whiteFont'>Who Will Assist the Engineer? <span class="hint--right hint--rounded hint--large" aria-label= "Identify any humans or technologies that will support the locomotive engineer. SHOW models their interaction by offloading certain tasks from the engineer."><sup>(?)</sup></span></h3>
+				<div id="assist">
 					<table id="assistantsTable" cellspacing="0">
 						<tr>
 							<td>
-								<input type="checkbox" name="extra1" value="1" id="conductor">Conductor  <span class="tooltip" onmouseover="tooltip.pop(this, 'The freight conductor supervises train conditions on the ground at terminal points and remains attentive to the engineer while the train is in motion in the case of emergency, when action could be needed. ')"><sup>(?)</sup></span>
+								<input type="checkbox" name="extra1" value="1" id="conductor">Conductor <span class="hint--right hint--rounded hint--large" aria-label= "The freight conductor supervises train conditions on the ground at terminal points and remains attentive to the engineer while the train is in motion in the case of emergency, when action could be needed. "><sup>(?)</sup></span>
 							</td>
 							<td>
-								<input type="checkbox" name="extra2" value="2" id="train_c">Positive Train Control  <span class="tooltip" onmouseover="tooltip.pop(this, 'PTC is an embedded feature of railroads set to be fully implemented by 2018. It automatically manages speed restrictions and emergency braking without human input. ')"><sup>(?)</sup></span>
+								<input type="checkbox" name="extra2" value="2" id="train_c">Positive Train Control  <span class="hint--right hint--rounded hint--large" aria-label= "PTC is an embedded feature of railroads set to be fully implemented by 2018. It automatically manages speed restrictions and emergency braking without human input. "><sup>(?)</sup></span>
 							</td>
 							<td>
-								<input type="checkbox" name="extra3" value="3" id="cruise_control">Cruise Control  <span class="tooltip" onmouseover="tooltip.pop(this, ' CC can offload motion planning tasks that involve the locomotive control system of throttle and dynamic braking. ')"><sup>(?)</sup></span>
+								<input type="checkbox" name="extra3" value="3" id="cruise_control">Cruise Control  <span class="hint--right hint--rounded hint--large" aria-label= " CC can offload motion planning tasks that involve the locomotive control system of throttle and dynamic braking. "><sup>(?)</sup></span>
 							</td>
 							<td>
 								<input type="checkbox" name="extra4" value="4" id="other" onchange="check()">Custom
@@ -127,7 +127,7 @@
 			<br>
 			<div class="custom" id="custom">
 				<div class='stepCircle'>5</div>
-				<h3 id='custom_heading' class='whiteFont'>Which Tasks Will This Custom Assistant Handle? <span class="tooltip" onmouseover="tooltip.pop(this,'Identify the name and which tasks the custom assistant(s) can offload from the locomotive engineer workload.')"><sup>(?)</sup></span></h3>
+				<h3 id='custom_heading' class='whiteFont'>Which Tasks Will This Custom Assistant Handle? <span class="hint--right hint--rounded hint--large" aria-label= "Identify the name and which tasks the custom assistant(s) can offload from the locomotive engineer workload."><sup>(?)</sup></span></h3>
 				<br>
 				<table id='custom_table' class='customTable'>
 					<tr>
@@ -137,7 +137,7 @@
 				<?php
 					for($i = 0; $i < $_SESSION['numTaskTypes']; $i++)
 					{
-						echo "<tr><td>" . $_SESSION['taskNames'][$i] . "  <span class='tooltip' onmouseover='tooltip.pop(this, &apos;" . $_SESSION['taskDescription'][$_SESSION['taskNames'][$i]] . "&apos;)'><sup>(?)</sup></span></td><td><input type='checkbox' name='custom" . $i . "' value='y'";
+						echo "<tr><td>" . $_SESSION['taskNames'][$i] . "  <span class='hint--right hint--rounded hint--large' aria-label= '". $_SESSION['taskDescription'][$_SESSION['taskNames'][$i]] . "'><sup>(?)</sup></span></td><td><input type='checkbox' name='custom" . $i . "' value='y'";
 						if(($key = array_search(4, $_SESSION['taskAssocOps'][$i])) !== false) {
 			                echo ' checked';
 			            }
