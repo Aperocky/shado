@@ -199,6 +199,7 @@
 //  Set session
 
     $_SESSION['session_started'] = true;
+    $_SESSION['session_results'] = false;
 
     // function read_param($file, $session_prefix) {
     //     $line = fscanf($file, "%s %s");

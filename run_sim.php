@@ -78,6 +78,8 @@
 		die("Operating system not recognized.");
 	}
 
+	$_SESSION['session_results'] = true;
+
 	require_once('includes/page_parts/header.php');
 ?>
 

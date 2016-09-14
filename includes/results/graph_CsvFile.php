@@ -1,13 +1,10 @@
 <?php
-
 	session_start();
 
-	function createGraphCsv($user) {
+	function createGraphCsv($assistant) {
 
-		// $file_handle=fopen('sessions/'. $user . '_stats.csv','r');
-		// $file=fopen('sessions/mod_type_data_'. $user. '.txt',"w");
-		$file_handle=fopen($_SESSION['session_dir'] . $user . '_stats.csv','r');
-		$file=fopen($_SESSION['session_dir'] . 'mod_type_data_'. $user. '.txt',"w");
+		$file = fopen($_SESSION['session_dir'] . "stats_$assistant.csv", 'r') or die("Could not find $assistant file!");
+		$d3_file = fopen($_SESSION['session_dir'] . "mod_type_data_$assistant.txt", 'w') or die ("Could not open $assistant file!");
 
 		$count=array();
 		$s_dev=array();
@@ -16,13 +13,13 @@
 		$skip=1;
 		$num=0;
 
-		while (! feof($file_handle) )
+		while (! feof($file) )
 		{
 			if($temp_count==1)
 			{
 				$skip=1;
 			}
-			$line_of_text = fgetcsv($file_handle,2048,',');
+			$line_of_text = fgetcsv($file,2048,',');
 			if($line_of_text[1]=="Sum")
 			{
 				break;
@@ -54,7 +51,7 @@
 				for($i=2;$i<$num;$i++)
 				{
 					// $s_dev[$type_names[$temp_count_dev]][$count[0][$i-1]]=(float)$line_of_text[$i];
-					$s_dev[$_SESSION['taskNames'][$temp_count_dev]][$count[0][$i-1]]=(float)$line_of_text[$i];
+					$s_dev[array_keys($_SESSION['tasks'])[$temp_count_dev]][$count[0][$i-1]]=(float)$line_of_text[$i];	// Fix
 				}
 				$temp_count_dev++;
 				$skip=1;
@@ -62,27 +59,27 @@
 			}
 		}
 
-		fclose($file_handle);
+		fclose($file);
 		$count[0][0]='time';
 
+		$taskNames = array_keys($_SESSION['tasks']);
 		for($i=0;$i<$temp_count-1;$i++)
 		{
-			// $count[$i+1][0]=$type_names[$i];
-			$count[$i+1][0]=$_SESSION['taskNames'][$i];
+			$count[$i+1][0] = $taskNames[$i];	// fix
 		}
 
 		for($i=0;$i<$num-1;$i++)
 		{
 			for($j=0;$j<$temp_count-1;$j++)
 			{
-				fwrite($file,$count[$j][$i].",");
+				fwrite($d3_file,$count[$j][$i].",");
 			}
-			fwrite($file,$count[$temp_count-1][$i]."\n");
+			fwrite($d3_file,$count[$temp_count-1][$i]."\n");
 		}
 
-		fclose($file);
+		fclose($d3_file);
 
 		$_SESSION['n_columnsCsv']=$num;
-		echo "<script>d3_visual('" . $user . "'," . (string)$num . ", 'mod_type_data_" . $user . ".txt')</script>";
+		echo "<script>d3_visual('" . ucwords($assistant) . "'," . (string)$num . ", 'mod_type_data_" . strtolower($assistant) . ".txt')</script>";
 	}
 ?>

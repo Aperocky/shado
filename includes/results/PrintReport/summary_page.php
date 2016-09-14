@@ -8,7 +8,7 @@
 	require_once('includes/results/graph_CsvFile.php');
 	require_once('includes/results/graphTextBox/graph_navBar_static.php');
 
-	function createSummary($user) {
+	function createSummary($assistant) {
 		session_start();
 		$page_title='Print Report';	?>
 
@@ -26,14 +26,16 @@
 		echo "<br><br><br>";
 
 		include('includes/results/d3_graph.php');
-		createGraphCsv($user);
-		graphTextStatic($_SESSION['session_dir'] . $user. '_stats.csv');
+		createGraphCsv($assistant);
+		graphTextStatic($_SESSION['session_dir'] . "stats_$assistant.csv");
 
-		$user = "Conductor";
-		include('includes/results/d3_graph.php');
-		createGraphCsv($user);
-		graphTextStatic($_SESSION['session_dir'] . $user. '_stats.csv');
-		echo "</div>";
-		require_once('includes/page_parts/footer.php');
+		if (in_array('conductor'), $_SESSION['parameters']['assistants']) {
+			$assistant = "Conductor";
+			include('includes/results/d3_graph.php');
+			createGraphCsv($assistant);
+			graphTextStatic($_SESSION['session_dir'] . "stats_$assistant.csv");
+			echo "</div>";
+			require_once('includes/page_parts/footer.php');
+		}
 	}
 ?>

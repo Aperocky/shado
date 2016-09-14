@@ -1,7 +1,7 @@
 <?php
     session_start();
     $page_title = "Print Report";
-    $html_head_insertions .= '<script src="http://d3js.org/d3.v3.min.js"></script>';
+    $html_head_insertions = '<script src="http://d3js.org/d3.v3.min.js"></script>';
     $html_head_insertions .= '<script type="text/javascript" src="includes/results/d3_graph.js"></script>';
     $html_head_insertions .= '<script type="text/javascript" src="includes/results/PrintReport/print_page.js"></script>';
     require_once('includes/page_parts/header.php');
@@ -24,18 +24,18 @@
     echo "<br><br>";
     require_once("input_summary.php");
 
-    function createSummary($user) {
-        
+    function createSummary($assistant) {
+
         echo "<br><br><br>";
         include('includes/results/d3_graph.php');
-        createGraphCsv($user);
-        graphTextStatic($_SESSION['session_dir'] . $user. '_stats.csv');
+        createGraphCsv($assistant);
+        graphTextStatic($_SESSION['session_dir'] . "stats_$assistant.csv");
     }
 
-    createSummary("Engineer");
+    createSummary("engineer");
 
-    if ($_SESSION['operator1'] == 1) {
-        createSummary("Conductor");
+    if (in_array('conductor', $_SESSION['parameters']['assistants'])) {
+        createSummary("conductor");
     }
 
     echo "</div>";

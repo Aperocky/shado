@@ -4,7 +4,7 @@
 
 		session_start();
 
-		$file = fopen($file_name,'r');
+		$file = fopen($file_name,'r') or die("Could not open $file_name!");
 		$count = array();
 		$temp_count = 0;
 		$skip = 1;
@@ -214,12 +214,15 @@
 			}
 		}
 
-		$penalty_high = $penalty_high/$count_high;
+		if ($count_high < 0)
+			$penalty_high = $penalty_high/$count_high;
+		else
+			$penalty_high = 0;
 
-		if ($file_name == $_SESSION['session_dir'] . 'Engineer_stats.csv') {
-			$user_name = 'engineer';
+		if ($file_name == $_SESSION['session_dir'] . 'stats_engineer.csv') {
+			$assistant = 'engineer';
 		} else {
-			$user_name = 'conductor';
+			$assistant = 'conductor';
 		}
 
 		require_once('includes/results/graphTextBox/graph_navBar.php');

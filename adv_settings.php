@@ -81,7 +81,7 @@
 						?>
 					</div>
 					<div>
-						<button type="button" class="roundButton" onclick=<?php echo "addTask(" . sizeof($_SESSION['tasks']) . ")"; ?> style="background-color: #4CAF50;"><strong>+</strong></button>
+						<button type="button" class="roundButton" onclick=<?php echo "addTask(" . sizeof($_SESSION['tasks']) . ")"; ?> style="background-color: #4CAF50;" onmouseover="tooltip.pop(this, 'Add a new task')"><strong>+</strong></button>
 					</div>
 					<div id="bottomNav">
 						<ul>

@@ -11,7 +11,7 @@
     }
 ?>
 <h3>
-    <button class="roundButton" type="button" onclick=<?php echo "deleteTask(".$taskNum.")"; ?> style="background-color: #f44336;"><strong>-</strong></button>
+    <button class="roundButton" type="button" onclick=<?php echo "deleteTask(".$taskNum.")"; ?> style="background-color: #f44336;" onmouseover="tooltip.pop(this, 'Delete this task')"><strong>x</strong></button>
     <?php echo ucwords($taskName);?> Task
 </h3>
 <table align="center">

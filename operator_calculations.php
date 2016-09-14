@@ -1,18 +1,20 @@
 <?php
-
 	session_start();
 
 	$low_count_0 = $_SESSION['low_count_0'];
 	$normal_count_0 = $_SESSION['normal_count_0'];
 	$high_count_0 = $_SESSION['high_count_0'];
-	$low_count_1 = $_SESSION['low_count_1'];
-	$normal_count_1 = $_SESSION['normal_count_1'];
-	$high_count_1 = $_SESSION['high_count_1'];
 
-	if ($_SESSION['operator1'] == -1) {
+	if (!in_array('conductor', $_SESSION['parameters']['assistants'])) {
 		$operator2Style = 'display:none; ';
+		$low_count_1 = 0;
+		$normal_count_1 = 0;
+		$high_count_1 = 0;
 	} else {
 		$operator2Style = ' ';
+		$low_count_1 = $_SESSION['low_count_1'];
+		$normal_count_1 = $_SESSION['normal_count_1'];
+		$high_count_1 = $_SESSION['high_count_1'];;
 	}
 ?>
 

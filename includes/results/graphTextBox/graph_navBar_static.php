@@ -248,12 +248,15 @@
 
 		}
 
-		$penalty_high=$penalty_high/$count_high;
+		if ($count_high != 0)
+			$penalty_high=$penalty_high/$count_high;
+		else
+			$penalty_high = 0;
 
-		if ($fname == $_SESSION['session_dir'] . 'Engineer_stats.csv') {
-			$user_name='engineer';
+		if ($fname == $_SESSION['session_dir'] . 'stats_engineer.csv') {
+			$assistant='engineer';
 		} else {
-			$user_name='conductor';
+			$assistant='conductor';
 		}
 
 		echo "<br><br><br><br><br><br>

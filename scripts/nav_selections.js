@@ -53,6 +53,7 @@ function setup_nav() {
 
     select_top_tabs(page);
     select_side_tabs(page);
+    disable_links();
 
 //  Add animation to accordion-style side navigation links
 
@@ -124,8 +125,9 @@ function select_side_tabs(page) {
 
     for (var i = 0; i < tabs.length; i++) {
         var href = jQuery(tabs[i]).attr('href');
-        if (href == page )
+        if (href == page) {
             jQuery(tabs[i]).addClass('active');
+        }
         else
             jQuery(tabs[i]).removeClass('active');
     }
@@ -140,14 +142,30 @@ function select_side_tabs(page) {
         var kids = jQuery(acc_content[i]).children();
         var hrefs = [];
         for (var j = 0; j < kids.length; j++)
-            hrefs[i] = jQuery(kids[i]).attr('href');
-        if (jQuery.inArray(href, hrefs) && !found) {
+            hrefs[j] = jQuery(kids[j]).attr('href');
+        console.log(hrefs);
+        if (jQuery.inArray(page, hrefs) && !found) {
             jQuery(acc[i]).addClass('active');
             jQuery(acc_content[i]).addClass('show');
+            console.log(page);
+            // console.log(hrefs);
             found = true;
         } else if (!found) {
             jQuery(acc[i]).removeClass('active');
             jQuery(acc_content[i]).removeClass('show');
         }
+    }
+}
+
+function disable_links() {
+    var val = jQuery('#assistant_info').val();
+    if (val == 0) {
+        jQuery('#sideNav li a[href="view_results.php"]').removeAttr("href");
+        jQuery('#sideNav li a[href="investigate.php?operator=engineer"]').removeAttr("href");
+        jQuery('#sideNav li a[href="investigate.php?operator=conductor"]').removeAttr("href");
+        jQuery('#sideNav li a[href="sim_summary.php"]').removeAttr("href");
+    }
+    else if (val == 1) {
+        jQuery('#sideNav li a[href="investigate.php?operator=conductor"]').removeAttr("href");
     }
 }

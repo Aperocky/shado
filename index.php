@@ -13,7 +13,7 @@
 
 //	Initialize session
 
-	require_once('includes/session_management/init.php');
+	// require_once('includes/session_management/init.php');
 
 //	Reset session, for testing purposes
 
@@ -42,7 +42,7 @@
 				</p>
 				<h2>Background</h2>
 				<p>
-					A core set of tasks has been defined and implemented to encompass tasks that crew members may encounter during their trip. These tasks and their descriptions are summarized below. To see more underlying assumptions, visit <a href="adv_settings.php">advanced settings</a>.
+					A core set of tasks has been defined and implemented to encompass tasks that crew members may encounter during their trip. These tasks and their descriptions are summarized below. To see more underlying assumptions, visit advanced settings.
 					<table align="center" width="1000" style="margin-top: 30px;">
 					    <tr>
 					        <th>Task Type</th>

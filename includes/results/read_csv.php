@@ -17,20 +17,18 @@
 
 //	Open file
 
-	$assistant = $_SESSION['operator1'];
-	// $file_handle=fopen('sessions/Engineer_stats.csv','r');
-	$file_handle = fopen($_SESSION['session_dir'] . 'stats.csv','r') or die('Could not find file!');
-	$count=0;
-	$low_count=0;
-	$normal_count=0;
-	$high_count=0;
-	$skip=0;
+	$file = fopen($_SESSION['session_dir'] . 'stats_engineer.csv','r') or die('Could not find engineer file!');
+	$count = 0;
+	$low_count = 0;
+	$normal_count = 0;
+	$high_count = 0;
+	$skip = 0;
 
-	while (!feof($file_handle)) {
-		$line_of_text = fgetcsv($file_handle,2048,',');
+	while (!feof($file)) {
+		$line_of_text = fgetcsv($file, 2048, ',');
 		$skip++;
 		if ($skip == 20) {
-			$num=count($line_of_text);
+			$num = count($line_of_text);
 
 			for($i=2; $i<$num; $i++){
 				$var=(float)$line_of_text[$i];
@@ -48,25 +46,22 @@
 		}
 	}
 
-	fclose($file_handle);
+	fclose($file);
 	$_SESSION['low_count_0']=$low_count;
 	$_SESSION['normal_count_0']=$normal_count;
 	$_SESSION['high_count_0']=$high_count;
 
-	if($assistant==1) {
-		// $file_handle=fopen('sessions/Conductor_stats.csv','r');
-		$file_handle=fopen($_SESSION['session_dir'] . 'Conductor_stats.csv','r');
+	if (in_array('conductor', $_SESSION['parameters']['assistants'])) {
+		$file = fopen($_SESSION['session_dir'] . 'stats_conductor.csv', 'r') or die('Could not find conductor file!');
 		$count=0;
 		$low_count=0;
 		$normal_count=0;
 		$high_count=0;
 		$skip=0;
-		while (!feof($file_handle)) {
-			$line_of_text = fgetcsv($file_handle,2048,',');
+		while (!feof($file)) {
+			$line_of_text = fgetcsv($file,2048,',');
 			$skip++;
 			if($skip==20) {
-				// echo var_dump($line_of_text);
-				// echo "<br>";
 				$num=count($line_of_text);
 				for($i=2;$i<$num;$i++) {
 					$var=(float)$line_of_text[$i];
@@ -84,7 +79,7 @@
 			}
 		}
 
-		fclose($file_handle);
+		fclose($file);
 		$_SESSION['low_count_1']=$low_count;
 		$_SESSION['normal_count_1']=$normal_count;
 		$_SESSION['high_count_1']=$high_count;
