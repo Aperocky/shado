@@ -38,7 +38,7 @@
 	border-radius: 25px;
 	display: inline-block;
 	
-	margin: 20px;
+	margin: 50px;
 	text-align: left;
 	background-color: rgba(255, 255, 255, 0.6);
 }
@@ -107,9 +107,9 @@
 
 var temp= <?php echo $time; ?>;
 
-var margin = {top: 20, right: 50, bottom: 65, left: 50},
+var margin = {top: 20, right: 50, bottom: 50, left: 50},
     width = 400,
-    height = 500 - margin.top - margin.bottom;
+    height = 300 - margin.top - margin.bottom;
 
 var x_input = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
@@ -151,7 +151,7 @@ d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
 
   svg_summary.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate("+(-width/(2*temp))+"," + (height+0) + ")")
+      .attr("transform", "translate("+(-width/(2*temp))+"," + (height-185) + ")")
       .call(xAxis_input)
 	  .append("text")
 	  .attr("transform", "translate("+((width / 2)-30)+",40)" )
@@ -163,7 +163,7 @@ d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
       .attr("class", "y axis")
       .call(yAxis)
     .append("text")
-		.attr("transform", "translate(-50,350) rotate(-90)" )
+		.attr("transform", "translate(-50,265) rotate(-90)" )
 		.attr("y", 6)
 		.attr("dy", ".71em")
 		.text("Traffic level (1: Low, 2: Medium, 3: High)");
@@ -176,7 +176,7 @@ d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
       .attr("x", function(d) { return x_input(d.time); })
       .attr("width", x_input.rangeBand())
       .attr("y", function(d) { return y(d.t_level); })
-      .attr("height", function(d) { return height - y(d.t_level); });
+      .attr("height", function(d) { return height - y(d.t_level)-185; });
 });
 
 function type(d) {
