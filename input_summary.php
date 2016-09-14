@@ -17,9 +17,12 @@
 	fwrite($file,"t_level\n");
 	for($i=0;$i<$time;$i++)
 	{
-		fwrite($file,($i+1) .",");
+		fwrite($file,($i) .",");
 		fwrite($file,$traffic[(string)$traffic_level[$i]]."\n");
 	}
+	fwrite($file,($time) .",");
+	fwrite($file,"0\n");
+
 	fclose($file);
 ?>
 
@@ -107,7 +110,7 @@
 
 var temp= <?php echo $time; ?>;
 
-var margin = {top: 20, right: 50, bottom: 50, left: 50},
+var margin = {top: 20, right: 50, bottom: 45, left: 50},
     width = 400,
     height = 300 - margin.top - margin.bottom;
 
@@ -151,7 +154,7 @@ d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
 
   svg_summary.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate("+(-width/(2*temp))+"," + (height-185) + ")")
+      .attr("transform", "translate("+(-width/(2*temp)+24/temp)+"," + (height-185) + ")")
       .call(xAxis_input)
 	  .append("text")
 	  .attr("transform", "translate("+((width / 2)-30)+",40)" )
