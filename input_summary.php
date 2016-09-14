@@ -85,7 +85,7 @@
 		// $assistant[3]="Cruise Control";
 		$found = false;
 
-		foreach (array_keys($_SESSION['parameters']['assistants']) as $assistant) {
+		foreach ($_SESSION['parameters']['assistants'] as $assistant) {
 			if ($assistant != 'engineer') {
 				echo "<li>". ucwords($assistant)."</li>";
 				$found = true;

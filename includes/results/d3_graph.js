@@ -56,10 +56,10 @@ function d3_visual(assistant, num, filename) {
 	  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "time"; }));
 
 	  data.forEach(function(d) {
-	  	console.log(d);
+		//  	console.log(d);
 		var index=d.time.indexOf('min');
 		var mystate = d.time.slice(0,index);
-		console.log(mystate);
+		// console.log(mystate);
 
 	    var y0 = 0;
 
@@ -141,7 +141,7 @@ function d3_visual(assistant, num, filename) {
 
 		stateAbsolute.selectAll("rect")
 			.on("mouseover", function(d){
-				console.log(d);
+				// console.log(d);
 
 				var xPos = parseFloat(d3.select(this).attr("x"));
 				var yPos = parseFloat(d3.select(this).attr("y"));
@@ -189,7 +189,7 @@ function d3_visual(assistant, num, filename) {
 	        .attr("text-anchor", "middle")
 	        .style("font-size", "24px")
 	        .style("text-decoration", "underline")
-	        .text(assistant+ " Workload");
+	        .text(assistant + " Workload");
 
 		// end of define absolute
 
