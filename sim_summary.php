@@ -21,10 +21,11 @@
 <?php
     require_once("operator_calculations.php");
     require_once("operator.html");
+    echo "<br><br>";
+    require_once("input_summary.php");
 
     function createSummary($user) {
-        echo "<br><br>";
-        require_once("input_summary.php");
+        
         echo "<br><br><br>";
         include('includes/results/d3_graph.php');
         createGraphCsv($user);
@@ -37,5 +38,6 @@
         createSummary("Conductor");
     }
 
+    echo "</div>";
 	require_once("includes/page_parts/footer.php");
 ?>

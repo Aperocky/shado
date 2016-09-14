@@ -23,14 +23,18 @@
 *																			*
 ****************************************************************************/
 
-h1, h2, h3, h4 {
-   font-family: Arial;
+h1, h2, h3, h4, h5, h6 {
+   /*font-size: 1em !important;*/
+   /*color: #000 !important;*/
+   font-family: "Open Sans";
+   /*!important;*/
 }
 
 /*	Page Body	*/
 
 body {
 	margin: 0;
+	font-family: "Open Sans";
 }
 
 #main {
@@ -598,6 +602,7 @@ th {
 	border: 1px solid black;
 	border-bottom: 1px solid black;
 	display: inline-block;
+
 }
 
 #graphNav li {
@@ -620,9 +625,8 @@ th {
 }
 
 #graphTextBox{
- 	width:fit-content;
- 	width:-webkit-fit-content;
- 	width:-moz-fit-content;
+
+ 	width: 1170px;
  	border: 3px solid #5D7B85;
  	cursor:pointer;
  	-webkit-border-radius: 5px;

@@ -174,7 +174,7 @@
 									echo '<td><input ';
 									if ($assistant == 'custom') echo 'id="custom_assistant" onchange="toggle_custom_settings();"';
 									echo 'type="checkbox" name="assistant_' . $i . '"' . $selected . '>' . ucwords($assistant) . ' ';
-									echo '<span class="tooltip" onmouseover="tooltip.pop(this, \'' . $_SESSION['assistants'][$assistant]['description'] . '\')"><sup>(?)</sup></span>';
+									echo '<span class="tooltip" onmouseover="tooltip.pop(this, \'' . $_SESSION['assistants'][$assistant]['description'] . '.\')"><sup>(?)</sup></span>';
 									echo '</td>';
 								}
 							?>
@@ -185,7 +185,7 @@
 			<br>
 			<div class="custom remove" id="custom_assistant_settings">
 				<div class='stepCircle'>5</div>
-				<h3 id='custom_heading' class='whiteFont'>Which Tasks Will This Custom Assistant Handle? <span class="tooltip" onmouseover="tooltip.pop(this,'Identify which tasks the custom assistant can offload from the locomotive engineer workload')"><sup>(?)</sup></span></h3>
+				<h3 id='custom_heading' class='whiteFont'>Which Tasks Will This Custom Assistant Handle? <span class="tooltip" onmouseover="tooltip.pop(this,'Identify which tasks the custom assistant(s) can offload from the locomotive engineer workload.')"><sup>(?)</sup></span></h3>
 				<br>
 				<table id='custom_table'>
 					<tr>

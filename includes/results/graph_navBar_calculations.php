@@ -50,25 +50,49 @@
 		$type_byPhase3 = array();
 		$type_byPhase = array();
 
-		for($j = 1; $j < $temp_count - 1; $j++) {
-
-			$type_byPhase1[$j] =array();
-			$type_byPhase2[$j] = array();
-			$type_byPhase3[$j] = array();
-			$type_byPhase[$j] = array();
+// 		for($j = 1; $j < $temp_count - 1; $j++) {
+//
+// <<<<<<< HEAD
+// 			$type_byPhase1[$j] =array();
+// 			$type_byPhase2[$j] = array();
+// 			$type_byPhase3[$j] = array();
+// 			$type_byPhase[$j] = array();
+// =======
+		for($j=1;$j<$temp_count-1;$j++)
+		{
+			$type_byPhase1[$j]=array();
+			$type_byPhase2[$j]=array();
+			$type_byPhase3[$j]=array();
+			$type_byPhase[$j]=0;
+// >>>>>>> 7f0fb161ef371c8638e485226d441e876059a563
 
 			for ($i = 1; $i < $num - 1; $i++) {
 				if ($i < 4) {
 					/* $type_byPhase1[$j][]=$count[$j][$i]; */
 					array_push($type_byPhase1[$j], $count[$j][$i]);
-					array_push($type_byPhase[$j], $count[$j][$i]);
-				} else {
-					if ($i > ($num - 5)) {
+// <<<<<<< HEAD
+// 					array_push($type_byPhase[$j], $count[$j][$i]);
+// 				} else {
+// 					if ($i > ($num - 5)) {
+// 						array_push($type_byPhase3[$j], $count[$j][$i]);
+// 						array_push($type_byPhase[$j], $count[$j][$i]);
+// 					} else {
+// =======
+					$type_byPhase[$j]=$type_byPhase[$j]+$count[$j][$i];
+/* 					array_push($type_byPhase[$j], $count[$j][$i]);
+ */				}
+				else
+				{
+					if($i>($num-5))
+					{
 						array_push($type_byPhase3[$j], $count[$j][$i]);
-						array_push($type_byPhase[$j], $count[$j][$i]);
-					} else {
+						$type_byPhase[$j]=$type_byPhase[$j]+$count[$j][$i];
+					}
+					else
+					{
+// >>>>>>> 7f0fb161ef371c8638e485226d441e876059a563
 						array_push($type_byPhase2[$j], $count[$j][$i]);
-						array_push($type_byPhase[$j], $count[$j][$i]);
+						$type_byPhase[$j]=$type_byPhase[$j]+$count[$j][$i];
 					}
 				}
 			}
@@ -151,11 +175,23 @@
 
 		arsort($count_type_low);
 		arsort($count_type_high);
+// <<<<<<< HEAD
+//
+// 		$count_ops = 0;
+// 		for ($i = 1; $i < 5; $i++) {
+// 			if (isset($_SESSION['operator'.$i])) {
+// 					if ($_SESSION['operator'.$i] == 1) {
+// =======
+		arsort($type_byPhase);
+		// print_r($count[10]);
 
-		$count_ops = 0;
-		for ($i = 1; $i < 5; $i++) {
-			if (isset($_SESSION['operator'.$i])) {
-					if ($_SESSION['operator'.$i] == 1) {
+		$count_ops=0;
+		for($i=1;$i<5;$i++)
+		{
+			if(isset($_SESSION['operator'.$i]))
+				{
+					if($_SESSION['operator'.$i]==1){
+// >>>>>>> 7f0fb161ef371c8638e485226d441e876059a563
 						$count_ops++;
 					}
 				}
@@ -185,6 +221,7 @@
 		} else {
 			$user_name = 'conductor';
 		}
+
 		require_once('includes/results/graphTextBox/graph_navBar.php');
 		require_once('includes/results/graphTextBox/graph_whenTab.php');
 		require_once('includes/results/graphTextBox/graph_whyTab.php');

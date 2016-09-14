@@ -11,8 +11,13 @@
 	fwrite($file,"t_level\n");
 	for ($i = 0; $i < $_SESSION['numHours']; $i++)
 	{
-		fwrite($file,"Hour ". ($i+1) .",");
-		fwrite($file, $traffic[(string)$_SESSION['traffic_levels'][$i]] . "\n");		//	!!Fix
+// <<<<<<< HEAD
+// 		fwrite($file,"Hour ". ($i+1) .",");
+// 		fwrite($file, $traffic[(string)$_SESSION['traffic_levels'][$i]] . "\n");		//	!!Fix
+// =======
+		fwrite($file,($i+1) .",");
+		fwrite($file,$traffic[(string)$traffic_level[$i]]."\n");
+// >>>>>>> 7f0fb161ef371c8638e485226d441e876059a563
 	}
 	fclose($file);
 ?>
@@ -22,17 +27,19 @@
 <style>
 
 #input{
-	padding:15px 15px;
- 	width:fit-content;
- 	width:-webkit-fit-content;
- 	width:-moz-fit-content;
- 	border: 3px solid #5D7B85;
- 	cursor:pointer;
- 	-webkit-border-radius: 5px;
- 	border-radius: 25px;
- 	margin: 20px;
- 	text-align: left;
- 	background-color: rgba(255, 255, 255, 0.6);
+	padding:5px 15px;
+	width:fit-content;
+	width:-webkit-fit-content;
+	width:-moz-fit-content;
+	border: 3px solid #5D7B85;
+	cursor:pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 25px;
+	display: inline-block;
+
+	margin: 50px;
+	text-align: left;
+	background-color: rgba(255, 255, 255, 0.6);
 }
 
 .bar:hover {
@@ -63,9 +70,9 @@
 }
 
 </style>
-<div class='page'>
+<div class= 'operatorSummaryOuter'>
 <div id="input">
-	<h3 style="text-align: center;"> <u>Input summary</u></h3>
+	<h3 style="text-align: center;"> <u>Here are the trip conditions you set:</u></h3>
 	<ul>
 	<li>Duration of the trip: <?php echo $_SESSION['numHours'] . " hours"; ?></li>
 	<br>
@@ -93,14 +100,15 @@
 	</ul>
 </div>
 </div>
+
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 
 var temp= <?php echo $_SESSION['numHours']; ?>;
 
-var margin = {top: 20, right: 50, bottom: 80, left: 50},
-    width = 960,
-    height = 500 - margin.top - margin.bottom;
+var margin = {top: 20, right: 50, bottom: 50, left: 50},
+    width = 400,
+    height = 300 - margin.top - margin.bottom;
 
 var x_input = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
@@ -142,19 +150,19 @@ d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
 
   svg_summary.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate("+(-width/(2*temp))+"," + height + ")")
+      .attr("transform", "translate("+(-width/(2*temp))+"," + (height-185) + ")")
       .call(xAxis_input)
 	  .append("text")
-	  .attr("transform", "translate("+(width / 2)+",40)" )
+	  .attr("transform", "translate("+((width / 2)-30)+",40)" )
 	  .attr("x", 1)
 	  .attr("dx", ".71em")
-	  .text("Time (min)");
+	  .text("Time (hour)");
 
   svg_summary.append("g")
       .attr("class", "y axis")
       .call(yAxis)
     .append("text")
-		.attr("transform", "translate(-50,350) rotate(-90)" )
+		.attr("transform", "translate(-50,265) rotate(-90)" )
 		.attr("y", 6)
 		.attr("dy", ".71em")
 		.text("Traffic level (1: Low, 2: Medium, 3: High)");
@@ -167,7 +175,7 @@ d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
       .attr("x", function(d) { return x_input(d.time); })
       .attr("width", x_input.rangeBand())
       .attr("y", function(d) { return y(d.t_level); })
-      .attr("height", function(d) { return height - y(d.t_level); });
+      .attr("height", function(d) { return height - y(d.t_level)-185; });
 });
 
 function type(d) {

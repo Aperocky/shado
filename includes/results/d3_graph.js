@@ -10,7 +10,7 @@ function d3_visual(user, num, filename) {
 	// var temp=<?php echo $num; ?>;
 	var temp=num;
 
-	var margin = {top: 30, right: 20, bottom: 50, left: 70},
+	var margin = {top: 30, right: 130, bottom: 50, left: 70},
 	    width = 800;
 
 	    height = 500 - margin.top - margin.bottom;
@@ -63,21 +63,25 @@ function d3_visual(user, num, filename) {
 
 
 	  data.forEach(function(d) {
+	  	console.log(d);
 		var index=d.time.indexOf('min');
 		var mystate = d.time.slice(0,index);
 		console.log(mystate);
 
 	    var y0 = 0;
+	   
 
-		d.ages = color.domain().map(function(name) { return {mystate:mystate, name: name, y0: y0, y1: y0 += +d[name]}; });
+		d.ages = color.domain().map(function(name) { return { mystate:mystate, name: name, y0: y0, y1: y0 += +d[name]}; });
 
 	    d.total = d.ages[d.ages.length - 1].y1;// the last row
 
 		d.pct = [];
 		d.total=d.total*100;
+		
 		for (var i=0;i <d.ages.length;i ++ ){
 			d.ages[i].y1=d.ages[i].y1*100;
 			d.ages[i].y0=d.ages[i].y0*100;
+			d.ages[i].total=d.total;
 		}
 		for (var i=0;i <d.ages.length;i ++ ){
 
@@ -92,6 +96,7 @@ function d3_visual(user, num, filename) {
 				name: d.ages[i].name,
 				mystate: d.time.slice(0,index),
 				y_pct: y_pct
+				
 
 			});
 
@@ -150,7 +155,7 @@ function d3_visual(user, num, filename) {
 
 		stateAbsolute.selectAll("rect")
 			.on("mouseover", function(d){
-
+				console.log(d);
 
 				var xPos = parseFloat(d3.select(this).attr("x"));
 				var yPos = parseFloat(d3.select(this).attr("y"));
@@ -160,7 +165,7 @@ function d3_visual(user, num, filename) {
 				div.transition()
 	                .duration(200)
 	                .style("opacity", .9);
-	            div	.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2))
+	            div	.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2)+"<br> Total Utilization: "+d.total.toFixed(2)) 
 	                .style("left", (d3.event.pageX+20) + "px")
 	                .style("top", (d3.event.pageY - 20) + "px");
 
@@ -190,12 +195,12 @@ function d3_visual(user, num, filename) {
 			.style("text-anchor", "end")
 			.text("Utilization (%)");
 
-		svg_eng.append("foreignObject")
-				.attr("x", ((width / 2)+110))
-				.attr("y", -12 - (margin.top / 2))
-				.attr("text-anchor", "middle")
-				.style("font-size", "24px")
-				.html("<span class='tooltip' onmouseover='tooltip.pop(this, &apos; Hover over the graph for more information &apos;)'><sup>(?)</sup></span>");
+		// svg_eng.append("foreignObject")
+		// 		.attr("x", ((width / 2)+110))
+		// 		.attr("y", -12 - (margin.top / 2))
+		// 		.attr("text-anchor", "middle")
+		// 		.style("font-size", "24px")
+		// 		.html("<span class='tooltip' onmouseover='tooltip.pop(this, &apos; Hover over the graph for more information &apos;)'><sup>(?)</sup></span>");
 
 		svg_eng.append("text")
 	        .attr("x", (width / 2))
@@ -218,15 +223,15 @@ function d3_visual(user, num, filename) {
 	    				    	.attr("class", "legend")
 	    	 			    	.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 	 		 legend.append("rect")
-	   	   			.attr("x", width - 18+legend_width)
+	   	   			.attr("x", width)
 	    			.attr("width", 18)
 	     	    	.attr("height", 18)
 	     	    	.attr("fill", color);
 	 		 legend.append("text")
-	      		.attr("x", width - 24+legend_width)
+	      		.attr("x", width+25)
 	     	    .attr("y", 9)
 	      	    .attr("dy", ".35em")
-	      	    .style("text-anchor", "end")
+	      	    .style("text-anchor", "start")
 	     	    .text(function(d) { return d; });
 	});
 
