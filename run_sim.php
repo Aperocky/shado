@@ -79,6 +79,12 @@
 	}
 
 	$_SESSION['session_results'] = true;
+	// $data = file($_SESSION['session_dir'] . "des_status") or die('Could not open des_status!');
+	//
+	// 	$line = $data[count($data) - 1];
+	// 	if ((int)$line > 10) {
+	//
+	// 	}
 
 	require_once('includes/page_parts/header.php');
 ?>
