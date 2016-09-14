@@ -52,8 +52,8 @@
 				$_SESSION['assistants']['custom']['tasks'][] = $i;
 	}
 
-	print_r($_SESSION['parameters']);
-	print_r($_SESSION['assistants']);
+	// print_r($_SESSION['parameters']);
+	// print_r($_SESSION['assistants']);
 
     // for ($i = 0; $i < $_SESSION['numTaskTypes']; $i++) {
     //     if (isset($_POST['custom_op_task_' . $i])) {

@@ -78,7 +78,8 @@
         $_SESSION['assistants'][$curr_op]['tasks'] = $data;
     }
 
-    $_SESSION['assistants']['custom'] = array();;
+    $_SESSION['assistants']['custom'] = array();
+    $_SESSION['assistants']['custom']['name'] = 'custom';
     $_SESSION['assistants']['custom']['tasks'] = array();
 
 //  Read in tasks

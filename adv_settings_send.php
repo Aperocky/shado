@@ -1,13 +1,17 @@
 <?php
-	session_start();
+//	Initialize session
+
+	require_once('includes/session_management/init.php');
 
 //	Get selected tasks
 
 	$curr_tasks = explode(',', $_POST['current_tasks']);
 
-//	Remove old task parameters
+//	Remove old parameters
 
 	$_SESSION['tasks'] = array();
+	foreach (array_keys($_SESSION['assistants']) as $assistant)
+		$_SESSION['assistants'][$assistant]['tasks'] = array();
 
 //	Save replications
 
@@ -15,21 +19,19 @@
 
 //	Loop through each task type
 
-	for ($i = 0; $i < sizeof($curr_tasks); $i++) {
-
-		$j = $curr_tasks[$i];
+	foreach ($curr_tasks as $task_num) {
 
 	// 	Store task names
 
-		$curr_task = strtolower($_POST["t".$j."_name"]);
+		$curr_task = strtolower($_POST["t".$task_num."_name"]);
 		$_SESSION['tasks'][$curr_task] = array();
 
 	// 	Store priorities
 
 		$_SESSION['tasks'][$curr_task]['priority'] = array(
-			(int)$_POST["t".$j."_priority_p0"],
-			(int)$_POST["t".$j."_priority_p1"],
-			(int)$_POST["t".$j."_priority_p2"]);
+			(int)$_POST["t".$task_num."_priority_p0"],
+			(int)$_POST["t".$task_num."_priority_p1"],
+			(int)$_POST["t".$task_num."_priority_p2"]);
 
 	// 	Store arrival distribution type
 
@@ -38,9 +40,9 @@
 	// 	Store arrival distribution parameters
 
 		$_SESSION['tasks'][$curr_task]['arrPms'] = array(
-			(float)$_POST["t".$j."_arrTime_p0"],
-			(float)$_POST["t".$j."_arrTime_p1"],
-			(float)$_POST["t".$j."_arrTime_p2"]);
+			(float)$_POST["t".$task_num."_arrTime_p0"],
+			(float)$_POST["t".$task_num."_arrTime_p1"],
+			(float)$_POST["t".$task_num."_arrTime_p2"]);
 
 		for ($k = 0; $k < sizeof($_SESSION['tasks'][$curr_task]['arrPms']); $k++) {
 			if ($_SESSION['tasks'][$curr_task]['arrPms'][$k] != 0) {
@@ -50,50 +52,54 @@
 
 	// 	Store service distribution type
 
-		$_SESSION['tasks'][$curr_task]['serDist'] = $_POST["t".$j."_serTimeDist"];
+		$_SESSION['tasks'][$curr_task]['serDist'] = $_POST["t".$task_num."_serTimeDist"];
 
 	// 	Store service distribution parameters
 
 		if ($_SESSION['tasks'][$curr_task]['serDist'] == "E") {
 			$_SESSION['tasks'][$curr_task]['serPms'] = array(
-				(float)$_POST["t".$j."_exp_serTime_0"],
+				(float)$_POST["t".$task_num."_exp_serTime_0"],
 				0);
 		} else if ($_SESSION['tasks'][$curr_task]['serDist'] == "L") {
 			$_SESSION['tasks'][$curr_task]['serPms'] = array(
-				(float)$_POST["t".$j."_log_serTime_0"],
-				(float)$_POST["t".$j."_log_serTime_1"]);
+				(float)$_POST["t".$task_num."_log_serTime_0"],
+				(float)$_POST["t".$task_num."_log_serTime_1"]);
 		} else {
 			$_SESSION['tasks'][$curr_task]['serPms'] = array(
-				(float)$_POST["t".$j."_uni_serTime_0"],
-				(float)$_POST["t".$j."_uni_serTime_1"]);
+				(float)$_POST["t".$task_num."_uni_serTime_0"],
+				(float)$_POST["t".$task_num."_uni_serTime_1"]);
 		}
 
-	// 	Store exponential distribution type
+	// 	Store expiration distribution type
 
 		$_SESSION['tasks'][$curr_task]['expDist'] = "E";
 
-	//	Store exponential distribution parameters (lo + hi)
+	//	Store expiration distribution parameters (lo + hi)
 
 		$_SESSION['tasks'][$curr_task]['expPmsLo'] = array(0, 0, 0);
 		$_SESSION['tasks'][$curr_task]['expPmsHi'] = array(0, 0, 0);
 
 	// 	Store affected by traffic
 
-		$_SESSION['tasks'][$curr_task]['affByTraff'] =array(
-			(int)$_POST["t".$j."_affByTraff_p0"],
-			(int)$_POST["t".$j."_affByTraff_p1"],
-			(int)$_POST["t".$i."_affByTraff_p2"]);
+		$_SESSION['tasks'][$curr_task]['affByTraff'] = array(
+			(int)$_POST["t".$task_num."_affByTraff_p0"],
+			(int)$_POST["t".$task_num."_affByTraff_p1"],
+			(int)$_POST["t".$task_num."_affByTraff_p2"]);
 
 	// 	Store associated operators
 
-		$_SESSION['tasks'][$curr_task]['assocOps'] = array();
-
-		for ($k = 0; $k < 5; $k++) {
-			if(isset($_POST["t".$j."_op".$k])) {
-				$_SESSION['tasks'][$curr_task]['assocOps'][] = (int)$_POST["t".$j."_op".$k];
+		$op_num = 0;
+		// echo "Task " . $curr_task . '<br>';
+		foreach (array_keys($_SESSION['assistants']) as $assistant) {
+			if (isset($_POST["t$task_num" . "_op$op_num"]) && $_POST["t$task_num" . "_op$op_num"] == 'on') {
+				// echo $assistant . " ($op_num) <br>";
+				$_SESSION['assistants'][$assistant]['tasks'][] = (int)array_search($task_num, $curr_tasks);
 			}
+			// else
+			// 	echo "NOT " . $assistant . " ($op_num) <br>";
+			$op_num++;
 		}
 	}
 
-	print_r($_SESSION);
-	// header("Location: run_sim.php");
+	// print_r($_SESSION);
+	header("Location: run_sim.php");

@@ -68,7 +68,6 @@
 						}
 					}
 				}
-				/* echo "LOW: $low_count;   NORMAL: $normal_count;   HIGH: $high_count;\n"; */
 				break;
 			}
 		}

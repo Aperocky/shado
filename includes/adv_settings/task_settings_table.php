@@ -65,22 +65,16 @@
         <td>
             Service Time:
             <span class="tooltip" onmouseover="tooltip.pop(this, 'How long does it typically take a human operator to complete this task? <br><br> <strong>Exponential:</strong> Specify the mean service time. For this distribution, the probability of each time occuring decreases exponentially as the time increases. <br><br> <strong>Lognormal:</strong> Specify the mean and standard deviation of the service time. For this distribution, the logarithm of each time forms a normal distribution. This results in a skewed distribution with many small values and fewer large values. Therefore, the mean is usually greater than the mode. <br><br> <strong>Uniform:</strong> Specify the minimum and maximum service time. For this distribution, any time within the bounds has an equally likely chance of occurring.')"><sup>(?)</sup></span>
-            <!-- <div class="tooltip"><sup>(?)</sup>
-                <span class="tooltiptext">
-                    Exponential Distribution
-                </span>
-            </div>: -->
         </td>
-        <td colspan="3">
-            Distribution:
+        <td colspan="3">Distribution:
             <?php
                 $dist_char = ["E", "L", "U"];
                 $dist_name = ["Exponential", "Lognormal", "Uniform"];
                 echo "<select id='t$taskNum" . "_serTimeDist' name='t$taskNum" . "_serTimeDist'";
-                echo "style='margin: 0px 10px' onchange='updateSerDist($taskNum)'>";
+                echo "style='margin-right: 10px' onchange='updateSerDist($taskNum)'>";
                 for ($i = 0; $i < 3; $i++) {
                     $selected = '';
-                    if ($_SESSION['tasks'][$task]['serDist'][$i] == $dist_char[$i])
+                    if ($_SESSION['tasks'][$task]['serDist'] == $dist_char[$i])
                         $selected = ' selected="selected"';
                     echo "<option value='$dist_char[$i]'$selected>$dist_name[$i]</option>";
                 }
@@ -123,21 +117,21 @@
                     if ($i == 0) {
                         echo "Mean: <input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_0'";
                         echo 'size="4" maxlength="4" value="' . round($_SESSION['tasks'][$task]['serPms'][0], 2) . '"';
-                        echo 'style="margin: 0px 10px;"></div>';
+                        echo '> min</div>';
                     } else if ($i == 1) {
                         echo "Mean: <input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_0'";
                         echo 'size="4" maxlength="4" value="' . round($_SESSION['tasks'][$task]['serPms'][0], 2) . '"';
-                        echo 'style="margin: 0px 10px;">';
-                        echo "Std dev: <input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_1'";
+                        echo '> min ';
+                        echo "Std dev:<input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_1'";
                         echo 'size="4" maxlength="4" value="' . round($_SESSION['tasks'][$task]['serPms'][1], 2) . '"';
-                        echo 'style="margin: 0px 10px;"></div>';
+                        echo '> min</div>';
                     } else {
                         echo "Min: <input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_0'";
                         echo 'size="4" maxlength="4" value="' . round($_SESSION['tasks'][$task]['serPms'][0], 2) . '"';
-                        echo 'style="margin: 0px 10px;">';
+                        echo '> min ';
                         echo "Max: <input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_1'";
                         echo 'size="4" maxlength="4" value="' . round($_SESSION['tasks'][$task]['serPms'][1], 2) . '"';
-                        echo 'style="margin: 0px 10px;"></div>';
+                        echo '> min</div>';
                     }
                 }
 
@@ -247,7 +241,11 @@
                 foreach (array_keys($_SESSION['assistants']) as $assistant) {
                     $checked = '';
                     if (in_array($taskNum, $_SESSION['assistants'][$assistant]['tasks'])) $checked = ' checked';
-                    echo "<input type='checkbox' name='t$taskNum" . "_op$i' value='$i'$checked>" . ucwords($assistant);
+                    echo "<input type='checkbox' name='t$taskNum" . "_op$i' value='on'$checked>";
+                    if ($assistant == 'custom')
+                        echo ucwords($_SESSION['assistants']['custom']['name']) . " ";
+                    else
+                        echo ucwords($assistant);
                     $i++;
                 }
             ?>
