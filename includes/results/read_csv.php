@@ -27,7 +27,7 @@
 	while (!feof($file)) {
 		$line_of_text = fgetcsv($file, 2048, ',');
 		$skip++;
-		if ($skip == 20) {
+		if ($line_of_text[1]=="Sum") {
 			$num = count($line_of_text);
 
 			for($i=2; $i<$num; $i++){

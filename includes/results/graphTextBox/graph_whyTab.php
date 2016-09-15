@@ -10,18 +10,18 @@
 			We simulated <?php echo $_SESSION['parameters']['reps']; ?> trips and plotted the mean value per interval of time. The model shows that <?php echo round($type_byPhase[$keys[0]]*100/$length,2); ?>% of the engineer’s workload can be attributed to <?php echo array_keys($_SESSION['tasks'])[$keys[0]-1]; ?>. <?php $taskName = array_keys($_SESSION['tasks']); echo ucfirst($taskName[$keys[0]-1]); ?> involves <?php $name = $taskName[$keys[0]-1]; echo strtolower($_SESSION['tasks'][$name]['description']); ?>.
 			</li><br><li >
 			 <?php $taskName = array_keys($_SESSION['tasks']); echo $_SESSION['tasks'][$taskName[$keys[1]-1]]['description']; ?> makes <?php echo $taskName[$keys[1]-1]; ?> an important secondary task that accounts for <?php echo round($type_byPhase[$keys[1]]*100/$length,2); ?>% of their total time on task.
-			</li><br><li >
+			</li><br>
 			<?php if($count_high>0){
 					if($count_low>0){ ?>
-						During this trip, the engineer spent approximately <?php echo round($count_high*100/$length,2); ?>% of time at or above a high level of workload (>70% utilization) and <?php echo round($count_low*100/$length,2); ?>% with too little work (<30% utilization).
+						<li >During this trip, the engineer spent approximately <?php echo round($count_high*100/$length,2); ?>% of time at or above a high level of workload (>70% utilization) and <?php echo round($count_low*100/$length,2); ?> % with too little work  (<30% utilization). </li>
 					<?php }
 					else{ ?>
-						During this trip, the engineer spent approximately <?php echo round($count_high*100/$length,2); ?>% of time at or above a high level of workload (>70% utilization)
+						<li>During this trip, the engineer spent approximately <?php echo round($count_high*100/$length,2); ?>% of time at or above a high level of workload (>70% utilization)</li>l
 						<?php } }
 					else{
 						if($count_low>0){ ?>
-						During this trip, the engineer spent approximately <?php echo round($count_low*100/$length,2); ?>% of time at or below a low level of workload (<30% utilization).
-			<?php } } ?></li></ul>
+						<li>During this trip, the engineer spent approximately <?php echo round($count_low*100/$length,2); ?>% of time at or below a low level of workload (<30% utilization). </li>
+			<?php } } ?></ul>
 
 			<?php if(max(array_values($count_type_high))>0) { ?>
 			<h3>These combined factors <em>highly</em> contributed to period of high workload: </h3>
