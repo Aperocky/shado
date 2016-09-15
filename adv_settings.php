@@ -59,7 +59,6 @@
 							</select>
 						</div>
 					</div>
-
 					<h2>Task Details</h2>
 					Below, you can view and change the underlying assumptions for each task.
 					<div id='taskParameterTable'>

@@ -100,8 +100,10 @@
                         $style = 'inline-block';
                     echo "<div id='t$taskNum" . "_$dist_string[$i]Pms' style='display: $style;'>";
                     if ($i == 0) {
+                        $param = $taskArr['serPms'][0];
+                        if ($param != 0) $param = round(1/$param, 2);
                         echo "Mean: <input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_0'";
-                        echo 'size="4" maxlength="4" value="' . round($taskArr['serPms'][0], 2) . '"';
+                        echo 'size="4" maxlength="4" value="' . $param . '"';
                         echo '> min</div>';
                     } else if ($i == 1) {
                         echo "Mean: <input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_0'";

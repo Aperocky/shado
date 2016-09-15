@@ -164,8 +164,6 @@
 				<div id="assist">
 					<table id="assistantsTable" cellspacing="0">
 						<tr>
-
-
 							<?php
 								$assistant_names = array_keys($_SESSION['assistants']);
 								for ($i = 1; $i < sizeof($assistant_names); $i++) {
@@ -181,7 +179,6 @@
 									echo '</td>';
 								}
 							?>
-
 						</tr>
 					</table>
 				</div>
