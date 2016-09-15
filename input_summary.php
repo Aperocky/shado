@@ -16,7 +16,7 @@
 		// fwrite($file,$traffic[(string)$traffic_level[$i]]."\n");
 		$label = $_SESSION['parameters']['traffic_nums'][$i];
 		$label = $traff_levels[$label];
-		fwrite($file, $_SESSION['parameters']['traffic_nums'][$i]."\n");
+		fwrite($file, (float)$_SESSION['parameters']['traffic_nums'][$i]."\n");
 	}
 	fwrite($file,($time) .",");
 	fwrite($file,"0\n");
@@ -161,7 +161,7 @@ d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
 
   x_input.domain(data.map(function(d) { return d.time; }));
 
-  y.domain([0,3.5]);
+  y.domain([0,2.5]);
 
   svg_summary.append("g")
       .attr("class", "x axis")
@@ -180,7 +180,7 @@ d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
 		.attr("transform", "translate(-50,265) rotate(-90)" )
 		.attr("y", 6)
 		.attr("dy", ".71em")
-		.text("Traffic Level (0.1 = Low, 1 = Med, 2 = High)");
+		.text("Traffic Level (0.5 = Low, 1 = Med, 2 = High)");
 
   svg_summary.selectAll(".bar")
       .data(data)
