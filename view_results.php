@@ -29,13 +29,13 @@
 
 		<div id="bottomNav" style="padding-left: 200px">
 			<ul>
+				<!-- <li>
+					<button type="button" class="button remove" onclick="location.href='sim_summary.php';" style="color: black">Print Report</button>
+				</li> -->
 				<li>
 					<button class="button" type="button" onclick="location.href='basic_settings.php';" style="color: black">&#8678 Change Inputs</button>
 				</li>
 				<!-- <li>
-					<button type="button" class="button remove" onclick="location.href='sim_summary.php';" style="color: black">Print Report</button>
-				</li>
-				<li>
 					<button type="button" class="button hide remove" onclick="location.href='investigate.php?operator=engineer';" style="color: black;">Detailed Results &#8680</button>
 				</li> -->
 			</ul>

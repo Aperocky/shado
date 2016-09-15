@@ -23,7 +23,7 @@
 			<div id="contactPage" class="page">
 				<h1 class="pageTitle">Contact Us</h1>
 				<p>
-					We highly value any questions or comments. To reach us, leave a message below. Thanks!
+					We highly value any questions or comments. To reach us, leave a message below!
 				</p>
 				<div id="contactForm">
 					<form id="contactFormInner" action="mailto:vcn3@duke.edu" method="post">
