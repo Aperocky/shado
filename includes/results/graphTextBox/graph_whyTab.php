@@ -32,7 +32,7 @@
 			<?php } } ?></ul>
 
 			<?php if(max(array_values($count_type_high))>0) { ?>
-			<h3>These combined factors <em>highly</em> contributed to period of high workload: </h3>
+			<h3>These combined factors <em>significantly</em> contributed to period of high workload: </h3>
 			<ul>
 			<?php
 
