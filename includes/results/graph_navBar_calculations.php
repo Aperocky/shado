@@ -205,7 +205,7 @@
 		$count_norm = 0;
 		for ($i = 1; $i < $num - 1; $i++) {
 			if ($count[$temp_count-1][$i] > 0.7) {
-				$penalty_high = $penalty_high + (3.33 * $count[10][$i] - 2.33);
+				$penalty_high = $penalty_high + (3.33 * $count[$temp_count-1][$i] - 2.33);
 				$count_high++;
 			} else {
 				if ($count[$temp_count-1][$i] < 0.3) {
