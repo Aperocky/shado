@@ -60,10 +60,10 @@
 	// 	Store service distribution parameters
 
 		if ($_SESSION['tasks'][$curr_task]['serDist'] == "E") {
-			$val = $_POST["t".$task_num."_exp_serTime_0"];
+			$val = (float)$_POST["t".$task_num."_exp_serTime_0"];
 			if ($val != 0) $val = 1/$val;
-			$_SESSION['tasks'][$curr_task]['serPms'] = array(
-				(float)$val, 0);
+			$_SESSION['tasks'][$curr_task]['serPms'] = array($val, 0);
+			// print_r($_SESSION['tasks'][$curr_task]['serPms']);
 		} else if ($_SESSION['tasks'][$curr_task]['serDist'] == "L") {
 			$_SESSION['tasks'][$curr_task]['serPms'] = array(
 				(float)$_POST["t".$task_num."_log_serTime_0"],
