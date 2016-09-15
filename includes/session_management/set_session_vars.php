@@ -167,7 +167,7 @@
     $_SESSION['assistants']['conductor']['description'] = 'The freight conductor supervises train conditions on the ground at terminal points and remains attentive to the engineer while the train is in motion in the case of emergency, when action could be needed';
     $_SESSION['assistants']['positive train control']['description'] = 'Positive Train Control (PTC), set to be fully implemented by 2018, is an embedded feature of railroads that automatically manages speed restrictions and emergency braking without human input';
     $_SESSION['assistants']['cruise control']['description'] = 'Cruise control can offload motion planning tasks that involve the locomotive control system of throttle and dynamic braking';
-    $_SESSION['assistants']['custom']['description'] = 'This assistant is defined by you';
+    $_SESSION['assistants']['custom']['description'] = 'You can define this assistant';
 
 
 //  Set task descriptions
@@ -177,9 +177,9 @@
     $_SESSION['tasks']['paperwork']['description'] = 'Reviewing and recording operating conditions';
     $_SESSION['tasks']['maintenance of way interactions']['description'] = 'Maintaining situational awareness of other crews along the track';
     $_SESSION['tasks']['temporary speed restrictions']['description'] = 'Recalling information issued on track bulletins and adapting to updates while train is in motion';
-    $_SESSION['tasks']['signal response management']['description'] = 'Attentive to direction from track signaling system and reponsive to proper control system within a safely allotted time';
-    $_SESSION['tasks']['monitoring inside']['description'] = 'Attentive to informational displays and to engineer\'s performance to maintain a safe operation';
-    $_SESSION['tasks']['monitoring outside']['description'] = 'Attentive to warnings and environmental conditions that may affect operations';
+    $_SESSION['tasks']['signal response management']['description'] = 'Maintaining attentiveness to direction from track signaling system and reponsive to proper control system within a safely allotted time';
+    $_SESSION['tasks']['monitoring inside']['description'] = 'Maintaining attentiveness to informational displays and to engineer\'s performance to maintain a safe operation';
+    $_SESSION['tasks']['monitoring outside']['description'] = 'Maintaining attentiveness to warnings and environmental conditions that may affect operations';
     $_SESSION['tasks']['planning ahead']['description'] = 'Maneuvering locomotive control system for throttle, braking and other subtasks like horn-blowing before railroad crossing';
 
     $_SESSION['default_tasks'] = $_SESSION['tasks'];
@@ -196,6 +196,7 @@
     $_SESSION['empty_task']['expPmsLo'] = array(0, 0, 0);
     $_SESSION['empty_task']['expPmsHi'] = array(0, 0, 0);
     $_SESSION['empty_task']['affByTraff'] = array(0, 0, 0);
+    $_SESSION['empty_task']['description'] = "You have defined this task";
 
 //  Set session
 

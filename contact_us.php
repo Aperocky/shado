@@ -26,12 +26,12 @@
 					We highly value any questions or comments. To reach us, leave a message below. Thanks!
 				</p>
 				<div id="contactForm">
-					<form id="contactFormInner" action="send_email.php" method="post">
+					<form id="contactFormInner" action="mailto:vcn3@duke.edu" method="post">
 						<strong>Name:</strong> <br><input type="text" name="name"><br><br>
 						<!-- <strong>Employer:</strong> <br><input type="text" name="employer"><br><br> -->
 						<strong>Email:</strong> <br><input type="text" name="email"><br><br>
 						<strong>Your Message:</strong> <br><textarea rows="4" cols="50" name="message"></textarea><br><br>
-						<input type="submit" value="Send Message">
+						<input class="button" type="submit" value="Send Message" style="color: black;">
 					</form>
 				</div>
 			</div>

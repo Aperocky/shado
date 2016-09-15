@@ -68,7 +68,11 @@
     font-size: 12px;
     font-family: "Open Sans";
     line-height: 16px;
-    white-space: nowrap; }
+    /*white-space: nowrap; }*/
+    /*display: block;*/
+    text-align: left;
+    font-weight: normal;
+    white-space: pre-wrap; }
   [class*="hint--"][aria-label]:after {
     content: attr(aria-label); }
   [class*="hint--"][data-hint]:after {

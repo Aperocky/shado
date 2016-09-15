@@ -46,7 +46,7 @@
 
 		<form class="centerOuter" action="basic_settings_send.php" method="post">
 			<div class="centerOuter">
-				<div class="startEndTime stepBox">
+				<div class="startEndTime stepBox" style="width: 220px;">
 					<div class='stepCircle'>1</div>
 					<h3 class="whiteFont">When Does Your Trip Begin? <span class="hint--bottom-right hint--rounded hint--large" aria-label= "Enter the time of day that your engineer begins his/her shift."><sup>(?)</sup></span></h3>
 
@@ -85,7 +85,7 @@
 					<input id="begin_time" name="begin_time" type="hidden" value="<?php echo $_SESSION['parameters']['begin'];?>">
 				</div>
 
-				<div class="startEndTime stepBox">
+				<div class="startEndTime stepBox" style="width: 220px;">
 					<div class='stepCircle'>2</div>
 					<h3 class="whiteFont">When Does Your Trip End? <span class="hint--bottom-left hint--rounded hint--large" aria-label= "Enter the time of day that your engineer is expected to end his/her shift."><sup>(?)</sup></span></h3>
 
@@ -130,7 +130,7 @@
 				<div class='stepCircle'>3</div>
 					<h3 class="whiteFont">
 						What are the Traffic Levels?
-						<span class="hint--right hint--rounded hint--large" aria-label= "Enter the local levels of traffic during this shift. This will modify the frequency of certain tasks arriving."><sup>(?)</sup></span>
+						<span class="hint--right hint--rounded hint--large" aria-label= "Enter the local levels of traffic during this shift. This will modify the frequency of certain task arrivals."><sup>(?)</sup></span>
 					</h3>
 					<div id="totalTime" style="overflow-x:auto;">
 						<table id='table' class='trafficTable remove'>
@@ -190,7 +190,7 @@
 			<div class="custom remove" id="custom_assistant_settings">
 				<div class='stepCircle'>5</div>
 
-				<h3 id='custom_heading' class='whiteFont'>Which Tasks Will This Custom Assistant Handle? <span class="hint--right hint--rounded hint--large" aria-label= "Identify the name and which tasks the custom assistant(s) can offload from the locomotive engineer workload."><sup>(?)</sup></span></h3>
+				<h3 id='custom_heading' class='whiteFont'>Which Tasks Will This Custom Assistant Handle? <span class="hint--right hint--rounded hint--large" aria-label= "Identify which tasks the custom assistant can offload from the locomotive engineer."><sup>(?)</sup></span></h3>
 
 
 
@@ -213,11 +213,11 @@
 					foreach ($task_names as $task) {
 						echo "<tr><td>" . ucwords($task) . " <span class='hint--right hint--rounded hint--large' aria-label= '".  $_SESSION['tasks'][$task]['description'] . "'>";
 						echo '<sup>(?)</sup></span></td><td>';
-						echo '<input type="checkbox" name="custom_op_task_' . $i++ . '"';
-						if ($key = array_search($task, $custom_tasks) !== false) echo ' checked';
+						echo '<input type="checkbox" name="custom_op_task_' . $i . '"';
+						// if ($key = array_search($task, $custom_tasks) !== false) echo ' checked';
+						if (in_array($i++, $custom_tasks)) echo ' checked';
 						echo '></input>';
 						echo '</td></tr>';
-
 					}
 
 					// for($i = 0; $i < sizeof($_SESSION['tasks']); $i++)
@@ -236,13 +236,13 @@
 			<div id="bottomNav">
 				<ul>
 					<li>
-						<button class="button hide" type="button" onclick="location.href='adv_settings.php';" style="color: black;">&#8678 Advanced Conditions</button>
+						<button class="button hide" type="button" onclick="location.href='adv_settings.php';" style="color: black;">&#8678 Run Simulation</button>
 					</li>
 					<li>
-						<input type="submit" class="button" name="run_sim" style="background-color: #4CAF50;" value="Run Simulation">
+						<input type="submit" class="button" name="adv_settings" style="color: black;" value="Advanced Conditions">
 					</li>
 					<li>
-						<button type="submit" class="button" name="adv_settings" style="color: black;" value="Advanced Settings">Advanced Conditions &#8680</button>
+						<button type="submit" class="button" name="run_sim" style="background-color: #4CAF50;">Run Simulation &#8680</button>
 					</li>
 				</ul>
 			</div>

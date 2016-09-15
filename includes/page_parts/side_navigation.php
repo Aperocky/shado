@@ -11,7 +11,7 @@
 				  	</li>
 					<li><a href="view_results.php">View Results</a></li>
 					<li>
-					    <button class="accordion">View Detailed Results</button>
+					    <button class="accordion">View Detailed Analysis</button>
 					    <div class="accordion-content">
 					      	<a href="investigate.php?operator=engineer">Engineer</a>
 					      	<a href="investigate.php?operator=conductor">Conductor</a>

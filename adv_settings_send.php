@@ -21,11 +21,12 @@
 
 	foreach ($curr_tasks as $task_num) {
 
-	// 	Store task names
+	// 	Store task names and descriptions
 
 		$curr_task = strtolower($_POST["t".$task_num."_name"]);
-		// print_r($_SESSION['default_tasks']);
-		if (!in_array($curr_task, array_keys($_SESSION['default_tasks'])))
+		if (in_array($curr_task, array_keys($_SESSION['default_tasks'])))
+			$_SESSION['tasks'][$curr_task]['description'] = $_SESSION['default_tasks'][$curr_task]['description'];
+		else
 			$_SESSION['tasks'][$curr_task]['description'] = $_SESSION['empty_task']['description'];
 
 	// 	Store priorities
@@ -60,8 +61,7 @@
 
 		if ($_SESSION['tasks'][$curr_task]['serDist'] == "E") {
 			$_SESSION['tasks'][$curr_task]['serPms'] = array(
-				(float)$_POST["t".$task_num."_exp_serTime_0"],
-				0);
+				(float)$_POST["t".$task_num."_exp_serTime_0"], 0);
 		} else if ($_SESSION['tasks'][$curr_task]['serDist'] == "L") {
 			$_SESSION['tasks'][$curr_task]['serPms'] = array(
 				(float)$_POST["t".$task_num."_log_serTime_0"],
@@ -98,6 +98,8 @@
 			$op_num++;
 		}
 	}
+	// print_r($_SESSION['assistants']);
+
 
 //	Continue to next page
 

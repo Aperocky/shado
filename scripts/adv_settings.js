@@ -54,6 +54,10 @@ function addTask(task_num) {
 
 	if (current_task == 0)
 		current_task = task_num;
+	else if (current_task == 14) {
+		console.log(jQuery('#taskAdder'));
+		jQuery('#taskAdder').addClass('remove');
+	}
 	else
 		current_task++;
 

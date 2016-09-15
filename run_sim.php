@@ -33,7 +33,7 @@
 	// unlink($_SESSION['files']['params']) or die("did not unlink");
 	// $_SESSION['files']['params'] = tempnam(sys_get_temp_dir(), "params");
 
-	echo "Dir = " . $_SESSION['session_dir'] . "\n";
+	// echo "Dir = " . $_SESSION['session_dir'] . "\n";
 	$file = fopen($_SESSION['session_dir'] . "params", "w") or die("Unable to open parameter file.");
 	fwrite($file, "output_path\t\t" . $_SESSION['session_dir'] . "\n");
 	fwrite($file, "num_hours\t\t" . $_SESSION['parameters']['hours'] . "\n");
@@ -51,7 +51,6 @@
 
 	foreach (array_keys($_SESSION['tasks']) as $task) {
 		$taskArr = $_SESSION['tasks'][$task];
-		// print_r($taskArr);
 		fwrite($file, "\ntask_name\t\t$task\n");
 		fwrite($file, "prty\t\t\t" . implode(" ", $taskArr['priority']) . "\n");
 		fwrite($file, "arr_dist\t\t" . $taskArr['arrDist'] . "\n");
@@ -62,7 +61,6 @@
 		fwrite($file, "exp_pms_lo\t\t" . implode(" ", $taskArr['expPmsLo']) . "\n");
 		fwrite($file, "exp_pms_hi\t\t" . implode(" ", $taskArr['expPmsHi']) . "\n");
 		fwrite($file, "aff_by_traff\t" . implode(" ", $taskArr['affByTraff']) . "\n");
-		// fwrite($file, "op_nums\t\t\t" . implode(" ", $taskArr['taskAssocOps'][$i]));
 	}
 
 	fclose($file);
@@ -86,44 +84,9 @@
 	// 	}
 
 	$html_head_insertions = '<link rel="stylesheet" href="includes/results/progressBar/style.css">';
-	$html_head_insertions .= "<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>";
+	// $html_head_insertions .= "<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>";
+	$html_head_insertions .= "<script src='includes/results/progressBar/style.js'></script>";
 	require_once('includes/page_parts/header.php');
 	require_once('includes/results/progressBar/loading_bar.php');
 	require_once('includes/page_parts/footer.php');
 ?>
-
-<!--
-<html>
-	<head>
-	    <meta charset="UTF-8">
-	    <title>Form Progress Bar</title>
-	    <link rel="stylesheet" href="includes/results/progressBar/style.css"> -->
-		<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
-		<!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
-	  <!-- </head>
-	<body>
-		<div id="php"></div>
-		<div class="progress">
-			<div class="circle done">
-				<span class="label">1</span>
-				<span class="title">Fetching Input</span>
-			</div>
-			<span class="bar done"></span>
-			<div class="circle done">
-				<span class="label">2</span>
-				<span class="title">Formatting Data</span>
-			</div>
-			<span class="bar half"></span>
-			<div class="circle active">
-				<span class="label">3</span>
-				<span class="title">Running Simulation</span>
-			</div>
-			<span class="bar"></span>
-			<div class="circle">
-				<span class="label">4</span>
-				<span class="title">Fetching Results</span>
-			</div>
-		</div>
-		<script src="includes/results/progressBar/style.js"></script>
-	</body>
-</html> -->

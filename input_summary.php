@@ -5,6 +5,7 @@
 	// $traffic['0.5']=1.0;
 	// $traffic['1']=2.0;
 	// $traffic['2']=3.0;
+	$traff_levels = ['0.5' => 0.1, '1' > 1, '2' > 2];
 
 	$file = fopen($_SESSION['session_dir'] . "input_summary.txt", "w");
 	fwrite($file,"time,");
@@ -13,6 +14,8 @@
 	{
 		fwrite($file,($i) .",");
 		// fwrite($file,$traffic[(string)$traffic_level[$i]]."\n");
+		$label = $_SESSION['parameters']['traffic_nums'][$i];
+		$label = $traff_levels[$label];
 		fwrite($file, $_SESSION['parameters']['traffic_nums'][$i]."\n");
 	}
 	fwrite($file,($time) .",");
@@ -71,18 +74,15 @@
 </style>
 <div class= 'operatorSummaryOuter'>
 <div id="input">
-	<h3 style="text-align: center;"> <u>Here are the trip conditions you set:</u></h3>
+	<h3 style="text-align: center;"> <u>Trip Conditions:</u></h3>
 	<ul>
-	<li>Trip Duration: <?php echo $_SESSION['parameters']['hours'] . " hours"; ?></li>
+	<li><em>Trip Duration:</em> <?php echo $_SESSION['parameters']['hours'] . " hours"; ?></li>
 	<br>
-	<li>Traffic levels during this shift:</li>
+	<li><em>Traffic Levels:</em></li>
 	<div id="input_summary" class="no-page-break"></div>
 	<br>
-	<li>Humans/technologies supporting the locomotive engineer: <ul>
+	<li><em>Assistants Supporting the Engineer:</em><ul>
 	<?php
-		// $assistant[1]="Conductor";
-		// $assistant[2]="Positive Train Control";
-		// $assistant[3]="Cruise Control";
 		$found = false;
 
 		foreach ($_SESSION['parameters']['assistants'] as $assistant) {
@@ -91,13 +91,6 @@
 				$found = true;
 			}
 		}
-		// for($i=1;$i<4;$i++){
-		// 	if(in_array('conductor', $_SESSION['parameters']['assistants'])){
-		// 		$check=1;
-		// 		echo "<li>".$assistant[$i]."</li>";
-		// 	}
-		// }
-		//
 		if(!$found){
 			echo "<li>None</li>";
 		}
@@ -130,6 +123,21 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
 	.ticks(3);
+	// .tickFormat('[1], m, h');
+
+d3.select('svg')
+  .append('g')
+  .attr('transform', 'translate(180, 10)')
+  .call(yAxis)
+  .selectAll('text') // `text` has already been created
+  .selectAll('tspan')
+  .data(function (d) { return bytesToString(d); }) // Returns two vals
+  .enter()
+  .append('tspan')
+  .attr('x', 0)
+  .attr('dx', '-1em')
+  .attr('dy', function (d, i) { return (2 * i - 1) + 'em'; })
+  .text(String);
 
 var ticks_gap1=1;
 if(temp>8){
@@ -172,7 +180,7 @@ d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
 		.attr("transform", "translate(-50,265) rotate(-90)" )
 		.attr("y", 6)
 		.attr("dy", ".71em")
-		.text("Traffic level (1 = Low, 2 = Med, 3 = High)");
+		.text("Traffic Level (1 = Low, 2 = Med, 3 = High)");
 
   svg_summary.selectAll(".bar")
       .data(data)

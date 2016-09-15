@@ -45,7 +45,7 @@
 					<h2>Replications</h2>
 					Enter the number of replications, or the number of simulated trips. Note that more trips provides more precise results, but it may also increase the processing time.
 					<div class="centerOuter">
-						<div class="stepBox startEndTime">
+						<div class="stepBox startEndTime" style="width: 200px;">
 							<h3 class="whiteFont" style="width: 150px;">How Many Trips Will There Be? <span class="hint--right hint--rounded hint--large" aria-label= "You might be wondering how many trips you need. Well, it depends on how precise and robust you want the model to test parameters. The more replications, generally, the more precise the stochastic results since there are more instances to test out different situations. However, more replications may increase the processing time."><sup><sup>(?)</sup></sup></span></h3>
 							<select name='num_reps'>
 								<?php
@@ -61,7 +61,7 @@
 					</div>
 
 					<h2>Task Details</h2>
-					Below, you can see and change the underlying assumptions for each task.
+					Below, you can view and change the underlying assumptions for each task.
 					<div id='taskParameterTable'>
 						<?php
 							$index = 0;
@@ -80,8 +80,8 @@
 							}
 						?>
 					</div>
-					<div>
-						<button type="button" class="roundButton" onclick=<?php echo "addTask(" . sizeof($_SESSION['tasks']) . ")"; ?> style="background-color: #4CAF50;" onmouseover="tooltip.pop(this, 'Add a new task')"><strong>+</strong></button>
+					<div id="taskAdder" style="text-align: center; padding-bottom: 20px;" >
+						<h3 style="color: #4CAF50"><button type="button" class="roundButton" onclick=<?php echo "addTask(" . sizeof($_SESSION['tasks']) . ")"; ?> style="background-color: #4CAF50;"><strong>+</strong></button> Add Task</h3>
 					</div>
 					<div id="bottomNav">
 						<ul>
@@ -89,10 +89,10 @@
 								<input type="submit" class="button" name="basic_settings" value="&#8678 Basic Conditions" style="color: black;">
 							</li>
 							<li>
-								<button type="button" class="button" onclick="location.href='reset_session_vars.php';" style="background-color: #4CAF50;">Restore Defaults</button>
+								<button type="button" class="button" onclick="location.href='reset_session_vars.php';" style="color: black;">Restore Defaults</button>
 							</li>
 							<li>
-								<input type="submit" class="button" name="run_sim" value="Run Simulation &#8680" style="color: black;">
+								<input type="submit" class="button" name="run_sim" value="Run Simulation &#8680" style="background-color: #4CAF50;">
 							</li>
 						</ul>
 					</div>

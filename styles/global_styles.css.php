@@ -571,14 +571,14 @@ th {
 }
 
 .roundButton {
-    height: 30px;
-    width: 30px;
+    height: 28px;
+    width: 28px;
     border-radius: 100px;
 	/*padding: 5px 10px;*/
 	border: none;
 	cursor: pointer;
 	color: white;
-	font-size: 20;
+	font-size: 18;
 	text-align: center;
 }
 

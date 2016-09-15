@@ -1,20 +1,5 @@
 <?php
-
-
-  for ($i = 0; $i < 72; $i++) {
-      $serviceTime1 .= " &nbsp ";
-  }
-
-
-  for ($i = 0; $i < 62; $i++) {
-      $serviceTime2 .= " &nbsp ";
-  }
-
-
-  for ($i = 0; $i < 52; $i++) {
-      $serviceTime3 .= " &nbsp ";
-  }
-  $serviceTime = "How long does it typically take a human operator to complete this task?".$serviceTime1."Exponential: Specify the mean service time. For this distribution, the probability of each time occuring decreases exponentially as the time increases.".$serviceTime2."Lognormal: Specify the mean and standard deviation of the service time. For this distribution, the logarithm of each time forms a normal distribution. This results in a skewed distribution with many small values and fewer large values. Therefore, the mean is usually greater than the mode.".$serviceTime3."Uniform: Specify the minimum and maximum service time. For this distribution, any time within the bounds has an equally likely chance of occurring.";
+    $service_time_tip = "How long does it typically take a human operator to complete this task?" . str_repeat(' &nbsp ', 82) . "Exponential: Specify the mean service time. For this distribution, the probability of each time occuring decreases exponentially as the time increases." . str_repeat(' &nbsp ', 62) . "Lognormal: Specify the mean and standard deviation of the service time. For this distribution, the logarithm of each time forms a normal distribution. This results in a skewed distribution with many small values and fewer large values. Therefore, the mean is usually greater than the mode." . str_repeat(' &nbsp ', 52) . "Uniform: Specify the minimum and maximum service time. For this distribution, any time within the bounds has an equally likely chance of occurring.";
 
     if ($task == "default") {
         $taskName = "new";
@@ -25,16 +10,31 @@
         $taskArr = $_SESSION['tasks'][$task];
     }
 ?>
-
-<h3>
-    <?php echo ucwords($taskName);?> Task (
-    <button class="roundButton hint--right hint--rounded hint--large" type="button" onclick=<?php echo "deleteTask(".$taskNum.")"; ?> style="background-color: #f44336;" aria-label= "Delete this task"><strong>x</strong></button> Delete)
-</h3>
-<table align="center">
+<!-- <div style="float: left;"> -->
+<!-- <h3 style="text-align: center;">
+    <span style="color: #f44336; float: left;">
+        <button class="roundButton" type="button" onclick=<?php echo "deleteTask(".$taskNum.")"; ?> style="background-color: #f44336;"><strong>x</strong></button> Delete Task
+    </span>
+    <span style="text-align: center;  "><?php echo ucwords($taskName);?></span>
+</h3> -->
+    <!-- </span> -->
+<!-- </div> -->
+<!-- <h3 style="text-align: center;"> -->
+<!-- </h3> -->
+<table align="center" style="margin-top: 10px; margin-bottom: 10px;">
+    <caption><h3>
+        <span style="float: left; color: #f44336; font-weight: bold;">
+            <button class="roundButton" type="button" onclick=<?php echo "deleteTask(".$taskNum.")"; ?> style="background-color: #f44336;"><strong>x</strong></button> Delete
+        </span>
+        <span style="margin-left: -90px;">
+            <?php echo ucwords($taskName);?>
+        </span>
+        </h3>
+    </caption>
     <tr>
         <th>Task Parameter</th>
         <th>Phase 1 <span class="hint--right hint--rounded hint--large" aria-label= "The startup phase is generally the first 30 minutes of any shift in which the operators are preparing for the trip while in the vicinity of a station. By regulatory requirement, it includes tasks like communicating with dispatch and testing the emergency braking system."><sup>(?)</sup></span></th>
-        <th>Phase 2 <span class="hint--right hint--rounded hint--large" aria-label= "The full motion phase begins once the train has passed its braking tests. The engineer operates the locomotive beyond the station and into the mainline following speed allowances from the physical characteristics of the region and responding to signals of the rail system."><sup>(?)</sup></span></th>
+        <th>Phase 2 <span class="hint--right hint--rounded hint--large" aria-label= "The full motion phase begins once the train has passed its braking tests from the startup phase. The engineer operates the locomotive beyond the station and into the mainline following speed allowances from the physical characteristics of the region and responding to signals of the rail system."><sup>(?)</sup></span></th>
         <th>Phase 3 <span class="hint--right hint--rounded hint--large" aria-label= "The yard phase is the final 30 minutes of the shift. It is important to distinguish this final phase as reports from the FRA show that the highest rates of accidents occur on yard track."><sup>(?)</sup></span></th>
     </tr>
     <tr>
@@ -62,7 +62,7 @@
     <tr>
         <td>
             Mean Arrival Time
-            <span class="hint--right hint--rounded hint--large" aria-label= "What is the average arrival rate for this task? (Note: exponentially distributed)"><sup>(?)</sup></span>
+            <span class="hint--right hint--rounded hint--large" aria-label= "What is the average arrival rate for this (exponentially distributed) task?"><sup>(?)</sup></span>
         </td>
         <?php
             for ($i = 0; $i < 3; $i++) {
@@ -75,16 +75,8 @@
     </tr>
     <tr>
         <td>
-
             Service Time:
-
-            <span class="hint--right hint--rounded hint--large" aria-label= ' <?php echo $serviceTime; ?> '><sup>(?)</sup></span>
-            <!-- <div class="tooltip"><sup>(?)</sup>
-                <span class="tooltiptext">
-                    Exponential Distribution
-                </span>
-            </div>: -->
-
+            <span class="hint--right hint--rounded hint--large" aria-label='<?php echo $service_time_tip; ?>'><sup>(?)</sup></span>
         </td>
         <td colspan="3">Distribution:
             <?php
@@ -98,7 +90,7 @@
                         $selected = ' selected="selected"';
                     echo "<option value='$dist_char[$i]'$selected>$dist_name[$i]</option>";
                 }
-                echo '</select>';
+                echo '</select>' . str_repeat(' &nbsp ', 2);
 
                 $dist_string = ["exp", "log", "uni"];
                 for ($i = 0; $i < 3; $i++) {
@@ -114,14 +106,14 @@
                     } else if ($i == 1) {
                         echo "Mean: <input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_0'";
                         echo 'size="4" maxlength="4" value="' . round($taskArr['serPms'][0], 2) . '"';
-                        echo '> min ';
+                        echo '> min ' . str_repeat(' &nbsp ', 2);
                         echo "Std dev:<input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_1'";
                         echo 'size="4" maxlength="4" value="' . round($taskArr['serPms'][1], 2) . '"';
                         echo '> min</div>';
                     } else {
                         echo "Min: <input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_0'";
                         echo 'size="4" maxlength="4" value="' . round($taskArr['serPms'][0], 2) . '"';
-                        echo '> min ';
+                        echo '> min ' . str_repeat(' &nbsp ', 2) ;
                         echo "Max: <input type='text' name='t$taskNum" . "_$dist_string[$i]_serTime_1'";
                         echo 'size="4" maxlength="4" value="' . round($taskArr['serPms'][1], 2) . '"';
                         echo '> min</div>';
