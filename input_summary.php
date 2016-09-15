@@ -1,22 +1,15 @@
 <?php
 
 	session_start();
-	// $traffic=array();
-	// $traffic['0.5']=1.0;
-	// $traffic['1']=2.0;
-	// $traffic['2']=3.0;
-	$traff_levels = ['0.5' => 0.1, '1' > 1, '2' > 2];
+	$traff_levels = [0.5 => 0.1, 1 => 1, 2 => 2];
 
 	$file = fopen($_SESSION['session_dir'] . "input_summary.txt", "w");
 	fwrite($file,"time,");
 	fwrite($file,"t_level\n");
-	for ($i = 0; $i < $_SESSION['parameters']['hours']; $i++)
-	{
+	for ($i = 0; $i < $_SESSION['parameters']['hours']; $i++) {
 		fwrite($file,($i) .",");
-		// fwrite($file,$traffic[(string)$traffic_level[$i]]."\n");
 		$label = $_SESSION['parameters']['traffic_nums'][$i];
-		$label = $traff_levels[$label];
-		fwrite($file, (float)$_SESSION['parameters']['traffic_nums'][$i]."\n");
+		fwrite($file, $traff_levels[$label]."\n");
 	}
 	fwrite($file,($time) .",");
 	fwrite($file,"0\n");
@@ -38,7 +31,6 @@
 	-webkit-border-radius: 5px;
 	border-radius: 25px;
 	display: inline-block;
-
 	margin: 50px;
 	text-align: left;
 	background-color: rgba(255, 255, 255, 0.6);
@@ -180,7 +172,7 @@ d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
 		.attr("transform", "translate(-50,265) rotate(-90)" )
 		.attr("y", 6)
 		.attr("dy", ".71em")
-		.text("Traffic Level (0.5 = Low, 1 = Med, 2 = High)");
+		.text("Traffic Level (0 = Low, 1 = Med, 2 = High)");
 
   svg_summary.selectAll(".bar")
       .data(data)

@@ -151,7 +151,7 @@ function d3_visual(assistant, num, filename) {
 				div.transition()
 	                .duration(200)
 	                .style("opacity", .9);
-	            div	.html("Task Name: "+d.name+"<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2)+"<br> Total Utilization: "+d.total.toFixed(2))
+	            div	.html("Task: " + d.name + "<br> Mean Utilization: "+(d.y1-d.y0).toFixed(2) + "%<br> Total Utilization: "+d.total.toFixed(2) + "%")
 	                .style("left", (d3.event.pageX+20) + "px")
 	                .style("top", (d3.event.pageY - 20) + "px");
 

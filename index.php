@@ -61,7 +61,7 @@
 				</p>
 				<h2>Getting Started</h2>
 				<p>
-					Ready to get started? Then let's <a href="basic_settings.php">go</a>! And if you encounter any issues or have questions about the simulation, please <a href="contact_us.php">contact us</a>! Note that this web experience has been optimized for Chrome and Safari.
+					Ready to get started? Then let's <a href="basic_settings.php">go</a>! And if you encounter any issues or have questions about the simulation, please <a href="contact_us.php">contact us</a>! Note that this web experience has been optimized for the latest version of Chrome.
 				</p>
 			</div>
 
