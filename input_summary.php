@@ -5,8 +5,9 @@
 	// $traffic['0.5']=1.0;
 	// $traffic['1']=2.0;
 	// $traffic['2']=3.0;
-	$traff_levels = ['0.5' => 0.1, '1' > 1, '2' > 2];
-
+	$traff_levels = ['0.5' => 1, '1' > 1, '2' > 2];
+	echo $traff_levels;
+	
 	$file = fopen($_SESSION['session_dir'] . "input_summary.txt", "w");
 	fwrite($file,"time,");
 	fwrite($file,"t_level\n");
@@ -15,8 +16,8 @@
 		fwrite($file,($i) .",");
 		// fwrite($file,$traffic[(string)$traffic_level[$i]]."\n");
 		$label = $_SESSION['parameters']['traffic_nums'][$i];
-		$label = $traff_levels[$label];
-		fwrite($file, $_SESSION['parameters']['traffic_nums'][$i]."\n");
+		echo "Label = " . $label . '<br>';
+		fwrite($file, $traff_levels[$label]."\n");
 	}
 	fwrite($file,($time) .",");
 	fwrite($file,"0\n");
@@ -38,7 +39,6 @@
 	-webkit-border-radius: 5px;
 	border-radius: 25px;
 	display: inline-block;
-
 	margin: 50px;
 	text-align: left;
 	background-color: rgba(255, 255, 255, 0.6);
