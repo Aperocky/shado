@@ -184,6 +184,19 @@
 
     $_SESSION['default_tasks'] = $_SESSION['tasks'];
 
+
+// Task description for conductor
+
+    $_SESSION['communicating']['description'] = 'Filtering through relevant information for the operation and communicating information that may impact the macro-level network of operations';
+    $_SESSION['exception handling']['description'] = "Manual tasks outside of the locomotive cab that may be passed on to the conductor";
+    $_SESSION['paperwork']['description'] = 'Recording information about the train (apart from the locomotive) that is not of concern to the engineer but essential for the business of freight';
+    $_SESSION['maintenance of way interactions']['description'] = 'Supporting the engineer in meeting required speed limits throughout the trip';
+    $_SESSION['temporary speed restrictions']['description'] = 'Supporting the engineer in meeting required speed limits throughout the trip';
+    $_SESSION['signal response management']['description'] = 'Supporting the engineer in meeting required speed limits throughout the trip';
+    $_SESSION['monitoring inside']['description'] = 'Paying attention to the engineer’s task performance';
+    $_SESSION['monitoring outside']['description'] = 'Maintaining attentiveness to warnings and environmental conditions that may affect operations';
+    $_SESSION['planning ahead']['description'] = 'Supporting the engineer in meeting required speed limits throughout the trip';
+
 //  Set empty task
 
     $_SESSION['empty_task'] = array();

@@ -8,9 +8,9 @@
 
 			<h3 style="text-align: center;"> <u><em>Why</em> is my operator over or under-utilized at work? </u></h3><br>
 			<ul><li >
-			We simulated <?php echo $_SESSION['parameters']['reps']; ?> trips and plotted the mean value per interval of time. The model shows that <?php echo round($type_byPhase[$keys[0]]*100/$length,2); ?>% of the operator’s time can be attributed to <?php echo array_keys($_SESSION['tasks'])[$keys[0]-1]; ?>. <?php $taskName = array_keys($_SESSION['tasks']); echo ucfirst($taskName[$keys[0]-1]); ?> involves <?php $name = $taskName[$keys[0]-1]; echo strtolower($_SESSION['tasks'][$name]['description']); ?>.
+			We simulated <?php echo $_SESSION['parameters']['reps']; ?> trips and plotted the mean value per interval of time. The model shows that <?php echo round($type_byPhase[$keys[0]]*100/$length,2); ?>% of the operator’s time can be attributed to <?php echo array_keys($_SESSION['tasks'])[$keys[0]-1]; ?>. <?php $taskName = array_keys($_SESSION['tasks']); echo ucfirst($taskName[$keys[0]-1]); ?> involves <?php $name = $taskName[$keys[0]-1]; if($assistant=='engineer') { echo strtolower($_SESSION['tasks'][$name]['description']);} else{ echo strtolower($_SESSION[$name]['description']); } ?>.
 			</li><br><li >
-			 <?php $taskName = array_keys($_SESSION['tasks']); echo $_SESSION['tasks'][$taskName[$keys[1]-1]]['description']; ?> makes <?php echo $taskName[$keys[1]-1]; ?> an important secondary task that accounts for <?php echo round($type_byPhase[$keys[1]]*100/$length,2); ?>% of their total time on task.
+			 <?php $taskName = array_keys($_SESSION['tasks']); if($assistant=='engineer'){echo $_SESSION['tasks'][$taskName[$keys[1]-1]]['description'];} else{ echo $_SESSION[$taskName[$keys[1]-1]]['description'];} ?> makes <?php echo $taskName[$keys[1]-1]; ?> an important secondary task that accounts for <?php echo round($type_byPhase[$keys[1]]*100/$length,2); ?>% of their total time on task.
 			</li><br>
 			<?php if($count_high>0){
 					if($count_low>0){ ?>
