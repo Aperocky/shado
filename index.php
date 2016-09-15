@@ -17,8 +17,8 @@
 
 //	Reset session, for testing purposes
 
-	session_unset();
-	include('includes/session_management/set_session_vars.php');
+//	session_unset();
+//	include('includes/session_management/set_session_vars.php');
 
 //	Include page header
 
@@ -61,7 +61,7 @@
 				</p>
 				<h2>Getting Started</h2>
 				<p>
-					Ready to get started? Then let's <a href="basic_settings.php">go</a>! And if you encounter any issues or have questions about the simulation, please <a href="contact_us.php">contact us</a>! Note that this web experience has been optimized for the latest version of Chrome.
+					 Note that this site is currently only compatible with Chrome and Firefox. If you're ready to get started, then let's <a href="basic_settings.php">go</a>! And if you encounter any issues or have questions about the simulation, please <a href="contact_us.php">contact us</a>!
 				</p>
 			</div>
 
