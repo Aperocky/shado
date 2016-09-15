@@ -178,7 +178,7 @@
     $_SESSION['tasks']['paperwork']['description'] = 'Reviewing and recording operating conditions';
     $_SESSION['tasks']['maintenance of way interactions']['description'] = 'Maintaining situational awareness of other crews along the track';
     $_SESSION['tasks']['temporary speed restrictions']['description'] = 'Recalling information issued on track bulletins and adapting to updates while train is in motion';
-    $_SESSION['tasks']['signal response management']['description'] = 'Maintaining attentiveness to direction from track signaling system and reponsive to proper control system within a safely allotted time';
+    $_SESSION['tasks']['signal response management']['description'] = 'Maintaining attentiveness to direction from track signaling system and responsive to proper control system within a safely allotted time';
     $_SESSION['tasks']['monitoring inside']['description'] = 'Maintaining attentiveness to informational displays and to engineer\'s performance to maintain a safe operation';
     $_SESSION['tasks']['monitoring outside']['description'] = 'Maintaining attentiveness to warnings and environmental conditions that may affect operations';
     $_SESSION['tasks']['planning ahead']['description'] = 'Maneuvering locomotive control system for throttle, braking and other subtasks like horn-blowing before railroad crossing';
