@@ -33,7 +33,7 @@
 	// $_SESSION['files']['params'] = tempnam(sys_get_temp_dir(), "params");
 
 	// echo "Dir = " . $_SESSION['session_dir'] . "\n";
-	$file = fopen($_SESSION['session_dir'] . "params", "w") or die("Unable to open parameter file.");
+	$file = fopen($_SESSION['session_dir'] . "params", "w") or die("Unable to open parameter file. Please return to check and update your settings.");
 	fwrite($file, "output_path\t\t" . $_SESSION['session_dir'] . "\n");
 	fwrite($file, "num_hours\t\t" . $_SESSION['parameters']['hours'] . "\n");
 	fwrite($file, "traff_levels\t" . implode(" ", $_SESSION['parameters']['traffic_chars']) . "\n");

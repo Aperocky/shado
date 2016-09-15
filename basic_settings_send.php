@@ -61,5 +61,5 @@
     } else if (isset($_POST['adv_settings'])) {
         header('Location: adv_settings.php');
     } else {
-        die("Could not determine action.");
+        die("Could not determine action. Please return to check and update your settings.");
     }

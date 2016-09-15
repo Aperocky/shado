@@ -108,5 +108,5 @@
     } else if (isset($_POST['basic_settings'])) {
         header('Location: basic_settings.php');
     } else {
-        die("Could not determine action.");
+        die("Could not determine action. Please return to check and update your settings.");
     }

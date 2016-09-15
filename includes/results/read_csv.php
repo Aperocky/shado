@@ -17,7 +17,7 @@
 
 //	Open file
 
-	$file = fopen($_SESSION['session_dir'] . 'stats_engineer.csv','r') or die('Could not find engineer file!');
+	$file = fopen($_SESSION['session_dir'] . 'stats_engineer.csv','r') or die('Could not find engineer file! Please return to check and update your settings.');
 	$count = 0;
 	$low_count = 0;
 	$normal_count = 0;
@@ -52,7 +52,7 @@
 	$_SESSION['high_count_0']=$high_count;
 
 	if (in_array('conductor', $_SESSION['parameters']['assistants'])) {
-		$file = fopen($_SESSION['session_dir'] . 'stats_conductor.csv', 'r') or die('Could not find conductor file!');
+		$file = fopen($_SESSION['session_dir'] . 'stats_conductor.csv', 'r') or die('Could not find conductor file! Please return to check and update your settings.');
 		$count=0;
 		$low_count=0;
 		$normal_count=0;

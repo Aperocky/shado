@@ -4,7 +4,7 @@
 
 		session_start();
 
-		$file = fopen($file_name,'r') or die("Could not open $file_name!");
+		$file = fopen($file_name,'r') or die("Could not open $file_name! Please return to check and update your settings.");
 		$count = array();
 		$temp_count = 0;
 		$skip = 1;
@@ -113,7 +113,7 @@
 		$length_phase1 = 3;
 		$length_phase2 = $length - 6;
 		$length_phase3 = 3;
-		
+
 		for($j = 1; $j < $temp_count - 1; $j++) {
 			$count_type_high1[$j] = 0;
 			$count_type_low1[$j] = 0;
@@ -184,7 +184,7 @@
 // 					if ($_SESSION['operator'.$i] == 1) {
 // =======
 		arsort($type_byPhase);
-		
+
 		// print_r($count[10]);
 
 		$count_ops=0;

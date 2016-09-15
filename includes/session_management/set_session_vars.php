@@ -25,7 +25,7 @@
 //  Create session variables
 
     $_SESSION['default_tasks'] = array();
-    
+
     $_SESSION['parameters'] = array();
     $_SESSION['tasks'] = array();
     $_SESSION['assistants'] = array();
@@ -60,7 +60,7 @@
 
 //  Read in default values
 
-    $file = fopen('./static_data/default_params.txt', 'r') or die('Unable to open default parameter file!');
+    $file = fopen('./static_data/default_params.txt', 'r') or die('Unable to open default parameter file! Please return to check and update your settings.');
 
 //  Set default number of replications
 

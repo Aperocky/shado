@@ -1,9 +1,9 @@
-	
+
 	<?php session_start();
 	$keys=array_keys($type_byPhase);
 
 	?>
-	
+
 
 
 	<div id="text_box" class="why_tab" style="display: none;">
@@ -15,7 +15,7 @@
 			echo ucfirst($taskName[$keys[0]-1]); ?> involves <?php if($assistant=='engineer') { echo strtolower($_SESSION['tasks'][$name]['description']);} else{ echo strtolower($_SESSION[$name]['description'])."."; }} ?>
 			</li><br><li >
 			 <?php $taskName = array_keys($_SESSION['tasks']); if(in_array($taskName[$keys[1]-1], array_keys($_SESSION['default_tasks']))){ if($assistant=='engineer'){echo $_SESSION['tasks'][$taskName[$keys[1]-1]]['description'];} else{ echo $_SESSION[$taskName[$keys[1]-1]]['description'];} ?> makes <?php echo $taskName[$keys[1]-1]; ?> an important secondary task that accounts for <?php echo round($type_byPhase[$keys[1]]*100/$length,2); ?>% of their total time on task.
-			 <?php } else{ echo ucfirst($taskName[$keys[1]-1]);?> is an important secondary task that accounts for <?php echo round($type_byPhase[$keys[1]]*100/$length,2); ?>% of their total time on task. 
+			 <?php } else{ echo ucfirst($taskName[$keys[1]-1]);?> is an important secondary task that accounts for <?php echo round($type_byPhase[$keys[1]]*100/$length,2); ?>% of their total time on task.
 			 <?php } ?>
 
 			</li><br>

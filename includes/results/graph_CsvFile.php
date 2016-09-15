@@ -3,8 +3,8 @@
 
 	function createGraphCsv($assistant) {
 
-		$file = fopen($_SESSION['session_dir'] . "stats_$assistant.csv", 'r') or die("Could not find $assistant file!");
-		$d3_file = fopen($_SESSION['session_dir'] . "mod_type_data_$assistant.txt", 'w') or die ("Could not open $assistant file!");
+		$file = fopen($_SESSION['session_dir'] . "stats_$assistant.csv", 'r') or die("Could not find $assistant file! Please return to check and update your settings.");
+		$d3_file = fopen($_SESSION['session_dir'] . "mod_type_data_$assistant.txt", 'w') or die ("Could not open $assistant file! Please return to check and update your settings.");
 
 		$count=array();
 		$s_dev=array();
