@@ -25,6 +25,7 @@
 //  Create session variables
 
     $_SESSION['default_tasks'] = array();
+    
     $_SESSION['parameters'] = array();
     $_SESSION['tasks'] = array();
     $_SESSION['assistants'] = array();
