@@ -187,6 +187,7 @@
 //  Set empty task
 
     $_SESSION['empty_task'] = array();
+    // $_SESSION['empty_task']['tasks'] = array(0);
     $_SESSION['empty_task']['priority'] = array(3, 3, 3);
     $_SESSION['empty_task']['arrDist'] = 'E';
     $_SESSION['empty_task']['arrPms'] = array(1/30, 1/30, 1/30);

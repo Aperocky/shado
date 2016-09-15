@@ -18,15 +18,15 @@
 
 //	Connect to database
 
-	$conn = connect_database();
+	// $conn = connect_database();
+	//
+	// $sql = 'INSERT INTO runs(hours) values("' . $_SESSION['parameters']['hours'] . '")';
 
-	$sql = 'INSERT INTO runs(hours) values("' . $_SESSION['numHours'] . '")';
-
-	if ($conn->query($sql) === TRUE) {
-    	echo "New record created successfully";
-	} else {
-	    echo "Error: " . $sql . "<br>" . $conn->error;
-	}
+	// if ($conn->query($sql) === TRUE) {
+    // 	echo "New record created successfully";
+	// } else {
+	//     echo "Error: " . $sql . "<br>" . $conn->error;
+	// }
 
 //	Create parameter file
 
@@ -70,7 +70,7 @@
 	if (PHP_OS == "Darwin") {
 		echo passthru("bin/des_mac " . $_SESSION['session_dir'] . "params");
 	} else if (PHP_OS == "Linux") {
-		echo passthru("bin/des_unix " . $_SESSION['session_dir'] . "params");
+		exec ("bin/des_unix " . $_SESSION['session_dir'] . "params");
 	} else {
 		die("Operating system not recognized.");
 	}
