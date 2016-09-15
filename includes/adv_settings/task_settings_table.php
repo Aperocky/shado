@@ -148,6 +148,7 @@
                 $i = 0;
                 foreach (array_keys($_SESSION['assistants']) as $assistant) {
                     $checked = '';
+                    // print_r($_SESSION['assistants'][$assistant]['tasks']);
                     if (in_array($taskNum, $_SESSION['assistants'][$assistant]['tasks'])) $checked = ' checked';
                     echo "<input type='checkbox' name='t$taskNum" . "_op$i' value='on' style='margin-left: 10px;'$checked>";
                     if ($assistant == 'custom')
