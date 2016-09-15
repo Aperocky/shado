@@ -113,7 +113,7 @@
 		$length_phase1 = 3;
 		$length_phase2 = $length - 6;
 		$length_phase3 = 3;
-
+		
 		for($j = 1; $j < $temp_count - 1; $j++) {
 			$count_type_high1[$j] = 0;
 			$count_type_low1[$j] = 0;
@@ -127,7 +127,7 @@
 
 		for($i = 1; $i < $num - 1; $i++) {
 			for ($j = 1; $j < $temp_count - 1; $j++) {
-				if ($count[10][$i] > 0.7) {
+				if ($count[$temp_count-1][$i] > 0.7) {
 					if ($i < 4) {
 						if ($count[$j][$i] > (array_sum($type_byPhase1[$j])/count($type_byPhase1[$j]))) {
 							$count_type_high1[$j]++;
@@ -149,7 +149,7 @@
 					continue;
 				}
 
-				if ($count[10][$i] < 0.3) {
+				if ($count[$temp_count-1][$i] < 0.3) {
 					if ($i < 4) {
 						if($count[$j][$i] < (array_sum($type_byPhase1[$j])/count($type_byPhase1[$j]))) {
 							$count_type_low1[$j]++;
@@ -174,6 +174,7 @@
 		}
 
 		arsort($count_type_low);
+
 		arsort($count_type_high);
 // <<<<<<< HEAD
 //
@@ -183,6 +184,7 @@
 // 					if ($_SESSION['operator'.$i] == 1) {
 // =======
 		arsort($type_byPhase);
+		
 		// print_r($count[10]);
 
 		$count_ops=0;
@@ -202,11 +204,11 @@
 		$count_low = 0;
 		$count_norm = 0;
 		for ($i = 1; $i < $num - 1; $i++) {
-			if ($count[10][$i] > 0.7) {
-				$penalty_high = $penalty_high + (3.33 * $count[10][$i] - 2.33);
+			if ($count[$temp_count-1][$i] > 0.7) {
+				$penalty_high = $penalty_high + (3.33 * $count[$temp_count-1][$i] - 2.33);
 				$count_high++;
 			} else {
-				if ($count[10][$i] < 0.3) {
+				if ($count[$temp_count-1][$i] < 0.3) {
 					$count_low++;
 				} else {
 					$count_norm++;

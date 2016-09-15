@@ -29,7 +29,7 @@
         echo "<br><br><br>";
         include('includes/results/d3_graph.php');
         createGraphCsv($assistant);
-        graphTextStatic($_SESSION['session_dir'] . "stats_$assistant.csv");
+        graphTextStatic($_SESSION['session_dir'] . "stats_" . $assistant. ".csv");
     }
 
     createSummary("engineer");
