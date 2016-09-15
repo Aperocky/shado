@@ -18,15 +18,14 @@
 
 //	Connect to database
 
-	// $conn = connect_database();
-	//
-	// $sql = 'INSERT INTO runs(hours) values("' . $_SESSION['parameters']['hours'] . '")';
+	$conn = connect_database();
+	$sql = 'INSERT INTO runs(hours) values("' . $_SESSION['parameters']['hours'] . '")';
 
-	// if ($conn->query($sql) === TRUE) {
-    // 	echo "New record created successfully";
-	// } else {
-	//     echo "Error: " . $sql . "<br>" . $conn->error;
-	// }
+	if ($conn->query($sql) === TRUE) {
+    	echo "New record created successfully";
+	} else {
+	    echo "Error: " . $sql . "<br>" . $conn->error;
+	}
 
 //	Create parameter file
 
