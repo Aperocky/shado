@@ -264,11 +264,25 @@
 		<div id='graphTextBox' class='no-page-break'>
 			<nav id='graphNav'>
 				<ul>
-					<li style='background-color: #555 ;'>When?</li>
+					<li style='background-color: #75D3FE ;'>When?</li>
+					<li style='background-color: #f1f1f1 ;'>Why?</li>
+				</ul>
+			</nav>";
+		include("includes/results/graphTextBox/graph_whenTab.php");
+
+		echo "</div><br><br><br><br><br><br>
+
+		<div id='graphTextBox' class='no-page-break'>
+			<nav id='graphNav'>
+				<ul>
+					<li style='background-color: #f1f1f1;'>When?</li>
 					<li style='background-color: #75D3FE ;'>Why?</li>
 				</ul>
 			</nav>";
 		include("includes/results/graphTextBox/graph_whyTab.php");
+		
+
+
 
 	}
 ?>

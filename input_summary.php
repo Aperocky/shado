@@ -53,7 +53,7 @@
 }
 
 .y.axis{
-	font: 15px sans-serif;
+	font: 13px sans-serif;
 }
 
 .x.axis{
@@ -180,7 +180,7 @@ d3.csv("read_file.php?filename=input_summary.txt", type, function(error, data) {
 		.attr("transform", "translate(-50,265) rotate(-90)" )
 		.attr("y", 6)
 		.attr("dy", ".71em")
-		.text("Traffic Level (1 = Low, 2 = Med, 3 = High)");
+		.text("Traffic Level (0.1 = Low, 1 = Med, 2 = High)");
 
   svg_summary.selectAll(".bar")
       .data(data)

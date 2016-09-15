@@ -596,7 +596,7 @@ th {
 	margin: 0;
 	padding: 0px;
 	overflow: hidden;
-	background-color: #555;
+	background-color: #f1f1f1;
 	border: 1px solid black;
 	display: inline-block;
 
@@ -611,7 +611,7 @@ th {
 }
 
 #graphNav li a {
-	color: white;
+	color: #555;
 	text-align: center;
 	padding: 12px 20px;
 	text-decoration: none;

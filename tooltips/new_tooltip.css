@@ -98,28 +98,28 @@
  * set default color for tooltip arrows
  */
 .hint--top-left:before {
-  border-top-color: #383838; }
+  border-top-color: rgba(255,255,255,1.0); }
 
 .hint--top-right:before {
-  border-top-color: #383838; }
+  border-top-color: rgba(255,255,255,1.0); }
 
 .hint--top:before {
-  border-top-color: #383838; }
+  border-top-color: rgba(255,255,255,1.0); }
 
 .hint--bottom-left:before {
-  border-bottom-color: #383838; }
+  border-bottom-color: rgba(255,255,255,1.0); }
 
 .hint--bottom-right:before {
-  border-bottom-color: #383838; }
+  border-bottom-color: rgba(255,255,255,1.0); }
 
 .hint--bottom:before {
-  border-bottom-color: #383838; }
+  border-bottom-color: rgba(255,255,255,1.0); }
 
 .hint--left:before {
-  border-left-color: #383838; }
+  border-left-color: rgba(255,255,255,1.0); }
 
 .hint--right:before {
-  border-right-color: #383838; }
+  border-right-color: rgba(255,255,255,1.0); }
 
 /**
  * top tooltip
