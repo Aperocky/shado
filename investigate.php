@@ -8,17 +8,19 @@
 	require_once('includes/results/graph_navBar_calculations.php');
 	// require_once('includes/results/d3_graph.php');
 	require_once('includes/results/graph_CsvFile.php');
-
+	echo "<div id='page' class='page'>";
 	if ($_GET['operator'] == 'conductor') {
 		$assistant = "conductor";
 		require_once('includes/results/d3_graph.php');
 		createGraphCsv('conductor');
 		graphText($_SESSION['session_dir'] . 'stats_conductor.csv');
+		echo "</div>";
 	} else if ($_GET['operator'] == 'engineer') {
 		$assistant = "Engineer";
 		require_once('includes/results/d3_graph.php');
 		createGraphCsv('engineer');
 		graphText($_SESSION['session_dir'] . 'stats_engineer.csv');
+		echo "</div>";
 	} else {
 		die('There was an error');
 	}
