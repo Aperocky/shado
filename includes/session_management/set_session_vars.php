@@ -72,18 +72,15 @@
 
     $line = fscanf($file, "%s %d");
     $_SESSION['parameters']['reps'] = $line[1];
-    echo "\n" . $line[1];
 
 //  Set default number of trains
 
     $line = fscanf($file, "%s %d");
-    echo "\n" . $line[1];
     $_SESSION['parameters']['trains'] = $line[1];
 
 //  Set default number of operators
 
     $line = fscanf($file, "%s %d");
-    echo "\n" . $line[1];
     $num_ops = $line[1];
 
 //  Set default number of dispatchers and their tasks
@@ -98,7 +95,6 @@
 //  Set default number of task types
 
     $line = fscanf($file, "%s %d");
-    echo "\nnumtasktype" . "\t" . $line[1];
     $num_tasks = $line[1];
 
 //  Read in assistants
@@ -156,14 +152,7 @@
         list($name, $data[0], $data[1], $data[2]) = fscanf($file, "%s %f %f %f");
         // $_SESSION['taskArrPms'][$i] = $data;
         $_SESSION['tasks'][$curr_task]['arrPms'] = $data;
-        echo "\nArrPms: ";
-        for ($j = 0; $j < 3 ; $j++){
-            echo $_SESSION['tasks'][$curr_task]['arrPms'][$j] . " ";
-        }
-        echo "\t";
-        foreach($_SESSION['tasks'][$curr_task]['arrPms'] as $da){
-            echo $da . " ";
-        }
+
 
     //  Set service distribution type
         $line = fscanf($file, "%s %s");
@@ -198,11 +187,8 @@
 
         $line = fscanf($file, "%s %d");
         $_SESSION['tasks'][$curr_task]['isLinked'] = $line[1];
-//        echo "\n";
-//        echo $_SESSION['tasks'][$curr_task]['isLinked'];
 
         $line = fscanf($file, "%s %d");
-//        echo "\n" . $line[1];
         $_SESSION['tasks'][$curr_task]['triggered'] = $line[1];
 
     //  Set associated operators
