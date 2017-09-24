@@ -30,7 +30,10 @@
 				<h1 class="pageTitle">Welcome to the SHOW!</h1>
 				<h2>Introduction</h2>
 				<p>
-					Welcome to the <u>S</u>imulator of <u>H</u>uman <u>O</u>perator <u>W</u>orkload (SHOW)! This tool, designed by Duke University researchers, simulates a freight rail operator's workload across the duration of a given trip. With SHOW, you can choose a trip with unique conditions and then see the operator's average workload after thousands of similar trips.
+					Welcome to the <u>S</u>imulator of <u>H</u>uman <u>O</u>perator <u>W</u>orkload (SHOW)! This tool,
+                    designed by Duke University researchers, simulates a freight rail operator's workload across the
+                    duration of a given trip. With SHOW, you can choose a trip with unique conditions and then see the
+                    operator's average workload after thousands of similar trips.
 				</p>
 				<p>
 					You should use this tool to answer the following questions:

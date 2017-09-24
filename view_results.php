@@ -12,7 +12,7 @@
 ****************************************************************************/
 
 //	Initialize session
-
+    error_reporting(0);
 	require_once('includes/session_management/init.php');
 
 //	Include headers

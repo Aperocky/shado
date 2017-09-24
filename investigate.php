@@ -13,13 +13,13 @@
 		$assistant = "conductor";
 		require_once('includes/results/d3_graph.php');
 		createGraphCsv('conductor');
-		graphText($_SESSION['session_dir'] . 'stats_conductor.csv');
+		graphText($_SESSION['session_dir'] . 'conductor.csv');
 		echo "</div>";
 	} else if ($_GET['operator'] == 'engineer') {
 		$assistant = "Engineer";
 		require_once('includes/results/d3_graph.php');
 		createGraphCsv('engineer');
-		graphText($_SESSION['session_dir'] . 'stats_engineer.csv');
+		graphText($_SESSION['session_dir'] . 'engineer.csv');
 		echo "</div>";
 	} else {
 		die('There was an error');

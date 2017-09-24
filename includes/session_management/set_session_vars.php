@@ -2,16 +2,20 @@
     session_start();
 
 /****************************************************************************
-*																			*
-*	File:		set_session_vars.php  									    *
-*																			*
-*	Author:		Branch Vincent												*
-*																			*
-*	Date:		Sep 9, 2016													*
-*																			*
-*	Purpose:	This sets default session variables, which is defined by    *
-*               the default_params.txt file				                    *
-*																			*
+*
+*	File:		set_session_vars.php
+*
+*	Author:		Branch Vincent
+*
+*	Date:		Sep 9, 2016
+*
+* 	Editor:     Rocky Li
+*
+*   Date:       Sep 21, 2017
+*
+*	Purpose:	This sets default session variables, which is defined by
+*               the default_params.txt file
+*
 ****************************************************************************/
 
 //  Set session id and directory
@@ -20,6 +24,7 @@
     $dir = sys_get_temp_dir() . '/' . $_SESSION['session_id'];
     mkdir($dir);
     $_SESSION['session_dir'] = $dir . '/';
+    echo $dir;
     $_SESSION['des_version'] = '1.0.0';
 
 //  Create session variables
@@ -60,21 +65,40 @@
 
 //  Read in default values
 
-    $file = fopen('./static_data/default_params.txt', 'r') or die('Unable to open default parameter file! Please return to check and update your settings.');
+    $file = fopen('static_data/params.txt', 'r') or die('Unable to open default parameter file!
+     Please return to check and update your settings.');
 
 //  Set default number of replications
 
     $line = fscanf($file, "%s %d");
     $_SESSION['parameters']['reps'] = $line[1];
+    echo "\n" . $line[1];
 
-//  Set default number of assistants
+//  Set default number of trains
 
     $line = fscanf($file, "%s %d");
+    echo "\n" . $line[1];
+    $_SESSION['parameters']['trains'] = $line[1];
+
+//  Set default number of operators
+
+    $line = fscanf($file, "%s %d");
+    echo "\n" . $line[1];
     $num_ops = $line[1];
+
+//  Set default number of dispatchers and their tasks
+
+    $line = fscanf($file, "%s %d");
+    $_SESSION['parameters']['dispatchnum'] = $line[1];
+
+    $line = strstr(fgets($file),"\t");
+    $dat = array_map('intval', explode(" ", $line));
+    $_SESSION['parameters']['dispatchtasks'] = $dat;
 
 //  Set default number of task types
 
     $line = fscanf($file, "%s %d");
+    echo "\nnumtasktype" . "\t" . $line[1];
     $num_tasks = $line[1];
 
 //  Read in assistants
@@ -91,6 +115,7 @@
     //  Set tasks to handle
 
         $line = strstr(fgets($file), "\t");
+//        echo $line;
         $data = array_map('intval', explode(" ", $line));
         $_SESSION['assistants'][$curr_op]['tasks'] = $data;
     }
@@ -113,6 +138,14 @@
         list($name, $data[0], $data[1], $data[2]) = fscanf($file, "%s %d %d %d");
         // $_SESSION['taskPrty'][$i] = $data;
         $_SESSION['tasks'][$curr_task]['priority'] = $data;
+//        echo "\nThis is original data: ";
+//        foreach($data as $da){
+//            echo $da . " ";
+//        }
+//        echo "\n";
+//        foreach($_SESSION['tasks'][$curr_task]['priority'] as $ea){
+//            echo $ea . " ";
+//        }
 
     //  Set arrival distribution type
         $line = fscanf($file, "%s %s");
@@ -123,6 +156,14 @@
         list($name, $data[0], $data[1], $data[2]) = fscanf($file, "%s %f %f %f");
         // $_SESSION['taskArrPms'][$i] = $data;
         $_SESSION['tasks'][$curr_task]['arrPms'] = $data;
+        echo "\nArrPms: ";
+        for ($j = 0; $j < 3 ; $j++){
+            echo $_SESSION['tasks'][$curr_task]['arrPms'][$j] . " ";
+        }
+        echo "\t";
+        foreach($_SESSION['tasks'][$curr_task]['arrPms'] as $da){
+            echo $da . " ";
+        }
 
     //  Set service distribution type
         $line = fscanf($file, "%s %s");
@@ -152,6 +193,17 @@
         list($name, $data[0], $data[1], $data[2]) = fscanf($file, "%s %d %d %d");
         // $_SESSION['taskAffByTraff'][$i] = $data;
         $_SESSION['tasks'][$curr_task]['affByTraff'] = $data;
+
+    //  Set islinked property and triggered property
+
+        $line = fscanf($file, "%s %d");
+        $_SESSION['tasks'][$curr_task]['isLinked'] = $line[1];
+//        echo "\n";
+//        echo $_SESSION['tasks'][$curr_task]['isLinked'];
+
+        $line = fscanf($file, "%s %d");
+//        echo "\n" . $line[1];
+        $_SESSION['tasks'][$curr_task]['triggered'] = $line[1];
 
     //  Set associated operators
         // $line = strstr(fgets($file), "\t");
@@ -211,6 +263,8 @@
     $_SESSION['empty_task']['expPmsLo'] = array(0, 0, 0);
     $_SESSION['empty_task']['expPmsHi'] = array(0, 0, 0);
     $_SESSION['empty_task']['affByTraff'] = array(0, 0, 0);
+    $_SESSION['empty_task']['isLinked'] = 0;
+    $_SESSION['empty_task']['triggered'] = -1;
     $_SESSION['empty_task']['description'] = "You have defined this task";
 
 //  Set session

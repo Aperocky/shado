@@ -221,7 +221,7 @@
 		else
 			$penalty_high = 0;
 
-		if ($file_name == $_SESSION['session_dir'] . 'stats_engineer.csv') {
+		if ($file_name == $_SESSION['session_dir'] . 'engineer.csv') {
 			$assistant = 'engineer';
 		} else {
 			$assistant = 'conductor';

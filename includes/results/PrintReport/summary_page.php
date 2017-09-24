@@ -29,7 +29,7 @@
 		createGraphCsv($assistant);
 		graphTextStatic($_SESSION['session_dir'] . "stats_$assistant.csv");
 
-		if (in_array('conductor'), $_SESSION['parameters']['assistants']) {
+		if (in_array('conductor'), $_SESSION['parameters']['assistants']){
 			$assistant = "Conductor";
 			include('includes/results/d3_graph.php');
 			createGraphCsv($assistant);
