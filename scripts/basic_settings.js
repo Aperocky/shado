@@ -41,7 +41,8 @@ function init() {
  ****************************************************************************/
 
 function calculate_train() {
-
+	var numtrains = jQuery('#TrainNum').val();
+	jQuery('#train_num').val(numtrains);
 }
 
 /****************************************************************************

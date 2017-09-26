@@ -51,9 +51,9 @@
 
                 <div class="startEndTime stepBox" style="width: 220px;">
                     <div class='stepCircle'>1</div>
-                    <h3 class="whiteFont">When Does Your Trip Begin? <span class="hint--bottom-right hint--rounded hint--large" aria-label= "Enter the time of day that your engineer begins his/her shift."><sup>(?)</sup></span></h3>
+                    <h3 class="whiteFont">Enter number of trains <span class="hint--bottom-right hint--rounded hint--large" aria-label= "Enter the time of day that your engineer begins his/her shift."><sup>(?)</sup></span></h3>
 
-                    <select id='TrainNum'>
+                    <select id='TrainNum' onchange="calculate_train();">
                         <?php
                         $tr = $_SESSION['parameters']['trains'];
                         for ($i = 1; $i <= 12; $i++) {
