@@ -19,6 +19,6 @@
                         </div>
 				  	</li>
 <!--                    Until the preview report is ready. -->
-<!--				    <li><a href="sim_summary.php">Preview Report</a></li>-->
+				    <li><a href="sim_summary.php">Preview Report</a></li>
 				</ul>
 			</nav>
