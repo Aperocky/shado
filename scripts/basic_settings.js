@@ -46,6 +46,19 @@ function calculate_train() {
 }
 
 /****************************************************************************
+ *
+ *	Function:	calculate_train
+ *
+ *	Purpose:	Calcuate the amount of trains given input
+ *
+ ****************************************************************************/
+
+function calculate_dispatch(){
+	var dispatchnum = jQuery('#DispatchNum').val();
+	jQuery('#dispatch_num').val(dispatchnum);
+}
+
+/****************************************************************************
 *																			*
 *	Function:	calculate_time												*
 *																			*

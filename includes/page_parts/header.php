@@ -2,7 +2,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title><?php if (isset($page_title)) echo $page_title; else echo 'SHOW';?></title>
+		<title><?php if (isset($page_title)) echo $page_title; else echo 'SHADO';?></title>
 		<link rel="stylesheet" type="text/css" href="styles/global_styles.css.php">
 		<!-- <link rel="stylesheet" type="text/css" href="tooltips/tooltip.css"> -->
 		<link rel="stylesheet" type="text/css" href="tooltips/new_tooltip.css">
@@ -18,7 +18,7 @@
 				<a href="http://hal.pratt.duke.edu">
 					<img id="halLogo" src="images/hal_light.png">
 				</a>
-				<h1 style="padding: 40px 290px;">Simulator of Human Operator Workload</h1>
+				<h1 style="padding: 40px 290px;"> Simulator of Humans and Automation in Dispatch Operations</h1>
 			</div>
 
 			<nav id="topNav" class="hide">

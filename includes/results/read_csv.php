@@ -24,13 +24,15 @@
 	$high_count = 0;
 	$skip = 0;
 
-	while (!feof($file)) {
-		$line_of_text = fgetcsv($file, 2048, ',');
+		$rows = file($_SESSION['session_dir'] . 'engineer.csv');
+		$last_row = array_pop($rows);
+
+		$line_of_text = str_getcsv($last_row, ',');
 		$skip++;
 		if ($line_of_text[1]=="Sum") {
 			$num = count($line_of_text);
 
-			for($i=2; $i<$num; $i++){
+			for($i=1; $i<$num; $i++){
 				$var=(float)$line_of_text[$i];
 				if($var<0.3) {
 					$low_count++;
@@ -42,9 +44,8 @@
 					}
 				}
 			}
-			break;
 		}
-	}
+
 
 	fclose($file);
 	$_SESSION['low_count_0']=$low_count;

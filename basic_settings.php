@@ -68,6 +68,25 @@
                     <input id="train_num" name="train_num" type="hidden" value="<?php echo $_SESSION['parameters']['trains'];?>">
                 </div>
 
+                <div class="startEndTime stepBox" style="width: 220px;">
+                    <div class='stepCircle'>1</div>
+                    <h3 class="whiteFont">Enter number of dispatchers <span class="hint--bottom-right hint--rounded hint--large" aria-label= "Enter the time of day that your engineer begins his/her shift."><sup>(?)</sup></span></h3>
+
+                    <select id='DispatchNum' onchange="calculate_dispatch();">
+                        <?php
+                        $tr = $_SESSION['parameters']['trains'];
+                        for ($i = 1; $i <= 4; $i++) {
+                            $selected = '';
+                            if ($i == $tr) $selected = ' selected="selected"';
+                            $val = sprintf('%02d', $i);
+                            echo "<option$selected>$val</option>";
+                        }
+                        ?>
+                    </select>
+
+                    <input id="dispatch_num" name="dispatch_num" type="hidden" value="<?php echo $_SESSION['parameters']['dispatchnum'];?>">
+                </div>
+
 				<div class="startEndTime stepBox" style="width: 220px;">
 					<div class='stepCircle'>1</div>
 					<h3 class="whiteFont">When Does Your Trip Begin? <span class="hint--bottom-right hint--rounded hint--large" aria-label= "Enter the time of day that your engineer begins his/her shift."><sup>(?)</sup></span></h3>
