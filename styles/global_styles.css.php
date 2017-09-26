@@ -545,7 +545,7 @@ th {
 	text-align: center;
 }
 
-#operator2, #operator1{
+.operators{
 	padding:5px 15px;
 	width:fit-content;
 	width:-webkit-fit-content;

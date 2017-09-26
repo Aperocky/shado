@@ -5,6 +5,10 @@
 	$normal_count_0 = $_SESSION['normal_count_0'];
 	$high_count_0 = $_SESSION['high_count_0'];
 
+    $low_count_2 = $_SESSION['low_count_2'];
+    $normal_count_2 = $_SESSION['normal_count_2'];
+    $high_count_2 = $_SESSION['high_count_2'];
+
 	if (!in_array('conductor', $_SESSION['parameters']['assistants'])) {
 		$operator2Style = 'display:none; ';
 		$low_count_1 = 0;

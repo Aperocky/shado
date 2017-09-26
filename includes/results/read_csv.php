@@ -15,74 +15,94 @@
 
 	require_once('includes/session_management/init.php');
 
-//	Open file
+//	This is for engineer
 
-	$file = fopen($_SESSION['session_dir'] . 'engineer.csv','r') or die('Could not find engineer file! Please return to check and update your settings.');
-	$count = 0;
 	$low_count = 0;
 	$normal_count = 0;
 	$high_count = 0;
-	$skip = 0;
 
-		$rows = file($_SESSION['session_dir'] . 'engineer.csv');
-		$last_row = array_pop($rows);
+    $rows = file($_SESSION['session_dir'] . 'engineer.csv');
+    $last_row = array_pop($rows);
 
-		$line_of_text = str_getcsv($last_row, ',');
-		$skip++;
-		if ($line_of_text[1]=="Sum") {
-			$num = count($line_of_text);
+    $line_of_text = str_getcsv($last_row, ',');
+    $num = count($line_of_text);
 
-			for($i=1; $i<$num; $i++){
-				$var=(float)$line_of_text[$i];
-				if($var<0.3) {
-					$low_count++;
-				} else {
-					if($var<0.7) {
-						$normal_count++;
-					} else {
-						$high_count++;
-					}
-				}
-			}
-		}
+    for($i=1; $i<$num; $i++){
+        $var=(float)$line_of_text[$i];
+        if($var<0.3) {
+            $low_count++;
+        } else {
+            if($var<0.7) {
+                $normal_count++;
+            } else {
+                $high_count++;
+            }
+        }
+    }
 
-
-	fclose($file);
-	$_SESSION['low_count_0']=$low_count;
+    $_SESSION['low_count_0']=$low_count;
 	$_SESSION['normal_count_0']=$normal_count;
 	$_SESSION['high_count_0']=$high_count;
 
-	if (in_array('conductor', $_SESSION['parameters']['assistants'])) {
-		$file = fopen($_SESSION['session_dir'] . 'conductor.csv', 'r') or die('Could not find conductor file! Please return to check and update your settings.');
-		$count=0;
-		$low_count=0;
-		$normal_count=0;
-		$high_count=0;
-		$skip=0;
-		while (!feof($file)) {
-			$line_of_text = fgetcsv($file,2048,',');
-			$skip++;
-			if($skip==20) {
-				$num=count($line_of_text);
-				for($i=2;$i<$num;$i++) {
-					$var=(float)$line_of_text[$i];
-					if($var<0.3) {
-						$low_count++;
-					} else {
-						if($var<0.7) {
-							$normal_count++;
-						} else {
-							$high_count++;
-						}
-					}
-				}
-				break;
-			}
-		}
+	// This is for conductor
 
-		fclose($file);
+	if (in_array('conductor', $_SESSION['parameters']['assistants'])) {
+
+        $low_count = 0;
+        $normal_count = 0;
+        $high_count = 0;
+
+        $rows = file($_SESSION['session_dir'] . 'conductor.csv');
+        $last_row = array_pop($rows);
+
+        $line_of_text = str_getcsv($last_row, ',');
+        $num = count($line_of_text);
+
+        for($i=1; $i<$num; $i++){
+            $var=(float)$line_of_text[$i];
+            if($var<0.3) {
+                $low_count++;
+            } else {
+                if($var<0.7) {
+                    $normal_count++;
+                } else {
+                    $high_count++;
+                }
+            }
+        }
+
 		$_SESSION['low_count_1']=$low_count;
 		$_SESSION['normal_count_1']=$normal_count;
 		$_SESSION['high_count_1']=$high_count;
 	}
+
+	// This is for dispatcher
+
+    $low_count = 0;
+    $normal_count = 0;
+    $high_count = 0;
+
+    $rows = file($_SESSION['session_dir'] . 'dispatcher.csv');
+    $last_row = array_pop($rows);
+
+    $line_of_text = str_getcsv($last_row, ',');
+    $num = count($line_of_text);
+
+    for($i=1; $i<$num; $i++){
+        $var=(float)$line_of_text[$i];
+        if($var<0.3) {
+            $low_count++;
+        } else {
+            if($var<0.7) {
+                $normal_count++;
+            } else {
+                $high_count++;
+            }
+        }
+    }
+
+    $_SESSION['low_count_2']=$low_count;
+    $_SESSION['normal_count_2']=$normal_count;
+    $_SESSION['high_count_2']=$high_count;
+
 ?>
