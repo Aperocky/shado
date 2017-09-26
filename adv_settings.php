@@ -59,42 +59,42 @@
 							</select>
 						</div>
 					</div>
-					<h2>Task Details</h2>
-					Below, you can view and change the underlying assumptions for each task.
-					<div id='taskParameterTable'>
-						<?php
-							$index = 0;
-							foreach (array_keys($_SESSION['tasks']) as $task) {
-								$taskNum = $index++;
-								echo "<div id=task_$taskNum>";
-						        include('includes/adv_settings/task_settings_table.php');
-								echo "<br> </div>";
-						    }
-							while ($index < 15) {
-								$task = "default";
-								$taskNum = $index++;
-								echo "<div id=task_$taskNum class='remove'>";
-						        include('includes/adv_settings/task_settings_table.php');
-								echo "<br> </div>";
-							}
-						?>
-					</div>
-					<div id="taskAdder" style="text-align: center; padding-bottom: 20px;" >
-						<h3 style="color: #4CAF50"><button type="button" class="roundButton" onclick=<?php echo "addTask(" . sizeof($_SESSION['tasks']) . ")"; ?> style="background-color: #4CAF50;"><strong>+</strong></button> Add Task</h3>
-					</div>
-					<div id="bottomNav">
-						<ul>
-							<li>
-								<input type="submit" class="button" name="basic_settings" value="&#8678 Basic Conditions" style="color: black;">
-							</li>
-							<li>
-								<button type="button" class="button" onclick="location.href='reset_session_vars.php';" style="color: black;">Restore Defaults</button>
-							</li>
-							<li>
-								<input type="submit" class="button" name="run_sim" value="Run Simulation &#8680" style="background-color: #4CAF50;">
-							</li>
-						</ul>
-					</div>
+					<h2>More Function to come!</h2>
+<!--					Below, you can view and change the underlying assumptions for each task.-->
+<!--					<div id='taskParameterTable'>-->
+<!--						--><?php
+//							$index = 0;
+//							foreach (array_keys($_SESSION['tasks']) as $task) {
+//								$taskNum = $index++;
+//								echo "<div id=task_$taskNum>";
+//						        include('includes/adv_settings/task_settings_table.php');
+//								echo "<br> </div>";
+//						    }
+//							while ($index < 15) {
+//								$task = "default";
+//								$taskNum = $index++;
+//								echo "<div id=task_$taskNum class='remove'>";
+//						        include('includes/adv_settings/task_settings_table.php');
+//								echo "<br> </div>";
+//							}
+//						?>
+<!--					</div>-->
+<!--					<div id="taskAdder" style="text-align: center; padding-bottom: 20px;" >-->
+<!--						<h3 style="color: #4CAF50"><button type="button" class="roundButton" onclick=--><?php //echo "addTask(" . sizeof($_SESSION['tasks']) . ")"; ?><!-- style="background-color: #4CAF50;"><strong>+</strong></button> Add Task</h3>-->
+<!--					</div>-->
+<!--					<div id="bottomNav">-->
+<!--						<ul>-->
+<!--							<li>-->
+<!--								<input type="submit" class="button" name="basic_settings" value="&#8678 Basic Conditions" style="color: black;">-->
+<!--							</li>-->
+<!--							<li>-->
+<!--								<button type="button" class="button" onclick="location.href='reset_session_vars.php';" style="color: black;">Restore Defaults</button>-->
+<!--							</li>-->
+<!--							<li>-->
+<!--								<input type="submit" class="button" name="run_sim" value="Run Simulation &#8680" style="background-color: #4CAF50;">-->
+<!--							</li>-->
+<!--						</ul>-->
+<!--					</div>-->
 				</form>
 			</div>
 <?php require_once("includes/page_parts/footer.php");?>

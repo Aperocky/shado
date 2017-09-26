@@ -8,9 +8,11 @@
 	require_once('includes/results/graph_CsvFile.php');
 	require_once('includes/results/graphTextBox/graph_navBar_static.php');
 
-	function createSummary($assistant) {
-		session_start();
-		$page_title='Print Report';	?>
+	function createSummary($assistant)
+    {
+        session_start();
+        $page_title = 'Print Report';
+    }?>
 
 	<div id="print-content">
 		<form>
@@ -29,7 +31,7 @@
 		createGraphCsv($assistant);
 		graphTextStatic($_SESSION['session_dir'] . "stats_$assistant.csv");
 
-		if (in_array('conductor'), $_SESSION['parameters']['assistants']){
+		if (in_array('conductor', $_SESSION['parameters']['assistants'])){
 			$assistant = "Conductor";
 			include('includes/results/d3_graph.php');
 			createGraphCsv($assistant);
@@ -37,5 +39,4 @@
 			echo "</div>";
 			require_once('includes/page_parts/footer.php');
 		}
-	}
 ?>

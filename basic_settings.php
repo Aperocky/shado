@@ -51,7 +51,8 @@
 
                 <div class="startEndTime stepBox" style="width: 220px;">
                     <div class='stepCircle'>1</div>
-                    <h3 class="whiteFont">Enter number of trains <span class="hint--bottom-right hint--rounded hint--large" aria-label= "Enter the time of day that your engineer begins his/her shift."><sup>(?)</sup></span></h3>
+                    <h3 class="whiteFont">Enter number of trains <span class="hint--bottom-right hint--rounded hint--large" aria-label=
+                        "Enter the number of trains you expect the dispatcher to handle"><sup>(?)</sup></span></h3>
 
                     <select id='TrainNum' onchange="calculate_train();">
                         <?php
@@ -69,8 +70,9 @@
                 </div>
 
                 <div class="startEndTime stepBox" style="width: 220px;">
-                    <div class='stepCircle'>1</div>
-                    <h3 class="whiteFont">Enter number of dispatchers <span class="hint--bottom-right hint--rounded hint--large" aria-label= "Enter the time of day that your engineer begins his/her shift."><sup>(?)</sup></span></h3>
+                    <div class='stepCircle'>2</div>
+                    <h3 class="whiteFont">Enter number of dispatchers <span class="hint--bottom-right hint--rounded hint--large" aria-label=
+                        "Enter the number of dispatcher that should be at work."><sup>(?)</sup></span></h3>
 
                     <select id='DispatchNum' onchange="calculate_dispatch();">
                         <?php
@@ -88,7 +90,7 @@
                 </div>
 
 				<div class="startEndTime stepBox" style="width: 220px;">
-					<div class='stepCircle'>1</div>
+					<div class='stepCircle'>3</div>
 					<h3 class="whiteFont">When Does Your Trip Begin? <span class="hint--bottom-right hint--rounded hint--large" aria-label= "Enter the time of day that your engineer begins his/her shift."><sup>(?)</sup></span></h3>
 
 					<select id='beginHour' onchange="calculate_time();">
@@ -129,7 +131,7 @@
 				</div>
 
 				<div class="startEndTime stepBox" style="width: 220px;">
-					<div class='stepCircle'>2</div>
+					<div class='stepCircle'>4</div>
 					<h3 class="whiteFont">When Does Your Trip End? <span class="hint--bottom-left hint--rounded hint--large" aria-label= "Enter the time of day that your engineer is expected to end his/her shift."><sup>(?)</sup></span></h3>
 
 					<select id='endHour' onchange="calculate_time();">
@@ -170,7 +172,7 @@
 			</div>
 
 			<div class="trafficTableStepOuter stepBox centerOuter">
-				<div class='stepCircle'>3</div>
+				<div class='stepCircle'>5</div>
 					<h3 class="whiteFont">
 						What are the Traffic Levels?
 						<span class="hint--right hint--rounded hint--large" aria-label= "Enter the local levels of traffic during this shift. This will modify the frequency of certain task arrivals."><sup>(?)</sup></span>
@@ -202,7 +204,7 @@
 			</div>
 			<br><br>
 			<div class="assistantsSelectStepOuter stepBox centerOuter">
-				<div class='stepCircle'>4</div>
+				<div class='stepCircle'>6</div>
 				<h3 id='assistants' class='whiteFont'>Who Will Assist the Engineer? <span class="hint--right hint--rounded hint--large" aria-label= "Identify any humans or technologies that will support the locomotive engineer. SHOW models their interaction by offloading certain tasks from the engineer."><sup>(?)</sup></span></h3>
 				<div id="assist">
 					<table id="assistantsTable" cellspacing="0">

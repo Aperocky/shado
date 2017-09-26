@@ -18,6 +18,7 @@
                             <a href="investigate.php?operator=dispatcher">Dispatcher</a>
                         </div>
 				  	</li>
-				    <li><a href="sim_summary.php">Preview Report</a></li>
+<!--                    Until the preview report is ready. -->
+<!--				    <li><a href="sim_summary.php">Preview Report</a></li>-->
 				</ul>
 			</nav>
