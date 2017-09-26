@@ -46,6 +46,28 @@
 
 		<form class="centerOuter" action="basic_settings_send.php" method="post">
 			<div class="centerOuter">
+
+                <!-- The box to select number of trains -->
+
+                <div class="startEndTime stepBox" style="width: 220px;">
+                    <div class='stepCircle'>1</div>
+                    <h3 class="whiteFont">When Does Your Trip Begin? <span class="hint--bottom-right hint--rounded hint--large" aria-label= "Enter the time of day that your engineer begins his/her shift."><sup>(?)</sup></span></h3>
+
+                    <select id='TrainNum'>
+                        <?php
+                        $tr = $_SESSION['parameters']['trains'];
+                        for ($i = 1; $i <= 12; $i++) {
+                            $selected = '';
+                            if ($i == $tr) $selected = ' selected="selected"';
+                            $val = sprintf('%02d', $i);
+                            echo "<option$selected>$val</option>";
+                        }
+                        ?>
+                    </select>
+
+                    <input id="train_num" name="train_num" type="hidden" value="<?php echo $_SESSION['parameters']['trains'];?>">
+                </div>
+
 				<div class="startEndTime stepBox" style="width: 220px;">
 					<div class='stepCircle'>1</div>
 					<h3 class="whiteFont">When Does Your Trip Begin? <span class="hint--bottom-right hint--rounded hint--large" aria-label= "Enter the time of day that your engineer begins his/her shift."><sup>(?)</sup></span></h3>
@@ -60,7 +82,8 @@
 								echo "<option$selected>$val</option>";
 							}
 						?>
-					</select>:<select id='beginMin' onchange="calculate_time();">
+					</select>
+                    <select id='beginMin' onchange="calculate_time();">
 						<?php
 							$min = (int)substr($_SESSION['parameters']['begin'], 3, 5);
 							for ($i = 0; $i <= 50; $i+=10) {
@@ -82,6 +105,7 @@
 							}
 						?>
 					</select>
+
 					<input id="begin_time" name="begin_time" type="hidden" value="<?php echo $_SESSION['parameters']['begin'];?>">
 				</div>
 

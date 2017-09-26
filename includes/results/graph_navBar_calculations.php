@@ -6,44 +6,65 @@
 
 		$file = fopen($file_name,'r') or die("Could not open $file_name! Please return to check and update your settings.");
 		$count = array();
-		$temp_count = 0;
+		$temp_count = 1;
 		$skip = 1;
 		$num = 0;
 
-		while (!feof($file)) {
-			if($temp_count==1) {
-				$skip=1;
-			}
+		while ($temp_count <= count($_SESSION['tasks']) + 1) {
 
-			$line_of_text = fgetcsv($file,2048,',');
+            $line_of_data = fgetcsv($file, 2048, ',');
+//            foreach($line_of_data as $da){
+//            	echo $da . " ";
+//			}
+//			echo "    RARARARASPUTIN    ";
+            $num = count($line_of_data);
+            $count[$temp_count] = array();
+            for ($i = 1; $i< $num; $i++){
+            	$count[$temp_count][0] = (float)$temp_count - 1;
+                $count[$temp_count][$i] = (float)$line_of_data[$i-1];
+                if($skip == 1){
+                    $count[0][$i] = (string)(($i-1)*10) . " min";
+                }
+            }
 
-			if($line_of_text[0] == "Service Time") {
-				break;
-			}
+            $skip = 0;
+            $temp_count++;
 
-			if($skip==1) {
-				$num = count($line_of_text);
-				$count[$temp_count] = array();
-				for ($i = 1; $i < $num; $i++) {
-					if($temp_count==0) {
-						$count[$temp_count][$i-1]=$line_of_text[$i];
-					} else {
-						$count[$temp_count][$i-1]=(float)$line_of_text[$i];
-					}
-				}
-
-				$skip = 0;
-				$temp_count++;
-				continue;
-			}
-
-			if ($skip == 0) {
-				$skip = 1;
-				continue;
-			}
+//			if($temp_count==1) {
+//				$skip=1;
+//			}
+//
+//			$line_of_text = fgetcsv($file,2048,',');
+//
+//			if($line_of_text[0] == "Service Time") {
+//				break;
+//			}
+//
+//			if($skip==1) {
+//				$num = count($line_of_text);
+//				$count[$temp_count] = array();
+//				for ($i = 1; $i < $num; $i++) {
+//					if($temp_count==0) {
+//						$count[$temp_count][$i-1]=$line_of_text[$i];
+//					} else {
+//						$count[$temp_count][$i-1]=(float)$line_of_text[$i];
+//					}
+//				}
+//
+//				$skip = 0;
+//				$temp_count++;
+//				continue;
+//			}
+//
+//			if ($skip == 0) {
+//				$skip = 1;
+//				continue;
+//			}
 		}
 
 		fclose($file);
+
+//		echo var_dump($count);
 
 		$type_byPhase1 = array();
 		$type_byPhase2 = array();

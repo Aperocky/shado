@@ -15,7 +15,8 @@
 					    <div class="accordion-content">
 					      	<a href="investigate.php?operator=engineer">Engineer</a>
 					      	<a href="investigate.php?operator=conductor">Conductor</a>
-					    </div>
+                            <a href="investigate.php?operator=dispatcher">Dispatcher</a>
+                        </div>
 				  	</li>
 				    <li><a href="sim_summary.php">Preview Report</a></li>
 				</ul>

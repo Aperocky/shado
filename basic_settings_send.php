@@ -15,6 +15,10 @@
 
 	require_once('includes/session_management/init.php');
 
+//  Store number of trains
+
+    $_SESSION['parameters']['trains'] = $_POST['train_num'];
+
 //	Store time
 
 	$_SESSION['parameters']['hours'] = $_POST['num_hours'];

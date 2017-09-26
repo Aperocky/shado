@@ -4,9 +4,11 @@
 *																			*
 *	Author:		Branch Vincent												*
 *																			*
-*	Date:		Sep 9, 2016													*
-*																			*
-*	Purpose:	This file makes calculations for the basic input settings 	*
+*	Date:		Sep 9, 2016
+*
+* 	Editor:		Rocky Li, edited Sep 26, 2017
+*
+*	Purpose:	This file makes calculations for the basic input settings
 *				page.														*
 *																			*
 ****************************************************************************/
@@ -28,6 +30,18 @@ function init() {
 	// calculate_time();
     init_hour_labels();
     toggle_custom_settings();
+}
+
+/****************************************************************************
+ *
+ *	Function:	calculate_train
+ *
+ *	Purpose:	Calcuate the amount of trains given input
+ *
+ ****************************************************************************/
+
+function calculate_train() {
+
 }
 
 /****************************************************************************

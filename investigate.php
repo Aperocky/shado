@@ -1,4 +1,5 @@
 <?php
+    error_reporting(0);
 	require_once('includes/session_management/init.php');
 	$html_head_insertions = '<script src="http://d3js.org/d3.v3.min.js"></script>' . "\r\n\t\t";
 	$html_head_insertions .= '<script type="text/javascript" src="includes/results/d3_graph.js"></script>';
@@ -9,6 +10,9 @@
 	// require_once('includes/results/d3_graph.php');
 	require_once('includes/results/graph_CsvFile.php');
 	echo "<div id='page' class='page'>";
+
+	// Get the specific data from operator called
+
 	if ($_GET['operator'] == 'conductor') {
 		$assistant = "conductor";
 		require_once('includes/results/d3_graph.php');
@@ -21,9 +25,17 @@
 		createGraphCsv('engineer');
 		graphText($_SESSION['session_dir'] . 'engineer.csv');
 		echo "</div>";
-	} else {
+
+	} else if ($_GET['operator'] == 'dispatcher') {
+        $assistant = "Dispatcher";
+        require_once('includes/results/d3_graph.php');
+        createGraphCsv('dispatcher');
+        graphText($_SESSION['session_dir'] . 'dispatcher.csv');
+        echo "</div>";
+    } else {
 		die('There was an error');
 	}
+
 ?>
 	<div id="bottomNav">
 		<ul>
